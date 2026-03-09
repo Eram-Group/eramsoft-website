@@ -3,9 +3,9 @@
 import "./hero2.css";
 import Link from "next/link";
 
-export default function Hero2({ isLight, onToggle }: { isLight: boolean; onToggle: () => void }) {
+export default function Hero2() {
   return (
-    <section className={`h2-surface relative flex min-h-screen flex-col overflow-hidden ${isLight ? "h2-light" : ""}`}>
+    <section className="h2-surface relative flex min-h-screen flex-col overflow-hidden">
       {/* ── Grain texture ── */}
       <div className="h2-grain" aria-hidden="true" />
 
@@ -53,31 +53,6 @@ export default function Hero2({ isLight, onToggle }: { isLight: boolean; onToggl
 
       {/* ── Top fade for navbar blend ── */}
       <div className="h2-top-fade" />
-
-      {/* ── Theme toggle ── */}
-      <button
-        onClick={onToggle}
-        className="h2-theme-toggle"
-        aria-label={isLight ? "Switch to dark mode" : "Switch to light mode"}
-      >
-        {isLight ? (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-        ) : (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </svg>
-        )}
-      </button>
 
       {/* ── Main content area — split layout ── */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-8 pt-28 pb-8 lg:px-16">

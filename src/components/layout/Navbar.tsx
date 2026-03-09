@@ -11,9 +11,9 @@ const navLinks = [
   { label: "PROJECTS", href: "#projects" },
 ];
 
-export default function Navbar({ variant = "light" }: { variant?: "light" | "dark" }) {
+export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isDark = variant === "dark";
+  const isDark = true;
 
   return (
     <nav className="absolute top-0 left-0 z-50 w-full">
