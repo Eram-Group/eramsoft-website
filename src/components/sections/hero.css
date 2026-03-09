@@ -1,36 +1,176 @@
-/* ── Hero 1 Entrance Animations ── */
+/* ══════════════════════════════════════════════════
+   Hero 1 — Geometric Tech Background
+   Arc segments, capsule lines, circuit paths,
+   dot grids, glow points — light gray + orange.
+   ══════════════════════════════════════════════════ */
 
-@keyframes bgZoomFade {
+
+/* ── Full-bleed SVG background ── */
+
+.hero-tech-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  animation: techBgReveal 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+@keyframes techBgReveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* ── Arc groups entrance ── */
+
+.hero-arc-group {
+  opacity: 0;
+  animation: arcSlideIn 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-arc-tl {
+  transform-origin: 0 0;
+  animation-delay: 0.2s;
+}
+
+.hero-arc-br {
+  transform-origin: 100% 100%;
+  animation-delay: 0.4s;
+}
+
+.hero-arc-bc {
+  transform-origin: 50% 100%;
+  animation-delay: 0.6s;
+}
+
+@keyframes arcSlideIn {
   from {
     opacity: 0;
-    transform: scale(1.15);
+    transform: scale(0.85);
   }
   to {
-    opacity: 0.55;
+    opacity: 1;
     transform: scale(1);
   }
 }
 
-.animate-bgZoomFade {
+
+/* ── Capsule lines entrance ── */
+
+.hero-capsule {
   opacity: 0;
-  animation: bgZoomFade 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+  animation: capsuleSlide 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes capsuleSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/* ── Circuit path ── */
+
+.hero-circuit polyline {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: circuitDraw 2.5s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+
+@keyframes circuitDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+
+/* ── Glow dots at junctions ── */
+
+.hero-glow-dot {
+  opacity: 0;
+  animation: glowDotIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes glowDotIn {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+/* ── Floating squares ── */
+
+.hero-float-sq {
+  opacity: 0;
+  animation: floatIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+             floatBob 6s ease-in-out 2s infinite alternate;
+}
+
+@keyframes floatIn {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes floatBob {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+
+/* ── Glow pulses ── */
+
+.hero-glow-pulse {
+  opacity: 0;
+  animation: glowPulseIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+             glowPulse 3s ease-in-out 2s infinite alternate;
 }
 
 @keyframes glowPulseIn {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.4);
-  }
-  100% {
-    opacity: 0.06;
-    transform: translate(-50%, -50%) scale(1);
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.animate-glowPulseIn {
-  opacity: 0;
-  animation: glowPulseIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+@keyframes glowPulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
 }
+
+
+/* ── Warm center glow behind content ── */
+
+.hero-center-warmth {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(232, 133, 59, 0.05) 0%,
+    rgba(232, 133, 59, 0.02) 40%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  opacity: 0;
+  animation: warmthIn 2.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+@keyframes warmthIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+
+/* ══════════════════════════════════════════════════
+   TEXT & ENTRANCE ANIMATIONS
+   ══════════════════════════════════════════════════ */
 
 @keyframes clipRevealCenter {
   from {
@@ -67,12 +207,8 @@
 }
 
 @keyframes shimmerAccent {
-  0% {
-    background-position: -200% center;
-  }
-  100% {
-    background-position: 200% center;
-  }
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 .animate-shimmer {
@@ -139,10 +275,10 @@
   animation: scrollReveal 0.7s ease-out both;
 }
 
-@keyframes darkStripReveal {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -150,7 +286,7 @@
   }
 }
 
-.animate-darkStripReveal {
+.animate-fadeInUp {
   opacity: 0;
-  animation: darkStripReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

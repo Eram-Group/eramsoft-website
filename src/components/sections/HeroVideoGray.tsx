@@ -4,37 +4,29 @@ import Link from "next/link";
 
 export const PALETTES = [
   {
-    name: "Emerald",
-    bg: "#0F1212",
-    bgRgb: "15,18,18",
-    color: "#10B981",
-    rgb: "16,185,129",
+    name: "Light Grey",
+    bg: "#d5d3d0",
+    bgRgb: "213,211,208",
+    color: "#a8903a",
+    rgb: "168,144,58",
     shimmer:
-      "linear-gradient(90deg, #059669 0%, #10B981 20%, #34D399 40%, #6EE7B7 50%, #34D399 60%, #10B981 80%, #059669 100%)",
-    svcBg: "linear-gradient(180deg, #131717 0%, #101414 50%, #131717 100%)",
-    svcShimmer: "linear-gradient(90deg, #059669, #10B981, #34D399, #10B981)",
+      "linear-gradient(90deg, #8a7530 0%, #a8903a 20%, #c4ad58 40%, #e0d090 50%, #c4ad58 60%, #a8903a 80%, #8a7530 100%)",
+    svcBg: "linear-gradient(180deg, #d9d7d4 0%, #d5d3d0 50%, #d9d7d4 100%)",
+    svcShimmer: "linear-gradient(90deg, #8a7530, #a8903a, #c4ad58, #a8903a)",
+    videoOpacity: 0.18,
+    light: true,
   },
   {
-    name: "Sapphire",
-    bg: "#0A1628",
-    bgRgb: "10,22,40",
-    color: "#3B82F6",
-    rgb: "59,130,246",
+    name: "Golden",
+    bg: "#1c1a14",
+    bgRgb: "28,26,20",
+    color: "#C8A24E",
+    rgb: "200,162,78",
     shimmer:
-      "linear-gradient(90deg, #1D4ED8 0%, #3B82F6 20%, #60A5FA 40%, #93C5FD 50%, #60A5FA 60%, #3B82F6 80%, #1D4ED8 100%)",
-    svcBg: "linear-gradient(180deg, #0E1B30 0%, #0B1726 50%, #0E1B30 100%)",
-    svcShimmer: "linear-gradient(90deg, #1D4ED8, #3B82F6, #60A5FA, #3B82F6)",
-  },
-  {
-    name: "Amber",
-    bg: "#1C1917",
-    bgRgb: "28,25,23",
-    color: "#D97706",
-    rgb: "217,119,6",
-    shimmer:
-      "linear-gradient(90deg, #B45309 0%, #D97706 20%, #F59E0B 40%, #FCD34D 50%, #F59E0B 60%, #D97706 80%, #B45309 100%)",
-    svcBg: "linear-gradient(180deg, #201D1A 0%, #1C1917 50%, #201D1A 100%)",
-    svcShimmer: "linear-gradient(90deg, #B45309, #D97706, #F59E0B, #D97706)",
+      "linear-gradient(90deg, #9a7a2e 0%, #C8A24E 20%, #E0C472 40%, #F5E6A8 50%, #E0C472 60%, #C8A24E 80%, #9a7a2e 100%)",
+    svcBg: "linear-gradient(180deg, #201e18 0%, #1c1a14 50%, #201e18 100%)",
+    svcShimmer: "linear-gradient(90deg, #9a7a2e, #C8A24E, #E0C472, #C8A24E)",
+    videoOpacity: 0.2,
   },
 ];
 
@@ -45,6 +37,10 @@ interface Props {
 
 export default function HeroVideoGray({ paletteIndex, onPaletteChange }: Props) {
   const p = PALETTES[paletteIndex];
+  const isLight = "light" in p && p.light;
+  const textMain = isLight ? "rgba(30,30,30,0.35)" : "rgba(255,255,255,0.30)";
+  const textSub = isLight ? "rgba(30,30,30,0.30)" : "rgba(255,255,255,0.30)";
+  const textMuted = isLight ? "rgba(30,30,30,0.40)" : "rgba(255,255,255,0.35)";
 
   return (
     <section
@@ -58,8 +54,8 @@ export default function HeroVideoGray({ paletteIndex, onPaletteChange }: Props) 
           muted
           loop
           playsInline
-          className="h-full w-full object-cover opacity-[0.15]"
-          style={{ filter: "saturate(0.1) contrast(1.1)" }}
+          className="h-full w-full object-cover"
+          style={{ opacity: p.videoOpacity, filter: "saturate(0.1) contrast(1.1)", transition: "opacity 0.8s ease" }}
         >
           <source src="/121885-724720140_small.mp4" type="video/mp4" />
         </video>
@@ -162,7 +158,7 @@ export default function HeroVideoGray({ paletteIndex, onPaletteChange }: Props) 
 
         {/* Headline */}
         <h1 className="mb-7">
-          <span className="block text-[clamp(1.6rem,3.5vw,2.6rem)] font-extralight leading-[1.2] tracking-[0.06em] text-white/30 uppercase animate-contentReveal [animation-delay:2.15s]">
+          <span className="block text-[clamp(1.6rem,3.5vw,2.6rem)] font-extralight leading-[1.2] tracking-[0.06em] uppercase animate-contentReveal [animation-delay:2.15s]" style={{ color: textMain, transition: "color 0.8s ease" }}>
             We build the
           </span>
           <span className="block my-2 animate-contentReveal [animation-delay:2.3s]">
@@ -176,7 +172,7 @@ export default function HeroVideoGray({ paletteIndex, onPaletteChange }: Props) 
               Software
             </span>
           </span>
-          <span className="block text-[clamp(1.6rem,3.5vw,2.6rem)] font-extralight leading-[1.2] tracking-[0.06em] text-white/30 uppercase animate-contentReveal [animation-delay:2.4s]">
+          <span className="block text-[clamp(1.6rem,3.5vw,2.6rem)] font-extralight leading-[1.2] tracking-[0.06em] uppercase animate-contentReveal [animation-delay:2.4s]" style={{ color: textMain, transition: "color 0.8s ease" }}>
             your business runs on
           </span>
         </h1>
@@ -194,7 +190,7 @@ export default function HeroVideoGray({ paletteIndex, onPaletteChange }: Props) 
         </div>
 
         {/* Subtitle */}
-        <p className="mx-auto mb-14 max-w-md text-[12.5px] font-light leading-[2] tracking-[0.03em] text-white/30 animate-contentReveal [animation-delay:2.6s]">
+        <p className="mx-auto mb-14 max-w-md text-[12.5px] font-light leading-[2] tracking-[0.03em] animate-contentReveal [animation-delay:2.6s]" style={{ color: textSub, transition: "color 0.8s ease" }}>
           From concept to deployment — custom web, mobile, and cloud
           applications engineered for startups &amp; enterprises.
         </p>
@@ -221,7 +217,8 @@ export default function HeroVideoGray({ paletteIndex, onPaletteChange }: Props) 
 
           <Link
             href="#services"
-            className="group flex items-center gap-2.5 text-[10px] font-normal tracking-[0.25em] text-white/35 uppercase transition-all duration-400 hover:text-white/60"
+            className="group flex items-center gap-2.5 text-[10px] font-normal tracking-[0.25em] uppercase transition-all duration-400"
+            style={{ color: textMuted, transition: "color 0.8s ease" }}
           >
             <span>Our Services</span>
             <span

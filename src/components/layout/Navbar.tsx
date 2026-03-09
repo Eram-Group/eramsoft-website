@@ -20,7 +20,7 @@ export default function Navbar({ variant = "light" }: { variant?: "light" | "dar
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
         {/* Logo */}
         <Link href="/">
-          <Image src="/logo.svg" alt="Logo" width={147} height={42} className={isDark ? "brightness-0 invert opacity-80" : ""} />
+          <Image src="/logo.svg" alt="Logo" width={147} height={42} className={isDark ? "brightness-0 invert opacity-80" : "brightness-0"} />
         </Link>
 
         {/* Desktop Nav */}
