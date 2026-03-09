@@ -9,14 +9,6 @@ const isLightBg = (hex: string) => {
 
 const HEROES = [
   {
-    id: 6,
-    name: "Algoriza Agency",
-    description: "Dark editorial layout with topographic SVG line art, typewriter heading, numbered navigation, and vertical social links.",
-    style: "Dark",
-    tags: ["Agency", "Typewriter", "SVG Art", "Editorial"],
-    colors: { bg: "#111113", accent: "#e8853b" },
-  },
-  {
     id: 19,
     name: "Neon Ice",
     description: "Medium dark hero with neon blue arcs, dark glass app mockups (browser, phone, terminal), and floating tech badge.",
