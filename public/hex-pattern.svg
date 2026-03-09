@@ -1,0 +1,301 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="70%" r="80%">
+      <stop offset="0%" stop-color="#e3e7ee"/>
+      <stop offset="100%" stop-color="#f2f4f8"/>
+    </radialGradient>
+    <radialGradient id="fade" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="white" stop-opacity="0"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0.6"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+
+  <g stroke="#c8c8c8" stroke-width="1.2" fill="none" opacity="0.7">
+    <!-- Large hexagons - bottom left cluster -->
+    <polygon points="120,750 190,710 190,630 120,590 50,630 50,710"/>
+    <polygon points="260,820 330,780 330,700 260,660 190,700 190,780"/>
+    <polygon points="190,630 260,590 260,510 190,470 120,510 120,590"/>
+    <polygon points="330,700 400,660 400,580 330,540 260,580 260,660"/>
+    <polygon points="120,910 190,870 190,790 120,750 50,790 50,870"/>
+
+    <!-- Medium hexagons - center area -->
+    <polygon points="500,620 555,590 555,530 500,500 445,530 445,590"/>
+    <polygon points="620,680 675,650 675,590 620,560 565,590 565,650"/>
+    <polygon points="555,530 610,500 610,440 555,410 500,440 500,500"/>
+    <polygon points="675,590 730,560 730,500 675,470 620,500 620,560"/>
+
+    <!-- Small hexagons - scattered -->
+    <polygon points="380,480 410,465 410,435 380,420 350,435 350,465"/>
+    <polygon points="780,520 810,505 810,475 780,460 750,475 750,505"/>
+    <polygon points="480,380 510,365 510,335 480,320 450,335 450,365"/>
+    <polygon points="700,420 730,405 730,375 700,360 670,375 670,405"/>
+    <polygon points="340,340 370,325 370,295 340,280 310,295 310,325"/>
+    <polygon points="580,300 610,285 610,255 580,240 550,255 550,285"/>
+    <polygon points="850,600 880,585 880,555 850,540 820,555 820,585"/>
+
+    <!-- Large hexagons - bottom right cluster -->
+    <polygon points="1500,850 1570,810 1570,730 1500,690 1430,730 1430,810"/>
+    <polygon points="1640,780 1710,740 1710,660 1640,620 1570,660 1570,740"/>
+    <polygon points="1570,730 1640,690 1640,610 1570,570 1500,610 1500,690"/>
+    <polygon points="1780,850 1850,810 1850,730 1780,690 1710,730 1710,810"/>
+    <polygon points="1710,660 1780,620 1780,540 1710,500 1640,540 1640,620"/>
+    <polygon points="1640,920 1710,880 1710,800 1640,760 1570,800 1570,880"/>
+
+    <!-- Medium hexagons - right side -->
+    <polygon points="1350,650 1405,620 1405,560 1350,530 1295,560 1295,620"/>
+    <polygon points="1200,720 1255,690 1255,630 1200,600 1145,630 1145,690"/>
+    <polygon points="1420,550 1475,520 1475,460 1420,430 1365,460 1365,520"/>
+
+    <!-- Tiny hexagons -->
+    <polygon points="900,400 920,390 920,370 900,360 880,370 880,390"/>
+    <polygon points="1050,480 1070,470 1070,450 1050,440 1030,450 1030,470"/>
+    <polygon points="1150,380 1170,370 1170,350 1150,340 1130,350 1130,370"/>
+    <polygon points="960,300 980,290 980,270 960,260 940,270 940,290"/>
+    <polygon points="1300,420 1320,410 1320,390 1300,380 1280,390 1280,410"/>
+    <polygon points="200,400 220,390 220,370 200,360 180,370 180,390"/>
+    <polygon points="680,250 700,240 700,220 680,210 660,220 660,240"/>
+
+    <!-- Connecting lines between clusters -->
+    <line x1="330" y1="540" x2="380" y2="480"/>
+    <line x1="400" y1="580" x2="445" y2="530"/>
+    <line x1="555" y1="530" x2="620" y2="560"/>
+    <line x1="730" y1="500" x2="780" y2="520"/>
+    <line x1="810" y1="475" x2="850" y2="540"/>
+    <line x1="880" y1="555" x2="900" y2="400"/>
+    <line x1="920" y1="390" x2="960" y2="300"/>
+    <line x1="920" y1="390" x2="1050" y2="480"/>
+    <line x1="1070" y1="450" x2="1150" y2="380"/>
+    <line x1="1070" y1="470" x2="1145" y2="630"/>
+    <line x1="1255" y1="630" x2="1295" y2="560"/>
+    <line x1="1405" y1="560" x2="1430" y2="730"/>
+    <line x1="1365" y1="460" x2="1300" y2="420"/>
+    <line x1="480" y1="380" x2="500" y2="440"/>
+    <line x1="510" y1="335" x2="555" y2="410"/>
+    <line x1="610" y1="285" x2="620" y2="440"/>
+    <line x1="700" y1="360" x2="675" y2="470"/>
+    <line x1="340" y1="280" x2="380" y2="420"/>
+    <line x1="200" y1="360" x2="310" y2="295"/>
+    <line x1="220" y1="390" x2="350" y2="435"/>
+    <line x1="680" y1="210" x2="700" y2="360"/>
+    <line x1="1170" y1="370" x2="1300" y2="380"/>
+    <line x1="1320" y1="410" x2="1365" y2="460"/>
+    <line x1="1500" y1="690" x2="1420" y2="430"/>
+    <line x1="1780" y1="540" x2="1780" y2="690"/>
+
+    <!-- Long connecting lines -->
+    <line x1="880" y1="585" x2="1030" y2="470" opacity="0.4"/>
+    <line x1="750" y1="475" x2="670" y2="405" opacity="0.4"/>
+    <line x1="940" y1="270" x2="880" y2="370" opacity="0.4"/>
+    <line x1="1150" y1="340" x2="1200" y2="600" opacity="0.3"/>
+  </g>
+
+  <!-- Dots at vertices and intersections -->
+  <g fill="#b0b0b0">
+    <!-- Bottom left cluster dots -->
+    <circle cx="120" cy="750" r="4"/>
+    <circle cx="190" cy="710" r="3"/>
+    <circle cx="190" cy="630" r="4"/>
+    <circle cx="120" cy="590" r="3"/>
+    <circle cx="50" cy="630" r="3.5"/>
+    <circle cx="50" cy="710" r="3"/>
+    <circle cx="260" cy="820" r="3.5"/>
+    <circle cx="330" cy="780" r="3"/>
+    <circle cx="330" cy="700" r="4"/>
+    <circle cx="260" cy="660" r="3"/>
+    <circle cx="190" cy="780" r="3.5"/>
+    <circle cx="260" cy="590" r="3"/>
+    <circle cx="260" cy="510" r="3.5"/>
+    <circle cx="190" cy="470" r="3"/>
+    <circle cx="120" cy="510" r="4"/>
+    <circle cx="400" cy="660" r="3"/>
+    <circle cx="400" cy="580" r="3.5"/>
+    <circle cx="330" cy="540" r="4"/>
+    <circle cx="120" cy="910" r="3"/>
+    <circle cx="190" cy="870" r="3.5"/>
+    <circle cx="190" cy="790" r="3"/>
+    <circle cx="50" cy="790" r="3"/>
+    <circle cx="50" cy="870" r="3.5"/>
+
+    <!-- Center area dots -->
+    <circle cx="500" cy="620" r="3.5"/>
+    <circle cx="555" cy="590" r="3"/>
+    <circle cx="555" cy="530" r="4"/>
+    <circle cx="500" cy="500" r="3"/>
+    <circle cx="445" cy="530" r="3.5"/>
+    <circle cx="445" cy="590" r="3"/>
+    <circle cx="620" cy="680" r="3"/>
+    <circle cx="675" cy="650" r="3.5"/>
+    <circle cx="675" cy="590" r="3"/>
+    <circle cx="620" cy="560" r="4"/>
+    <circle cx="565" cy="590" r="3"/>
+    <circle cx="610" cy="500" r="3"/>
+    <circle cx="610" cy="440" r="3.5"/>
+    <circle cx="555" cy="410" r="3"/>
+    <circle cx="500" cy="440" r="3"/>
+    <circle cx="730" cy="560" r="3.5"/>
+    <circle cx="730" cy="500" r="3"/>
+    <circle cx="675" cy="470" r="3"/>
+
+    <!-- Small hex dots -->
+    <circle cx="380" cy="480" r="3"/>
+    <circle cx="410" cy="465" r="2.5"/>
+    <circle cx="410" cy="435" r="2.5"/>
+    <circle cx="380" cy="420" r="3"/>
+    <circle cx="350" cy="435" r="2.5"/>
+    <circle cx="350" cy="465" r="2.5"/>
+    <circle cx="780" cy="520" r="3"/>
+    <circle cx="810" cy="505" r="2.5"/>
+    <circle cx="810" cy="475" r="2.5"/>
+    <circle cx="780" cy="460" r="3"/>
+    <circle cx="750" cy="475" r="2.5"/>
+    <circle cx="750" cy="505" r="2.5"/>
+    <circle cx="480" cy="380" r="2.5"/>
+    <circle cx="510" cy="365" r="2.5"/>
+    <circle cx="510" cy="335" r="2.5"/>
+    <circle cx="480" cy="320" r="3"/>
+    <circle cx="450" cy="335" r="2.5"/>
+    <circle cx="450" cy="365" r="2.5"/>
+    <circle cx="700" cy="420" r="2.5"/>
+    <circle cx="730" cy="405" r="2.5"/>
+    <circle cx="730" cy="375" r="2.5"/>
+    <circle cx="700" cy="360" r="3"/>
+    <circle cx="670" cy="375" r="2.5"/>
+    <circle cx="670" cy="405" r="2.5"/>
+    <circle cx="340" cy="340" r="2.5"/>
+    <circle cx="370" cy="325" r="2"/>
+    <circle cx="370" cy="295" r="2"/>
+    <circle cx="340" cy="280" r="2.5"/>
+    <circle cx="310" cy="295" r="2"/>
+    <circle cx="310" cy="325" r="2"/>
+    <circle cx="580" cy="300" r="2.5"/>
+    <circle cx="610" cy="285" r="2"/>
+    <circle cx="610" cy="255" r="2"/>
+    <circle cx="580" cy="240" r="2.5"/>
+    <circle cx="550" cy="255" r="2"/>
+    <circle cx="550" cy="285" r="2"/>
+    <circle cx="850" cy="600" r="2.5"/>
+    <circle cx="880" cy="585" r="2.5"/>
+    <circle cx="880" cy="555" r="2.5"/>
+    <circle cx="850" cy="540" r="3"/>
+    <circle cx="820" cy="555" r="2.5"/>
+    <circle cx="820" cy="585" r="2.5"/>
+
+    <!-- Bottom right cluster dots -->
+    <circle cx="1500" cy="850" r="4"/>
+    <circle cx="1570" cy="810" r="3"/>
+    <circle cx="1570" cy="730" r="4"/>
+    <circle cx="1500" cy="690" r="3"/>
+    <circle cx="1430" cy="730" r="3.5"/>
+    <circle cx="1430" cy="810" r="3"/>
+    <circle cx="1640" cy="780" r="3.5"/>
+    <circle cx="1710" cy="740" r="3"/>
+    <circle cx="1710" cy="660" r="4"/>
+    <circle cx="1640" cy="620" r="3"/>
+    <circle cx="1570" cy="660" r="3.5"/>
+    <circle cx="1640" cy="690" r="3"/>
+    <circle cx="1640" cy="610" r="3.5"/>
+    <circle cx="1570" cy="570" r="3"/>
+    <circle cx="1500" cy="610" r="4"/>
+    <circle cx="1780" cy="850" r="3"/>
+    <circle cx="1850" cy="810" r="3.5"/>
+    <circle cx="1850" cy="730" r="3"/>
+    <circle cx="1780" cy="690" r="3.5"/>
+    <circle cx="1710" cy="730" r="3"/>
+    <circle cx="1710" cy="810" r="3"/>
+    <circle cx="1780" cy="620" r="3"/>
+    <circle cx="1780" cy="540" r="3.5"/>
+    <circle cx="1710" cy="500" r="3"/>
+    <circle cx="1640" cy="540" r="3"/>
+    <circle cx="1640" cy="920" r="3.5"/>
+    <circle cx="1710" cy="880" r="3"/>
+    <circle cx="1710" cy="800" r="3"/>
+    <circle cx="1640" cy="760" r="3"/>
+    <circle cx="1570" cy="800" r="3.5"/>
+    <circle cx="1570" cy="880" r="3"/>
+
+    <!-- Right side medium hex dots -->
+    <circle cx="1350" cy="650" r="3.5"/>
+    <circle cx="1405" cy="620" r="3"/>
+    <circle cx="1405" cy="560" r="3.5"/>
+    <circle cx="1350" cy="530" r="3"/>
+    <circle cx="1295" cy="560" r="3"/>
+    <circle cx="1295" cy="620" r="3"/>
+    <circle cx="1200" cy="720" r="3.5"/>
+    <circle cx="1255" cy="690" r="3"/>
+    <circle cx="1255" cy="630" r="3"/>
+    <circle cx="1200" cy="600" r="3.5"/>
+    <circle cx="1145" cy="630" r="3"/>
+    <circle cx="1145" cy="690" r="3"/>
+    <circle cx="1420" cy="550" r="3"/>
+    <circle cx="1475" cy="520" r="3"/>
+    <circle cx="1475" cy="460" r="3"/>
+    <circle cx="1420" cy="430" r="3.5"/>
+    <circle cx="1365" cy="460" r="3"/>
+    <circle cx="1365" cy="520" r="3"/>
+
+    <!-- Tiny hex dots -->
+    <circle cx="900" cy="400" r="2.5"/>
+    <circle cx="920" cy="390" r="2"/>
+    <circle cx="920" cy="370" r="2"/>
+    <circle cx="900" cy="360" r="2.5"/>
+    <circle cx="880" cy="370" r="2"/>
+    <circle cx="880" cy="390" r="2"/>
+    <circle cx="1050" cy="480" r="2.5"/>
+    <circle cx="1070" cy="470" r="2"/>
+    <circle cx="1070" cy="450" r="2"/>
+    <circle cx="1050" cy="440" r="2.5"/>
+    <circle cx="1030" cy="450" r="2"/>
+    <circle cx="1030" cy="470" r="2"/>
+    <circle cx="1150" cy="380" r="2.5"/>
+    <circle cx="1170" cy="370" r="2"/>
+    <circle cx="1170" cy="350" r="2"/>
+    <circle cx="1150" cy="340" r="2.5"/>
+    <circle cx="1130" cy="350" r="2"/>
+    <circle cx="1130" cy="370" r="2"/>
+    <circle cx="960" cy="300" r="2.5"/>
+    <circle cx="980" cy="290" r="2"/>
+    <circle cx="980" cy="270" r="2"/>
+    <circle cx="960" cy="260" r="2.5"/>
+    <circle cx="940" cy="270" r="2"/>
+    <circle cx="940" cy="290" r="2"/>
+    <circle cx="1300" cy="420" r="2.5"/>
+    <circle cx="1320" cy="410" r="2"/>
+    <circle cx="1320" cy="390" r="2"/>
+    <circle cx="1300" cy="380" r="2.5"/>
+    <circle cx="1280" cy="390" r="2"/>
+    <circle cx="1280" cy="410" r="2"/>
+    <circle cx="200" cy="400" r="2.5"/>
+    <circle cx="220" cy="390" r="2"/>
+    <circle cx="220" cy="370" r="2"/>
+    <circle cx="200" cy="360" r="2.5"/>
+    <circle cx="180" cy="370" r="2"/>
+    <circle cx="180" cy="390" r="2"/>
+    <circle cx="680" cy="250" r="2.5"/>
+    <circle cx="700" cy="240" r="2"/>
+    <circle cx="700" cy="220" r="2"/>
+    <circle cx="680" cy="210" r="2.5"/>
+    <circle cx="660" cy="220" r="2"/>
+    <circle cx="660" cy="240" r="2"/>
+
+    <!-- Scattered standalone dots -->
+    <circle cx="160" cy="320" r="2" opacity="0.5"/>
+    <circle cx="430" cy="270" r="2" opacity="0.5"/>
+    <circle cx="820" cy="320" r="1.5" opacity="0.4"/>
+    <circle cx="1000" cy="350" r="2" opacity="0.5"/>
+    <circle cx="1100" cy="520" r="1.5" opacity="0.4"/>
+    <circle cx="960" cy="550" r="2" opacity="0.5"/>
+    <circle cx="1250" cy="480" r="1.5" opacity="0.4"/>
+    <circle cx="300" cy="440" r="1.5" opacity="0.4"/>
+    <circle cx="640" cy="350" r="1.5" opacity="0.4"/>
+    <circle cx="1400" cy="350" r="1.5" opacity="0.4"/>
+    <circle cx="1600" cy="450" r="2" opacity="0.5"/>
+    <circle cx="1850" cy="600" r="1.5" opacity="0.4"/>
+    <circle cx="100" cy="450" r="2" opacity="0.5"/>
+    <circle cx="1900" cy="500" r="1.5" opacity="0.3"/>
+    <circle cx="50" cy="500" r="1.5" opacity="0.3"/>
+  </g>
+
+  <!-- Soft vignette overlay -->
+  <rect width="1920" height="1080" fill="url(#fade)"/>
+</svg>

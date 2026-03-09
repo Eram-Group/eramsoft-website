@@ -1,0 +1,74 @@
+/* ── 3D Fintech Hero Animations ── */
+
+@keyframes float3d-a {
+  0%, 100% {
+    transform: perspective(800px) rotateX(8deg) rotateY(-6deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(800px) rotateX(4deg) rotateY(2deg) translateY(-18px);
+  }
+}
+
+@keyframes float3d-b {
+  0%, 100% {
+    transform: perspective(800px) rotateX(-5deg) rotateY(8deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(800px) rotateX(3deg) rotateY(-4deg) translateY(-22px);
+  }
+}
+
+@keyframes float3d-c {
+  0%, 100% {
+    transform: perspective(800px) rotateX(6deg) rotateY(10deg) translateY(0px);
+  }
+  50% {
+    transform: perspective(800px) rotateX(-2deg) rotateY(4deg) translateY(-14px);
+  }
+}
+
+@keyframes spin-cube {
+  from {
+    transform: rotateX(-20deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(-20deg) rotateY(360deg);
+  }
+}
+
+@keyframes pulse-ring {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.25;
+  }
+}
+
+@keyframes data-stream {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+@keyframes orbit-dot {
+  from {
+    transform: rotate(0deg) translateX(var(--orbit-radius, 120px)) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(var(--orbit-radius, 120px)) rotate(-360deg);
+  }
+}

@@ -1,0 +1,176 @@
+/* ═══════════════════════════════════════════
+   Services – AI Consulting (Bento Grid)
+   ═══════════════════════════════════════════ */
+
+.svc-ai {
+  background: #f5f3f0;
+  padding: 100px 0 110px;
+}
+
+.svc-ai__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 64px;
+  display: flex;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ── Left heading column ── */
+
+.svc-ai__left {
+  flex-shrink: 0;
+  width: 260px;
+  padding-top: 20px;
+}
+
+.svc-ai__heading {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #1a1a1a;
+  margin: 0 0 0;
+  letter-spacing: -0.01em;
+}
+
+.svc-ai__heading-line {
+  display: block;
+  width: 52px;
+  height: 3.5px;
+  background: #1b2a4a;
+  border-radius: 2px;
+  margin: 18px 0 28px;
+}
+
+.svc-ai__view-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #e8853b;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 28px;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.svc-ai__view-btn:hover {
+  background: #d4752f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 133, 59, 0.3);
+}
+
+/* ── Bento grid ── */
+
+.svc-ai__grid {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  align-items: start;
+  align-content: start;
+}
+
+/* ── Card base ── */
+
+.svc-ai__card {
+  background: #ffffff;
+  border-radius: 48px 16px 48px 16px;
+  padding: 28px 24px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 6px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+  position: relative;
+  width: fit-content;
+  max-width: 240px;
+}
+
+.svc-ai__card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.06),
+    0 12px 36px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Card icon ── */
+
+.svc-ai__card-icon {
+  color: #e8853b;
+  margin-bottom: 14px;
+}
+
+/* ── Card text ── */
+
+.svc-ai__card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.3;
+  margin: 0 0 8px;
+}
+
+.svc-ai__card-desc {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ── Orange card variant ── */
+
+.svc-ai__card--orange {
+  background: #e8853b;
+}
+
+.svc-ai__card--orange .svc-ai__card-icon {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.svc-ai__card--orange .svc-ai__card-title {
+  color: #ffffff;
+}
+
+.svc-ai__card--orange .svc-ai__card-desc {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1024px) {
+  .svc-ai__inner {
+    flex-direction: column;
+    padding: 0 36px;
+    gap: 40px;
+  }
+
+  .svc-ai__left {
+    width: 100%;
+    text-align: center;
+    padding-top: 0;
+  }
+
+  .svc-ai__heading-line {
+    margin: 18px auto 28px;
+  }
+
+  .svc-ai__grid {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .svc-ai {
+    padding: 64px 0 72px;
+  }
+
+  .svc-ai__inner {
+    padding: 0 20px;
+  }
+
+  .svc-ai__card {
+    max-width: 100%;
+    width: 100%;
+  }
+}

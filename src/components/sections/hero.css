@@ -1,0 +1,156 @@
+/* ── Hero 1 Entrance Animations ── */
+
+@keyframes bgZoomFade {
+  from {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+  to {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+}
+
+.animate-bgZoomFade {
+  opacity: 0;
+  animation: bgZoomFade 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+@keyframes glowPulseIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  100% {
+    opacity: 0.06;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.animate-glowPulseIn {
+  opacity: 0;
+  animation: glowPulseIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+@keyframes clipRevealCenter {
+  from {
+    clip-path: inset(0 50% 0 50%);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0% 0 0%);
+    opacity: 1;
+  }
+}
+
+.animate-clipReveal {
+  opacity: 0;
+  animation: clipRevealCenter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes subtitleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    letter-spacing: 0.6em;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.3em;
+  }
+}
+
+.animate-subtitleSlideIn {
+  opacity: 0;
+  animation: subtitleSlideIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes shimmerAccent {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    #e8853b 0%,
+    #f5b87a 40%,
+    #ffe0c0 50%,
+    #f5b87a 60%,
+    #e8853b 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerAccent 2.5s ease-in-out 1.2s 1 both;
+}
+
+@keyframes btnScaleIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-btnScaleIn {
+  opacity: 0;
+  animation: btnScaleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes categoryFade {
+  from {
+    opacity: 0;
+    letter-spacing: 0.5em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.2em;
+  }
+}
+
+.animate-categoryFade {
+  opacity: 0;
+  animation: categoryFade 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.animate-scrollReveal {
+  opacity: 0;
+  animation: scrollReveal 0.7s ease-out both;
+}
+
+@keyframes darkStripReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-darkStripReveal {
+  opacity: 0;
+  animation: darkStripReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

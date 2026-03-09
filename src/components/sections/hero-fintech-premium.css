@@ -1,0 +1,88 @@
+/* ── Premium 3D Fintech Hero Animations (Theme 4 palette) ── */
+
+/* Gyroscope ring rotations — each ring spins on a different 3D axis */
+@keyframes gyro-ring-x {
+  from { transform: rotateX(0deg) rotateY(20deg); }
+  to { transform: rotateX(360deg) rotateY(20deg); }
+}
+
+@keyframes gyro-ring-y {
+  from { transform: rotateY(0deg) rotateX(72deg); }
+  to { transform: rotateY(360deg) rotateX(72deg); }
+}
+
+@keyframes gyro-ring-z {
+  from { transform: rotateZ(0deg) rotateX(50deg) rotateY(30deg); }
+  to { transform: rotateZ(360deg) rotateX(50deg) rotateY(30deg); }
+}
+
+/* Core glow pulse — silver with warm hint */
+@keyframes core-pulse-silver {
+  0%, 100% {
+    box-shadow: 0 0 40px 12px rgba(180, 180, 190, 0.12), 0 0 90px 40px rgba(160, 160, 170, 0.05);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 60px 20px rgba(180, 180, 190, 0.2), 0 0 130px 60px rgba(160, 160, 170, 0.08);
+    transform: scale(1.15);
+  }
+}
+
+/* Premium card floats — 3D perspective + vertical drift */
+@keyframes float-premium-a {
+  0%, 100% { transform: perspective(900px) rotateX(5deg) rotateY(-4deg) translateY(0); }
+  50% { transform: perspective(900px) rotateX(2deg) rotateY(1deg) translateY(-16px); }
+}
+
+@keyframes float-premium-b {
+  0%, 100% { transform: perspective(900px) rotateX(-3deg) rotateY(6deg) translateY(0); }
+  50% { transform: perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-20px); }
+}
+
+@keyframes float-premium-c {
+  0%, 100% { transform: perspective(900px) rotateX(4deg) rotateY(8deg) translateY(0); }
+  50% { transform: perspective(900px) rotateX(-1deg) rotateY(3deg) translateY(-12px); }
+}
+
+/* Horizontal scan line sweep */
+@keyframes scan-sweep {
+  0% { transform: translateY(0); opacity: 0; }
+  3% { opacity: 0.35; }
+  97% { opacity: 0.35; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Particle drift variants */
+@keyframes p-drift-a {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+  15% { opacity: 0.2; }
+  85% { opacity: 0.2; }
+  50% { transform: translateY(-70px) translateX(18px); }
+}
+
+@keyframes p-drift-b {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+  15% { opacity: 0.15; }
+  85% { opacity: 0.15; }
+  50% { transform: translateY(-90px) translateX(-22px); }
+}
+
+@keyframes p-drift-c {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+  15% { opacity: 0.18; }
+  85% { opacity: 0.18; }
+  50% { transform: translateY(-60px) translateX(10px); }
+}
+
+/* Soft aurora gradient drift */
+@keyframes aurora-drift {
+  0%, 100% { opacity: 0.5; transform: translate(0, 0) scale(1); }
+  33% { opacity: 0.7; transform: translate(30px, -20px) scale(1.05); }
+  66% { opacity: 0.4; transform: translate(-20px, 15px) scale(0.98); }
+}
+
+/* Orbit for dots around gyroscope */
+@keyframes orbit-premium {
+  from { transform: rotate(0deg) translateX(var(--orbit-r, 140px)) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(var(--orbit-r, 140px)) rotate(-360deg); }
+}
