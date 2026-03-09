@@ -8,29 +8,11 @@
 /* ── Section surface ── */
 
 .sl-section {
-  background: linear-gradient(
-    160deg,
-    #151e2e 0%,
-    #1a2538 25%,
-    #1e2a3f 50%,
-    #192236 75%,
-    #141c2a 100%
-  );
+  background: linear-gradient(180deg, #111825 0%, #151e2e 50%, #111825 100%);
   position: relative;
   overflow: hidden;
 }
 
-.sl-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: linear-gradient(to bottom, #151e2e 0%, transparent 100%);
-  z-index: 1;
-  pointer-events: none;
-}
 
 
 /* ── Ambient glow orbs ── */

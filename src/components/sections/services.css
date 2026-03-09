@@ -8,28 +8,9 @@
 /* ── Section surface ── */
 
 .sv-section {
-  background: linear-gradient(
-    160deg,
-    #141c2a 0%,
-    #192236 25%,
-    #1a2538 50%,
-    #1e2a3f 75%,
-    #151e2e 100%
-  );
+  background: linear-gradient(180deg, #141c2a 0%, #182030 50%, #141c2a 100%);
   position: relative;
   overflow: hidden;
-}
-
-.sv-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: linear-gradient(to bottom, #141c2a 0%, transparent 100%);
-  z-index: 1;
-  pointer-events: none;
 }
 
 
