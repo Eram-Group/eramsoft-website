@@ -107,17 +107,20 @@
 /* ── Card grid ── */
 
 .sv-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 24px;
+  justify-content: center;
+}
+
+.sv-grid > .sv-card {
+  width: calc((100% - 48px) / 3);
 }
 
 @media (max-width: 1024px) {
-  .sv-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .sv-grid > .sv-card {
+    width: 100%;
     max-width: 550px;
-    margin: 0 auto;
   }
 }
 
@@ -128,7 +131,7 @@
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 3.5;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
@@ -250,41 +253,10 @@
 }
 
 
-/* ── Icon circle ── */
+/* ── Icon circle (removed) ── */
 
 .sv-icon-wrap {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  background: rgba(80, 170, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(80, 170, 255, 0.15);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  transition: background 0.4s ease, border-color 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.sv-card:hover .sv-icon-wrap {
-  background: rgba(80, 170, 255, 0.18);
-  border-color: rgba(80, 170, 255, 0.3);
-  transform: translateY(-4px);
-  box-shadow:
-    0 12px 32px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(80, 170, 255, 0.15);
-}
-
-.sv-icon-wrap svg {
-  color: #50aaff;
-  filter: drop-shadow(0 0 6px rgba(80, 170, 255, 0.4));
-  transition: filter 0.4s ease;
-}
-
-.sv-card:hover .sv-icon-wrap svg {
-  filter: drop-shadow(0 0 12px rgba(80, 170, 255, 0.6));
+  display: none;
 }
 
 

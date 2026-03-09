@@ -11,21 +11,6 @@ const services = [
     tags: ["React Native", "Flutter", "iOS", "Android"],
     image:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
-    icon: (
-      <svg
-        width="26"
-        height="26"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-        <line x1="12" y1="18" x2="12.01" y2="18" />
-      </svg>
-    ),
   },
   {
     number: "02",
@@ -35,22 +20,6 @@ const services = [
     tags: ["Next.js", "React", "Node.js", "Cloud"],
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    icon: (
-      <svg
-        width="26"
-        height="26"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-        <line x1="14" y1="4" x2="10" y2="20" />
-      </svg>
-    ),
   },
   {
     number: "03",
@@ -60,21 +29,24 @@ const services = [
     tags: ["Automation", "CI/CD", "Security", "Performance"],
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    icon: (
-      <svg
-        width="26"
-        height="26"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <polyline points="9 12 11 14 15 10" />
-      </svg>
-    ),
+  },
+  {
+    number: "04",
+    title: "UI/UX Design",
+    description:
+      "Human-centered design systems and interfaces that drive engagement, built on research, prototyping, and iteration.",
+    tags: ["Figma", "Prototyping", "Design Systems", "Research"],
+    image:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    number: "05",
+    title: "DevOps & Cloud",
+    description:
+      "Infrastructure automation, container orchestration, and cloud architecture for reliable, scalable deployments.",
+    tags: ["AWS", "Docker", "Kubernetes", "Terraform"],
+    image:
+      "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -150,7 +122,6 @@ export default function Services() {
 
               {/* Content */}
               <div className="sv-card-content">
-                <div className="sv-icon-wrap">{service.icon}</div>
                 <h3 className="sv-card-title">{service.title}</h3>
                 <p className="sv-card-desc">{service.description}</p>
                 <div className="sv-tags">
