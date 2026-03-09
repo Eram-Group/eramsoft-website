@@ -2,22 +2,6 @@ import Link from "next/link";
 
 const HEROES = [
   {
-    id: 1,
-    name: "Centered Classic",
-    description: "Clean centered layout with hex pattern background, dual CTAs, and scroll indicator.",
-    style: "Light",
-    tags: ["Centered", "Pattern BG", "Scroll CTA"],
-    colors: { bg: "#f5f3f0", accent: "#e8853b" },
-  },
-  {
-    id: 3,
-    name: "Dark Bold",
-    description: "Dark dramatic background with gradient text, glowing orbs, grid overlay, and tech marquee.",
-    style: "Dark",
-    tags: ["Dark", "Gradient Text", "Marquee"],
-    colors: { bg: "#1a1a1a", accent: "#e8853b" },
-  },
-  {
     id: 5,
     name: "Video Background",
     description: "Full-screen looping video background with dark overlay, centered content, grain texture, and scroll indicator.",

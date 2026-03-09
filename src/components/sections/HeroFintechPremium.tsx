@@ -299,7 +299,7 @@ export default function HeroFintechPremium() {
           FLOATING DATA CARDS
           ══════════════════════════════════════════ */}
 
-      {/* Card 1 — Projects Delivered (top-left) */}
+      {/* Card — Projects Delivered (top-left) */}
       <div className="absolute left-[3%] top-[16%] hidden xl:block animate-fadeInUp [animation-delay:0.7s]">
         <div
           className="w-56 rounded-xl border border-white/[0.07] bg-[#24262b]/80 p-5 backdrop-blur-xl shadow-2xl"
@@ -349,61 +349,10 @@ export default function HeroFintechPremium() {
         </div>
       </div>
 
-      {/* Card 2 — Client Satisfaction (top-right) */}
-      <div className="absolute right-[2%] top-[14%] hidden xl:block animate-fadeInUp [animation-delay:0.9s]">
-        <div
-          className="w-52 rounded-xl border border-white/[0.07] bg-[#24262b]/80 p-5 backdrop-blur-xl shadow-2xl"
-          style={{ animation: "float-premium-b 8.5s ease-in-out infinite" }}
-        >
-          <div className="mb-3 flex items-center justify-between">
-            <span className="font-mono text-[10px] tracking-[0.15em] text-[#8a8a92] uppercase">
-              Client Satisfaction
-            </span>
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/10">
-              <svg className="h-3 w-3 text-emerald-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </span>
-          </div>
-          <p className="mb-1 font-mono text-2xl font-bold text-white/85">
-            98.7<span className="text-base text-[#6a6a72]">%</span>
-          </p>
-
-          {/* Satisfaction bar */}
-          <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/[0.06]">
-            <div className="h-full w-[98.7%] rounded-full bg-gradient-to-r from-[#6a6a72]/60 to-emerald-400/40" />
-          </div>
-          <p className="mt-2 font-mono text-[10px] text-emerald-400/70">
-            +4.2% <span className="text-[#55555d]">vs last year</span>
-          </p>
-        </div>
-      </div>
-
-      {/* Card 3 — Code Quality (bottom-left) */}
-      <div className="absolute left-[5%] bottom-[20%] hidden xl:block animate-fadeInUp [animation-delay:1.1s]">
-        <div
-          className="w-48 rounded-xl border border-white/[0.07] bg-[#24262b]/80 p-5 backdrop-blur-xl shadow-2xl"
-          style={{ animation: "float-premium-c 6.5s ease-in-out infinite" }}
-        >
-          <span className="font-mono text-[10px] tracking-[0.15em] text-[#8a8a92] uppercase">
-            On-Time Delivery
-          </span>
-          <p className="mt-2 font-mono text-2xl font-bold text-white/85">
-            96<span className="text-base text-[#6a6a72]">%</span>
-          </p>
-          <div className="mt-2 flex items-center gap-1.5">
-            <svg className="h-3 w-3 text-emerald-400/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-            <span className="font-mono text-xs text-emerald-400/70">+8% this year</span>
-          </div>
-        </div>
-      </div>
-
       {/* ══════════════════════════════════════════
           MAIN CONTENT
           ══════════════════════════════════════════ */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center lg:text-left lg:pl-16">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         {/* Headline */}
         <h1 className="mb-6 text-5xl font-black leading-[0.92] tracking-tight md:text-6xl lg:text-[5.5rem] animate-fadeInUp [animation-delay:0.15s]">
           <span className="block text-[#d0d0d6]">We Build</span>
@@ -419,14 +368,14 @@ export default function HeroFintechPremium() {
           <span className="block text-[#d0d0d6]">That Scales</span>
         </h1>
 
-        <p className="mx-auto mb-10 max-w-lg text-base leading-relaxed text-[#6a6a72] lg:mx-0 lg:text-lg animate-fadeInUp [animation-delay:0.3s]">
+        <p className="mx-auto mb-10 max-w-lg text-base leading-relaxed text-[#6a6a72] lg:text-lg animate-fadeInUp [animation-delay:0.3s]">
           From concept to launch, we design and develop custom web &amp; mobile
           applications that drive growth &mdash; backed by a world-class
           engineering team.
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-wrap items-center gap-4 max-lg:justify-center animate-fadeInUp [animation-delay:0.45s]">
+        <div className="flex flex-wrap items-center justify-center gap-4 animate-fadeInUp [animation-delay:0.45s]">
           <Link
             href="#about"
             className="group relative overflow-hidden rounded-lg bg-[#e8853b] px-8 py-4 text-sm font-bold tracking-wider text-white transition-all duration-300 hover:shadow-[0_0_50px_rgba(232,133,59,0.25)]"
@@ -459,14 +408,14 @@ export default function HeroFintechPremium() {
         </div>
 
         {/* Trust metrics */}
-        <div className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-4 max-lg:justify-center animate-fadeInUp [animation-delay:0.6s]">
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 animate-fadeInUp [animation-delay:0.6s]">
           {[
             { num: "150+", label: "Projects" },
             { num: "50+", label: "Clients" },
             { num: "8+", label: "Years" },
             { num: "30+", label: "Engineers" },
           ].map((stat) => (
-            <div key={stat.label} className="text-center lg:text-left">
+            <div key={stat.label} className="text-left">
               <p className="font-mono text-lg font-bold text-[#c0c0c8]">
                 {stat.num}
               </p>
