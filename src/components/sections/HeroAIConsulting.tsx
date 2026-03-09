@@ -194,7 +194,7 @@ export default function HeroAIConsulting() {
         >
           <path
             d="M0,80 C360,0 1080,0 1440,80 L1440,80 L0,80 Z"
-            fill="#1b2a4a"
+            className="hero-ai__curve-path"
           />
         </svg>
 

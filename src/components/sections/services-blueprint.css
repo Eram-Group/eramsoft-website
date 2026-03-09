@@ -1,0 +1,445 @@
+/* ═══════════════════════════════════════════
+   Services – Architectural Blueprint
+   ═══════════════════════════════════════════ */
+
+/* ── Section base ── */
+
+.svc-bp {
+  background: #e8e4df;
+  padding: 120px 0 130px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle blueprint grid background for entire section */
+.svc-bp::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(184, 150, 62, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184, 150, 62, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* ── Inner container ── */
+
+.svc-bp__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════
+   Section Header
+   ══════════════════════════════════════ */
+
+.svc-bp__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svc-bp__header--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Double-line dividers flanking the title */
+.svc-bp__header-line {
+  flex: 1;
+  max-width: 200px;
+  height: 6px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.svc-bp__header-line::before,
+.svc-bp__header-line::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 0;
+  background: linear-gradient(90deg, transparent, #b8963e, transparent);
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+
+.svc-bp__header-line::after {
+  transition-delay: 0.55s;
+}
+
+.svc-bp__header-line--left::before,
+.svc-bp__header-line--left::after {
+  margin-left: auto;
+}
+
+.svc-bp__header--visible .svc-bp__header-line::before,
+.svc-bp__header--visible .svc-bp__header-line::after {
+  width: 100%;
+}
+
+.svc-bp__title {
+  font-size: 0.85rem;
+  font-weight: 200;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.7);
+  margin: 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.svc-bp__title-accent {
+  color: #b8963e;
+  font-weight: 300;
+}
+
+/* ══════════════════════════════════════
+   Card Grid
+   ══════════════════════════════════════ */
+
+.svc-bp__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+/* ══════════════════════════════════════
+   Vertical Hairline Dividers
+   ══════════════════════════════════════ */
+
+.svc-bp__divider {
+  position: absolute;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.8s ease 0.6s;
+}
+
+.svc-bp__divider--visible {
+  opacity: 1;
+}
+
+.svc-bp__divider:nth-child(1) { left: calc(100% / 6 * 1); }
+.svc-bp__divider:nth-child(2) { left: calc(100% / 6 * 2); }
+.svc-bp__divider:nth-child(3) { left: calc(100% / 6 * 3); }
+.svc-bp__divider:nth-child(4) { left: calc(100% / 6 * 4); }
+.svc-bp__divider:nth-child(5) { left: calc(100% / 6 * 5); }
+
+/* The hairline itself */
+.svc-bp__divider-line {
+  position: absolute;
+  inset: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(184, 150, 62, 0.2) 20%,
+    rgba(184, 150, 62, 0.3) 50%,
+    rgba(184, 150, 62, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+/* Diamond midpoint */
+.svc-bp__divider-diamond {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #b8963e;
+  opacity: 0.4;
+  box-shadow: 0 0 6px rgba(184, 150, 62, 0.15);
+}
+
+/* ══════════════════════════════════════
+   Card – Pillar
+   ══════════════════════════════════════ */
+
+.svc-bp__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 20px 56px;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--card-i, 0) * 0.07s + 0.05s),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--card-i, 0) * 0.07s + 0.05s);
+}
+
+.svc-bp__card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Blueprint grid pattern behind card (fades in on hover) */
+.svc-bp__card-grid {
+  position: absolute;
+  inset: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background-image:
+    linear-gradient(rgba(184, 150, 62, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184, 150, 62, 0.06) 1px, transparent 1px);
+  background-size: 16px 16px;
+  border-radius: 4px;
+}
+
+.svc-bp__card:hover .svc-bp__card-grid {
+  opacity: 1;
+}
+
+/* ── Animated gold border (clip-path stroke draw) ── */
+
+.svc-bp__card-border {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid #b8963e;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  clip-path: inset(0 100% 100% 0);
+  transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease;
+}
+
+.svc-bp__card:hover .svc-bp__card-border {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+/* ── Card icon ── */
+
+.svc-bp__card-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+  color: #b8963e;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.4s ease;
+}
+
+.svc-bp__card-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: fill 0.4s ease, stroke 0.4s ease;
+}
+
+/* On hover: icon shifts from outline to filled */
+.svc-bp__card:hover .svc-bp__card-icon {
+  transform: translateY(-4px) scale(1.08);
+}
+
+.svc-bp__card:hover .svc-bp__card-icon svg {
+  fill: rgba(184, 150, 62, 0.15);
+  stroke: #b8963e;
+}
+
+/* ── Card title ── */
+
+.svc-bp__card-title {
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(26, 26, 26, 0.8);
+  margin: 0 0 16px;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.svc-bp__card:hover .svc-bp__card-title {
+  color: #b8963e;
+}
+
+/* ── Card description ── */
+
+.svc-bp__card-desc {
+  font-size: 0.72rem;
+  font-weight: 200;
+  line-height: 1.75;
+  color: rgba(107, 93, 79, 0.7);
+  margin: 0;
+  max-width: 160px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.4s ease;
+}
+
+.svc-bp__card:hover .svc-bp__card-desc {
+  color: rgba(107, 93, 79, 0.9);
+}
+
+/* ── Small decorative dash under icon ── */
+
+.svc-bp__card-dash {
+  width: 20px;
+  height: 1px;
+  background: rgba(184, 150, 62, 0.3);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.4s ease;
+}
+
+.svc-bp__card:hover .svc-bp__card-dash {
+  width: 36px;
+  background: rgba(184, 150, 62, 0.6);
+}
+
+/* ══════════════════════════════════════
+   Bottom ornament
+   ══════════════════════════════════════ */
+
+.svc-bp__ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 72px;
+  opacity: 0;
+  transition: opacity 0.8s ease 0.5s;
+}
+
+.svc-bp__ornament--visible {
+  opacity: 1;
+}
+
+.svc-bp__ornament-line {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 150, 62, 0.3), transparent);
+}
+
+.svc-bp__ornament-diamond {
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  border: 1px solid rgba(184, 150, 62, 0.4);
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   Responsive – Tablet
+   ══════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .svc-bp {
+    padding: 90px 0 100px;
+  }
+
+  .svc-bp__inner {
+    padding: 0 32px;
+  }
+
+  .svc-bp__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  /* Hide desktop dividers 4 and 5 */
+  .svc-bp__divider:nth-child(4),
+  .svc-bp__divider:nth-child(5) {
+    display: none;
+  }
+
+  /* Re-position dividers for 3-col layout */
+  .svc-bp__divider:nth-child(1) { left: calc(100% / 3 * 1); }
+  .svc-bp__divider:nth-child(2) { left: calc(100% / 3 * 2); }
+  .svc-bp__divider:nth-child(3) { display: none; }
+
+  .svc-bp__card {
+    padding: 40px 16px 48px;
+  }
+
+  .svc-bp__header {
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+
+  .svc-bp__header-line {
+    max-width: 120px;
+  }
+}
+
+/* ══════════════════════════════════════
+   Responsive – Mobile
+   ══════════════════════════════════════ */
+
+@media (max-width: 600px) {
+  .svc-bp {
+    padding: 64px 0 72px;
+  }
+
+  .svc-bp__inner {
+    padding: 0 20px;
+  }
+
+  .svc-bp__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Hide all dividers on mobile */
+  .svc-bp__divider {
+    display: none;
+  }
+
+  .svc-bp__header {
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  .svc-bp__header-line {
+    max-width: 60px;
+  }
+
+  .svc-bp__title {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+  }
+
+  .svc-bp__card {
+    padding: 32px 14px 40px;
+  }
+
+  .svc-bp__card-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 20px;
+  }
+
+  .svc-bp__card-desc {
+    max-width: 140px;
+  }
+
+  .svc-bp__ornament {
+    margin-top: 48px;
+  }
+}

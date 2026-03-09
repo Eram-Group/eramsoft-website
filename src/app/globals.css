@@ -5,6 +5,7 @@
   --foreground: #1a1a1a;
   --accent: #e8853b;
   --accent-dark: #d4752f;
+  --accent-rgb: 232, 133, 59;
   --navy: #1a1a1a;
   --navy-light: #ece8e3;
   --navy-medium: #e8e4df;
@@ -14,6 +15,16 @@
   --surface-warm: #e0dbd5;
   --surface-warm-light: #ece8e3;
   --border-soft: #d4d0cb;
+  --primary-dark: #1b2a4a;
+  --primary-rgb: 27, 42, 74;
+  --hero-bg: #0a0c12;
+  --hero-overlay-rgb: 10, 12, 18;
+  --section-bg-from: #e8e4df;
+  --section-bg-mid: #f0ece7;
+  --section-bg-to: #f5f3f0;
+  --card-title: #1b2a4a;
+  --card-desc: #5a6375;
+  --accent-gradient-end: rgba(232, 133, 59, 0.3);
 }
 
 @theme inline {

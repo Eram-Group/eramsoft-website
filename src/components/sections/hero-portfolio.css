@@ -1,0 +1,872 @@
+/* ── Hero Portfolio Theme ── */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+.portfolio-theme {
+  --port-bg: #f7f6f4;
+  --port-bg-alt: #edeae5;
+  --port-accent: #c8845a;
+  --port-accent-hover: #b5733d;
+  --port-heading: #2a2a2a;
+  --port-body: #6b6b6b;
+  --port-body-dark: #4a4a4a;
+  --port-curve: #e8e5e0;
+  --port-circle-border: #d9c4a8;
+  --port-surface: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--port-body);
+  background: var(--port-bg);
+  overflow-x: hidden;
+}
+
+.portfolio-theme * {
+  box-sizing: border-box;
+}
+
+/* Typography */
+.port-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--port-heading);
+}
+
+.port-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--port-accent);
+}
+
+/* ── Navigation ── */
+.port-nav {
+  position: relative;
+  z-index: 100;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: transparent;
+}
+
+.port-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.port-nav-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--port-body);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.port-nav-link:hover {
+  color: var(--port-heading);
+}
+
+.port-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 1.5rem;
+}
+
+.port-nav-logo-icon {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.port-nav-logo-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.port-nav-contact-btn {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--port-body);
+  border: 1.5px solid var(--port-body);
+  border-radius: 2rem;
+  padding: 0.45rem 1.4rem;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.port-nav-contact-btn:hover {
+  color: var(--port-accent);
+  border-color: var(--port-accent);
+}
+
+/* ── Hero Section — Architectural Blueprint ── */
+.port-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 4rem 4rem;
+  overflow: hidden;
+  background:
+    url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.5' cy='1.5' r='0.8' fill='%23c8845a' opacity='0.07'/%3E%3C/svg%3E") repeat,
+    var(--port-bg);
+}
+
+/* Noise grain overlay */
+.port-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Faint diagonal grid lines */
+.port-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 40px,
+    rgba(200, 132, 90, 0.03) 40px,
+    rgba(200, 132, 90, 0.03) 41px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.port-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
+}
+
+/* ── Left: Text Content ── */
+.port-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-right: 2rem;
+}
+
+.port-hero-accent-line {
+  width: 64px;
+  height: 2px;
+  background: var(--port-accent);
+  margin-bottom: 1.5rem;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: portLineDrawIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+.port-hero-label {
+  font-family: 'DM Sans', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--port-accent);
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  animation: portFadeUp 0.6s ease-out 0.4s forwards;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.port-hero-label::before {
+  content: '//';
+  font-family: 'Courier New', monospace;
+  opacity: 0.4;
+  font-weight: 400;
+}
+
+.port-hero-heading {
+  margin: 0 0 1.5rem;
+  line-height: 1.1;
+}
+
+.port-hero-heading-line {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--port-heading);
+  opacity: 0;
+}
+
+.port-hero-heading-line--1 {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 300;
+  animation: portFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+
+.port-hero-heading-line--2 {
+  font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+  font-weight: 700;
+  font-style: italic;
+  animation: portFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
+  position: relative;
+  display: inline-block;
+}
+
+.port-hero-heading-line--2::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--port-accent);
+  opacity: 0.5;
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: portLineDrawIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+}
+
+.port-hero-heading-line--3 {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-weight: 300;
+  animation: portFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
+}
+
+.port-hero-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--port-body);
+  max-width: 440px;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: portFadeUp 0.6s ease-out 0.9s forwards;
+}
+
+.port-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: portFadeUp 0.6s ease-out 1.0s forwards;
+}
+
+.port-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--port-accent);
+  color: #fff;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.85rem 2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.port-hero-cta:hover {
+  background: var(--port-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(200, 132, 90, 0.35);
+}
+
+.port-hero-ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--port-heading);
+  border: 1.5px solid var(--port-heading);
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.6rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.port-hero-ghost-btn:hover {
+  border-color: var(--port-accent);
+  color: var(--port-accent);
+  transform: translateY(-2px);
+}
+
+/* Trust indicators */
+.port-hero-trust {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  opacity: 0;
+  animation: portFadeUp 0.6s ease-out 1.3s forwards;
+}
+
+.port-hero-trust-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.25rem;
+  border-right: 1px solid var(--port-curve);
+}
+
+.port-hero-trust-item:first-child {
+  padding-left: 0;
+}
+
+.port-hero-trust-item:last-child {
+  border-right: none;
+}
+
+.port-hero-trust-number {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--port-heading);
+  line-height: 1.2;
+}
+
+.port-hero-trust-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--port-body);
+}
+
+/* ── Right: Clean image with accent frame ── */
+.port-hero-visual {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.port-hero-img-main {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 4 / 3;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: portFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.0s forwards;
+  z-index: 1;
+}
+
+.port-hero-img-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Offset accent frame behind the image */
+.port-hero-frame {
+  position: absolute;
+  top: 18px;
+  right: -16px;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 4 / 3;
+  border-radius: 0.6rem;
+  border: 2px solid var(--port-accent);
+  opacity: 0;
+  animation: portFrameIn 0.8s ease-out 1.2s forwards;
+  z-index: 0;
+}
+
+@keyframes portFrameIn {
+  from {
+    opacity: 0;
+    transform: translate(6px, -6px);
+  }
+  to {
+    opacity: 0.4;
+    transform: translate(0, 0);
+  }
+}
+
+/* ── Scroll indicator — vertical pulse ── */
+.port-scroll-vert {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 3rem;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  opacity: 0;
+  animation: portFadeUp 0.5s ease-out 1.5s forwards;
+}
+
+.port-scroll-vert-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--port-body);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.port-scroll-vert-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--port-accent), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.port-scroll-vert-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--port-accent);
+  animation: portScrollPulse 2s ease-in-out infinite;
+}
+
+/* ── About Section ── */
+.port-about {
+  position: relative;
+  padding: 6rem 4rem;
+  background: var(--port-surface);
+  overflow: hidden;
+}
+
+.port-about-curve-left {
+  position: absolute;
+  top: -60px;
+  left: -100px;
+  width: 350px;
+  height: 500px;
+  border-radius: 0 50% 50% 0;
+  background: var(--port-bg);
+  opacity: 0.7;
+  z-index: 0;
+}
+
+.port-about-curve-right {
+  position: absolute;
+  bottom: -80px;
+  right: -60px;
+  width: 300px;
+  height: 400px;
+  border-radius: 50% 0 0 50%;
+  background: var(--port-bg);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.port-about-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.port-about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.port-about-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0.5rem 0 1rem;
+}
+
+.port-about-paragraph {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--port-body-dark);
+}
+
+.port-about-image-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.port-about-circle {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 8px solid var(--port-circle-border);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.port-about-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.port-social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.port-social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--port-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--port-accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.port-social-icon:hover {
+  background: var(--port-accent);
+  color: #fff;
+}
+
+.port-social-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Services Section ── */
+.port-services {
+  position: relative;
+  padding: 6rem 4rem 7rem;
+  background: linear-gradient(180deg, var(--port-bg) 0%, var(--port-bg-alt) 100%);
+  overflow: hidden;
+}
+
+.port-services-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.port-services-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  margin: 0.5rem 0 0;
+}
+
+.port-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.port-service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.port-service-image-wrap {
+  width: 220px;
+  height: 200px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.port-service-card:nth-child(1) .port-service-image-wrap {
+  transform: rotate(-4deg);
+}
+
+.port-service-card:nth-child(2) .port-service-image-wrap {
+  transform: rotate(2deg);
+}
+
+.port-service-card:nth-child(3) .port-service-image-wrap {
+  transform: rotate(-3deg);
+}
+
+.port-service-card:hover .port-service-image-wrap {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.14);
+}
+
+.port-service-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.port-service-title {
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.port-service-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--port-body);
+  max-width: 240px;
+}
+
+.port-service-price {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--port-accent);
+  letter-spacing: 0.06em;
+}
+
+/* ── Animations ── */
+@keyframes portFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes portLineDrawIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes portImageReveal {
+  from {
+    opacity: 0;
+    transform: perspective(800px) rotateY(-4deg) scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(800px) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes portSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes portScrollPulse {
+  0% { top: -100%; }
+  50% { top: 100%; }
+  100% { top: 100%; }
+}
+
+@keyframes portSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes portBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ── Scroll reveal ── */
+.port-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.port-reveal.port-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .port-nav {
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .port-nav-links {
+    gap: 1.25rem;
+  }
+
+  .port-nav-link {
+    font-size: 0.78rem;
+  }
+
+  .port-hero {
+    padding: 5rem 2rem 3rem;
+  }
+
+  .port-hero-grid {
+    gap: 2rem;
+  }
+
+  .port-hero-content {
+    padding-right: 0;
+  }
+
+  .port-hero-img-main {
+    max-width: 420px;
+  }
+
+  .port-hero-frame {
+    max-width: 420px;
+    right: -10px;
+    top: 14px;
+  }
+
+  .port-about {
+    padding: 4rem 2rem;
+  }
+
+  .port-about-grid {
+    gap: 3rem;
+  }
+
+  .port-services {
+    padding: 4rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .port-nav-links {
+    display: none;
+  }
+
+  .port-nav-contact-btn {
+    display: none;
+  }
+
+  .port-hero {
+    min-height: auto;
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .port-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .port-hero-content {
+    text-align: center;
+    align-items: center;
+    padding-right: 0;
+  }
+
+  .port-hero-accent-line {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .port-hero-subtitle {
+    max-width: 100%;
+  }
+
+  .port-hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .port-hero-trust {
+    justify-content: center;
+  }
+
+  .port-hero-visual {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .port-hero-img-main {
+    max-width: 100%;
+  }
+
+  .port-hero-frame {
+    max-width: 100%;
+    right: -10px;
+    top: 12px;
+  }
+
+  .port-scroll-vert {
+    display: none;
+  }
+
+  .port-about {
+    padding: 3rem 1.5rem;
+  }
+
+  .port-about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .port-about-circle {
+    width: 250px;
+    height: 250px;
+  }
+
+  .port-about-image-wrap {
+    order: -1;
+  }
+
+  .port-services {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .port-services-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .port-service-image-wrap {
+    width: 260px;
+    height: 220px;
+  }
+}

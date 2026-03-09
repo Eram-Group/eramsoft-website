@@ -1,6 +1,45 @@
 import Link from "next/link";
 
+const isLightBg = (hex: string) => {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000 > 150;
+};
+
 const HEROES = [
+  {
+    id: 1,
+    name: "Hex Pattern",
+    description: "Light hero with hexagonal pattern background, soft gradient overlays, accent glow pulse, and scroll indicator.",
+    style: "Light",
+    tags: ["Pattern", "Gradient", "Glow", "Minimal"],
+    colors: { bg: "#f5f3f0", accent: "#e8853b" },
+  },
+  {
+    id: 2,
+    name: "Minimal Typography",
+    description: "Large background 'DIGITAL' text at 18vw, thin accent line, logo with stats row at bottom, and minimal color palette.",
+    style: "Minimal",
+    tags: ["Typography", "Stats", "Clean", "Bold Text"],
+    colors: { bg: "#f5f3f0", accent: "#e8853b" },
+  },
+  {
+    id: 3,
+    name: "Bold Dark",
+    description: "Dark background with gradient orbs, grid pattern overlay, orange gradient text heading, and tech stack marquee footer.",
+    style: "Dark",
+    tags: ["Gradient", "Marquee", "Grid", "Bold"],
+    colors: { bg: "#1a1a1a", accent: "#e8853b" },
+  },
+  {
+    id: 4,
+    name: "3D Fintech",
+    description: "3D spinning cube with orbiting dots, pulsing concentric rings, floating metric cards with sparklines, and bottom ticker.",
+    style: "Dark",
+    tags: ["3D", "Fintech", "Cube", "Sparklines"],
+    colors: { bg: "#0a0c12", accent: "#e8853b" },
+  },
   {
     id: 5,
     name: "Video Background",
@@ -9,14 +48,14 @@ const HEROES = [
     tags: ["Video BG", "Cinematic", "Full-screen", "Overlay"],
     colors: { bg: "#0a0a0a", accent: "#e8853b" },
   },
-  // {
-  //   id: 6,
-  //   name: "Algoriza Agency",
-  //   description: "Dark editorial layout with topographic SVG line art, typewriter heading, numbered navigation, and vertical social links.",
-  //   style: "Dark",
-  //   tags: ["Agency", "Typewriter", "SVG Art", "Editorial"],
-  //   colors: { bg: "#111113", accent: "#e8853b" },
-  // },
+  {
+    id: 6,
+    name: "Algoriza Agency",
+    description: "Dark editorial layout with topographic SVG line art, typewriter heading, numbered navigation, and vertical social links.",
+    style: "Dark",
+    tags: ["Agency", "Typewriter", "SVG Art", "Editorial"],
+    colors: { bg: "#111113", accent: "#e8853b" },
+  },
   {
     id: 7,
     name: "Video Light",
@@ -34,12 +73,60 @@ const HEROES = [
     colors: { bg: "#1a1c20", accent: "#e8853b" },
   },
   {
+    id: 9,
+    name: "Software House",
+    description: "Light hero with mesh gradients, luminous sphere, perspective grid, floating glass cards, decorative arcs, and stats bar.",
+    style: "Light",
+    tags: ["Glass", "Mesh Gradient", "Sphere", "Cards"],
+    colors: { bg: "#f5f3f0", accent: "#e8853b" },
+  },
+  {
     id: 10,
     name: "AI Consulting",
-    description: "Full-bleed background image hero with dark gradient overlay, left-aligned content, orange CTA, and curved navy stats bar.",
+    description: "Full-bleed background image hero with dark gradient overlay, neural particle network, geometric accents, and curved stats bar.",
     style: "Dark",
-    tags: ["Image BG", "Consulting", "Stats Bar", "AI"],
+    tags: ["Image BG", "Consulting", "Particles", "AI"],
     colors: { bg: "#1b2a4a", accent: "#e8853b" },
+  },
+  {
+    id: 11,
+    name: "Noir Editorial",
+    description: "60/40 split layout with duotone overlay, magazine aesthetic, film grain texture, editorial marks, and gold accents.",
+    style: "Editorial",
+    tags: ["Split", "Duotone", "Magazine", "Noir"],
+    colors: { bg: "#1a1816", accent: "#c8a45a" },
+  },
+  {
+    id: 14,
+    name: "Collage Grid",
+    description: "Light monochrome grid with geometric shapes, corner brackets, floating stat badges, and diagonal accent line.",
+    style: "Light",
+    tags: ["Grid", "Geometric", "Collage", "Badges"],
+    colors: { bg: "#EEECEA", accent: "#1a1a1a" },
+  },
+  {
+    id: 15,
+    name: "Zen Minimal",
+    description: "Minimalist Scandinavian design with 37/63 split, vertical divider, geometric shape, and slow deliberate animations.",
+    style: "Minimal",
+    tags: ["Zen", "Scandinavian", "Split", "Slow Motion"],
+    colors: { bg: "#f5f3f0", accent: "#e8853b" },
+  },
+  {
+    id: 16,
+    name: "Video Gray",
+    description: "Grayscale video background with 3 switchable color palettes (Emerald, Sapphire, Amber), floating bokeh, and corner marks.",
+    style: "Video",
+    tags: ["Video BG", "Palettes", "Grayscale", "Bokeh"],
+    colors: { bg: "#1a1a1a", accent: "#34d399" },
+  },
+  {
+    id: 17,
+    name: "Portfolio",
+    description: "Full portfolio page with navigation, hero section, about, services cards with rotated images, and social icons.",
+    style: "Portfolio",
+    tags: ["Full Page", "Portfolio", "Services", "About"],
+    colors: { bg: "#f5f3f0", accent: "#e8853b" },
   },
 ];
 
@@ -91,10 +178,10 @@ export default function Home() {
                     style={{ backgroundColor: hero.colors.accent }}
                   />
                   <div className="h-2 w-24 rounded-full bg-current opacity-20"
-                    style={{ color: hero.colors.bg === "#f5f3f0" ? "#1a1a1a" : "#ffffff" }}
+                    style={{ color: isLightBg(hero.colors.bg) ? "#1a1a1a" : "#ffffff" }}
                   />
                   <div className="h-1.5 w-16 rounded-full bg-current opacity-10"
-                    style={{ color: hero.colors.bg === "#f5f3f0" ? "#1a1a1a" : "#ffffff" }}
+                    style={{ color: isLightBg(hero.colors.bg) ? "#1a1a1a" : "#ffffff" }}
                   />
                   <div className="mt-2 flex gap-2">
                     <div
@@ -102,13 +189,19 @@ export default function Home() {
                       style={{ backgroundColor: hero.colors.accent }}
                     />
                     <div className="h-5 w-14 rounded-full border border-current opacity-20"
-                      style={{ color: hero.colors.bg === "#f5f3f0" ? "#1a1a1a" : "#ffffff" }}
+                      style={{ color: isLightBg(hero.colors.bg) ? "#1a1a1a" : "#ffffff" }}
                     />
                   </div>
                 </div>
 
                 {/* Number badge */}
-                <span className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-[#1a1a1a]/10 text-xs font-bold text-[#1a1a1a]/40">
+                <span
+                  className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold"
+                  style={{
+                    backgroundColor: isLightBg(hero.colors.bg) ? "rgba(26,26,26,0.1)" : "rgba(255,255,255,0.1)",
+                    color: isLightBg(hero.colors.bg) ? "rgba(26,26,26,0.4)" : "rgba(255,255,255,0.5)",
+                  }}
+                >
                   {hero.id}
                 </span>
 

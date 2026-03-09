@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: #0a0c12;
+  background: var(--hero-bg, #0a0c12);
 }
 
 /* ── Background with Ken Burns ── */
@@ -32,13 +32,13 @@
   background:
     linear-gradient(
       135deg,
-      rgba(10, 12, 18, 0.92) 0%,
-      rgba(10, 12, 18, 0.7) 40%,
-      rgba(10, 12, 18, 0.35) 100%
+      rgba(var(--hero-overlay-rgb, 10, 12, 18), 0.92) 0%,
+      rgba(var(--hero-overlay-rgb, 10, 12, 18), 0.7) 40%,
+      rgba(var(--hero-overlay-rgb, 10, 12, 18), 0.35) 100%
     ),
     linear-gradient(
       to top,
-      rgba(10, 12, 18, 0.7) 0%,
+      rgba(var(--hero-overlay-rgb, 10, 12, 18), 0.7) 0%,
       transparent 50%
     );
 }
@@ -70,10 +70,10 @@
   position: absolute;
   width: 3px;
   height: 3px;
-  background: rgba(232, 133, 59, 0.5);
+  background: rgba(var(--accent-rgb, 232, 133, 59), 0.5);
   border-radius: 50%;
   animation: particleFloat 6s ease-in-out infinite;
-  box-shadow: 0 0 6px rgba(232, 133, 59, 0.3);
+  box-shadow: 0 0 6px rgba(var(--accent-rgb, 232, 133, 59), 0.3);
 }
 
 .hero-ai__particle:nth-child(odd) {
@@ -91,7 +91,7 @@
 }
 
 .hero-ai__pline {
-  stroke: rgba(232, 133, 59, 0.08);
+  stroke: rgba(var(--accent-rgb, 232, 133, 59), 0.08);
   stroke-width: 1;
   stroke-dasharray: 8 4;
   animation: linePulse 4s ease-in-out infinite;
@@ -111,7 +111,7 @@
   position: absolute;
   width: 120px;
   height: 120px;
-  border: 1px solid rgba(232, 133, 59, 0.1);
+  border: 1px solid rgba(var(--accent-rgb, 232, 133, 59), 0.1);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   animation: hexFloat 12s ease-in-out infinite;
 }
@@ -163,7 +163,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(232, 133, 59, 0.15), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb, 232, 133, 59), 0.15), transparent);
   animation: scanDown 8s linear infinite;
   opacity: 0.6;
 }
@@ -197,16 +197,16 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #e8853b;
+  background: var(--accent, #e8853b);
   animation: eyebrowPulse 2s ease-in-out 1.5s infinite;
-  box-shadow: 0 0 10px rgba(232, 133, 59, 0.5);
+  box-shadow: 0 0 10px rgba(var(--accent-rgb, 232, 133, 59), 0.5);
 }
 
 .hero-ai__eyebrow-text {
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.22em;
-  color: rgba(232, 133, 59, 0.9);
+  color: rgba(var(--accent-rgb, 232, 133, 59), 0.9);
   text-transform: uppercase;
 }
 
@@ -239,7 +239,7 @@
 }
 
 .hero-ai__headline-word--accent {
-  background: linear-gradient(135deg, #e8853b 0%, #f0a060 50%, #e8853b 100%);
+  background: linear-gradient(135deg, var(--accent, #e8853b) 0%, var(--accent-dark, #f0a060) 50%, var(--accent, #e8853b) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -254,7 +254,7 @@
   display: block;
   width: 72px;
   height: 3px;
-  background: linear-gradient(90deg, #e8853b, rgba(232, 133, 59, 0.3));
+  background: linear-gradient(90deg, var(--accent, #e8853b), var(--accent-gradient-end, rgba(232, 133, 59, 0.3)));
   border-radius: 2px;
   margin: 18px 0 20px;
   transform: scaleX(0);
@@ -289,7 +289,7 @@
   align-items: center;
   gap: 10px;
   padding: 16px 36px;
-  background: #e8853b;
+  background: var(--accent, #e8853b);
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 700;
@@ -318,8 +318,8 @@
 .hero-ai__cta:hover {
   transform: translateY(-3px);
   box-shadow:
-    0 10px 30px rgba(232, 133, 59, 0.35),
-    0 0 60px rgba(232, 133, 59, 0.15);
+    0 10px 30px rgba(var(--accent-rgb, 232, 133, 59), 0.35),
+    0 0 60px rgba(var(--accent-rgb, 232, 133, 59), 0.15);
 }
 
 .hero-ai__cta-arrow {
@@ -382,7 +382,7 @@
   width: 3px;
   height: 8px;
   border-radius: 2px;
-  background: rgba(232, 133, 59, 0.7);
+  background: rgba(var(--accent-rgb, 232, 133, 59), 0.7);
   margin-top: 6px;
   animation: scrollBounce 2s ease-in-out infinite;
 }
@@ -410,12 +410,16 @@
   z-index: 1;
 }
 
+.hero-ai__curve-path {
+  fill: var(--primary-dark, #1b2a4a);
+}
+
 .hero-ai__stats {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0;
-  background: #1b2a4a;
+  background: var(--primary-dark, #1b2a4a);
   padding: 36px 48px 44px;
 }
 
@@ -435,14 +439,14 @@
 .hero-ai__stat:nth-child(5) { animation-delay: 1.2s; }
 
 .hero-ai__stat-icon {
-  color: rgba(232, 133, 59, 0.7);
+  color: rgba(var(--accent-rgb, 232, 133, 59), 0.7);
   margin-bottom: 4px;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-ai__stat:hover .hero-ai__stat-icon {
   transform: scale(1.15) translateY(-2px);
-  color: rgba(232, 133, 59, 1);
+  color: rgba(var(--accent-rgb, 232, 133, 59), 1);
 }
 
 .hero-ai__stat-num {
@@ -564,10 +568,10 @@
 
 @keyframes eyebrowPulse {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(232, 133, 59, 0.5);
+    box-shadow: 0 0 10px rgba(var(--accent-rgb, 232, 133, 59), 0.5);
   }
   50% {
-    box-shadow: 0 0 20px rgba(232, 133, 59, 0.8), 0 0 40px rgba(232, 133, 59, 0.3);
+    box-shadow: 0 0 20px rgba(var(--accent-rgb, 232, 133, 59), 0.8), 0 0 40px rgba(var(--accent-rgb, 232, 133, 59), 0.3);
   }
 }
 
