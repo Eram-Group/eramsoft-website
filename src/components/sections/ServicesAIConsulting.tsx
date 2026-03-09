@@ -7,7 +7,6 @@ const SERVICES = [
   {
     title: 'Quality Assurance & Testing',
     description: 'Comprehensive testing strategies ensuring reliability, performance, and bug-free delivery across all platforms',
-    orange: true,
     icon: (
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
         <path d="M9 11l3 3L22 4" />
@@ -18,6 +17,7 @@ const SERVICES = [
   {
     title: 'Mobile Application',
     description: 'Native and cross-platform mobile apps built for performance and seamless user experience',
+    orange: true,
     icon: (
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
         <rect x="5" y="2" width="14" height="20" rx="2" />
@@ -30,7 +30,6 @@ const SERVICES = [
   {
     title: 'UI/UX Design',
     description: 'Research-driven interfaces and intuitive experiences that delight users and drive engagement',
-    orange: true,
     icon: (
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="13.5" cy="6.5" r="2.5" />
