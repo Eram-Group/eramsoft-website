@@ -1,0 +1,517 @@
+/* ══════════════════════════════════════════════════
+   Projects Gallery — Animated tabbed showcase
+   All classes prefixed pg-.
+   ══════════════════════════════════════════════════ */
+
+
+.pg-section {
+  background: linear-gradient(180deg, #141c2a 0%, #0e1420 45%, #111826 70%, #141c2a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.pg-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(80, 170, 255, 0.035) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.pg-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(130px);
+}
+
+.pg-glow--1 {
+  width: 500px;
+  height: 500px;
+  top: 10%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(80, 170, 255, 0.045) 0%, transparent 70%);
+}
+
+.pg-glow--2 {
+  width: 400px;
+  height: 400px;
+  bottom: 15%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(100, 200, 255, 0.03) 0%, transparent 70%);
+}
+
+.pg-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+
+/* ── Header ── */
+
+.pg-label {
+  color: #50aaff;
+  text-shadow: 0 0 20px rgba(80, 170, 255, 0.3);
+}
+
+.pg-heading { color: #e8edf4; }
+
+.pg-heading-accent {
+  background: linear-gradient(90deg, #50aaff 0%, #82d2ff 50%, #50aaff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pg-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes pg-shimmer {
+  0% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+  100% { background-position: 0% center; }
+}
+
+.pg-browse {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(80, 170, 255, 0.5);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.pg-browse:hover {
+  color: rgba(80, 170, 255, 1);
+  gap: 12px;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Showcase container
+   ══════════════════════════════════════════════════ */
+
+.pg-showcase {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 24px;
+  min-height: 500px;
+}
+
+@media (max-width: 900px) {
+  .pg-showcase {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════
+   Large image panel
+   ══════════════════════════════════════════════════ */
+
+.pg-panel {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 480px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+}
+
+@media (max-width: 900px) {
+  .pg-panel {
+    min-height: 380px;
+  }
+}
+
+
+/* ── Image slides with Ken Burns ── */
+
+.pg-panel-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.12);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pg-panel-slide--active {
+  opacity: 1;
+  transform: scale(1);
+  animation: pg-kenBurns 8s ease-in-out forwards;
+}
+
+@keyframes pg-kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+
+/* ── Bottom gradient for text readability ── */
+
+.pg-panel-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    0deg,
+    rgba(10, 14, 24, 0.9) 0%,
+    rgba(10, 14, 24, 0.4) 30%,
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+
+/* ── Info overlay (bottom of image) ── */
+
+.pg-panel-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 36px 32px;
+}
+
+.pg-panel-cat {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e8edf4;
+  background: rgba(80, 170, 255, 0.14);
+  border: 1px solid rgba(80, 170, 255, 0.12);
+  padding: 5px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.pg-panel-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.pg-panel-desc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: rgba(180, 195, 215, 0.85);
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.pg-panel-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pg-panel-tag {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: rgba(80, 170, 255, 0.1);
+  border: 1px solid rgba(80, 170, 255, 0.15);
+  color: rgba(80, 170, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* ── Staggered slide-up animation for content ── */
+
+@keyframes pg-slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pg-anim-slideUp {
+  opacity: 0;
+  animation: pg-slideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+
+/* ── Progress bar with auto-fill animation ── */
+
+.pg-panel-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 4;
+}
+
+.pg-panel-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #50aaff, #82d2ff);
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 12px rgba(80, 170, 255, 0.4);
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pg-panel-progress-bar--animate {
+  width: 0% !important;
+  animation: pg-progressFill 5s linear forwards;
+}
+
+@keyframes pg-progressFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+
+/* ── Nav arrows on panel ── */
+
+.pg-panel-nav {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+  display: flex;
+  gap: 8px;
+}
+
+.pg-panel-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 14, 24, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.pg-panel-arrow:hover {
+  background: rgba(80, 170, 255, 0.15);
+  border-color: rgba(80, 170, 255, 0.3);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+
+/* ══════════════════════════════════════════════════
+   Selector tabs
+   ══════════════════════════════════════════════════ */
+
+.pg-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .pg-tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .pg-tabs::-webkit-scrollbar { display: none; }
+}
+
+
+/* ── Tab button ── */
+
+.pg-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.015);
+  cursor: pointer;
+  text-align: left;
+  overflow: hidden;
+  transition: background 0.4s ease,
+              border-color 0.4s ease,
+              box-shadow 0.4s ease,
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pg-tab:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+  transform: translateX(-4px);
+}
+
+.pg-tab--active {
+  background: rgba(80, 170, 255, 0.06);
+  border-color: rgba(80, 170, 255, 0.18);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 24px rgba(80, 170, 255, 0.05);
+  animation: pg-tabPop 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes pg-tabPop {
+  0% { transform: scale(0.97); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.pg-tab--active:hover {
+  transform: translateX(0);
+}
+
+@media (max-width: 900px) {
+  .pg-tab {
+    flex-shrink: 0;
+    padding: 14px 18px;
+    min-width: 160px;
+  }
+  .pg-tab:hover { transform: translateY(-2px); }
+}
+
+
+/* ── Tab number ── */
+
+.pg-tab-num {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+  transition: color 0.4s ease;
+}
+
+.pg-tab--active .pg-tab-num {
+  color: rgba(80, 170, 255, 0.4);
+}
+
+
+/* ── Tab text ── */
+
+.pg-tab-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.pg-tab-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(232, 237, 244, 0.5);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.4s ease;
+}
+
+.pg-tab--active .pg-tab-title {
+  color: #e8edf4;
+}
+
+.pg-tab:hover .pg-tab-title {
+  color: rgba(232, 237, 244, 0.8);
+}
+
+.pg-tab-cat {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(122, 141, 164, 0.35);
+  transition: color 0.4s ease;
+}
+
+.pg-tab--active .pg-tab-cat {
+  color: rgba(80, 170, 255, 0.55);
+}
+
+
+/* ── Active indicator — vertical glow bar ── */
+
+.pg-tab-indicator {
+  position: absolute;
+  top: 20%;
+  right: 0;
+  width: 3px;
+  height: 0%;
+  border-radius: 3px 0 0 3px;
+  background: linear-gradient(180deg, #50aaff, #82d2ff);
+  box-shadow: 0 0 10px rgba(80, 170, 255, 0.4);
+  transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pg-tab--active .pg-tab-indicator {
+  height: 60%;
+}
+
+@media (max-width: 900px) {
+  .pg-tab-indicator {
+    top: auto;
+    bottom: 0;
+    right: 20%;
+    left: 20%;
+    width: 0%;
+    height: 3px;
+    border-radius: 3px 3px 0 0;
+  }
+  .pg-tab--active .pg-tab-indicator {
+    width: 60%;
+    height: 3px;
+  }
+}
+
+
+/* ── Entrance ── */
+
+@keyframes pg-fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pg-fadeUp {
+  opacity: 0;
+  animation: pg-fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

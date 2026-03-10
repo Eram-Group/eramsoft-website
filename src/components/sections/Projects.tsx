@@ -1,60 +1,8 @@
 "use client";
 
 import { useRef } from "react";
+import { projects } from "@/data/projects";
 import "./projects.css";
-
-const projects = [
-  {
-    title: "HealthSync",
-    category: "Mobile App",
-    description:
-      "A telemedicine platform connecting patients with doctors through real-time video consultations and AI-powered symptom tracking.",
-    tech: ["React Native", "Node.js", "WebRTC"],
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
-    year: "2025",
-  },
-  {
-    title: "TradeFlow",
-    category: "FinTech Platform",
-    description:
-      "An institutional-grade trading dashboard with real-time market data, portfolio analytics, and automated compliance reporting.",
-    tech: ["Next.js", "Python", "AWS"],
-    image:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-    year: "2025",
-  },
-  {
-    title: "Nomad Workspace",
-    category: "SaaS Product",
-    description:
-      "A collaborative workspace tool for remote teams featuring real-time document editing, task boards, and async video messaging.",
-    tech: ["React", "Firebase", "Figma API"],
-    image:
-      "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1200&q=80",
-    year: "2024",
-  },
-  {
-    title: "GreenGrid",
-    category: "IoT Dashboard",
-    description:
-      "An energy management system visualizing real-time power consumption across smart buildings with predictive load balancing.",
-    tech: ["Vue.js", "Go", "InfluxDB"],
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    year: "2024",
-  },
-  {
-    title: "Lexara",
-    category: "AI Platform",
-    description:
-      "A legal document analysis tool powered by NLP that extracts key clauses, flags risks, and generates contract summaries.",
-    tech: ["Python", "GPT-4", "Kubernetes"],
-    image:
-      "https://images.unsplash.com/photo-1655720828018-edd71de0e245?auto=format&fit=crop&w=1200&q=80",
-    year: "2024",
-  },
-];
 
 export default function Projects() {
   const scrollRef = useRef<HTMLDivElement>(null);

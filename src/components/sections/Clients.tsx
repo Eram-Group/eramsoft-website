@@ -32,7 +32,7 @@ function LogoCard({
 
 export default function Clients() {
   return (
-    <section id="clients" className="cl-section relative pt-12 pb-28 md:pt-16 md:pb-36">
+    <section id="clients" className="cl-section relative pt-10 pb-14 md:pt-14 md:pb-20">
       {/* Ambient glows */}
       <div className="cl-glow cl-glow--1" aria-hidden="true" />
       <div className="cl-glow cl-glow--2" aria-hidden="true" />

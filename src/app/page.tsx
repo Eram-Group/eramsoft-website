@@ -2,6 +2,9 @@ import Navbar from "@/components/layout/Navbar";
 import Hero2 from "@/components/sections/Hero2";
 import Services from "@/components/sections/Services";
 import Clients from "@/components/sections/Clients";
+import RecentProjects from "@/components/sections/RecentProjects";
+import ProjectsShowcase from "@/components/sections/ProjectsShowcase";
+import ProjectsGallery from "@/components/sections/ProjectsGallery";
 
 
 export default function Home() {
@@ -48,6 +51,9 @@ export default function Home() {
       </div>
 
       <Services />
+      <ProjectsGallery />
+      <RecentProjects />
+      <ProjectsShowcase />
       <Clients />
     </main>
   );

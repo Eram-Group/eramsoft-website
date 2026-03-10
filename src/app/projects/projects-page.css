@@ -1,0 +1,483 @@
+/* ══════════════════════════════════════════════════
+   All Projects Page — Asymmetric Bento Layout
+   All classes prefixed ap-.
+   ══════════════════════════════════════════════════ */
+
+
+/* ── Page surface ── */
+
+.ap-page {
+  background: #141c2a;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+/* ── Ambient glow orbs ── */
+
+.ap-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+}
+
+.ap-glow--1 {
+  width: 700px;
+  height: 700px;
+  top: -10%;
+  left: -15%;
+  background: radial-gradient(circle, rgba(80, 170, 255, 0.07) 0%, transparent 70%);
+}
+
+.ap-glow--2 {
+  width: 600px;
+  height: 600px;
+  bottom: 5%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(100, 200, 255, 0.05) 0%, transparent 70%);
+}
+
+.ap-glow--3 {
+  width: 400px;
+  height: 400px;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(80, 170, 255, 0.04) 0%, transparent 70%);
+}
+
+
+/* ── Noise texture ── */
+
+.ap-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+
+/* ── Back link ── */
+
+.ap-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(80, 170, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.ap-back:hover {
+  color: rgba(80, 170, 255, 1);
+}
+
+.ap-back svg {
+  transition: transform 0.3s ease;
+}
+
+.ap-back:hover svg {
+  transform: translateX(-4px);
+}
+
+
+/* ── Page header ── */
+
+.ap-label {
+  color: #50aaff;
+  text-shadow: 0 0 20px rgba(80, 170, 255, 0.3);
+}
+
+.ap-title {
+  color: #e8edf4;
+}
+
+.ap-title-accent {
+  background: linear-gradient(90deg, #50aaff 0%, #82d2ff 50%, #50aaff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ap-titleShimmer 4s ease-in-out infinite;
+}
+
+@keyframes ap-titleShimmer {
+  0% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+  100% { background-position: 0% center; }
+}
+
+.ap-subtitle {
+  color: #7a8da4;
+}
+
+.ap-line {
+  background: linear-gradient(90deg, transparent 0%, rgba(80, 170, 255, 0.5) 50%, transparent 100%);
+  box-shadow: 0 0 12px rgba(80, 170, 255, 0.3);
+}
+
+
+/* ══════════════════════════════════════════════════
+   Bento Grid — Asymmetric layout
+   ══════════════════════════════════════════════════ */
+
+.ap-bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  gap: 20px;
+}
+
+/* Card 1 — large left, spans 2 rows */
+.ap-card--1 {
+  grid-column: span 7;
+  grid-row: span 2;
+}
+
+/* Card 2 — top right */
+.ap-card--2 {
+  grid-column: span 5;
+  grid-row: span 1;
+}
+
+/* Card 3 — bottom right */
+.ap-card--3 {
+  grid-column: span 5;
+  grid-row: span 1;
+}
+
+/* Card 4 — bottom left */
+.ap-card--4 {
+  grid-column: span 5;
+  grid-row: span 1;
+}
+
+/* Card 5 — bottom right wide */
+.ap-card--5 {
+  grid-column: span 7;
+  grid-row: span 1;
+}
+
+@media (max-width: 1024px) and (min-width: 641px) {
+  .ap-bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(280px, auto);
+  }
+
+  .ap-card--1 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .ap-card--2,
+  .ap-card--3,
+  .ap-card--4,
+  .ap-card--5 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .ap-bento {
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(320px, auto);
+    gap: 16px;
+  }
+
+  .ap-card--1,
+  .ap-card--2,
+  .ap-card--3,
+  .ap-card--4,
+  .ap-card--5 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════
+   Project card — full-bleed image with overlay content
+   ══════════════════════════════════════════════════ */
+
+.ap-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s ease;
+}
+
+.ap-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(80, 170, 255, 0.2);
+  box-shadow:
+    0 40px 80px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(80, 170, 255, 0.08),
+    0 0 0 1px rgba(80, 170, 255, 0.1) inset;
+}
+
+
+/* ── Full-bleed background ── */
+
+.ap-card-bg-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.ap-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ap-card:hover .ap-card-bg {
+  transform: scale(1.08);
+}
+
+.ap-card-bg-overlay {
+  display: none;
+}
+
+
+/* ── Card content overlay ── */
+
+.ap-card-inner {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.ap-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ap-card-bottom {
+  margin-top: auto;
+}
+
+
+/* ── Badges ── */
+
+.ap-card-category {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e8edf4;
+  background: rgba(80, 170, 255, 0.15);
+  border: 1px solid rgba(80, 170, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 5px 12px;
+  border-radius: 6px;
+}
+
+.ap-card-year {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(80, 170, 255, 0.8);
+  background: rgba(10, 15, 26, 0.7);
+  border: 1px solid rgba(80, 170, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+
+/* ── Card title — larger for the featured card ── */
+
+.ap-card-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #e8edf4;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  transition: color 0.4s ease;
+}
+
+.ap-card:hover .ap-card-title {
+  color: #ffffff;
+}
+
+.ap-card--1 .ap-card-title {
+  font-size: 1.85rem;
+}
+
+
+/* ── Card description ── */
+
+.ap-card-desc {
+  font-size: 0.825rem;
+  line-height: 1.6;
+  color: rgba(122, 141, 164, 0.9);
+  margin-bottom: 16px;
+  transition: color 0.4s ease;
+}
+
+.ap-card:hover .ap-card-desc {
+  color: rgba(160, 178, 200, 0.95);
+}
+
+.ap-card--1 .ap-card-desc {
+  max-width: 420px;
+}
+
+
+/* ── Footer: tags + link ── */
+
+.ap-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ap-card-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ap-card-tech-item {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: rgba(80, 170, 255, 0.08);
+  border: 1px solid rgba(80, 170, 255, 0.12);
+  color: rgba(80, 170, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.ap-card:hover .ap-card-tech-item {
+  background: rgba(80, 170, 255, 0.14);
+  border-color: rgba(80, 170, 255, 0.25);
+  color: rgba(80, 170, 255, 0.95);
+}
+
+.ap-card-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(80, 170, 255, 0.6);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.ap-card:hover .ap-card-link {
+  color: rgba(80, 170, 255, 1);
+}
+
+
+/* ── Neon glow on hover ── */
+
+.ap-card-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: linear-gradient(135deg, rgba(80, 170, 255, 0.1) 0%, transparent 40%, transparent 60%, rgba(100, 200, 255, 0.05) 100%);
+  pointer-events: none;
+}
+
+.ap-card:hover .ap-card-glow {
+  opacity: 1;
+}
+
+
+/* ── Scan line effect ── */
+
+.ap-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(80, 170, 255, 0.4), transparent);
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.ap-card:hover .ap-scanline {
+  opacity: 1;
+  animation: ap-scanDown 2.5s ease-in-out infinite;
+}
+
+@keyframes ap-scanDown {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(600px); opacity: 0; }
+}
+
+
+/* ── Entrance animations ── */
+
+@keyframes ap-fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ap-fadeUp {
+  opacity: 0;
+  animation: ap-fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ap-cardReveal {
+  from { opacity: 0; transform: translateY(60px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ap-cardReveal {
+  opacity: 0;
+  animation: ap-cardReveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ap-lineExpand {
+  transform-origin: center;
+  transform: scaleX(0);
+  opacity: 0;
+  animation: ap-lineExpand 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ap-lineExpand {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}

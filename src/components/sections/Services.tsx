@@ -5,7 +5,7 @@ import { services } from "@/data/services";
 
 export default function Services() {
   return (
-    <section id="services" className="sv-section relative pt-28 pb-16 md:pt-36 md:pb-20">
+    <section id="services" className="sv-section relative pt-20 pb-10 md:pt-24 md:pb-14">
       {/* Ambient glows */}
       <div className="sv-glow sv-glow--1" aria-hidden="true" />
       <div className="sv-glow sv-glow--2" aria-hidden="true" />
