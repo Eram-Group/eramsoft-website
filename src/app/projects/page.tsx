@@ -58,10 +58,11 @@ export default function ProjectsPage() {
         {/* ── Bento grid ── */}
         <div className="ap-bento">
           {projects.map((project, i) => (
-            <div
+            <Link
+              href={`/projects/${project.slug}`}
               key={project.title}
               className={`ap-card ap-card--${i + 1} ap-cardReveal`}
-              style={{ animationDelay: `${0.45 + i * 0.12}s` }}
+              style={{ animationDelay: `${0.45 + i * 0.12}s`, textDecoration: "none" }}
             >
               {/* Scan line */}
               <div className="ap-scanline" />
@@ -103,7 +104,7 @@ export default function ProjectsPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

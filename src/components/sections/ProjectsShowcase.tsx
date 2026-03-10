@@ -30,10 +30,11 @@ export default function ProjectsShowcase() {
         {/* ── Project rows ── */}
         <div className="ps-list">
           {projects.slice(0, 3).map((project, i) => (
-            <div
+            <Link
+              href={`/projects/${project.slug}`}
               key={project.title}
               className={`ps-row ps-row--${i % 2 === 0 ? "normal" : "reverse"} ps-fadeUp`}
-              style={{ animationDelay: `${0.35 + i * 0.12}s` }}
+              style={{ animationDelay: `${0.35 + i * 0.12}s`, textDecoration: "none" }}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
             >
@@ -83,7 +84,7 @@ export default function ProjectsShowcase() {
 
               {/* ── Decorative connector line ── */}
               <div className="ps-row-connector" aria-hidden="true" />
-            </div>
+            </Link>
           ))}
         </div>
 

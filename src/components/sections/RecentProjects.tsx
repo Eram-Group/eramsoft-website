@@ -39,7 +39,7 @@ export default function RecentProjects() {
         <div className="rp-line mx-auto mb-14 h-px w-full max-w-md rp-lineExpand [animation-delay:0.45s]" />
 
         {/* ── Featured project — full-width horizontal card ── */}
-        <div className="rp-featured rp-cardReveal [animation-delay:0.5s]">
+        <Link href={`/projects/${featured.slug}`} className="rp-featured rp-cardReveal [animation-delay:0.5s]" style={{ textDecoration: "none" }}>
           <div className="rp-scanline" />
           <div className="rp-card-glow" />
 
@@ -69,15 +69,16 @@ export default function RecentProjects() {
               </svg>
             </div>
           </div>
-        </div>
+        </Link>
 
         {/* ── Two smaller cards side by side ── */}
         <div className="rp-pair">
           {rest.map((project, i) => (
-            <div
+            <Link
+              href={`/projects/${project.slug}`}
               key={project.title}
               className="rp-card rp-cardReveal"
-              style={{ animationDelay: `${0.7 + i * 0.15}s` }}
+              style={{ animationDelay: `${0.7 + i * 0.15}s`, textDecoration: "none" }}
             >
               <div className="rp-scanline" />
               <div className="rp-card-glow" />
@@ -115,7 +116,7 @@ export default function RecentProjects() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
