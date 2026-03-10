@@ -462,19 +462,47 @@ export default function ProjectDetailPage() {
         </h2>
         <div className="pd-divider pd-lineExpand" />
 
-        <div className="pd-features-grid">
+        <div className="pd-cap-editorial">
           {project.features.map((feature, i) => (
             <div
               key={feature.title}
-              className="pd-feature pd-cardReveal"
-              style={{ animationDelay: `${0.1 + i * 0.08}s` }}
+              className="pd-cap-strip pd-cardReveal"
+              style={{
+                animationDelay: `${0.15 + i * 0.1}s`,
+                '--orbit-speed': `${18 + i * 4}s`,
+                '--orbit-dir': i % 2 === 0 ? 'normal' : 'reverse',
+              } as React.CSSProperties}
             >
-              <div className="pd-feature-scanline" />
-              <div className="pd-feature-icon">
+              {/* Scan-line sweep on hover */}
+              <div className="pd-cap-sweep" aria-hidden="true" />
+
+              {/* Giant ghost number */}
+              <div className="pd-cap-giant" aria-hidden="true">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+
+              {/* Left accent bar */}
+              <div className="pd-cap-bar" aria-hidden="true" />
+
+              {/* Icon orb with orbit ring */}
+              <div className="pd-cap-orb">
+                <div className="pd-cap-orbit" />
                 <FeatureIcon name={feature.icon} />
               </div>
-              <h3 className="pd-feature-title">{feature.title}</h3>
-              <p className="pd-feature-desc">{feature.description}</p>
+
+              {/* Content */}
+              <div className="pd-cap-text">
+                <h3 className="pd-cap-title">{feature.title}</h3>
+                <p className="pd-cap-desc">{feature.description}</p>
+              </div>
+
+              {/* Hover arrow indicator */}
+              <div className="pd-cap-arrow" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </div>
             </div>
           ))}
         </div>
@@ -557,35 +585,59 @@ export default function ProjectDetailPage() {
       )}
 
       {/* ══════════════════════════════════════
-          Contact CTA
+          Contact CTA — Signal Beacon
          ══════════════════════════════════════ */}
       <div className="pd-cta-section">
         <div className="pd-cta-card pd-cardReveal">
+          {/* Animated rotating border */}
+          <div className="pd-cta-border-glow" aria-hidden="true" />
+
+          {/* Grid mesh backdrop */}
+          <div className="pd-cta-mesh" aria-hidden="true" />
+
+          {/* Signal pulse rings */}
+          <div className="pd-cta-rings" aria-hidden="true">
+            <div className="pd-cta-ring pd-cta-ring--1" />
+            <div className="pd-cta-ring pd-cta-ring--2" />
+            <div className="pd-cta-ring pd-cta-ring--3" />
+          </div>
+
+          {/* Central glow */}
           <div className="pd-cta-glow" aria-hidden="true" />
-          <div className="pd-cta-scanline" aria-hidden="true" />
+          <div className="pd-cta-glow pd-cta-glow--warm" aria-hidden="true" />
 
-          <p className="pd-cta-label">Have a similar idea?</p>
-          <h2 className="pd-cta-title">
-            Let&apos;s build something <span>great together</span>
-          </h2>
-          <p className="pd-cta-desc">
-            Whether you need a mobile app, web platform, or AI-powered solution — our team is ready to bring your vision to life.
-          </p>
+          {/* Content */}
+          <div className="pd-cta-content">
+            <div className="pd-cta-beacon" aria-hidden="true">
+              <span className="pd-cta-beacon-dot" />
+            </div>
 
-          <div className="pd-cta-actions">
-            <a href="mailto:hello@digitalbackbone.dev" className="pd-cta-btn pd-cta-btn--primary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              <span>Email Us</span>
-            </a>
-            <a href="https://wa.me/966500000000" target="_blank" rel="noopener noreferrer" className="pd-cta-btn pd-cta-btn--secondary">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-              </svg>
-              <span>WhatsApp</span>
-            </a>
+            <p className="pd-cta-label">Have a similar idea?</p>
+            <h2 className="pd-cta-title">
+              Let&apos;s build something<br />
+              <span>great together</span>
+            </h2>
+            <p className="pd-cta-desc">
+              Whether you need a mobile app, web platform, or AI-powered solution — our team is ready to bring your vision to life.
+            </p>
+
+            <div className="pd-cta-actions">
+              <a href="mailto:hello@digitalbackbone.dev" className="pd-cta-btn pd-cta-btn--primary">
+                <span className="pd-cta-btn-shine" aria-hidden="true" />
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span>Email Us</span>
+              </a>
+              <a href="https://wa.me/966500000000" target="_blank" rel="noopener noreferrer" className="pd-cta-btn pd-cta-btn--secondary">
+                <span className="pd-cta-btn-shine" aria-hidden="true" />
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
