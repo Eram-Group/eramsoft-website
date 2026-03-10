@@ -1,0 +1,18 @@
+export const clients = [
+  { name: "Spotify", icon: "S", color: "green", type: "Music & Streaming" },
+  { name: "Slack", icon: "S", color: "purple", type: "Communication" },
+  { name: "Stripe", icon: "S", color: "indigo", type: "FinTech" },
+  { name: "Shopify", icon: "S", color: "emerald", type: "E-Commerce" },
+  { name: "Notion", icon: "N", color: "sky", type: "Productivity" },
+  { name: "Figma", icon: "F", color: "rose", type: "Design Tools" },
+  { name: "Vercel", icon: "V", color: "cyan", type: "Cloud Platform" },
+  { name: "Linear", icon: "L", color: "blue", type: "Project Management" },
+  { name: "Datadog", icon: "D", color: "violet", type: "Monitoring" },
+  { name: "Twilio", icon: "T", color: "rose", type: "Communications API" },
+  { name: "Supabase", icon: "S", color: "emerald", type: "Backend Platform" },
+  { name: "MongoDB", icon: "M", color: "green", type: "Database" },
+  { name: "Webflow", icon: "W", color: "blue", type: "Web Design" },
+  { name: "Airtable", icon: "A", color: "amber", type: "Data Platform" },
+  { name: "Loom", icon: "L", color: "indigo", type: "Video Platform" },
+  { name: "Render", icon: "R", color: "teal", type: "Cloud Hosting" },
+];

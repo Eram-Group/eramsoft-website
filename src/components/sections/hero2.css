@@ -741,3 +741,24 @@
 }
 
 
+/* ── Bottom dissolve — blends hero into section transition ── */
+
+.h2-surface::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 280px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(20, 28, 42, 0.2) 40%,
+    rgba(20, 28, 42, 0.6) 70%,
+    #141c2a 100%
+  );
+  z-index: 6;
+  pointer-events: none;
+}
+
+

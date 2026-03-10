@@ -235,3 +235,108 @@ body {
     opacity: 0.6;
   }
 }
+
+
+/* ══════════════════════════════════════════════════
+   Page Canvas & Section Transitions
+   Unified dark flow across all sections.
+   ══════════════════════════════════════════════════ */
+
+.page-canvas {
+  background: #141c2a;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ── Section transition bridge ── */
+
+.st-bridge {
+  position: relative;
+  height: 40px;
+  margin-top: -40px;
+  margin-bottom: -40px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Subtle flowing SVG curve */
+.st-curve {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Luminous horizontal beam */
+.st-beam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  max-width: 900px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(80, 170, 255, 0.12) 15%,
+    rgba(100, 200, 255, 0.3) 50%,
+    rgba(80, 170, 255, 0.12) 85%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 20px rgba(80, 170, 255, 0.08),
+    0 0 60px rgba(80, 170, 255, 0.04);
+}
+
+/* Soft glow bloom behind the beam */
+.st-bloom {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(80, 170, 255, 0.04) 0%,
+    rgba(80, 170, 255, 0.015) 40%,
+    transparent 70%
+  );
+  filter: blur(30px);
+}
+
+/* Floating light particles */
+.st-motes {
+  position: absolute;
+  inset: 0;
+}
+
+.st-motes span {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(80, 170, 255, 0.4);
+  box-shadow: 0 0 6px rgba(80, 170, 255, 0.25);
+}
+
+.st-motes span:nth-child(1) { left: 10%; top: 30%; animation: st-drift 7s ease-in-out infinite; }
+.st-motes span:nth-child(2) { left: 24%; top: 65%; animation: st-drift 8.5s ease-in-out 1.4s infinite; }
+.st-motes span:nth-child(3) { left: 40%; top: 25%; animation: st-drift 6s ease-in-out 0.7s infinite; }
+.st-motes span:nth-child(4) { left: 55%; top: 70%; animation: st-drift 7.5s ease-in-out 2s infinite; }
+.st-motes span:nth-child(5) { left: 68%; top: 20%; animation: st-drift 9s ease-in-out 0.3s infinite; }
+.st-motes span:nth-child(6) { left: 80%; top: 55%; animation: st-drift 6.5s ease-in-out 1.7s infinite; }
+.st-motes span:nth-child(7) { left: 93%; top: 40%; animation: st-drift 8s ease-in-out 1s infinite; }
+
+@keyframes st-drift {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.5);
+    opacity: 0.5;
+  }
+}
