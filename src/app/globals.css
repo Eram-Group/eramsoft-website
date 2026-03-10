@@ -340,3 +340,45 @@ body {
     opacity: 0.5;
   }
 }
+
+
+/* ── Section divider — reusable glowing separator ── */
+
+.section-divider {
+  position: relative;
+  height: 1px;
+  margin: 0;
+  z-index: 5;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 5%,
+    rgba(80, 170, 255, 0.08) 20%,
+    rgba(80, 170, 255, 0.2) 50%,
+    rgba(80, 170, 255, 0.08) 80%,
+    transparent 95%
+  );
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  max-width: 700px;
+  height: 16px;
+  background: radial-gradient(
+    ellipse,
+    rgba(80, 170, 255, 0.06) 0%,
+    transparent 70%
+  );
+  filter: blur(6px);
+  pointer-events: none;
+}

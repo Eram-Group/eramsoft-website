@@ -1,8 +1,10 @@
 import Navbar from "@/components/layout/Navbar";
 import Hero2 from "@/components/sections/Hero2";
-import Services from "@/components/sections/Services";
+import ServicesOrbital from "@/components/sections/ServicesOrbital";
 import Clients from "@/components/sections/Clients";
 import ProjectsGallery from "@/components/sections/ProjectsGallery";
+import HowWeWork from "@/components/sections/HowWeWork";
+import Footer from "@/components/sections/Footer";
 
 
 export default function Home() {
@@ -48,9 +50,15 @@ export default function Home() {
         </div>
       </div>
 
-      <Services />
+      <ServicesOrbital />
+      <div className="section-divider" aria-hidden="true" />
+      <HowWeWork />
+      <div className="section-divider" aria-hidden="true" />
       <ProjectsGallery />
+      <div className="section-divider" aria-hidden="true" />
       <Clients />
+      <div className="section-divider" aria-hidden="true" />
+      <Footer />
     </main>
   );
 }

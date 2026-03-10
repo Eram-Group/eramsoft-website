@@ -1,0 +1,227 @@
+/* ══════════════════════════════════════════════════
+   Footer — Dark premium with link columns
+   All classes prefixed ft-.
+   ══════════════════════════════════════════════════ */
+
+
+/* ── Footer surface ── */
+
+.ft-footer {
+  background: linear-gradient(180deg, #0d1219 0%, #090e14 50%, #060a0f 100%);
+  position: relative;
+  padding: 64px 0 0;
+}
+
+
+/* ── Ambient glow ── */
+
+.ft-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+}
+
+.ft-glow--1 {
+  width: 500px;
+  height: 300px;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(80, 170, 255, 0.04) 0%, transparent 70%);
+}
+
+
+/* ── Noise texture ── */
+
+.ft-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+
+/* ══════════════════════════════════════════════════
+   TOP SECTION — Brand + Link Columns
+   ══════════════════════════════════════════════════ */
+
+.ft-top {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  gap: 64px;
+  padding-bottom: 48px;
+}
+
+
+/* ── Brand column ── */
+
+.ft-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ft-brand-desc {
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: rgba(122, 141, 164, 0.75);
+  max-width: 320px;
+}
+
+
+/* ── Social links ── */
+
+.ft-socials {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ft-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(80, 170, 255, 0.06);
+  border: 1px solid rgba(80, 170, 255, 0.1);
+  color: rgba(80, 170, 255, 0.5);
+  transition: all 0.35s ease;
+}
+
+.ft-social-link:hover {
+  background: rgba(80, 170, 255, 0.12);
+  border-color: rgba(80, 170, 255, 0.25);
+  color: #82d2ff;
+  box-shadow: 0 0 16px rgba(80, 170, 255, 0.12);
+}
+
+
+/* ── Link columns grid ── */
+
+.ft-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.ft-links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ft-links-heading {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e8edf4;
+  margin-bottom: 4px;
+}
+
+.ft-link {
+  font-size: 0.82rem;
+  color: rgba(122, 141, 164, 0.65);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  line-height: 1.4;
+}
+
+.ft-link:hover {
+  color: #82d2ff;
+  transform: translateX(4px);
+}
+
+
+/* ══════════════════════════════════════════════════
+   DIVIDER
+   ══════════════════════════════════════════════════ */
+
+.ft-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(80, 170, 255, 0.12) 30%,
+    rgba(80, 170, 255, 0.12) 70%,
+    transparent 100%
+  );
+}
+
+
+/* ══════════════════════════════════════════════════
+   BOTTOM BAR
+   ══════════════════════════════════════════════════ */
+
+.ft-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+
+.ft-copyright {
+  font-size: 0.75rem;
+  color: rgba(122, 141, 164, 0.5);
+}
+
+.ft-credit {
+  font-size: 0.75rem;
+  color: rgba(122, 141, 164, 0.35);
+  letter-spacing: 0.03em;
+}
+
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE — Tablet
+   ══════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) and (min-width: 641px) {
+  .ft-top {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .ft-links-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE — Mobile
+   ══════════════════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  .ft-footer {
+    padding: 48px 0 0;
+  }
+
+  .ft-top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .ft-brand-desc {
+    max-width: none;
+  }
+
+  .ft-links-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 24px;
+  }
+
+  .ft-bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 20px 0;
+  }
+}
