@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════
-   Clients & Partners — Dual-row Infinite Marquee
+   Clients — Single-row Marquee · Redesigned Cards
    All classes prefixed cl-.
    ══════════════════════════════════════════════════ */
 
@@ -7,7 +7,7 @@
 /* ── Section surface ── */
 
 .cl-section {
-  background: linear-gradient(180deg, #141c2a 0%, #161e2e 50%, #141c2a 100%);
+  background: linear-gradient(180deg, #141c2a 0%, #10151f 50%, #141c2a 100%);
   position: relative;
   overflow: hidden;
 }
@@ -19,23 +19,23 @@
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(100px);
+  filter: blur(120px);
 }
 
 .cl-glow--1 {
-  width: 500px;
-  height: 500px;
-  top: -20%;
-  right: -8%;
-  background: radial-gradient(circle, rgba(80, 170, 255, 0.05) 0%, transparent 70%);
+  width: 600px;
+  height: 600px;
+  top: -25%;
+  right: -10%;
+  background: radial-gradient(circle, rgba(80, 170, 255, 0.04) 0%, transparent 70%);
 }
 
 .cl-glow--2 {
-  width: 400px;
-  height: 400px;
-  bottom: -15%;
-  left: -6%;
-  background: radial-gradient(circle, rgba(100, 200, 255, 0.04) 0%, transparent 70%);
+  width: 500px;
+  height: 500px;
+  bottom: -20%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(100, 200, 255, 0.03) 0%, transparent 70%);
 }
 
 
@@ -94,17 +94,28 @@
   mask-image: linear-gradient(
     90deg,
     transparent 0%,
-    black 10%,
-    black 90%,
+    black 8%,
+    black 92%,
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     90deg,
     transparent 0%,
-    black 10%,
-    black 90%,
+    black 8%,
+    black 92%,
     transparent 100%
   );
+}
+
+
+/* ── Static row (few clients) ── */
+
+.cl-static {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0 24px;
 }
 
 
@@ -113,14 +124,20 @@
 .cl-marquee {
   display: flex;
   width: max-content;
+  align-items: stretch;
 }
 
 .cl-marquee--left {
-  animation: cl-scrollLeft 35s linear infinite;
+  animation: cl-scrollLeft 30s linear infinite;
 }
 
 .cl-marquee--right {
-  animation: cl-scrollRight 40s linear infinite;
+  animation: cl-scrollRight 35s linear infinite;
+}
+
+.cl-marquee--inset {
+  padding-left: 120px;
+  padding-right: 120px;
 }
 
 .cl-marquee:hover {
@@ -138,41 +155,84 @@
 }
 
 
-/* ── Logo card ── */
+/* ── Logo card — redesigned ── */
 
 .cl-logo {
+  --card-accent: rgba(80, 170, 255, 0.5);
+  --card-accent-soft: rgba(80, 170, 255, 0.08);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  padding: 18px 36px;
-  margin: 0 12px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 14px 22px;
+  margin: 0 10px;
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse at 50% 0%, var(--card-accent-soft) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   cursor: default;
   user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle inner grid pattern */
+.cl-logo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at center, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* Bottom accent line */
+.cl-logo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--card-accent), transparent);
+  opacity: 0;
+  transform: scaleX(0);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .cl-logo:hover {
-  background: rgba(80, 170, 255, 0.06);
-  border-color: rgba(80, 170, 255, 0.15);
+  background:
+    radial-gradient(ellipse at 50% 0%, var(--card-accent-soft) 0%, transparent 50%),
+    rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
   transform: translateY(-4px);
   box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(80, 170, 255, 0.06);
+    0 12px 32px rgba(0, 0, 0, 0.35),
+    0 0 24px var(--card-accent-soft);
+}
+
+.cl-logo:hover::before {
+  opacity: 1;
+}
+
+.cl-logo:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 
-/* ── Logo icon ── */
+/* ── Logo icon — larger, with glow ── */
 
 .cl-logo-icon {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -182,8 +242,38 @@
   font-weight: 800;
   color: #fff;
   letter-spacing: -0.03em;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Glow behind icon */
+.cl-logo-icon::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 20px;
+  background: inherit;
+  opacity: 0;
+  filter: blur(16px);
+  z-index: -1;
+  transition: opacity 0.5s ease;
+}
+
+.cl-logo:hover .cl-logo-icon {
+  transform: scale(1.08);
+}
+
+.cl-logo:hover .cl-logo-icon::after {
+  opacity: 0.4;
+}
+
+/* SVG icon sizing */
+.cl-logo-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Color variants */
 .cl-logo-icon--blue     { background: linear-gradient(135deg, #3b82f6, #2563eb); }
 .cl-logo-icon--cyan     { background: linear-gradient(135deg, #06b6d4, #0891b2); }
 .cl-logo-icon--purple   { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
@@ -197,30 +287,44 @@
 .cl-logo-icon--violet   { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
 .cl-logo-icon--emerald  { background: linear-gradient(135deg, #34d399, #10b981); }
 
+/* Card accent colors per variant */
+.cl-logo:has(.cl-logo-icon--green)   { --card-accent: rgba(16, 185, 129, 0.5);  --card-accent-soft: rgba(16, 185, 129, 0.06); }
+.cl-logo:has(.cl-logo-icon--purple)  { --card-accent: rgba(139, 92, 246, 0.5);  --card-accent-soft: rgba(139, 92, 246, 0.06); }
+.cl-logo:has(.cl-logo-icon--indigo)  { --card-accent: rgba(99, 102, 241, 0.5);  --card-accent-soft: rgba(99, 102, 241, 0.06); }
+.cl-logo:has(.cl-logo-icon--emerald) { --card-accent: rgba(52, 211, 153, 0.5);  --card-accent-soft: rgba(52, 211, 153, 0.06); }
+.cl-logo:has(.cl-logo-icon--sky)     { --card-accent: rgba(56, 189, 248, 0.5);  --card-accent-soft: rgba(56, 189, 248, 0.06); }
+.cl-logo:has(.cl-logo-icon--rose)    { --card-accent: rgba(244, 63, 94, 0.5);   --card-accent-soft: rgba(244, 63, 94, 0.06); }
+.cl-logo:has(.cl-logo-icon--cyan)    { --card-accent: rgba(6, 182, 212, 0.5);   --card-accent-soft: rgba(6, 182, 212, 0.06); }
+.cl-logo:has(.cl-logo-icon--blue)    { --card-accent: rgba(59, 130, 246, 0.5);  --card-accent-soft: rgba(59, 130, 246, 0.06); }
+.cl-logo:has(.cl-logo-icon--teal)    { --card-accent: rgba(20, 184, 166, 0.5);  --card-accent-soft: rgba(20, 184, 166, 0.06); }
+.cl-logo:has(.cl-logo-icon--amber)   { --card-accent: rgba(251, 191, 36, 0.5);  --card-accent-soft: rgba(251, 191, 36, 0.06); }
+.cl-logo:has(.cl-logo-icon--violet)  { --card-accent: rgba(167, 139, 250, 0.5); --card-accent-soft: rgba(167, 139, 250, 0.06); }
+.cl-logo:has(.cl-logo-icon--orange)  { --card-accent: rgba(245, 158, 11, 0.5);  --card-accent-soft: rgba(245, 158, 11, 0.06); }
+
 
 /* ── Logo name ── */
 
 .cl-logo-name {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: rgba(200, 210, 225, 0.7);
-  letter-spacing: 0.02em;
+  color: rgba(200, 210, 225, 0.6);
+  letter-spacing: 0.03em;
   white-space: nowrap;
-  transition: color 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .cl-logo:hover .cl-logo-name {
-  color: rgba(230, 238, 250, 0.95);
+  color: rgba(232, 237, 244, 0.95);
 }
 
 .cl-logo-type {
-  font-size: 0.65rem;
-  font-weight: 500;
-  color: rgba(122, 141, 164, 0.5);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  margin-top: 2px;
+  display: none;
+}
+
+.cl-logo:hover .cl-logo-type {
+  color: rgba(122, 141, 164, 0.7);
+  transform: translateY(0);
+  opacity: 1;
 }
 
 
@@ -333,4 +437,37 @@
   filter: blur(40px);
   z-index: 0;
   pointer-events: none;
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 640px) {
+  .cl-logo {
+    padding: 12px 18px 12px 12px;
+    gap: 10px;
+  }
+
+  .cl-logo-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .cl-logo-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .cl-logo-name {
+    font-size: 0.8rem;
+  }
+
+  .cl-stats {
+    gap: 28px;
+  }
+
+  .cl-stat-number {
+    font-size: 1.75rem;
+  }
 }

@@ -4,6 +4,4 @@ export const clients = [
   { name: "Stripe", icon: "S", color: "indigo", type: "FinTech" },
   { name: "Shopify", icon: "S", color: "emerald", type: "E-Commerce" },
   { name: "Notion", icon: "N", color: "sky", type: "Productivity" },
-  { name: "Airbnb", icon: "A", color: "rose", type: "Travel & Hospitality" },
-  { name: "Dropbox", icon: "D", color: "cyan", type: "Cloud Storage" },
-];
+  

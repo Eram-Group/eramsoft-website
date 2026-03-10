@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { projects } from "@/data/projects";
 import "./projects-gallery.css";
@@ -12,6 +12,10 @@ export default function ProjectsGallery() {
   const [direction, setDirection] = useState<"next" | "prev">("next");
   const [paused, setPaused] = useState(false);
   const current = galleryProjects[active];
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const tabsContainerRef = useRef<HTMLDivElement | null>(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   const goTo = useCallback(
     (index: number) => {
@@ -21,18 +25,46 @@ export default function ProjectsGallery() {
     [active],
   );
 
-  // Auto-play
+  // Track section visibility
   useEffect(() => {
-    if (paused) return;
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 },
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  // Scroll active tab into view within the tabs container only
+  useEffect(() => {
+    const tab = tabRefs.current[active];
+    const container = tabsContainerRef.current;
+    if (!tab || !container) return;
+
+    const isHorizontal = window.innerWidth <= 900;
+    if (isHorizontal) {
+      const scrollLeft = tab.offsetLeft - container.offsetLeft - container.clientWidth / 2 + tab.clientWidth / 2;
+      container.scrollTo({ left: scrollLeft, behavior: "smooth" });
+    } else {
+      const scrollTop = tab.offsetTop - container.offsetTop - container.clientHeight / 2 + tab.clientHeight / 2;
+      container.scrollTo({ top: scrollTop, behavior: "smooth" });
+    }
+  }, [active]);
+
+  // Auto-play only when section is visible
+  useEffect(() => {
+    if (paused || !isVisible) return;
     const timer = setInterval(() => {
       setDirection("next");
       setActive((prev) => (prev + 1) % galleryProjects.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [paused]);
+  }, [paused, isVisible, galleryProjects.length]);
 
   return (
-    <section className="pg-section relative py-14 md:py-20">
+    <section ref={sectionRef} className="pg-section relative py-14 md:py-20">
       <div className="pg-glow pg-glow--1" aria-hidden="true" />
       <div className="pg-glow pg-glow--2" aria-hidden="true" />
       <div className="pg-noise" aria-hidden="true" />
@@ -65,7 +97,7 @@ export default function ProjectsGallery() {
           onMouseLeave={() => setPaused(false)}
         >
           {/* ── Large image panel ── */}
-          <div className="pg-panel">
+          <Link href={`/projects/${current.slug}`} className="pg-panel" style={{ textDecoration: "none" }}>
             {galleryProjects.map((p, i) => (
               <div
                 key={p.title}
@@ -115,7 +147,7 @@ export default function ProjectsGallery() {
               <button
                 className="pg-panel-arrow"
                 aria-label="Previous"
-                onClick={() => goTo((active - 1 + galleryProjects.length) % galleryProjects.length)}
+                onClick={(e) => { e.preventDefault(); goTo((active - 1 + galleryProjects.length) % galleryProjects.length); }}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="15 18 9 12 15 6" />
@@ -124,20 +156,21 @@ export default function ProjectsGallery() {
               <button
                 className="pg-panel-arrow"
                 aria-label="Next"
-                onClick={() => goTo((active + 1) % galleryProjects.length)}
+                onClick={(e) => { e.preventDefault(); goTo((active + 1) % galleryProjects.length); }}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 6 15 12 9 18" />
                 </svg>
               </button>
             </div>
-          </div>
+          </Link>
 
           {/* ── Selector tabs ── */}
-          <div className="pg-tabs">
+          <div ref={tabsContainerRef} className="pg-tabs">
             {galleryProjects.map((project, i) => (
               <button
                 key={project.title}
+                ref={(el) => { tabRefs.current[i] = el; }}
                 className={`pg-tab ${i === active ? "pg-tab--active" : ""}`}
                 onClick={() => goTo(i)}
               >

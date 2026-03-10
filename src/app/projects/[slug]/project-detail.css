@@ -348,7 +348,7 @@
 }
 
 
-/* Stats grid — 4 columns when downloads are shown */
+/* Stats grid — auto-fit columns when links are shown */
 
 .pd-stats-grid--with-downloads {
   grid-template-columns: repeat(2, 1fr);
@@ -356,7 +356,7 @@
 
 @media (min-width: 768px) {
   .pd-stats-grid--with-downloads {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 }
 
@@ -434,9 +434,29 @@
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
+.pd-download-icon--apple {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.pd-download-icon--google {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
 .pd-download:hover .pd-download-icon {
   background: rgba(80, 170, 255, 0.18);
   box-shadow: 0 0 16px rgba(80, 170, 255, 0.12);
+}
+
+.pd-download:hover .pd-download-icon--apple {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
+}
+
+.pd-download:hover .pd-download-icon--google {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.08);
 }
 
 .pd-download-info {
@@ -872,74 +892,74 @@
 .pd-tech-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 32px;
+  gap: 10px;
+  margin-top: 28px;
 }
 
 .pd-tech-card {
-  position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px 24px;
-  border-radius: 14px;
-  background: rgba(20, 28, 42, 0.5);
+  gap: 12px;
+  padding: 10px 18px 10px 12px;
+  border-radius: 12px;
+  background: rgba(20, 28, 42, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.4s ease,
-              box-shadow 0.4s ease;
+  transition: border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
 }
 
 .pd-tech-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(80, 170, 255, 0.2);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 30px rgba(80, 170, 255, 0.05);
+  border-color: rgba(80, 170, 255, 0.18);
+  background: rgba(24, 34, 54, 0.8);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 20px rgba(80, 170, 255, 0.04);
 }
 
-.pd-tech-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(80, 170, 255, 0.15), transparent);
-}
+/* ── Logo ── */
 
-.pd-tech-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(80, 170, 255, 0.1);
-  border: 1px solid rgba(80, 170, 255, 0.1);
+.pd-tech-logo {
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
 }
 
-.pd-tech-icon svg {
-  color: #50aaff;
+.pd-tech-card:hover .pd-tech-logo {
+  opacity: 1;
 }
+
+/* ── Info ── */
 
 .pd-tech-info {
   display: flex;
   flex-direction: column;
+  gap: 1px;
+  min-width: 0;
 }
 
 .pd-tech-name {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: #e8edf4;
   letter-spacing: -0.01em;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.pd-tech-card:hover .pd-tech-name {
+  color: #ffffff;
 }
 
 .pd-tech-role {
   font-size: 11px;
-  color: rgba(122, 141, 164, 0.6);
   font-weight: 500;
-  margin-top: 2px;
+  color: rgba(122, 141, 164, 0.5);
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.pd-tech-card:hover .pd-tech-role {
+  color: rgba(122, 141, 164, 0.8);
 }
 
 
