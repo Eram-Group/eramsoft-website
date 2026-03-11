@@ -1,16 +1,13 @@
-import Navbar from "@/components/layout/Navbar";
 import Hero2 from "@/components/sections/Hero2";
 import ServicesOrbital from "@/components/sections/ServicesOrbital";
 import Clients from "@/components/sections/Clients";
 import ProjectsGallery from "@/components/sections/ProjectsGallery";
 import HowWeWork from "@/components/sections/HowWeWork";
-import Footer from "@/components/sections/Footer";
 
 
 export default function Home() {
   return (
     <main className="page-canvas">
-      <Navbar />
       <Hero2 />
 
       {/* ── Section transition: Hero → Services ── */}
@@ -57,8 +54,6 @@ export default function Home() {
       <ProjectsGallery />
       <div className="section-divider" aria-hidden="true" />
       <Clients />
-      <div className="section-divider" aria-hidden="true" />
-      <Footer />
     </main>
   );
 }

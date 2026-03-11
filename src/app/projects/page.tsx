@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { projects } from "@/data/projects";
 import "./projects-page.css";
 
@@ -17,26 +16,6 @@ export default function ProjectsPage() {
       <div className="ap-noise" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 pt-8 pb-24 md:px-12 lg:px-16">
-        {/* ── Top bar ── */}
-        <div className="flex items-center justify-between mb-16 pt-4 ap-fadeUp [animation-delay:0.05s]">
-          <Link href="/">
-            <Image
-              src="/logo.svg"
-              alt="Logo"
-              width={147}
-              height={42}
-              className="brightness-0 invert opacity-80"
-            />
-          </Link>
-          <Link href="/" className="ap-back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="19" y1="12" x2="5" y2="12" />
-              <polyline points="12 19 5 12 12 5" />
-            </svg>
-            <span>Back to Home</span>
-          </Link>
-        </div>
-
         {/* ── Page header ── */}
         <div className="mb-16">
           <p className="ap-label mb-4 text-xs font-bold tracking-[0.35em] uppercase ap-fadeUp [animation-delay:0.1s]">

@@ -136,26 +136,6 @@ export default function AboutPage() {
       <div className="ab-grain" aria-hidden="true" />
       <div className="ab-dots" aria-hidden="true" />
 
-      {/* ── Header ── */}
-      <header className="ab-header ab-rise">
-        <Link href="/">
-          <Image
-            src="/logo.svg"
-            alt="Eram Soft"
-            width={147}
-            height={42}
-            className="brightness-0 invert opacity-80"
-          />
-        </Link>
-        <Link href="/" className="ab-back">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          <span>Back to Home</span>
-        </Link>
-      </header>
-
       {/* ═══════════════════════════════════════
           HERO — Cinematic full-viewport
           ═══════════════════════════════════════ */}
@@ -429,6 +409,86 @@ export default function AboutPage() {
               industries through technology.
             </p>
             <div className="ab-vm-edge" aria-hidden="true" />
+          </div>
+        </section>
+
+        <div className="ab-thread" aria-hidden="true" />
+
+        {/* ═══════════════════════════════════════
+            VM2 — Vision & Mission Redesigned
+            Split-panel editorial with timeline
+            ═══════════════════════════════════════ */}
+        <section className="ab-vm2 ab-reveal">
+          <div className="ab-vm2-header">
+            <p className="ab-tag">What Guides Us</p>
+            <h2 className="ab-section-title">
+              Our <span className="ab-accent">North Star</span>
+            </h2>
+          </div>
+
+          <div className="ab-vm2-grid">
+            {/* Vision Panel */}
+            <div className="ab-vm2-panel ab-vm2-panel--vision">
+              <div className="ab-vm2-panel-inner">
+                <div className="ab-vm2-badge">
+                  <span className="ab-vm2-badge-num">01</span>
+                  <span className="ab-vm2-badge-line" aria-hidden="true" />
+                  <span className="ab-vm2-badge-label">Vision</span>
+                </div>
+                <h3 className="ab-vm2-heading">
+                  The Partner of Choice for Those Who Refuse to{" "}
+                  <span className="ab-accent">Compromise</span>
+                </h3>
+                <p className="ab-vm2-body">
+                  We envision a world where every business — regardless of scale —
+                  has access to software that sets new standards for performance,
+                  design, and reliability across the region.
+                </p>
+                <div className="ab-vm2-tags">
+                  <span className="ab-vm2-chip">Performance</span>
+                  <span className="ab-vm2-chip">Design</span>
+                  <span className="ab-vm2-chip">Reliability</span>
+                </div>
+              </div>
+              <div className="ab-vm2-panel-glow ab-vm2-panel-glow--v" aria-hidden="true" />
+            </div>
+
+            {/* Center Timeline */}
+            <div className="ab-vm2-timeline" aria-hidden="true">
+              <div className="ab-vm2-timeline-line" />
+              <div className="ab-vm2-timeline-node">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              </div>
+              <div className="ab-vm2-timeline-line" />
+            </div>
+
+            {/* Mission Panel */}
+            <div className="ab-vm2-panel ab-vm2-panel--mission">
+              <div className="ab-vm2-panel-inner">
+                <div className="ab-vm2-badge">
+                  <span className="ab-vm2-badge-num">02</span>
+                  <span className="ab-vm2-badge-line" aria-hidden="true" />
+                  <span className="ab-vm2-badge-label">Mission</span>
+                </div>
+                <h3 className="ab-vm2-heading">
+                  End-to-End Solutions Powered by{" "}
+                  <span className="ab-accent">Precision</span> Engineering
+                </h3>
+                <p className="ab-vm2-body">
+                  We deliver digital solutions through transparent collaboration
+                  and relentless attention to detail — empowering our clients to
+                  lead in their industries through technology that truly works.
+                </p>
+                <div className="ab-vm2-tags">
+                  <span className="ab-vm2-chip">Transparency</span>
+                  <span className="ab-vm2-chip">Precision</span>
+                  <span className="ab-vm2-chip">Empowerment</span>
+                </div>
+              </div>
+              <div className="ab-vm2-panel-glow ab-vm2-panel-glow--m" aria-hidden="true" />
+            </div>
           </div>
         </section>
 

@@ -9,7 +9,7 @@
 /* ── Section surface ── */
 
 .hw-section {
-  background: linear-gradient(180deg, #0e131c 0%, #0b0f16 50%, #0e131c 100%);
+  background: linear-gradient(180deg, #1e2a3d 0%, #1a2536 50%, #1e2a3d 100%);
   position: relative;
   overflow: hidden;
 }
@@ -198,7 +198,7 @@
   inset: 0;
   border-radius: 50%;
   border: 1.5px solid rgba(80, 170, 255, 0.12);
-  background: rgba(16, 22, 36, 0.8);
+  background: rgba(24, 34, 52, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: border-color 0.4s ease,
@@ -213,7 +213,7 @@
     0 0 24px rgba(80, 170, 255, 0.12),
     0 0 48px rgba(80, 170, 255, 0.06),
     inset 0 0 16px rgba(80, 170, 255, 0.04);
-  background: rgba(20, 30, 50, 0.9);
+  background: rgba(28, 40, 60, 0.9);
 }
 
 .hw-step-node-icon {

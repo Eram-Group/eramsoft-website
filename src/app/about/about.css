@@ -1008,6 +1008,240 @@
 
 
 /* ══════════════════════════════════════════════════
+   VM2 — Vision & Mission Redesigned
+   Split-panel editorial with center timeline
+   ══════════════════════════════════════════════════ */
+
+.ab-vm2 {
+  padding: 16px 0;
+}
+
+.ab-vm2-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* ── Grid: panel | timeline | panel ── */
+
+.ab-vm2-grid {
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+/* ── Panel (shared) ── */
+
+.ab-vm2-panel {
+  position: relative;
+  border-radius: 20px;
+  background: rgba(16, 22, 36, 0.35);
+  border: 1px solid rgba(80, 170, 255, 0.06);
+  overflow: hidden;
+  transition: border-color 0.5s ease,
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.5s ease;
+}
+
+.ab-vm2-panel:hover {
+  border-color: rgba(80, 170, 255, 0.16);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(80, 170, 255, 0.04) inset;
+}
+
+.ab-vm2-panel-inner {
+  position: relative;
+  z-index: 1;
+  padding: 40px 36px;
+}
+
+/* ── Panel Glow ── */
+
+.ab-vm2-panel-glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  opacity: 0.4;
+  transition: opacity 0.5s ease;
+}
+
+.ab-vm2-panel:hover .ab-vm2-panel-glow {
+  opacity: 0.7;
+}
+
+.ab-vm2-panel-glow--v {
+  bottom: -60px;
+  right: -40px;
+  background: radial-gradient(circle, rgba(80, 170, 255, 0.08) 0%, transparent 70%);
+}
+
+.ab-vm2-panel-glow--m {
+  top: -60px;
+  left: -40px;
+  background: radial-gradient(circle, rgba(100, 200, 255, 0.06) 0%, transparent 70%);
+}
+
+/* ── Badge: number | line | label ── */
+
+.ab-vm2-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.ab-vm2-badge-num {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #50aaff;
+  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 16px rgba(80, 170, 255, 0.25);
+}
+
+.ab-vm2-badge-line {
+  flex: 0 0 32px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(80, 170, 255, 0.35), rgba(80, 170, 255, 0.06));
+}
+
+.ab-vm2-badge-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(130, 210, 255, 0.5);
+}
+
+/* ── Heading ── */
+
+.ab-vm2-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #e8edf4;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+
+/* ── Body text ── */
+
+.ab-vm2-body {
+  font-size: 0.86rem;
+  line-height: 1.85;
+  color: rgba(122, 141, 164, 0.75);
+  margin-bottom: 24px;
+}
+
+/* ── Chip tags ── */
+
+.ab-vm2-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ab-vm2-chip {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  color: rgba(80, 170, 255, 0.65);
+  background: rgba(80, 170, 255, 0.05);
+  border: 1px solid rgba(80, 170, 255, 0.1);
+  transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+}
+
+.ab-vm2-panel:hover .ab-vm2-chip {
+  color: rgba(130, 210, 255, 0.85);
+  border-color: rgba(80, 170, 255, 0.22);
+  background: rgba(80, 170, 255, 0.08);
+}
+
+/* ── Center Timeline ── */
+
+.ab-vm2-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 16px 0;
+}
+
+.ab-vm2-timeline-line {
+  flex: 1;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(80, 170, 255, 0.2) 30%,
+    rgba(80, 170, 255, 0.2) 70%,
+    transparent
+  );
+}
+
+.ab-vm2-timeline-node {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18, 26, 42, 0.9);
+  border: 1px solid rgba(80, 170, 255, 0.15);
+  color: rgba(80, 170, 255, 0.55);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset,
+    0 0 24px rgba(80, 170, 255, 0.06);
+  flex-shrink: 0;
+  animation: ab-vm2NodePulse 3s ease-in-out infinite;
+}
+
+@keyframes ab-vm2NodePulse {
+  0%, 100% { box-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 24px rgba(80,170,255,0.06); }
+  50%      { box-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.02) inset, 0 0 40px rgba(80,170,255,0.15); }
+}
+
+/* ── Staggered entrance ── */
+
+.ab-revealed .ab-vm2-panel--vision {
+  animation: ab-vm2SlideRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ab-revealed .ab-vm2-panel--mission {
+  animation: ab-vm2SlideLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+.ab-revealed .ab-vm2-timeline {
+  animation: ab-vm2TimelineIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+
+@keyframes ab-vm2SlideRight {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes ab-vm2SlideLeft {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes ab-vm2TimelineIn {
+  from { opacity: 0; transform: scaleY(0.3); }
+  to   { opacity: 1; transform: scaleY(1); }
+}
+
+
+/* ══════════════════════════════════════════════════
    PRINCIPLES — Core Values
    Horizontal infographic: large circles with icons,
    dashed stems, numbered dots, connecting rail.
@@ -1414,6 +1648,29 @@
     gap: 20px;
   }
 
+  /* ── VM2 ── */
+  .ab-vm2-grid {
+    grid-template-columns: 1fr 44px 1fr;
+  }
+
+  .ab-vm2-panel-inner {
+    padding: 32px 28px;
+  }
+
+  .ab-vm2-heading {
+    font-size: 1.25rem;
+  }
+
+  .ab-vm2-timeline-node {
+    width: 38px;
+    height: 38px;
+  }
+
+  .ab-vm2-timeline-node svg {
+    width: 16px;
+    height: 16px;
+  }
+
   /* ── Principles ── */
   .ab-pr-circle {
     width: 100px;
@@ -1585,6 +1842,63 @@
 
   .ab-vm-mark {
     font-size: 7rem;
+  }
+
+  /* ── VM2 ── */
+  .ab-vm2-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .ab-vm2-timeline {
+    flex-direction: row;
+    padding: 0 20px;
+    height: 44px;
+  }
+
+  .ab-vm2-timeline-line {
+    flex: 1;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(80, 170, 255, 0.2) 30%,
+      rgba(80, 170, 255, 0.2) 70%,
+      transparent
+    );
+  }
+
+  .ab-vm2-timeline-node {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ab-vm2-timeline-node svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ab-vm2-panel-inner {
+    padding: 28px 22px;
+  }
+
+  .ab-vm2-heading {
+    font-size: 1.15rem;
+  }
+
+  .ab-vm2-body {
+    font-size: 0.8rem;
+  }
+
+  .ab-vm2-panel-glow {
+    width: 160px;
+    height: 160px;
+  }
+
+  .ab-revealed .ab-vm2-panel--vision,
+  .ab-revealed .ab-vm2-panel--mission {
+    animation-name: ab-circleIn;
   }
 
   /* ── Principles ── */

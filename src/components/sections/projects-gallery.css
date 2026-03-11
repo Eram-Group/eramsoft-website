@@ -108,7 +108,7 @@
 .pg-showcase {
   display: grid;
   grid-template-columns: 1fr 280px;
-  grid-template-rows: 560px;
+  grid-template-rows: 550px;
   gap: 24px;
 }
 
@@ -128,7 +128,7 @@
   position: relative;
   border-radius: 24px;
   overflow: hidden;
-  min-height: 480px;
+  min-height: 0;
   border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow:
     0 32px 80px rgba(0, 0, 0, 0.45),
@@ -341,10 +341,19 @@
    Selector tabs
    ══════════════════════════════════════════════════ */
 
+.pg-tabs-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+  min-height: 0;
+}
+
 .pg-tabs {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(80, 170, 255, 0.2) transparent;
@@ -368,6 +377,9 @@
 }
 
 @media (max-width: 900px) {
+  .pg-tabs-wrapper {
+    height: auto;
+  }
   .pg-tabs {
     flex-direction: row;
     overflow-x: auto;
@@ -388,13 +400,14 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 24px 20px;
+  padding: 18px 20px;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.04);
   background: rgba(255, 255, 255, 0.015);
   cursor: pointer;
   text-align: left;
   overflow: hidden;
+  flex-shrink: 0;
   transition: background 0.4s ease,
               border-color 0.4s ease,
               box-shadow 0.4s ease,
@@ -424,6 +437,22 @@
 
 .pg-tab--active:hover {
   transform: translateX(0);
+}
+
+.pg-tab-arrow {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.pg-tab:hover .pg-tab-arrow {
+  color: rgba(80, 170, 255, 0.7);
+  transform: translate(2px, -2px);
+}
+
+a.pg-tab {
+  text-decoration: none;
 }
 
 @media (max-width: 900px) {
@@ -533,29 +562,32 @@
 
 /* ── Show all projects button ── */
 
-.pg-tab-show-all {
+.pg-show-all-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 20px;
-  margin-top: 4px;
-  border-radius: 12px;
-  border: 1px dashed rgba(80, 170, 255, 0.2);
-  background: transparent;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: rgba(80, 170, 255, 0.5);
-  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  gap: 10px;
+  padding: 16px 24px;
+  margin-top: 24px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(80, 170, 255, 0.12) 0%, rgba(100, 200, 255, 0.08) 100%);
+  border: 1px solid rgba(80, 170, 255, 0.2);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #50aaff;
+  text-decoration: none;
   flex-shrink: 0;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, gap 0.3s ease, box-shadow 0.3s ease;
 }
 
-.pg-tab-show-all:hover {
-  color: rgba(80, 170, 255, 0.9);
+.pg-show-all-btn:hover {
+  background: linear-gradient(135deg, rgba(80, 170, 255, 0.2) 0%, rgba(100, 200, 255, 0.14) 100%);
   border-color: rgba(80, 170, 255, 0.4);
-  background: rgba(80, 170, 255, 0.04);
+  color: #82d2ff;
+  gap: 14px;
+  box-shadow: 0 4px 20px rgba(80, 170, 255, 0.15);
 }
 
 

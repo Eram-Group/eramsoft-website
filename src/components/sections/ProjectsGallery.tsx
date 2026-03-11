@@ -5,13 +5,14 @@ import Link from "next/link";
 import { projects } from "@/data/projects";
 import "./projects-gallery.css";
 
-const galleryProjects = projects;
+const FEATURED_COUNT = projects.length;
+const featuredProjects = projects;
 
 export default function ProjectsGallery() {
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev">("next");
   const [paused, setPaused] = useState(false);
-  const current = galleryProjects[active];
+  const current = featuredProjects[active] ?? featuredProjects[0];
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const tabsContainerRef = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -58,10 +59,10 @@ export default function ProjectsGallery() {
     if (paused || !isVisible) return;
     const timer = setInterval(() => {
       setDirection("next");
-      setActive((prev) => (prev + 1) % galleryProjects.length);
+      setActive((prev) => (prev + 1) % FEATURED_COUNT);
     }, 5000);
     return () => clearInterval(timer);
-  }, [paused, isVisible, galleryProjects.length]);
+  }, [paused, isVisible]);
 
   return (
     <section ref={sectionRef} className="pg-section relative py-14 md:py-20">
@@ -98,7 +99,7 @@ export default function ProjectsGallery() {
         >
           {/* ── Large image panel ── */}
           <Link href={`/projects/${current.slug}`} className="pg-panel" style={{ textDecoration: "none" }}>
-            {galleryProjects.map((p, i) => (
+            {featuredProjects.map((p, i) => (
               <div
                 key={p.title}
                 className={`pg-panel-slide ${
@@ -136,7 +137,7 @@ export default function ProjectsGallery() {
                 key={`progress-${active}-${paused}`}
                 style={{
                   width: paused
-                    ? `${((active + 1) / galleryProjects.length) * 100}%`
+                    ? `${((active + 1) / FEATURED_COUNT) * 100}%`
                     : undefined,
                 }}
               />
@@ -147,7 +148,7 @@ export default function ProjectsGallery() {
               <button
                 className="pg-panel-arrow"
                 aria-label="Previous"
-                onClick={(e) => { e.preventDefault(); goTo((active - 1 + galleryProjects.length) % galleryProjects.length); }}
+                onClick={(e) => { e.preventDefault(); goTo((active - 1 + FEATURED_COUNT) % FEATURED_COUNT); }}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="15 18 9 12 15 6" />
@@ -156,7 +157,7 @@ export default function ProjectsGallery() {
               <button
                 className="pg-panel-arrow"
                 aria-label="Next"
-                onClick={(e) => { e.preventDefault(); goTo((active + 1) % galleryProjects.length); }}
+                onClick={(e) => { e.preventDefault(); goTo((active + 1) % FEATURED_COUNT); }}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 6 15 12 9 18" />
@@ -166,24 +167,33 @@ export default function ProjectsGallery() {
           </Link>
 
           {/* ── Selector tabs ── */}
-          <div ref={tabsContainerRef} className="pg-tabs">
-            {galleryProjects.map((project, i) => (
-              <button
-                key={project.title}
-                ref={(el) => { tabRefs.current[i] = el; }}
-                className={`pg-tab ${i === active ? "pg-tab--active" : ""}`}
-                onClick={() => goTo(i)}
-              >
-                <span className="pg-tab-num">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="pg-tab-text">
-                  <span className="pg-tab-title">{project.title}</span>
-                  <span className="pg-tab-cat">{project.category}</span>
-                </div>
-                <div className="pg-tab-indicator" />
-              </button>
-            ))}
+          <div className="pg-tabs-wrapper">
+            <div ref={tabsContainerRef} className="pg-tabs">
+              {featuredProjects.map((project, i) => (
+                <button
+                  key={project.title}
+                  ref={(el) => { tabRefs.current[i] = el; }}
+                  className={`pg-tab ${i === active ? "pg-tab--active" : ""}`}
+                  onClick={() => goTo(i)}
+                >
+                  <span className="pg-tab-num">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="pg-tab-text">
+                    <span className="pg-tab-title">{project.title}</span>
+                    <span className="pg-tab-cat">{project.category}</span>
+                  </div>
+                  <div className="pg-tab-indicator" />
+                </button>
+              ))}
+            </div>
+            <Link href="/projects" className="pg-show-all-btn">
+              <span>View All Projects</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </Link>
           </div>
         </div>
       </div>

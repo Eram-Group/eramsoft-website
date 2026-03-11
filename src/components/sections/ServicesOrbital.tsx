@@ -1,20 +1,46 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import "./services-orbital.css";
 import { services } from "@/data/services";
 
+const AUTOPLAY_INTERVAL = 3000;
+
 export default function ServicesOrbital() {
   const [active, setActive] = useState(2);
+  const [paused, setPaused] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const prev = useCallback(() => setActive((a) => Math.max(0, a - 1)), []);
-  const next = useCallback(
-    () => setActive((a) => Math.min(services.length - 1, a + 1)),
+  const goTo = useCallback(
+    (index: number) => {
+      // Wrap around for infinite looping
+      const len = services.length;
+      setActive(((index % len) + len) % len);
+    },
     []
   );
 
+  const prev = useCallback(() => goTo(active - 1), [active, goTo]);
+  const next = useCallback(() => goTo(active + 1), [active, goTo]);
+
+  // Autoplay
+  useEffect(() => {
+    if (paused) return;
+    timeoutRef.current = setTimeout(() => {
+      goTo(active + 1);
+    }, AUTOPLAY_INTERVAL);
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [active, paused, goTo]);
+
   const getPosition = (index: number): string => {
-    const diff = index - active;
+    const len = services.length;
+    // Calculate shortest circular distance
+    let diff = index - active;
+    if (diff > len / 2) diff -= len;
+    if (diff < -len / 2) diff += len;
+
     if (diff === 0) return "sf-card--center";
     if (diff === -1) return "sf-card--left1";
     if (diff === 1) return "sf-card--right1";
@@ -51,49 +77,60 @@ export default function ServicesOrbital() {
         </div>
 
         {/* ── 3D Fan Stage ── */}
-        <div className="sf-stage sf-fadeUp [animation-delay:0.65s]">
+        <div
+          className="sf-stage sf-fadeUp [animation-delay:0.65s]"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
           <div className="sf-fan">
-            {services.map((service, i) => (
-              <div
-                key={service.number}
-                className={`sf-card ${getPosition(i)} ${
-                  i === active ? "sf-card--active" : ""
-                }`}
-                style={{
-                  zIndex: i === active ? 10 : 5 - Math.abs(i - active),
-                }}
-                onClick={() => setActive(i)}
-              >
-                {/* Background image */}
+            {services.map((service, i) => {
+              const pos = getPosition(i);
+              const isCurrent = i === active;
+              const len = services.length;
+              let diff = i - active;
+              if (diff > len / 2) diff -= len;
+              if (diff < -len / 2) diff += len;
+
+              return (
                 <div
-                  className="sf-card-bg"
-                  style={{ backgroundImage: `url(${service.image})` }}
-                />
-                <div className="sf-card-overlay" />
+                  key={service.number}
+                  className={`sf-card ${pos} ${isCurrent ? "sf-card--active" : ""}`}
+                  style={{
+                    zIndex: isCurrent ? 10 : 5 - Math.abs(diff),
+                  }}
+                  onClick={() => setActive(i)}
+                >
+                  {/* Background image */}
+                  <div
+                    className="sf-card-bg"
+                    style={{ backgroundImage: `url(${service.image})` }}
+                  />
+                  <div className="sf-card-overlay" />
 
-                {/* Neon glow */}
-                <div className="sf-card-glow" />
+                  {/* Neon glow */}
+                  <div className="sf-card-glow" />
 
-                {/* Scan line */}
-                <div className="sf-scanline" />
+                  {/* Scan line */}
+                  <div className="sf-scanline" />
 
-                {/* Content */}
-                <div className="sf-card-content">
-                  <span className="sf-card-number">{service.number}</span>
-                  <div className="sf-card-info">
-                    <h3 className="sf-card-title">{service.title}</h3>
-                    <p className="sf-card-desc">{service.description}</p>
-                    <div className="sf-card-tags">
-                      {service.tags.map((tag) => (
-                        <span key={tag} className="sf-tag">
-                          {tag}
-                        </span>
-                      ))}
+                  {/* Content */}
+                  <div className="sf-card-content">
+                    <span className="sf-card-number">{service.number}</span>
+                    <div className="sf-card-info">
+                      <h3 className="sf-card-title">{service.title}</h3>
+                      <p className="sf-card-desc">{service.description}</p>
+                      <div className="sf-card-tags">
+                        {service.tags.map((tag) => (
+                          <span key={tag} className="sf-tag">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -102,7 +139,6 @@ export default function ServicesOrbital() {
           <button
             className="sf-nav-btn"
             onClick={prev}
-            disabled={active === 0}
             aria-label="Previous service"
           >
             <svg
@@ -133,7 +169,6 @@ export default function ServicesOrbital() {
           <button
             className="sf-nav-btn"
             onClick={next}
-            disabled={active === services.length - 1}
             aria-label="Next service"
           >
             <svg
