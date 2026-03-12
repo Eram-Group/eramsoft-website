@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "HOME", href: "#" },
+  { label: "HOME", href: "/" },
   { label: "ABOUT US", href: "/about" },
   { label: "PROJECTS", href: "/projects" },
   { label: "CONTACT US", href: "#contact" },
@@ -19,7 +19,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const isActive = (href: string) => {
-    if (href === "#") return pathname === "/";
+    if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
 
