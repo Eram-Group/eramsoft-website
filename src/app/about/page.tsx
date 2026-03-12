@@ -137,110 +137,123 @@ export default function AboutPage() {
       <div className="ab-dots" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════
-          HERO — Panoramic Showcase
+          HERO — Premium Unified Intro
           ═══════════════════════════════════════ */}
       <section className="ab-hero">
         <div className="ab-hero-mesh" aria-hidden="true" />
+        <div className="ab-hero-grid" aria-hidden="true" />
 
-        <div className="ab-hero-inner">
-          {/* Title card */}
-          <p className="ab-tag ab-rise" style={{ animationDelay: "0.2s" }}>
-            About Eram Soft
-          </p>
-          <h1 className="ab-hero-h1">
-            <span className="ab-hero-line ab-hero-line--lead" style={{ animationDelay: "0.3s" }}>
-              We Build the
-            </span>
-            <span className="ab-hero-line ab-hero-line--hero" style={{ animationDelay: "0.5s" }}>
-              <span className="ab-accent">Digital Backbone</span>
-            </span>
-            <span className="ab-hero-line ab-hero-line--lead" style={{ animationDelay: "0.7s" }}>
-              of Ambitious Businesses
-            </span>
-          </h1>
-          <p className="ab-hero-sub ab-rise" style={{ animationDelay: "0.9s" }}>
-            Since 2019, turning complex challenges into elegant digital
-            solutions &mdash; from mobile apps and web platforms to cloud
-            infrastructure and AI-powered tools.
-          </p>
+        {/* Floating particles */}
+        <div className="ab-hero-particles" aria-hidden="true">
+          <span style={{ top: "15%", left: "10%", animationDelay: "0s" }} />
+          <span style={{ top: "25%", left: "80%", animationDelay: "1.4s" }} />
+          <span style={{ top: "60%", left: "5%", animationDelay: "2.8s" }} />
+          <span style={{ top: "40%", left: "90%", animationDelay: "0.7s" }} />
+          <span style={{ top: "70%", left: "70%", animationDelay: "3.5s" }} />
+          <span style={{ top: "10%", left: "50%", animationDelay: "2.1s" }} />
+        </div>
 
-          {/* Cinematic panoramic frame */}
-          <div className="ab-hero-cinema ab-rise" style={{ animationDelay: "1s" }}>
-            <div className="ab-hero-frame">
-              <Image
-                src="/about-hero.jpg"
-                alt="Eram Soft team"
-                fill
-                className="ab-hero-img"
-                sizes="100vw"
-                priority
-              />
-              <div className="ab-hero-overlay" aria-hidden="true" />
-              <div className="ab-hero-vignette" aria-hidden="true" />
+        {/* Horizontal accent line */}
+        <div className="ab-hero-accent-line" aria-hidden="true" />
+
+        <div className="ab-hero-inner ab-hero-inner--split">
+          {/* Left — Text content */}
+          <div className="ab-hero-text">
+            <div className="ab-hero-tag-wrap ab-rise" style={{ animationDelay: "0.2s" }}>
+              <span className="ab-hero-tag-line" aria-hidden="true" />
+              <p className="ab-tag">About Eram Soft</p>
+            </div>
+            <h1 className="ab-hero-h1">
+              <span className="ab-hero-line ab-hero-line--lead" style={{ animationDelay: "0.3s" }}>
+                We Build the
+              </span>
+              <span className="ab-hero-line ab-hero-line--hero" style={{ animationDelay: "0.5s" }}>
+                <span className="ab-accent">Digital Backbone</span>
+              </span>
+              <span className="ab-hero-line ab-hero-line--lead" style={{ animationDelay: "0.7s" }}>
+                of Ambitious Businesses
+              </span>
+            </h1>
+            <p className="ab-hero-sub ab-rise" style={{ animationDelay: "0.9s" }}>
+              Since 2019, turning complex challenges into elegant digital
+              solutions &mdash; from mobile apps and web platforms to cloud
+              infrastructure and AI-powered tools.
+            </p>
+
+            <div className="ab-hero-divider ab-rise" style={{ animationDelay: "1s" }} aria-hidden="true">
+              <span className="ab-hero-divider-glow" />
             </div>
 
-            {/* Stats glass bar anchored to bottom */}
-            <div className="ab-hero-stats ab-rise" style={{ animationDelay: "1.3s" }}>
-              {stats.map((s) => (
-                <StatItem key={s.label} stat={s} />
-              ))}
+            <p className="ab-hero-how ab-rise" style={{ animationDelay: "1.1s" }}>
+              &ldquo;Every project gets a{" "}
+              <span className="ab-accent">dedicated team</span>, a clear
+              roadmap, and full transparency &mdash; no surprises, no
+              shortcuts.&rdquo;
+            </p>
+            <p className="ab-prose ab-rise" style={{ animationDelay: "1.2s" }}>
+              We&apos;re a team of engineers, designers, and strategists who
+              treat every project as our own. Our process is built on honest
+              timelines, weekly demos, and iterative feedback &mdash;
+              that&apos;s why 98% of our clients come back.
+            </p>
+          </div>
+
+          {/* Right — Visual */}
+          <div className="ab-hero-visual ab-rise" style={{ animationDelay: "0.6s" }}>
+            <div className="ab-hero-frame-wrap">
+              {/* Animated border glow */}
+              <div className="ab-hero-frame-glow" aria-hidden="true" />
+              <div className="ab-hero-frame">
+                <Image
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80"
+                  alt="Team working on a project"
+                  fill
+                  className="ab-hero-img"
+                  sizes="(max-width:900px) 100vw, 55vw"
+                  priority
+                />
+                <div className="ab-hero-overlay" aria-hidden="true" />
+                <div className="ab-hero-vignette" aria-hidden="true" />
+
+                {/* Scan line effect */}
+                <div className="ab-hero-scanline" aria-hidden="true" />
+              </div>
+
+              {/* Corner accents */}
+              <svg className="ab-hero-corner ab-hero-corner--tl" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M0 12V1a1 1 0 011-1h11" fill="none" stroke="rgba(var(--neon-rgb),0.4)" strokeWidth="1.5" />
+              </svg>
+              <svg className="ab-hero-corner ab-hero-corner--br" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M24 12v11a1 1 0 01-1 1H12" fill="none" stroke="rgba(var(--neon-rgb),0.4)" strokeWidth="1.5" />
+              </svg>
+
+              {/* Retention badge — glass */}
+              <div className="ab-hero-retention">
+                <div className="ab-hero-retention-pulse" aria-hidden="true" />
+                <span className="ab-hero-retention-val">98%</span>
+                <span className="ab-hero-retention-lbl">Client Retention</span>
+              </div>
+
+              {/* Year badge */}
+              <div className="ab-hero-year">
+                <span className="ab-hero-year-val">2019</span>
+                <span className="ab-hero-year-lbl">Est.</span>
+              </div>
             </div>
           </div>
+        </div>
+
+        {/* Stats bar — premium glass */}
+        <div className="ab-hero-stats-bar ab-rise" style={{ animationDelay: "1.4s" }}>
+          <div className="ab-hero-stats-shine" aria-hidden="true" />
+          {stats.map((s) => (
+            <StatItem key={s.label} stat={s} />
+          ))}
         </div>
       </section>
 
       {/* ── Main content container ── */}
       <div className="ab-wrap">
-
-        <div className="ab-thread" aria-hidden="true" />
-
-        {/* ═══════════════════════════════════════
-            NARRATIVE — Editorial Magazine
-            ═══════════════════════════════════════ */}
-        <section className="ab-nar ab-reveal">
-          {/* Full-width quote */}
-          <div className="ab-nar-quote-wrap">
-            <p className="ab-tag">How We Work</p>
-            <blockquote className="ab-nar-quote">
-              &ldquo;Every project gets a{" "}
-              <span className="ab-accent">dedicated team</span>, a clear
-              roadmap, and full transparency &mdash; no surprises, no
-              shortcuts.&rdquo;
-            </blockquote>
-          </div>
-
-          {/* Photo + overlapping text */}
-          <div className="ab-nar-stage">
-            <div className="ab-nar-text">
-              <p className="ab-prose">
-                We&apos;re not a factory that churns out generic products.
-                We&apos;re a team of engineers, designers, and strategists who
-                treat every project as our own. From discovery to deployment,
-                you get direct access to the people building your product.
-              </p>
-              <p className="ab-prose">
-                Our process is built on honest timelines, weekly demos, and
-                iterative feedback loops. We believe the best software comes
-                from close collaboration &mdash; not handoffs and black boxes.
-                That&apos;s why 98% of our clients come back.
-              </p>
-            </div>
-            <div className="ab-nar-photo">
-              <Image
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80"
-                alt="Team working on a project"
-                fill
-                className="ab-nar-photo-img"
-                sizes="(max-width:768px) 100vw, 60vw"
-              />
-              <div className="ab-nar-photo-glow" aria-hidden="true" />
-              <div className="ab-nar-badge">
-                <span className="ab-nar-badge-yr">98%</span>
-                <span className="ab-nar-badge-lbl">Client Retention</span>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <div className="ab-thread" aria-hidden="true" />
 
@@ -426,7 +439,7 @@ export default function AboutPage() {
                   </svg>
                 </span>
               </Link>
-              <Link href="/#projects" className="ab-aur-btn ab-aur-btn--outline">
+              <Link href="/projects" className="ab-aur-btn ab-aur-btn--outline">
                 See Our Work
               </Link>
             </div>
