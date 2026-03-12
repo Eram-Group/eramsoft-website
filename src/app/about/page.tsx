@@ -329,57 +329,6 @@ export default function AboutPage() {
         <div className="ab-thread" aria-hidden="true" />
 
         {/* ═══════════════════════════════════════
-            VM CARDS — Vision & Mission glass cards
-            ═══════════════════════════════════════ */}
-        <section className="ab-vm ab-vm--single ab-reveal">
-          <div className="ab-vm-card ab-vm-card--combined">
-            <span className="ab-vm-mark" aria-hidden="true">V&thinsp;M</span>
-
-            <div className="ab-vm-split">
-              <div className="ab-vm-half">
-                <div className="ab-vm-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <circle cx="12" cy="12" r="6" />
-                    <circle cx="12" cy="12" r="2" />
-                  </svg>
-                </div>
-                <h2 className="ab-vm-title">Our Vision</h2>
-                <p className="ab-vm-desc">
-                  To be the engineering partner of choice for businesses that refuse
-                  to compromise on quality &mdash; building software that sets new
-                  standards for performance, design, and reliability across the
-                  region.
-                </p>
-              </div>
-
-              <div className="ab-vm-divider" aria-hidden="true" />
-
-              <div className="ab-vm-half">
-                <div className="ab-vm-icon">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z" />
-                    <path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z" />
-                  </svg>
-                </div>
-                <h2 className="ab-vm-title">Our Mission</h2>
-                <p className="ab-vm-desc">
-                  To deliver end-to-end digital solutions with precision
-                  engineering, transparent collaboration, and relentless attention
-                  to detail &mdash; empowering our clients to lead in their
-                  industries through technology.
-                </p>
-              </div>
-            </div>
-
-            <div className="ab-vm-edge" aria-hidden="true" />
-          </div>
-        </section>
-
-
-        <div className="ab-thread" aria-hidden="true" />
-
-        {/* ═══════════════════════════════════════
             PRINCIPLES — Core Values
             ═══════════════════════════════════════ */}
         <section className="ab-pr ab-reveal">
