@@ -225,13 +225,6 @@ export default function AboutPage() {
           ))}
         </div>
 
-        {/* Scroll indicator */}
-        <div className="ab-scroll ab-rise" style={{ animationDelay: "1.25s" }}>
-          <div className="ab-scroll-track">
-            <div className="ab-scroll-pulse" />
-          </div>
-          <span className="ab-scroll-txt">Scroll</span>
-        </div>
       </section>
 
       {/* ── Main content container ── */}
@@ -334,18 +327,6 @@ export default function AboutPage() {
 
           {/* Mission */}
           <div className="ab-pil-card ab-pil-card--m">
-            <div className="ab-pil-content">
-              <span className="ab-pil-tag">Mission</span>
-              <h3 className="ab-pil-title">
-                Delivering end-to-end digital solutions with{" "}
-                <span className="ab-accent">precision</span>
-              </h3>
-              <p className="ab-pil-desc">
-                Transparent collaboration and relentless attention to detail
-                &mdash; empowering our clients to lead in their industries
-                through technology.
-              </p>
-            </div>
             <div className="ab-pil-ring" aria-hidden="true">
               <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="100" cy="100" r="96" stroke="rgba(80,170,255,0.08)" strokeWidth="1" />
@@ -365,6 +346,18 @@ export default function AboutPage() {
                 </svg>
               </div>
             </div>
+            <div className="ab-pil-content">
+              <span className="ab-pil-tag">Mission</span>
+              <h3 className="ab-pil-title">
+                Delivering end-to-end digital solutions with{" "}
+                <span className="ab-accent">precision</span>
+              </h3>
+              <p className="ab-pil-desc">
+                Transparent collaboration and relentless attention to detail
+                &mdash; empowering our clients to lead in their industries
+                through technology.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -373,124 +366,51 @@ export default function AboutPage() {
         {/* ═══════════════════════════════════════
             VM CARDS — Vision & Mission glass cards
             ═══════════════════════════════════════ */}
-        <section className="ab-vm ab-reveal">
-          <div className="ab-vm-card">
-            <span className="ab-vm-mark" aria-hidden="true">V</span>
-            <div className="ab-vm-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <circle cx="12" cy="12" r="6" />
-                <circle cx="12" cy="12" r="2" />
-              </svg>
-            </div>
-            <h2 className="ab-vm-title">Our Vision</h2>
-            <p className="ab-vm-desc">
-              To be the engineering partner of choice for businesses that refuse
-              to compromise on quality &mdash; building software that sets new
-              standards for performance, design, and reliability across the
-              region.
-            </p>
-            <div className="ab-vm-edge" aria-hidden="true" />
-          </div>
+        <section className="ab-vm ab-vm--single ab-reveal">
+          <div className="ab-vm-card ab-vm-card--combined">
+            <span className="ab-vm-mark" aria-hidden="true">V&thinsp;M</span>
 
-          <div className="ab-vm-card">
-            <span className="ab-vm-mark" aria-hidden="true">M</span>
-            <div className="ab-vm-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z" />
-                <path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z" />
-              </svg>
+            <div className="ab-vm-split">
+              <div className="ab-vm-half">
+                <div className="ab-vm-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="12" r="6" />
+                    <circle cx="12" cy="12" r="2" />
+                  </svg>
+                </div>
+                <h2 className="ab-vm-title">Our Vision</h2>
+                <p className="ab-vm-desc">
+                  To be the engineering partner of choice for businesses that refuse
+                  to compromise on quality &mdash; building software that sets new
+                  standards for performance, design, and reliability across the
+                  region.
+                </p>
+              </div>
+
+              <div className="ab-vm-divider" aria-hidden="true" />
+
+              <div className="ab-vm-half">
+                <div className="ab-vm-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z" />
+                    <path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z" />
+                  </svg>
+                </div>
+                <h2 className="ab-vm-title">Our Mission</h2>
+                <p className="ab-vm-desc">
+                  To deliver end-to-end digital solutions with precision
+                  engineering, transparent collaboration, and relentless attention
+                  to detail &mdash; empowering our clients to lead in their
+                  industries through technology.
+                </p>
+              </div>
             </div>
-            <h2 className="ab-vm-title">Our Mission</h2>
-            <p className="ab-vm-desc">
-              To deliver end-to-end digital solutions with precision
-              engineering, transparent collaboration, and relentless attention
-              to detail &mdash; empowering our clients to lead in their
-              industries through technology.
-            </p>
+
             <div className="ab-vm-edge" aria-hidden="true" />
           </div>
         </section>
 
-        <div className="ab-thread" aria-hidden="true" />
-
-        {/* ═══════════════════════════════════════
-            VM2 — Vision & Mission Redesigned
-            Split-panel editorial with timeline
-            ═══════════════════════════════════════ */}
-        <section className="ab-vm2 ab-reveal">
-          <div className="ab-vm2-header">
-            <p className="ab-tag">What Guides Us</p>
-            <h2 className="ab-section-title">
-              Our <span className="ab-accent">North Star</span>
-            </h2>
-          </div>
-
-          <div className="ab-vm2-grid">
-            {/* Vision Panel */}
-            <div className="ab-vm2-panel ab-vm2-panel--vision">
-              <div className="ab-vm2-panel-inner">
-                <div className="ab-vm2-badge">
-                  <span className="ab-vm2-badge-num">01</span>
-                  <span className="ab-vm2-badge-line" aria-hidden="true" />
-                  <span className="ab-vm2-badge-label">Vision</span>
-                </div>
-                <h3 className="ab-vm2-heading">
-                  The Partner of Choice for Those Who Refuse to{" "}
-                  <span className="ab-accent">Compromise</span>
-                </h3>
-                <p className="ab-vm2-body">
-                  We envision a world where every business — regardless of scale —
-                  has access to software that sets new standards for performance,
-                  design, and reliability across the region.
-                </p>
-                <div className="ab-vm2-tags">
-                  <span className="ab-vm2-chip">Performance</span>
-                  <span className="ab-vm2-chip">Design</span>
-                  <span className="ab-vm2-chip">Reliability</span>
-                </div>
-              </div>
-              <div className="ab-vm2-panel-glow ab-vm2-panel-glow--v" aria-hidden="true" />
-            </div>
-
-            {/* Center Timeline */}
-            <div className="ab-vm2-timeline" aria-hidden="true">
-              <div className="ab-vm2-timeline-line" />
-              <div className="ab-vm2-timeline-node">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-              </div>
-              <div className="ab-vm2-timeline-line" />
-            </div>
-
-            {/* Mission Panel */}
-            <div className="ab-vm2-panel ab-vm2-panel--mission">
-              <div className="ab-vm2-panel-inner">
-                <div className="ab-vm2-badge">
-                  <span className="ab-vm2-badge-num">02</span>
-                  <span className="ab-vm2-badge-line" aria-hidden="true" />
-                  <span className="ab-vm2-badge-label">Mission</span>
-                </div>
-                <h3 className="ab-vm2-heading">
-                  End-to-End Solutions Powered by{" "}
-                  <span className="ab-accent">Precision</span> Engineering
-                </h3>
-                <p className="ab-vm2-body">
-                  We deliver digital solutions through transparent collaboration
-                  and relentless attention to detail — empowering our clients to
-                  lead in their industries through technology that truly works.
-                </p>
-                <div className="ab-vm2-tags">
-                  <span className="ab-vm2-chip">Transparency</span>
-                  <span className="ab-vm2-chip">Precision</span>
-                  <span className="ab-vm2-chip">Empowerment</span>
-                </div>
-              </div>
-              <div className="ab-vm2-panel-glow ab-vm2-panel-glow--m" aria-hidden="true" />
-            </div>
-          </div>
-        </section>
 
         <div className="ab-thread" aria-hidden="true" />
 
@@ -533,34 +453,67 @@ export default function AboutPage() {
         <div className="ab-thread" aria-hidden="true" />
 
         {/* ═══════════════════════════════════════
-            SIGNAL — CTA
+            AURORA — CTA
             ═══════════════════════════════════════ */}
-        <section className="ab-sig ab-reveal">
-          <div className="ab-sig-inner">
-            <div className="ab-sig-rings" aria-hidden="true">
-              <span />
-              <span />
-              <span />
+        <section className="ab-aur ab-reveal">
+          {/* Aurora light bands */}
+          <div className="ab-aur-sky" aria-hidden="true">
+            <div className="ab-aur-band ab-aur-band--1" />
+            <div className="ab-aur-band ab-aur-band--2" />
+            <div className="ab-aur-band ab-aur-band--3" />
+          </div>
+
+          {/* Star field */}
+          <div className="ab-aur-stars" aria-hidden="true">
+            <span style={{ top: "12%", left: "8%", animationDelay: "0s" }} />
+            <span style={{ top: "20%", left: "85%", animationDelay: "1.2s" }} />
+            <span style={{ top: "35%", left: "22%", animationDelay: "0.6s" }} />
+            <span style={{ top: "18%", left: "55%", animationDelay: "2.1s" }} />
+            <span style={{ top: "45%", left: "72%", animationDelay: "0.3s" }} />
+            <span style={{ top: "8%", left: "40%", animationDelay: "1.8s" }} />
+            <span style={{ top: "55%", left: "12%", animationDelay: "0.9s" }} />
+            <span style={{ top: "30%", left: "92%", animationDelay: "1.5s" }} />
+            <span style={{ top: "50%", left: "48%", animationDelay: "2.4s" }} />
+            <span style={{ top: "15%", left: "68%", animationDelay: "0.4s" }} />
+          </div>
+
+          {/* Horizon glow */}
+          <div className="ab-aur-horizon" aria-hidden="true" />
+
+          {/* Sweeping light beam */}
+          <div className="ab-aur-beam" aria-hidden="true" />
+
+          {/* Content — directly in section, no inner card */}
+          <div className="ab-aur-body">
+            <div className="ab-aur-badge">
+              <span className="ab-aur-badge-dot" />
+              Let&apos;s Talk
             </div>
-            <div className="ab-sig-glow" aria-hidden="true" />
-            <h2 className="ab-sig-title">
-              Ready to Build Something{" "}
-              <span className="ab-accent">Exceptional</span>?
+
+            <h2 className="ab-aur-title">
+              Ready to Build Something
+              <br />
+              <span className="ab-aur-title-accent">Exceptional</span>?
             </h2>
-            <p className="ab-sig-desc">
+
+            <p className="ab-aur-desc">
               Let&apos;s discuss how we can bring your vision to life with
               precision engineering and world-class design.
             </p>
-            <div className="ab-sig-actions">
-              <Link href="/#services" className="ab-sig-btn ab-sig-btn--fill">
-                Explore Services
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
+
+            <div className="ab-aur-actions">
+              <Link href="/#contact" className="ab-aur-btn ab-aur-btn--primary">
+                <span className="ab-aur-btn-shimmer" aria-hidden="true" />
+                <span className="ab-aur-btn-text">
+                  Get a Free Consultation
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
               </Link>
-              <Link href="/#clients" className="ab-sig-btn ab-sig-btn--ghost">
-                See Our Clients
+              <Link href="/#projects" className="ab-aur-btn ab-aur-btn--outline">
+                See Our Work
               </Link>
             </div>
           </div>
