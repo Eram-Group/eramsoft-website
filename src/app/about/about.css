@@ -296,36 +296,117 @@
 
 
 /* ══════════════════════════════════════════════════
-   HERO — Cinematic full-viewport
+   HERO — Panoramic Showcase
    ══════════════════════════════════════════════════ */
 
 .ab-hero {
   position: relative;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-/* ── Background layers ── */
+/* ── Background mesh ── */
 
-.ab-hero-bg {
+.ab-hero-mesh {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(80, 170, 255, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 70%, rgba(60, 140, 255, 0.05) 0%, transparent 50%);
+  animation: ab-meshPulse 16s ease-in-out infinite alternate;
+}
+
+@keyframes ab-meshPulse {
+  0%   { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+/* ── Inner layout — vertical stack ── */
+
+.ab-hero-inner {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 140px clamp(24px, 5vw, 72px) 64px;
+  width: 100%;
+}
+
+/* ── Typography ── */
+
+.ab-hero-h1 {
+  margin: 18px 0 0;
+}
+
+.ab-hero-line {
+  display: block;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: #e8edf4;
+  opacity: 0;
+  animation: ab-lineReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ab-hero-line--lead {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 500;
+  color: rgba(180, 195, 215, 0.55);
+  letter-spacing: 0.02em;
+  line-height: 1.8;
+}
+
+.ab-hero-line--hero {
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  padding: 4px 0;
+}
+
+.ab-hero-sub {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: rgba(180, 195, 215, 0.5);
+  max-width: 520px;
+  margin: 24px auto 0;
+}
+
+/* ── Cinematic panoramic frame ── */
+
+.ab-hero-cinema {
+  position: relative;
+  width: 100%;
+  margin-top: 48px;
+}
+
+.ab-hero-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.35 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(80, 170, 255, 0.08);
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 0 120px rgba(80, 170, 255, 0.04);
 }
 
 .ab-hero-img {
   object-fit: cover;
-  object-position: center 30%;
-  filter: brightness(0.4) contrast(1.12) saturate(0.75);
-  animation: ab-heroImgIn 2.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  object-position: center 35%;
+  filter: brightness(0.5) contrast(1.12) saturate(0.8);
+  animation: ab-heroImgIn 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
 }
 
 @keyframes ab-heroImgIn {
-  from { transform: scale(1.08); opacity: 0; }
+  from { transform: scale(1.05); opacity: 0; }
   to   { transform: scale(1);   opacity: 1; }
 }
 
@@ -333,225 +414,68 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(
-      180deg,
-      rgba(17, 24, 37, 0.88) 0%,
-      rgba(21, 30, 46, 0.55) 35%,
-      rgba(26, 37, 56, 0.5) 55%,
-      rgba(20, 28, 42, 0.78) 80%,
-      #141c2a 100%
-    ),
-    radial-gradient(
-      ellipse at 65% 35%,
-      rgba(80, 170, 255, 0.07) 0%,
-      transparent 55%
-    );
+    linear-gradient(180deg, rgba(17, 24, 37, 0.35) 0%, transparent 30%, transparent 60%, rgba(17, 24, 37, 0.55) 100%),
+    linear-gradient(90deg, rgba(17, 24, 37, 0.25) 0%, transparent 25%, transparent 75%, rgba(17, 24, 37, 0.25) 100%);
 }
 
 .ab-hero-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 40%,
-    rgba(10, 14, 22, 0.45) 100%
-  );
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(10, 14, 22, 0.35) 100%);
   pointer-events: none;
 }
 
-.ab-hero-scan {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(0, 0, 0, 0.02) 3px,
-    rgba(0, 0, 0, 0.02) 6px
-  );
-}
-
-/* ── Viewfinder frame ── */
-
-.ab-hero-frame {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.ab-hero-corner {
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  opacity: 0;
-}
-
-.ab-hero-corner--tl {
-  top: 14%;
-  left: 7%;
-  border-left: 1px solid rgba(80, 170, 255, 0.22);
-  border-top: 1px solid rgba(80, 170, 255, 0.22);
-  animation: ab-cornerIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
-}
-
-.ab-hero-corner--br {
-  bottom: 18%;
-  right: 7%;
-  border-right: 1px solid rgba(80, 170, 255, 0.16);
-  border-bottom: 1px solid rgba(80, 170, 255, 0.16);
-  animation: ab-cornerIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
-}
-
-@keyframes ab-cornerIn {
-  from { opacity: 0; transform: scale(0.4); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-/* ── Orbit arcs ── */
-
-.ab-hero-arcs {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  animation: ab-arcsIn 2s ease 0.4s forwards;
-}
-
-@keyframes ab-arcsIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.ab-arc {
-  fill: none;
-  opacity: 0;
-}
-
-.ab-arc--1 {
-  animation: ab-arcDraw 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
-  filter: drop-shadow(0 0 16px rgba(80, 170, 255, 0.35))
-         drop-shadow(0 0 4px rgba(80, 170, 255, 0.2));
-}
-
-.ab-arc--2 {
-  animation: ab-arcDraw 3s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
-  filter: drop-shadow(0 0 10px rgba(80, 170, 255, 0.15));
-}
-
-@keyframes ab-arcDraw {
-  from { opacity: 0; stroke-dashoffset: 3000; }
-  to   { opacity: 1; stroke-dashoffset: 0; }
-}
-
-/* ── Hero content ── */
-
-.ab-hero-body {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  max-width: 820px;
-  padding: 100px clamp(20px, 4vw, 48px) 0;
-}
-
-.ab-hero-h1 {
-  margin: 20px 0 0;
-}
-
-.ab-hero-line {
-  display: block;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: #e8edf4;
-  opacity: 0;
-  animation: ab-lineReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* ── Accent rule ── */
-
-.ab-hero-rule {
-  width: 72px;
-  height: 1px;
-  margin: 28px auto 24px;
-  background: linear-gradient(90deg, transparent, #50aaff 30%, #82d2ff 50%, #50aaff 70%, transparent);
-  transform-origin: center;
-  transform: scaleX(0);
-  opacity: 0;
-  animation: ab-ruleIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
-  box-shadow: 0 0 12px rgba(80, 170, 255, 0.25);
-}
-
-@keyframes ab-ruleIn {
-  from { transform: scaleX(0); opacity: 0; }
-  to   { transform: scaleX(1); opacity: 1; }
-}
-
-.ab-hero-sub {
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: rgba(180, 195, 215, 0.7);
-  max-width: 540px;
-  margin: 0 auto;
-}
-
-/* ── Stats glass bar ── */
+/* ── Stats glass bar — anchored to cinema bottom ── */
 
 .ab-hero-stats {
   position: absolute;
-  bottom: 44px;
+  bottom: -26px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 4;
   display: flex;
-  gap: 2px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.035);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  align-items: center;
+  gap: 0;
+  border-radius: 18px;
+  background: rgba(17, 24, 37, 0.7);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.025) inset,
-    0 1px 0 rgba(255, 255, 255, 0.05) inset;
-  padding: 28px 16px;
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  padding: 18px 8px;
 }
 
 .ab-stat {
   text-align: center;
   position: relative;
-  padding: 4px 32px;
+  padding: 6px 32px;
 }
 
 .ab-stat + .ab-stat::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 8%;
-  height: 84%;
+  top: 10%;
+  height: 80%;
   width: 1px;
   background: linear-gradient(180deg, transparent, rgba(80, 170, 255, 0.15), transparent);
 }
 
 .ab-stat-value {
   display: block;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 900;
   color: #50aaff;
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  text-shadow: 0 0 28px rgba(80, 170, 255, 0.2);
+  text-shadow: 0 0 24px rgba(80, 170, 255, 0.25);
 }
 
 .ab-stat-label {
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 600;
   color: rgba(180, 195, 215, 0.4);
   letter-spacing: 0.1em;
@@ -559,84 +483,52 @@
 }
 
 
-
 /* ══════════════════════════════════════════════════
-   NARRATIVE — Editorial split (Story)
+   NARRATIVE — Editorial Magazine (Story)
    ══════════════════════════════════════════════════ */
 
 .ab-nar {
-  display: grid;
-  grid-template-columns: 0.42fr 0.58fr;
-  gap: 60px;
-  align-items: start;
   padding: 20px 0 16px;
 }
 
-/* ── Left: quote column ── */
+/* ── Full-width quote ── */
 
-.ab-nar-left {
-  position: relative;
-  padding-left: 28px;
-  border-left: 2px solid rgba(80, 170, 255, 0.12);
-}
-
-.ab-nar-left::before {
-  content: '\201C';
-  position: absolute;
-  top: 38px;
-  left: -16px;
-  font-size: 9rem;
-  line-height: 0.7;
-  color: rgba(80, 170, 255, 0.04);
-  pointer-events: none;
-  font-family: Georgia, 'Times New Roman', serif;
+.ab-nar-quote-wrap {
+  margin-bottom: 48px;
 }
 
 .ab-nar-quote {
-  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
-  font-weight: 600;
-  color: rgba(232, 237, 244, 0.88);
-  line-height: 1.6;
-  margin: 18px 0 36px;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+  font-weight: 300;
+  color: rgba(232, 237, 244, 0.7);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  max-width: 860px;
+  font-style: italic;
 }
 
-.ab-nar-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: 1px solid rgba(80, 170, 255, 0.08);
-  background: rgba(80, 170, 255, 0.03);
+/* ── Photo + text overlap stage ── */
+
+.ab-nar-stage {
+  display: grid;
+  grid-template-columns: 0.42fr 0.58fr;
+  gap: 0;
+  align-items: start;
 }
 
-.ab-nar-badge-yr {
-  font-size: 1.3rem;
-  font-weight: 900;
-  color: #50aaff;
-  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  text-shadow: 0 0 16px rgba(80, 170, 255, 0.2);
+.ab-nar-text {
+  padding-right: 40px;
+  padding-top: 16px;
 }
-
-.ab-nar-badge-lbl {
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: rgba(122, 141, 164, 0.5);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-/* ── Right: body + photo ── */
 
 .ab-nar-photo {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  border-radius: 16px;
+  width: calc(100% + 24px);
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
   overflow: hidden;
-  margin-top: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-left: -24px;
   transition: border-color 0.5s ease;
 }
 
@@ -658,9 +550,42 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40%;
-  background: linear-gradient(to top, rgba(20, 28, 42, 0.5), transparent);
+  height: 50%;
+  background: linear-gradient(to top, rgba(20, 28, 42, 0.6), transparent);
   pointer-events: none;
+}
+
+/* ── Floating year badge on photo ── */
+
+.ab-nar-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(80, 170, 255, 0.1);
+}
+
+.ab-nar-badge-yr {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #50aaff;
+  font-family: var(--font-geist-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  text-shadow: 0 0 12px rgba(80, 170, 255, 0.3);
+}
+
+.ab-nar-badge-lbl {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: rgba(180, 195, 215, 0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 
@@ -4275,32 +4200,44 @@
 
 @media (max-width: 1024px) and (min-width: 641px) {
   /* ── Hero ── */
+  .ab-hero-inner {
+    padding: 120px clamp(20px, 4vw, 48px) 56px;
+  }
+
+  .ab-hero-line--hero {
+    font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  }
+
+  .ab-hero-cinema {
+    margin-top: 36px;
+  }
+
   .ab-hero-stats {
-    padding: 22px 10px;
+    padding: 14px 6px;
+    bottom: -22px;
   }
 
   .ab-stat {
-    padding: 4px 20px;
+    padding: 6px 20px;
   }
 
   .ab-stat-value {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
-
-  .ab-hero-corner {
-    width: 48px;
-    height: 48px;
-  }
-
 
   /* ── Narrative ── */
-  .ab-nar {
+  .ab-nar-stage {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
   }
 
-  .ab-nar-left {
-    max-width: 560px;
+  .ab-nar-text {
+    padding-right: 0;
+  }
+
+  .ab-nar-photo {
+    width: 100%;
+    margin-left: 0;
   }
 
   /* ── Pillars ── */
@@ -4512,47 +4449,53 @@
 
   /* ── Hero ── */
   .ab-hero {
-    min-height: 100svh;
-    padding-bottom: 200px;
+    min-height: auto;
   }
 
-  .ab-hero-body {
-    padding-top: 80px;
+  .ab-hero-inner {
+    padding: 100px 16px 40px;
   }
 
-  .ab-hero-line {
-    font-size: 1.7rem;
+  .ab-hero-line--hero {
+    font-size: 2.2rem;
+  }
+
+  .ab-hero-line--lead {
+    font-size: 0.9rem;
   }
 
   .ab-hero-sub {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    margin-top: 18px;
   }
 
-  .ab-hero-rule {
-    width: 48px;
-    margin: 20px auto 18px;
+  .ab-hero-cinema {
+    margin-top: 32px;
   }
 
-  .ab-hero-arcs,
   .ab-hero-frame {
-    display: none;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
   }
 
-
-  /* ── Hero Stats ── */
   .ab-hero-stats {
-    left: 16px;
-    right: 16px;
+    position: relative;
+    bottom: auto;
+    left: auto;
     transform: none;
+    margin-top: -20px;
     flex-wrap: wrap;
-    padding: 16px 8px;
+    justify-content: center;
+    padding: 14px 8px;
     border-radius: 16px;
-    bottom: 24px;
+    width: calc(100% - 24px);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .ab-stat {
     flex: 0 0 50%;
-    padding: 8px 6px;
+    padding: 8px 8px;
   }
 
   .ab-stat + .ab-stat::before {
@@ -4560,11 +4503,11 @@
   }
 
   .ab-stat-value {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .ab-stat-label {
-    font-size: 0.56rem;
+    font-size: 0.52rem;
   }
 
   /* ── Thread ── */
@@ -4573,13 +4516,26 @@
   }
 
   /* ── Narrative ── */
-  .ab-nar {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  .ab-nar-quote {
+    font-size: 1.15rem;
   }
 
-  .ab-nar-quote {
-    font-size: 1.1rem;
+  .ab-nar-quote-wrap {
+    margin-bottom: 32px;
+  }
+
+  .ab-nar-stage {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .ab-nar-text {
+    padding-right: 0;
+  }
+
+  .ab-nar-photo {
+    width: 100%;
+    margin-left: 0;
   }
 
   /* ── Pillars ── */

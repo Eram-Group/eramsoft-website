@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "HOME", href: "#" },
@@ -15,6 +16,12 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const isDark = true;
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === "#") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -43,7 +50,11 @@ export default function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className={`text-[13px] font-medium tracking-widest transition-colors hover:text-[#50aaff] ${isDark ? "text-white/50" : "text-foreground/60"}`}
+              className={`relative text-[13px] font-medium tracking-widest transition-colors hover:text-[#50aaff] ${
+                isActive(link.href)
+                  ? "text-[#50aaff] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-[#50aaff] after:rounded-full"
+                  : isDark ? "text-white/50" : "text-foreground/60"
+              }`}
             >
               {link.label}
             </Link>
@@ -107,7 +118,11 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`text-[13px] font-medium tracking-widest transition-colors hover:text-[#50aaff] ${isDark ? "text-white/50" : "text-foreground/60"}`}
+                className={`relative text-[13px] font-medium tracking-widest transition-colors hover:text-[#50aaff] ${
+                  isActive(link.href)
+                    ? "text-[#50aaff]"
+                    : isDark ? "text-white/50" : "text-foreground/60"
+                }`}
               >
                 {link.label}
               </Link>

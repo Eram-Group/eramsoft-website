@@ -1,0 +1,1033 @@
+/* ══════════════════════════════════════════════════
+   Projects v4 — Noir Bento Mosaic
+   All classes prefixed ap4-.
+
+   Aesthetic: High-contrast noir with blue/orange
+   accent palette. Bento grid with varied card
+   sizes, full-bleed imagery, hover-reveal content.
+   ══════════════════════════════════════════════════ */
+
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap");
+
+
+/* ══════════════════════════════════════════════════
+   Page Surface & Tokens
+   ══════════════════════════════════════════════════ */
+
+.ap4-page {
+  --ap4-accent: #50aaff;
+  --ap4-accent-mid: rgba(80, 170, 255, 0.35);
+  --ap4-accent-soft: rgba(80, 170, 255, 0.1);
+  --ap4-accent-warm: #7ec8ff;
+  --ap4-accent-warm-mid: rgba(80, 170, 255, 0.3);
+  --ap4-accent-warm-soft: rgba(80, 170, 255, 0.08);
+  --ap4-bg: #111825;
+  --ap4-surface: #141c2a;
+  --ap4-border: rgba(255, 255, 255, 0.06);
+  --ap4-text: #e8edf4;
+  --ap4-muted: #4a6080;
+  --ap4-dim: #3d5470;
+
+  background: linear-gradient(160deg, #111825 0%, #151e2e 20%, #1a2538 40%, #1e2a3f 60%, #192236 80%, #141c2a 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: clip;
+  color: var(--ap4-text);
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Ambient Layers
+   ══════════════════════════════════════════════════ */
+
+/* ── Film grain texture ── */
+
+.ap4-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+
+/* ── Ambient glow blobs ── */
+
+.ap4-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(160px);
+  z-index: 0;
+}
+
+.ap4-glow--1 {
+  width: 700px;
+  height: 700px;
+  top: -20%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(56, 150, 235, 0.06) 0%, transparent 70%);
+}
+
+.ap4-glow--2 {
+  width: 500px;
+  height: 500px;
+  bottom: 10%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(80, 170, 255, 0.035) 0%, transparent 70%);
+}
+
+.ap4-glow--3 {
+  width: 400px;
+  height: 400px;
+  top: 55%;
+  left: 25%;
+  background: radial-gradient(circle, rgba(80, 170, 255, 0.025) 0%, transparent 70%);
+}
+
+
+/* ══════════════════════════════════════════════════
+   Container
+   ══════════════════════════════════════════════════ */
+
+.ap4-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1340px;
+  margin: 0 auto;
+  padding: 100px 56px 140px;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Header — Centered Stage
+   ══════════════════════════════════════════════════ */
+
+.ap4-header {
+  margin-bottom: 56px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* ── Top label ── */
+
+.ap4-header-label {
+  display: inline-block;
+  font-family: "DM Sans", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ap4-accent);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: ap4-label-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+@keyframes ap4-label-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    letter-spacing: 0.6em;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.3em;
+  }
+}
+
+
+/* ── Hero title with ghost outline ── */
+
+.ap4-hero {
+  position: relative;
+  margin: 0 0 32px;
+  line-height: 1;
+}
+
+.ap4-hero-text {
+  display: block;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(5rem, 14vw, 10rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  background: linear-gradient(
+    135deg,
+    #50aaff 0%,
+    #7ec8ff 30%,
+    #e8853b 65%,
+    #50aaff 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ap4-shimmer 6s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes ap4-shimmer {
+  0%   { background-position: 0% center; }
+  50%  { background-position: 300% center; }
+  100% { background-position: 0% center; }
+}
+
+.ap4-hero-outline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Syne", sans-serif;
+  font-size: clamp(7rem, 20vw, 15rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  white-space: nowrap;
+  -webkit-text-stroke: 1px rgba(80, 170, 255, 0.06);
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* ── Info bar ── */
+
+.ap4-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ap4-bar-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "DM Sans", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ap4-accent);
+}
+
+.ap4-tag-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ap4-accent);
+  box-shadow: 0 0 12px var(--ap4-accent-mid);
+  animation: ap4-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ap4-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 12px var(--ap4-accent-mid); }
+  50% { opacity: 0.4; box-shadow: 0 0 4px var(--ap4-accent-soft); }
+}
+
+.ap4-bar-rule {
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(80, 170, 255, 0.25),
+    transparent
+  );
+  flex-shrink: 0;
+}
+
+.ap4-bar-count {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ap4-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.ap4-bar-tagline {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ap4-muted);
+  font-style: italic;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Filter Tabs
+   ══════════════════════════════════════════════════ */
+
+.ap4-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 56px;
+  border-bottom: 1px solid var(--ap4-border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ap4-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.ap4-tab {
+  position: relative;
+  padding: 14px 24px;
+  border: none;
+  background: none;
+  color: var(--ap4-dim);
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.ap4-tab::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 24px;
+  right: 24px;
+  height: 2px;
+  background: var(--ap4-accent);
+  border-radius: 2px 2px 0 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ap4-tab:hover {
+  color: var(--ap4-muted);
+}
+
+.ap4-tab--on {
+  color: var(--ap4-accent);
+}
+
+.ap4-tab--on::after {
+  transform: scaleX(1);
+}
+
+
+/* ══════════════════════════════════════════════════
+   Bento Mosaic Grid
+   Pattern (every 5 items):
+     0 → 2col × 2row (large showcase)
+     1 → 1col × 1row
+     2 → 1col × 1row
+     3 → 2col × 1row (wide panoramic)
+     4 → 1col × 1row
+   ══════════════════════════════════════════════════ */
+
+.ap4-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 340px;
+  gap: 14px;
+  grid-auto-flow: dense;
+}
+
+.ap4-card--lg {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.ap4-card--wide {
+  grid-column: span 2;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Card — Base
+   ══════════════════════════════════════════════════ */
+
+.ap4-card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    border-color 0.5s ease,
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ap4-card:hover {
+  border-color: rgba(80, 170, 255, 0.15);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(80, 170, 255, 0.08),
+    0 0 48px rgba(80, 170, 255, 0.04);
+}
+
+
+/* ── Full-bleed image ── */
+
+.ap4-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ap4-card:hover .ap4-card-bg {
+  transform: scale(1.06);
+}
+
+
+/* ── Gradient overlay ── */
+
+.ap4-card-dim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 28, 42, 0.1) 0%,
+    rgba(20, 28, 42, 0.15) 30%,
+    rgba(20, 28, 42, 0.65) 70%,
+    rgba(20, 28, 42, 0.92) 100%
+  );
+  transition: background 0.5s ease;
+}
+
+.ap4-card:hover .ap4-card-dim {
+  background: linear-gradient(
+    180deg,
+    rgba(20, 28, 42, 0.2) 0%,
+    rgba(20, 28, 42, 0.25) 25%,
+    rgba(20, 28, 42, 0.75) 60%,
+    rgba(20, 28, 42, 0.96) 100%
+  );
+}
+
+
+/* ── Accent edge (left border glow on hover) ── */
+
+.ap4-card-edge {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  z-index: 5;
+  background: linear-gradient(
+    180deg,
+    transparent 10%,
+    var(--ap4-accent) 50%,
+    transparent 90%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.ap4-card:hover .ap4-card-edge {
+  opacity: 1;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Card — Index Number
+   ══════════════════════════════════════════════════ */
+
+.ap4-card-idx {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  z-index: 3;
+  font-family: "Syne", sans-serif;
+  font-size: 4.5rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.04);
+  transition: color 0.5s ease;
+  pointer-events: none;
+}
+
+.ap4-card--lg .ap4-card-idx {
+  font-size: 7rem;
+}
+
+.ap4-card:hover .ap4-card-idx {
+  color: rgba(80, 170, 255, 0.07);
+}
+
+
+/* ══════════════════════════════════════════════════
+   Card — Top Chips (Category + Year)
+   ══════════════════════════════════════════════════ */
+
+.ap4-card-chips {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+}
+
+.ap4-chip {
+  padding: 5px 14px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ap4-chip--yr {
+  color: rgba(80, 170, 255, 0.85);
+  border-color: rgba(80, 170, 255, 0.12);
+  background: rgba(0, 0, 0, 0.5);
+  font-family: "DM Sans", monospace;
+  letter-spacing: 0.06em;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Card — Bottom Content
+   ══════════════════════════════════════════════════ */
+
+.ap4-card-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 0 26px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ── Meta line ── */
+
+.ap4-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ap4-dim);
+}
+
+.ap4-sep {
+  color: var(--ap4-dim);
+  opacity: 0.4;
+}
+
+.ap4-live {
+  color: rgba(72, 200, 120, 0.7);
+}
+
+
+/* ── Title ── */
+
+.ap4-card-name {
+  font-family: "Syne", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.ap4-card--lg .ap4-card-name {
+  font-size: 2rem;
+}
+
+.ap4-card--wide .ap4-card-name {
+  font-size: 1.65rem;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Card — Hover Reveal Section
+   ══════════════════════════════════════════════════ */
+
+.ap4-card-reveal {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(12px);
+  transition:
+    max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease 0.05s,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ap4-card:hover .ap4-card-reveal {
+  max-height: 300px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ── Description ── */
+
+.ap4-card-desc {
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: var(--ap4-muted);
+  margin: 12px 0 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ap4-card--lg .ap4-card-desc {
+  -webkit-line-clamp: 3;
+  font-size: 0.88rem;
+}
+
+
+/* ── Tech stack ── */
+
+.ap4-card-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.ap4-tech {
+  padding: 4px 12px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--ap4-accent);
+  opacity: 0.6;
+  background: var(--ap4-accent-soft);
+  border: 1px solid rgba(80, 170, 255, 0.08);
+  transition: opacity 0.3s ease;
+}
+
+.ap4-card:hover .ap4-tech {
+  opacity: 1;
+}
+
+
+/* ── CTA ── */
+
+.ap4-card-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ap4-accent);
+  opacity: 0.5;
+  transition: opacity 0.3s ease, gap 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ap4-card:hover .ap4-card-go {
+  opacity: 1;
+  gap: 14px;
+}
+
+.ap4-go-arrow {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ap4-card:hover .ap4-go-arrow {
+  transform: translateX(4px);
+}
+
+
+/* ══════════════════════════════════════════════════
+   Scroll Reveal — Staggered Cascade
+   ══════════════════════════════════════════════════ */
+
+.ap4-reveal {
+  opacity: 0;
+  transform: translateY(32px) scale(0.97);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ap4-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Cards get staggered delays via nth-child */
+.ap4-card.ap4-reveal {
+  transition-delay: var(--delay, 0s);
+}
+
+.ap4-bento .ap4-card:nth-child(1) { --delay: 0s; }
+.ap4-bento .ap4-card:nth-child(2) { --delay: 0.08s; }
+.ap4-bento .ap4-card:nth-child(3) { --delay: 0.16s; }
+.ap4-bento .ap4-card:nth-child(4) { --delay: 0.22s; }
+.ap4-bento .ap4-card:nth-child(5) { --delay: 0.28s; }
+.ap4-bento .ap4-card:nth-child(6) { --delay: 0.1s; }
+.ap4-bento .ap4-card:nth-child(7) { --delay: 0.18s; }
+.ap4-bento .ap4-card:nth-child(8) { --delay: 0.26s; }
+.ap4-bento .ap4-card:nth-child(9) { --delay: 0.32s; }
+
+
+/* ══════════════════════════════════════════════════
+   Floating Contact Button
+   Compact pill, bottom-right. Expands on hover.
+   Subtle breathing glow — premium, non-intrusive.
+   ══════════════════════════════════════════════════ */
+
+.ap4-contact {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+
+  /* Glass surface */
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 28, 42, 0.85) 0%,
+      rgba(24, 34, 52, 0.9) 100%
+    );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(80, 170, 255, 0.12);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(80, 170, 255, 0.04);
+
+  transition:
+    gap 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.ap4-contact:hover {
+  gap: 10px;
+  padding: 0 24px;
+  border-color: rgba(80, 170, 255, 0.3);
+  box-shadow:
+    0 8px 36px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(80, 170, 255, 0.1),
+    0 0 32px rgba(80, 170, 255, 0.06);
+}
+
+
+/* ── Breathing glow ring ── */
+
+.ap4-contact-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 100px;
+  pointer-events: none;
+  z-index: -1;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(80, 170, 255, 0.2) 25%,
+    transparent 50%,
+    rgba(80, 170, 255, 0.12) 75%,
+    transparent 100%
+  );
+  opacity: 0;
+  animation: ap4-contact-breathe 4s ease-in-out infinite;
+}
+
+@keyframes ap4-contact-breathe {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.6; }
+}
+
+.ap4-contact:hover .ap4-contact-glow {
+  opacity: 0.8;
+  animation: none;
+}
+
+
+/* ── Icon ── */
+
+.ap4-contact-icon {
+  flex-shrink: 0;
+  color: var(--ap4-accent);
+  transition: color 0.3s ease;
+}
+
+.ap4-contact:hover .ap4-contact-icon {
+  color: #7ec8ff;
+}
+
+
+/* ── Label — hidden by default, expands on hover ── */
+
+.ap4-contact-label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(200, 214, 229, 0.85);
+  white-space: nowrap;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease 0.05s;
+}
+
+.ap4-contact:hover .ap4-contact-label {
+  max-width: 120px;
+  opacity: 1;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Responsive — Tablet (641px – 1024px)
+   ══════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) and (min-width: 641px) {
+  .ap4-container {
+    padding: 72px 32px 100px;
+  }
+
+  .ap4-hero-text {
+    font-size: clamp(4rem, 10vw, 6rem);
+  }
+
+  .ap4-hero-outline {
+    font-size: clamp(5.5rem, 14vw, 9rem);
+  }
+
+  .ap4-header-bar {
+    gap: 14px;
+  }
+
+  .ap4-bar-rule {
+    width: 20px;
+  }
+
+  .ap4-bento {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 320px;
+    gap: 12px;
+  }
+
+  /* Reset large cards to span 2 cols, 1 row on tablet */
+  .ap4-card--lg {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  /* Wide stays 2 cols */
+  .ap4-card--wide {
+    grid-column: span 2;
+  }
+
+  .ap4-card-idx {
+    font-size: 3.5rem;
+  }
+
+  .ap4-card--lg .ap4-card-idx {
+    font-size: 4.5rem;
+  }
+
+  .ap4-card-name {
+    font-size: 1.3rem;
+  }
+
+  .ap4-card--lg .ap4-card-name,
+  .ap4-card--wide .ap4-card-name {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════
+   Responsive — Mobile (≤640px)
+   ══════════════════════════════════════════════════ */
+
+@media (max-width: 640px) {
+  .ap4-container {
+    padding: 32px 16px 64px;
+  }
+
+  .ap4-header {
+    margin-bottom: 36px;
+  }
+
+  .ap4-header-label {
+    font-size: 10px;
+    margin-bottom: 14px;
+  }
+
+  .ap4-hero {
+    margin-bottom: 22px;
+  }
+
+  .ap4-hero-text {
+    font-size: clamp(3.2rem, 16vw, 5rem);
+  }
+
+  .ap4-hero-outline {
+    font-size: clamp(4.5rem, 22vw, 7rem);
+  }
+
+  .ap4-header-bar {
+    gap: 10px;
+  }
+
+  .ap4-bar-rule {
+    width: 16px;
+  }
+
+  .ap4-bar-tagline {
+    display: none;
+  }
+
+  .ap4-tabs {
+    gap: 0;
+    margin-bottom: 32px;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ap4-tab {
+    padding: 12px 16px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Single column on mobile */
+  .ap4-bento {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 360px;
+    gap: 12px;
+  }
+
+  .ap4-card--lg,
+  .ap4-card--wide {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .ap4-card-idx {
+    font-size: 3rem;
+    top: 12px;
+    right: 14px;
+  }
+
+  .ap4-card--lg .ap4-card-idx {
+    font-size: 3.5rem;
+  }
+
+  .ap4-card-chips {
+    top: 14px;
+    left: 14px;
+  }
+
+  .ap4-card-bottom {
+    padding: 0 20px 22px;
+  }
+
+  .ap4-card-name {
+    font-size: 1.25rem;
+  }
+
+  .ap4-card--lg .ap4-card-name,
+  .ap4-card--wide .ap4-card-name {
+    font-size: 1.35rem;
+  }
+
+  .ap4-card-desc {
+    font-size: 0.82rem;
+  }
+
+  .ap4-tech {
+    font-size: 9.5px;
+    padding: 3px 10px;
+  }
+
+  .ap4-card-go {
+    font-size: 11px;
+  }
+
+  /* On mobile, always show reveal content for better UX */
+  .ap4-card-reveal {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ap4-card-dim {
+    background: linear-gradient(
+      180deg,
+      rgba(20, 28, 42, 0.15) 0%,
+      rgba(20, 28, 42, 0.3) 30%,
+      rgba(20, 28, 42, 0.8) 65%,
+      rgba(20, 28, 42, 0.96) 100%
+    );
+  }
+
+  .ap4-glow {
+    display: none;
+  }
+
+  .ap4-card-edge {
+    display: none;
+  }
+
+  .ap4-contact {
+    bottom: 20px;
+    right: 20px;
+    height: 44px;
+    padding: 0 14px;
+  }
+
+  .ap4-contact-glow {
+    animation-duration: 5s;
+  }
+}

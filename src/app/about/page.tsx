@@ -137,94 +137,56 @@ export default function AboutPage() {
       <div className="ab-dots" aria-hidden="true" />
 
       {/* ═══════════════════════════════════════
-          HERO — Cinematic full-viewport
+          HERO — Panoramic Showcase
           ═══════════════════════════════════════ */}
       <section className="ab-hero">
-        <div className="ab-hero-bg">
-          <Image
-            src="/about-hero.jpg"
-            alt="Eram Soft team"
-            fill
-            className="ab-hero-img"
-            sizes="100vw"
-            priority
-          />
-          <div className="ab-hero-overlay" aria-hidden="true" />
-          <div className="ab-hero-vignette" aria-hidden="true" />
-          <div className="ab-hero-scan" aria-hidden="true" />
-        </div>
+        <div className="ab-hero-mesh" aria-hidden="true" />
 
-        {/* Viewfinder frame corners */}
-        <div className="ab-hero-frame" aria-hidden="true">
-          <span className="ab-hero-corner ab-hero-corner--tl" />
-          <span className="ab-hero-corner ab-hero-corner--br" />
-        </div>
-
-        {/* Neon orbit arcs */}
-        <svg
-          className="ab-hero-arcs"
-          viewBox="0 0 1440 900"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          <defs>
-            <linearGradient id="abArc1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#64c8ff" stopOpacity="0.45" />
-              <stop offset="50%" stopColor="#50aaff" stopOpacity="0.08" />
-              <stop offset="100%" stopColor="#64c8ff" stopOpacity="0.35" />
-            </linearGradient>
-            <linearGradient id="abArc2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#82d2ff" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#50a0ff" stopOpacity="0.03" />
-            </linearGradient>
-          </defs>
-          <ellipse
-            cx="1050" cy="380" rx="260" ry="190"
-            stroke="url(#abArc1)" strokeWidth="1.2"
-            strokeDasharray="1800"
-            className="ab-arc ab-arc--1"
-          />
-          <ellipse
-            cx="1020" cy="420" rx="380" ry="260"
-            stroke="url(#abArc2)" strokeWidth="0.7"
-            strokeDasharray="2400"
-            className="ab-arc ab-arc--2"
-          />
-        </svg>
-
-        {/* Hero content */}
-        <div className="ab-hero-body">
+        <div className="ab-hero-inner">
+          {/* Title card */}
           <p className="ab-tag ab-rise" style={{ animationDelay: "0.2s" }}>
             About Eram Soft
           </p>
           <h1 className="ab-hero-h1">
-            <span className="ab-hero-line" style={{ animationDelay: "0.35s" }}>
+            <span className="ab-hero-line ab-hero-line--lead" style={{ animationDelay: "0.3s" }}>
               We Build the
             </span>
-            <span className="ab-hero-line" style={{ animationDelay: "0.5s" }}>
+            <span className="ab-hero-line ab-hero-line--hero" style={{ animationDelay: "0.5s" }}>
               <span className="ab-accent">Digital Backbone</span>
             </span>
-            <span className="ab-hero-line" style={{ animationDelay: "0.65s" }}>
+            <span className="ab-hero-line ab-hero-line--lead" style={{ animationDelay: "0.7s" }}>
               of Ambitious Businesses
             </span>
           </h1>
-          <div className="ab-hero-rule" aria-hidden="true" />
           <p className="ab-hero-sub ab-rise" style={{ animationDelay: "0.9s" }}>
             Since 2019, turning complex challenges into elegant digital
             solutions &mdash; from mobile apps and web platforms to cloud
             infrastructure and AI-powered tools.
           </p>
-        </div>
 
-        {/* Stats glass bar */}
-        <div className="ab-hero-stats ab-rise" style={{ animationDelay: "1.05s" }}>
-          {stats.map((s) => (
-            <StatItem key={s.label} stat={s} />
-          ))}
-        </div>
+          {/* Cinematic panoramic frame */}
+          <div className="ab-hero-cinema ab-rise" style={{ animationDelay: "1s" }}>
+            <div className="ab-hero-frame">
+              <Image
+                src="/about-hero.jpg"
+                alt="Eram Soft team"
+                fill
+                className="ab-hero-img"
+                sizes="100vw"
+                priority
+              />
+              <div className="ab-hero-overlay" aria-hidden="true" />
+              <div className="ab-hero-vignette" aria-hidden="true" />
+            </div>
 
+            {/* Stats glass bar anchored to bottom */}
+            <div className="ab-hero-stats ab-rise" style={{ animationDelay: "1.3s" }}>
+              {stats.map((s) => (
+                <StatItem key={s.label} stat={s} />
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ── Main content container ── */}
@@ -233,46 +195,49 @@ export default function AboutPage() {
         <div className="ab-thread" aria-hidden="true" />
 
         {/* ═══════════════════════════════════════
-            NARRATIVE — Editorial split
+            NARRATIVE — Editorial Magazine
             ═══════════════════════════════════════ */}
         <section className="ab-nar ab-reveal">
-          <div className="ab-nar-left">
-            <p className="ab-tag">Our Story</p>
+          {/* Full-width quote */}
+          <div className="ab-nar-quote-wrap">
+            <p className="ab-tag">How We Work</p>
             <blockquote className="ab-nar-quote">
-              &ldquo;Great software should feel{" "}
-              <span className="ab-accent">invisible</span>. It should work so
-              seamlessly that users forget there&apos;s engineering behind
-              it.&rdquo;
+              &ldquo;Every project gets a{" "}
+              <span className="ab-accent">dedicated team</span>, a clear
+              roadmap, and full transparency &mdash; no surprises, no
+              shortcuts.&rdquo;
             </blockquote>
-            <div className="ab-nar-badge">
-              <span className="ab-nar-badge-yr">2019</span>
-              <span className="ab-nar-badge-lbl">Year Founded</span>
-            </div>
           </div>
-          <div className="ab-nar-right">
-            <p className="ab-prose">
-              Eram Soft was born from a simple belief: great software should
-              feel invisible. It should work so seamlessly that users forget
-              there&apos;s engineering behind it. Since 2019, we&apos;ve been
-              turning complex challenges into elegant digital solutions &mdash;
-              from mobile apps and web platforms to cloud infrastructure and
-              AI-powered tools.
-            </p>
-            <p className="ab-prose">
-              We&apos;re not a factory. We&apos;re a team of engineers,
-              designers, and strategists who care deeply about craft. Every
-              project gets our full attention, and every client becomes a
-              long-term partner.
-            </p>
+
+          {/* Photo + overlapping text */}
+          <div className="ab-nar-stage">
+            <div className="ab-nar-text">
+              <p className="ab-prose">
+                We&apos;re not a factory that churns out generic products.
+                We&apos;re a team of engineers, designers, and strategists who
+                treat every project as our own. From discovery to deployment,
+                you get direct access to the people building your product.
+              </p>
+              <p className="ab-prose">
+                Our process is built on honest timelines, weekly demos, and
+                iterative feedback loops. We believe the best software comes
+                from close collaboration &mdash; not handoffs and black boxes.
+                That&apos;s why 98% of our clients come back.
+              </p>
+            </div>
             <div className="ab-nar-photo">
               <Image
-                src="/about-team2.jpg"
-                alt="Team collaboration"
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80"
+                alt="Team working on a project"
                 fill
                 className="ab-nar-photo-img"
-                sizes="(max-width:768px) 100vw, 50vw"
+                sizes="(max-width:768px) 100vw, 60vw"
               />
               <div className="ab-nar-photo-glow" aria-hidden="true" />
+              <div className="ab-nar-badge">
+                <span className="ab-nar-badge-yr">98%</span>
+                <span className="ab-nar-badge-lbl">Client Retention</span>
+              </div>
             </div>
           </div>
         </section>
