@@ -7,7 +7,7 @@
 /* ── Footer surface ── */
 
 .ft-footer {
-  background: linear-gradient(180deg, #1a2535 0%, #141d2c 50%, #0e1520 100%);
+  background: linear-gradient(180deg, var(--dark-surface) 0%, var(--dark-bg) 50%, var(--dark-bg-deep) 100%);
   position: relative;
   padding: 24px 0 0;
 }
@@ -28,7 +28,7 @@
   top: -20%;
   left: 50%;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse, rgba(80, 170, 255, 0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(var(--neon-rgb), 0.04) 0%, transparent 70%);
 }
 
 
@@ -39,7 +39,7 @@
   inset: 0;
   pointer-events: none;
   opacity: 0.4;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-image: var(--noise-texture);
   background-size: 200px 200px;
 }
 
@@ -87,17 +87,17 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(80, 170, 255, 0.06);
-  border: 1px solid rgba(80, 170, 255, 0.1);
-  color: rgba(80, 170, 255, 0.5);
+  background: rgba(var(--neon-rgb), 0.06);
+  border: 1px solid rgba(var(--neon-rgb), 0.1);
+  color: rgba(var(--neon-rgb), 0.5);
   transition: all 0.35s ease;
 }
 
 .ft-social-link:hover {
-  background: rgba(80, 170, 255, 0.12);
-  border-color: rgba(80, 170, 255, 0.25);
-  color: #82d2ff;
-  box-shadow: 0 0 16px rgba(80, 170, 255, 0.12);
+  background: rgba(var(--neon-rgb), 0.12);
+  border-color: rgba(var(--neon-rgb), 0.25);
+  color: var(--neon-light);
+  box-shadow: 0 0 16px rgba(var(--neon-rgb), 0.12);
 }
 
 
@@ -120,7 +120,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #e8edf4;
+  color: var(--text-heading);
   margin-bottom: 4px;
 }
 
@@ -134,7 +134,7 @@
 }
 
 .ft-link:hover {
-  color: #82d2ff;
+  color: var(--neon-light);
   transform: translateX(4px);
 }
 
@@ -148,8 +148,8 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(80, 170, 255, 0.12) 30%,
-    rgba(80, 170, 255, 0.12) 70%,
+    rgba(var(--neon-rgb), 0.12) 30%,
+    rgba(var(--neon-rgb), 0.12) 70%,
     transparent 100%
   );
 }

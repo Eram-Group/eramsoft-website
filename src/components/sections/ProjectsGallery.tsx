@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import AmbientEffects from "@/components/ui/AmbientEffects";
 import "./projects-gallery.css";
 
 const FEATURED_COUNT = projects.length;
@@ -65,24 +66,22 @@ export default function ProjectsGallery() {
   }, [paused, isVisible]);
 
   return (
-    <section ref={sectionRef} className="pg-section relative py-14 md:py-20">
-      <div className="pg-glow pg-glow--1" aria-hidden="true" />
-      <div className="pg-glow pg-glow--2" aria-hidden="true" />
-      <div className="pg-noise" aria-hidden="true" />
+    <section ref={sectionRef} className="pg-section dark-section section-top-glow relative py-14 md:py-20">
+      <AmbientEffects />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         {/* ── Header ── */}
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="pg-label mb-4 text-xs font-bold tracking-[0.35em] uppercase pg-fadeUp [animation-delay:0.1s]">
+            <p className="pg-label section-label mb-4 text-xs font-bold tracking-[0.35em] uppercase animate-section-fadeUp [animation-delay:0.1s]">
               Portfolio
             </p>
-            <h2 className="pg-heading text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl pg-fadeUp [animation-delay:0.2s]">
+            <h2 className="pg-heading section-title text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl animate-section-fadeUp [animation-delay:0.2s]">
               Recent{" "}
-              <span className="pg-heading-accent">Works</span>
+              <span className="pg-heading-accent section-title-accent">Works</span>
             </h2>
           </div>
-          <Link href="/projects" className="pg-browse pg-fadeUp [animation-delay:0.3s]">
+          <Link href="/projects" className="pg-browse animate-section-fadeUp [animation-delay:0.3s]">
             <span>All Projects</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="7" y1="17" x2="17" y2="7" />
@@ -93,7 +92,7 @@ export default function ProjectsGallery() {
 
         {/* ── Showcase ── */}
         <div
-          className="pg-showcase pg-fadeUp [animation-delay:0.4s]"
+          className="pg-showcase animate-section-fadeUp [animation-delay:0.4s]"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -125,7 +124,7 @@ export default function ProjectsGallery() {
               </p>
               <div className="pg-panel-tags pg-anim-slideUp" style={{ animationDelay: "0.28s" }}>
                 {current.tech.map((t) => (
-                  <span key={t} className="pg-panel-tag">{t}</span>
+                  <span key={t} className="neon-tag">{t}</span>
                 ))}
               </div>
             </div>

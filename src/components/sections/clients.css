@@ -7,81 +7,9 @@
 /* ── Section surface ── */
 
 .cl-section {
-  background: linear-gradient(180deg, #111826 0%, #0f1520 30%, #101722 70%, #111826 100%);
+  background: linear-gradient(180deg, var(--dark-bg-deep) 0%, var(--dark-bg-deep) 30%, var(--dark-bg-deep) 70%, var(--dark-bg-deep) 100%);
   position: relative;
   overflow: hidden;
-}
-
-
-/* ── Ambient glow orbs ── */
-
-.cl-glow {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(120px);
-}
-
-.cl-glow--1 {
-  width: 600px;
-  height: 600px;
-  top: -25%;
-  right: -10%;
-  background: radial-gradient(circle, rgba(80, 170, 255, 0.04) 0%, transparent 70%);
-}
-
-.cl-glow--2 {
-  width: 500px;
-  height: 500px;
-  bottom: -20%;
-  left: -8%;
-  background: radial-gradient(circle, rgba(100, 200, 255, 0.03) 0%, transparent 70%);
-}
-
-
-/* ── Section header ── */
-
-.cl-label {
-  color: #50aaff;
-  text-shadow: 0 0 20px rgba(80, 170, 255, 0.3);
-}
-
-.cl-title {
-  color: #e8edf4;
-}
-
-.cl-title-accent {
-  background: linear-gradient(
-    90deg,
-    #50aaff 0%,
-    #82d2ff 50%,
-    #50aaff 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: cl-titleShimmer 4s ease-in-out infinite;
-}
-
-@keyframes cl-titleShimmer {
-  0% { background-position: 0% center; }
-  50% { background-position: 200% center; }
-  100% { background-position: 0% center; }
-}
-
-.cl-subtitle {
-  color: #7a8da4;
-}
-
-.cl-line {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(80, 170, 255, 0.5) 50%,
-    transparent 100%
-  );
-  box-shadow: 0 0 12px rgba(80, 170, 255, 0.3);
 }
 
 
@@ -158,8 +86,8 @@
 /* ── Logo card — redesigned ── */
 
 .cl-logo {
-  --card-accent: rgba(80, 170, 255, 0.5);
-  --card-accent-soft: rgba(80, 170, 255, 0.08);
+  --card-accent: rgba(var(--neon-rgb), 0.5);
+  --card-accent-soft: rgba(var(--neon-rgb), 0.08);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -345,7 +273,7 @@
   font-size: 2.25rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  background: linear-gradient(180deg, #e8edf4 0%, #7a8da4 100%);
+  background: linear-gradient(180deg, var(--text-heading) 0%, var(--text-muted) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -353,7 +281,7 @@
 }
 
 .cl-stat-number span {
-  background: linear-gradient(180deg, #50aaff 0%, #82d2ff 100%);
+  background: linear-gradient(180deg, var(--neon) 0%, var(--neon-light) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -364,79 +292,8 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #5a6a80;
+  color: var(--text-dim);
   margin-top: 6px;
-}
-
-
-/* ── Entrance animations ── */
-
-@keyframes cl-fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.cl-fadeUp {
-  opacity: 0;
-  animation: cl-fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes cl-lineExpand {
-  from {
-    transform: scaleX(0);
-    opacity: 0;
-  }
-  to {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-}
-
-.cl-lineExpand {
-  transform-origin: center;
-  transform: scaleX(0);
-  opacity: 0;
-  animation: cl-lineExpand 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-
-/* ── Noise texture overlay ── */
-
-.cl-noise {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.4;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-}
-
-
-/* ── Divider line at top ── */
-
-.cl-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 200px;
-  border-radius: 50%;
-  background: radial-gradient(
-    ellipse,
-    rgba(80, 170, 255, 0.03) 0%,
-    transparent 70%
-  );
-  filter: blur(40px);
-  z-index: 0;
-  pointer-events: none;
 }
 
 

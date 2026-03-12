@@ -7,11 +7,11 @@
 /* ── Page surface ── */
 
 .ap2-page {
-  background: linear-gradient(160deg, #111825 0%, #151e2e 20%, #1a2538 40%, #1e2a3f 60%, #192236 80%, #141c2a 100%);
+  background: linear-gradient(160deg, var(--dark-bg-deep) 0%, var(--dark-bg-alt) 20%, var(--dark-surface) 40%, var(--dark-surface-alt) 60%, var(--dark-bg-alt) 80%, var(--dark-bg) 100%);
   min-height: 100vh;
   position: relative;
   overflow: clip;
-  color: #e8edf4;
+  color: var(--text-heading);
 }
 
 
@@ -40,7 +40,7 @@
   height: 600px;
   bottom: 15%;
   right: -10%;
-  background: radial-gradient(circle, rgba(80, 170, 255, 0.035) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--neon-rgb), 0.035) 0%, transparent 70%);
 }
 
 .ap2-glow--3 {
@@ -48,7 +48,7 @@
   height: 500px;
   top: 50%;
   left: 30%;
-  background: radial-gradient(circle, rgba(80, 170, 255, 0.025) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--neon-rgb), 0.025) 0%, transparent 70%);
 }
 
 
@@ -73,8 +73,8 @@
   pointer-events: none;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(80, 170, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(80, 170, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(var(--neon-rgb), 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--neon-rgb), 0.025) 1px, transparent 1px);
   background-size: 80px 80px;
   mask-image: radial-gradient(ellipse 60% 50% at 50% 25%, black 0%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 25%, black 0%, transparent 100%);
@@ -93,30 +93,30 @@
 .ap2-orb--1 {
   width: 6px;
   height: 6px;
-  background: rgba(80, 170, 255, 0.45);
+  background: rgba(var(--neon-rgb), 0.45);
   top: 16%;
   right: 14%;
-  box-shadow: 0 0 24px 4px rgba(80, 170, 255, 0.2);
+  box-shadow: 0 0 24px 4px rgba(var(--neon-rgb), 0.2);
   animation: ap2-drift 9s ease-in-out infinite;
 }
 
 .ap2-orb--2 {
   width: 4px;
   height: 4px;
-  background: rgba(80, 170, 255, 0.4);
+  background: rgba(var(--neon-rgb), 0.4);
   top: 48%;
   left: 7%;
-  box-shadow: 0 0 20px 3px rgba(80, 170, 255, 0.15);
+  box-shadow: 0 0 20px 3px rgba(var(--neon-rgb), 0.15);
   animation: ap2-drift 12s ease-in-out infinite 3s;
 }
 
 .ap2-orb--3 {
   width: 5px;
   height: 5px;
-  background: rgba(80, 170, 255, 0.3);
+  background: rgba(var(--neon-rgb), 0.3);
   bottom: 22%;
   right: 20%;
-  box-shadow: 0 0 20px 3px rgba(80, 170, 255, 0.12);
+  box-shadow: 0 0 20px 3px rgba(var(--neon-rgb), 0.12);
   animation: ap2-drift 11s ease-in-out infinite 5s;
 }
 
@@ -166,7 +166,7 @@
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(80, 170, 255, 0.55);
+  color: rgba(var(--neon-rgb), 0.55);
   margin-bottom: 28px;
   position: relative;
   padding-left: 30px;
@@ -179,7 +179,7 @@
   top: 50%;
   width: 18px;
   height: 1px;
-  background: rgba(80, 170, 255, 0.4);
+  background: rgba(var(--neon-rgb), 0.4);
 }
 
 .ap2-heading {
@@ -206,10 +206,10 @@
   line-height: 1;
   background: linear-gradient(
     135deg,
-    #50aaff 0%,
-    #7ec8ff 30%,
+    var(--neon) 0%,
+    var(--neon-light) 30%,
     #a8d8ff 65%,
-    #50aaff 100%
+    var(--neon) 100%
   );
   background-size: 300% auto;
   -webkit-background-clip: text;
@@ -238,7 +238,7 @@
   font-size: clamp(3rem, 5vw, 4.8rem);
   font-weight: 800;
   letter-spacing: -0.05em;
-  color: rgba(80, 170, 255, 0.1);
+  color: rgba(var(--neon-rgb), 0.1);
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
@@ -246,7 +246,7 @@
 .ap2-count-sep {
   width: 1px;
   height: 48px;
-  background: linear-gradient(180deg, transparent, rgba(80, 170, 255, 0.2), transparent);
+  background: linear-gradient(180deg, transparent, rgba(var(--neon-rgb), 0.2), transparent);
 }
 
 .ap2-count-text {
@@ -266,8 +266,8 @@
   margin: 40px 0 32px;
   background: linear-gradient(
     90deg,
-    rgba(80, 170, 255, 0.35),
-    rgba(80, 170, 255, 0.1) 40%,
+    rgba(var(--neon-rgb), 0.35),
+    rgba(var(--neon-rgb), 0.1) 40%,
     transparent 70%
   );
   transform-origin: left;
@@ -316,17 +316,17 @@
 
 .ap2-filter-btn:hover {
   color: #7ba1c4;
-  border-color: rgba(80, 170, 255, 0.15);
-  background: rgba(80, 170, 255, 0.03);
+  border-color: rgba(var(--neon-rgb), 0.15);
+  background: rgba(var(--neon-rgb), 0.03);
 }
 
 .ap2-filter-btn--active {
-  color: #50aaff;
-  border-color: rgba(80, 170, 255, 0.3);
-  background: rgba(80, 170, 255, 0.07);
+  color: var(--neon);
+  border-color: rgba(var(--neon-rgb), 0.3);
+  background: rgba(var(--neon-rgb), 0.07);
   box-shadow:
-    0 0 24px rgba(80, 170, 255, 0.06),
-    inset 0 0 12px rgba(80, 170, 255, 0.03);
+    0 0 24px rgba(var(--neon-rgb), 0.06),
+    inset 0 0 12px rgba(var(--neon-rgb), 0.03);
 }
 
 
@@ -363,7 +363,7 @@
   box-shadow:
     -20px 0 56px rgba(0, 0, 0, 0.5),
     0 24px 64px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(80, 170, 255, 0.04);
+    0 0 40px rgba(var(--neon-rgb), 0.04);
 }
 
 
@@ -430,7 +430,7 @@
 }
 
 .ap2-card:hover .ap2-card-idx {
-  color: rgba(80, 170, 255, 0.08);
+  color: rgba(var(--neon-rgb), 0.08);
 }
 
 
@@ -468,9 +468,9 @@
 }
 
 .ap2-badge--yr {
-  color: rgba(80, 170, 255, 0.85);
+  color: rgba(var(--neon-rgb), 0.85);
   background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(80, 170, 255, 0.12);
+  border: 1px solid rgba(var(--neon-rgb), 0.12);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.05em;
 }
@@ -518,8 +518,8 @@
   background: linear-gradient(
     180deg,
     transparent,
-    rgba(80, 170, 255, 0.15) 30%,
-    rgba(80, 170, 255, 0.1) 70%,
+    rgba(var(--neon-rgb), 0.15) 30%,
+    rgba(var(--neon-rgb), 0.1) 70%,
     transparent
   );
   transition: opacity 0.5s ease;
@@ -606,7 +606,7 @@
 }
 
 .ap2-card:hover .ap2-card-title {
-  color: #fff;
+  color: var(--text-bright);
 }
 
 .ap2-card-desc {
@@ -629,16 +629,16 @@
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  background: rgba(80, 170, 255, 0.05);
-  border: 1px solid rgba(80, 170, 255, 0.07);
-  color: rgba(80, 170, 255, 0.45);
+  background: rgba(var(--neon-rgb), 0.05);
+  border: 1px solid rgba(var(--neon-rgb), 0.07);
+  color: rgba(var(--neon-rgb), 0.45);
   transition: all 0.35s ease;
 }
 
 .ap2-card:hover .ap2-pill {
-  background: rgba(80, 170, 255, 0.1);
-  border-color: rgba(80, 170, 255, 0.2);
-  color: rgba(80, 170, 255, 0.8);
+  background: rgba(var(--neon-rgb), 0.1);
+  border-color: rgba(var(--neon-rgb), 0.2);
+  color: rgba(var(--neon-rgb), 0.8);
 }
 
 
@@ -663,7 +663,7 @@
   align-items: center;
   gap: 5px;
   text-align: center;
-  background: rgba(80, 170, 255, 0.015);
+  background: rgba(var(--neon-rgb), 0.015);
   position: relative;
 }
 
@@ -682,12 +682,12 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1;
-  color: #50aaff;
+  color: var(--neon);
   transition: color 0.35s ease;
 }
 
 .ap2-card:hover .ap2-stat-val {
-  color: #7ec8ff;
+  color: var(--neon-light);
 }
 
 .ap2-stat-lbl {
@@ -711,13 +711,13 @@
   margin-top: auto;
   align-self: flex-end;
   padding: 12px 28px;
-  border: 1px solid rgba(80, 170, 255, 0.18);
+  border: 1px solid rgba(var(--neon-rgb), 0.18);
   border-radius: 2px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(80, 170, 255, 0.45);
+  color: rgba(var(--neon-rgb), 0.45);
   transition:
     border-color 0.35s ease,
     color 0.35s ease,
@@ -726,10 +726,10 @@
 }
 
 .ap2-card:hover .ap2-card-cta {
-  border-color: rgba(80, 170, 255, 0.45);
-  color: #50aaff;
+  border-color: rgba(var(--neon-rgb), 0.45);
+  color: var(--neon);
   gap: 18px;
-  background: rgba(80, 170, 255, 0.04);
+  background: rgba(var(--neon-rgb), 0.04);
 }
 
 .ap2-card-cta svg {

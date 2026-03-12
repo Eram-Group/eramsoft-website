@@ -15,20 +15,20 @@
    ══════════════════════════════════════════════════ */
 
 .ap4-page {
-  --ap4-accent: #50aaff;
-  --ap4-accent-mid: rgba(80, 170, 255, 0.35);
-  --ap4-accent-soft: rgba(80, 170, 255, 0.1);
-  --ap4-accent-warm: #7ec8ff;
-  --ap4-accent-warm-mid: rgba(80, 170, 255, 0.3);
-  --ap4-accent-warm-soft: rgba(80, 170, 255, 0.08);
-  --ap4-bg: #111825;
-  --ap4-surface: #141c2a;
+  --ap4-accent: var(--neon);
+  --ap4-accent-mid: rgba(var(--neon-rgb), 0.35);
+  --ap4-accent-soft: rgba(var(--neon-rgb), 0.1);
+  --ap4-accent-warm: var(--neon-light);
+  --ap4-accent-warm-mid: rgba(var(--neon-rgb), 0.3);
+  --ap4-accent-warm-soft: rgba(var(--neon-rgb), 0.08);
+  --ap4-bg: var(--dark-bg-deep);
+  --ap4-surface: var(--dark-bg);
   --ap4-border: rgba(255, 255, 255, 0.06);
-  --ap4-text: #e8edf4;
+  --ap4-text: var(--text-heading);
   --ap4-muted: #4a6080;
   --ap4-dim: #3d5470;
 
-  background: linear-gradient(160deg, #111825 0%, #151e2e 20%, #1a2538 40%, #1e2a3f 60%, #192236 80%, #141c2a 100%);
+  background: linear-gradient(160deg, var(--dark-bg-deep) 0%, var(--dark-bg-alt) 20%, var(--dark-surface) 40%, var(--dark-surface-alt) 60%, var(--dark-bg-alt) 80%, var(--dark-bg) 100%);
   min-height: 100vh;
   position: relative;
   overflow: clip;
@@ -78,7 +78,7 @@
   height: 500px;
   bottom: 10%;
   right: -8%;
-  background: radial-gradient(circle, rgba(80, 170, 255, 0.035) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--neon-rgb), 0.035) 0%, transparent 70%);
 }
 
 .ap4-glow--3 {
@@ -86,7 +86,7 @@
   height: 400px;
   top: 55%;
   left: 25%;
-  background: radial-gradient(circle, rgba(80, 170, 255, 0.025) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--neon-rgb), 0.025) 0%, transparent 70%);
 }
 
 
@@ -162,10 +162,10 @@
   line-height: 0.85;
   background: linear-gradient(
     135deg,
-    #50aaff 0%,
-    #7ec8ff 30%,
+    var(--neon) 0%,
+    var(--neon-light) 30%,
     #e8853b 65%,
-    #50aaff 100%
+    var(--neon) 100%
   );
   background-size: 300% auto;
   -webkit-background-clip: text;
@@ -193,7 +193,7 @@
   letter-spacing: -0.06em;
   line-height: 0.85;
   white-space: nowrap;
-  -webkit-text-stroke: 1px rgba(80, 170, 255, 0.06);
+  -webkit-text-stroke: 1px rgba(var(--neon-rgb), 0.06);
   -webkit-text-fill-color: transparent;
   user-select: none;
   pointer-events: none;
@@ -243,7 +243,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(80, 170, 255, 0.25),
+    rgba(var(--neon-rgb), 0.25),
     transparent
   );
   flex-shrink: 0;
@@ -373,11 +373,11 @@
 }
 
 .ap4-card:hover {
-  border-color: rgba(80, 170, 255, 0.15);
+  border-color: rgba(var(--neon-rgb), 0.15);
   box-shadow:
     0 24px 64px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(80, 170, 255, 0.08),
-    0 0 48px rgba(80, 170, 255, 0.04);
+    0 0 0 1px rgba(var(--neon-rgb), 0.08),
+    0 0 48px rgba(var(--neon-rgb), 0.04);
 }
 
 
@@ -472,7 +472,7 @@
 }
 
 .ap4-card:hover .ap4-card-idx {
-  color: rgba(80, 170, 255, 0.07);
+  color: rgba(var(--neon-rgb), 0.07);
 }
 
 
@@ -504,8 +504,8 @@
 }
 
 .ap4-chip--yr {
-  color: rgba(80, 170, 255, 0.85);
-  border-color: rgba(80, 170, 255, 0.12);
+  color: rgba(var(--neon-rgb), 0.85);
+  border-color: rgba(var(--neon-rgb), 0.12);
   background: rgba(0, 0, 0, 0.5);
   font-family: "DM Sans", monospace;
   letter-spacing: 0.06em;
@@ -558,7 +558,7 @@
   font-family: "Syne", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-bright);
   letter-spacing: -0.02em;
   line-height: 1.2;
   margin: 0;
@@ -633,7 +633,7 @@
   color: var(--ap4-accent);
   opacity: 0.6;
   background: var(--ap4-accent-soft);
-  border: 1px solid rgba(80, 170, 255, 0.08);
+  border: 1px solid rgba(var(--neon-rgb), 0.08);
   transition: opacity 0.3s ease;
 }
 
@@ -734,10 +734,10 @@
     );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(80, 170, 255, 0.12);
+  border: 1px solid rgba(var(--neon-rgb), 0.12);
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.35),
-    0 0 0 1px rgba(80, 170, 255, 0.04);
+    0 0 0 1px rgba(var(--neon-rgb), 0.04);
 
   transition:
     gap 0.4s cubic-bezier(0.22, 1, 0.36, 1),
@@ -749,11 +749,11 @@
 .ap4-contact:hover {
   gap: 10px;
   padding: 0 24px;
-  border-color: rgba(80, 170, 255, 0.3);
+  border-color: rgba(var(--neon-rgb), 0.3);
   box-shadow:
     0 8px 36px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(80, 170, 255, 0.1),
-    0 0 32px rgba(80, 170, 255, 0.06);
+    0 0 0 1px rgba(var(--neon-rgb), 0.1),
+    0 0 32px rgba(var(--neon-rgb), 0.06);
 }
 
 
@@ -768,9 +768,9 @@
   background: conic-gradient(
     from 0deg,
     transparent 0%,
-    rgba(80, 170, 255, 0.2) 25%,
+    rgba(var(--neon-rgb), 0.2) 25%,
     transparent 50%,
-    rgba(80, 170, 255, 0.12) 75%,
+    rgba(var(--neon-rgb), 0.12) 75%,
     transparent 100%
   );
   opacity: 0;
@@ -797,7 +797,7 @@
 }
 
 .ap4-contact:hover .ap4-contact-icon {
-  color: #7ec8ff;
+  color: var(--neon-light);
 }
 
 

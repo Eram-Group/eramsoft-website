@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  /* ── Light theme (legacy) ── */
   --background: #f5f3f0;
   --foreground: #1a1a1a;
   --accent: #e8853b;
@@ -25,6 +26,47 @@
   --card-title: #1b2a4a;
   --card-desc: #5a6375;
   --accent-gradient-end: rgba(232, 133, 59, 0.3);
+
+  /* ── Dark section palette ── */
+  --dark-bg: #141c2a;
+  --dark-bg-alt: #172030;
+  --dark-bg-deep: #0e1520;
+  --dark-surface: #1a2538;
+  --dark-surface-alt: #1e2a3d;
+  --dark-card: rgba(15, 20, 35, 0.9);
+
+  /* ── Neon / accent blue ── */
+  --neon: #50aaff;
+  --neon-light: #82d2ff;
+  --neon-mid: #64c8ff;
+  --neon-dark: #3b8de8;
+  --neon-rgb: 80, 170, 255;
+  --neon-light-rgb: 100, 200, 255;
+
+  /* ── Dark section text ── */
+  --text-bright: #ffffff;
+  --text-heading: #e8edf4;
+  --text-muted: #7a8da4;
+  --text-dim: #5a6a80;
+  --text-overlay: rgba(10, 15, 26, 0.95);
+
+  /* ── Shared opacities for neon glow ── */
+  --glow-subtle: rgba(var(--neon-rgb), 0.04);
+  --glow-soft: rgba(var(--neon-rgb), 0.06);
+  --glow-medium: rgba(var(--neon-rgb), 0.12);
+  --glow-strong: rgba(var(--neon-rgb), 0.25);
+  --glow-vivid: rgba(var(--neon-rgb), 0.5);
+
+  /* ── Border opacities ── */
+  --border-faint: rgba(255, 255, 255, 0.04);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-soft-dark: rgba(255, 255, 255, 0.08);
+  --border-neon-faint: rgba(var(--neon-rgb), 0.12);
+  --border-neon-soft: rgba(var(--neon-rgb), 0.15);
+  --border-neon-medium: rgba(var(--neon-rgb), 0.25);
+
+  /* ── Noise texture (shared SVG) ── */
+  --noise-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
 @theme inline {
@@ -35,6 +77,11 @@
   --color-navy: var(--navy);
   --color-navy-light: var(--navy-light);
   --color-navy-medium: var(--navy-medium);
+  --color-neon: var(--neon);
+  --color-neon-light: var(--neon-light);
+  --color-dark-bg: var(--dark-bg);
+  --color-text-heading: var(--text-heading);
+  --color-text-muted: var(--text-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -243,7 +290,7 @@ body {
    ══════════════════════════════════════════════════ */
 
 .page-canvas {
-  background: #141c2a;
+  background: var(--dark-bg);
   position: relative;
   overflow-x: hidden;
 }
@@ -279,14 +326,14 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(80, 170, 255, 0.12) 15%,
-    rgba(100, 200, 255, 0.3) 50%,
-    rgba(80, 170, 255, 0.12) 85%,
+    rgba(var(--neon-rgb), 0.12) 15%,
+    rgba(var(--neon-light-rgb), 0.3) 50%,
+    rgba(var(--neon-rgb), 0.12) 85%,
     transparent 100%
   );
   box-shadow:
-    0 0 20px rgba(80, 170, 255, 0.08),
-    0 0 60px rgba(80, 170, 255, 0.04);
+    0 0 20px rgba(var(--neon-rgb), 0.08),
+    0 0 60px rgba(var(--neon-rgb), 0.04);
 }
 
 /* Soft glow bloom behind the beam */
@@ -300,8 +347,8 @@ body {
   border-radius: 50%;
   background: radial-gradient(
     ellipse,
-    rgba(80, 170, 255, 0.04) 0%,
-    rgba(80, 170, 255, 0.015) 40%,
+    rgba(var(--neon-rgb), 0.04) 0%,
+    rgba(var(--neon-rgb), 0.015) 40%,
     transparent 70%
   );
   filter: blur(30px);
@@ -318,8 +365,8 @@ body {
   width: 2px;
   height: 2px;
   border-radius: 50%;
-  background: rgba(80, 170, 255, 0.4);
-  box-shadow: 0 0 6px rgba(80, 170, 255, 0.25);
+  background: rgba(var(--neon-rgb), 0.4);
+  box-shadow: 0 0 6px rgba(var(--neon-rgb), 0.25);
 }
 
 .st-motes span:nth-child(1) { left: 10%; top: 30%; animation: st-drift 7s ease-in-out infinite; }
@@ -358,9 +405,9 @@ body {
   background: linear-gradient(
     90deg,
     transparent 5%,
-    rgba(80, 170, 255, 0.08) 20%,
-    rgba(80, 170, 255, 0.2) 50%,
-    rgba(80, 170, 255, 0.08) 80%,
+    rgba(var(--neon-rgb), 0.08) 20%,
+    rgba(var(--neon-rgb), 0.2) 50%,
+    rgba(var(--neon-rgb), 0.08) 80%,
     transparent 95%
   );
 }
@@ -376,9 +423,160 @@ body {
   height: 16px;
   background: radial-gradient(
     ellipse,
-    rgba(80, 170, 255, 0.06) 0%,
+    rgba(var(--neon-rgb), 0.06) 0%,
     transparent 70%
   );
   filter: blur(6px);
   pointer-events: none;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Shared Section Animations
+   Single definitions replacing 14+ duplicated keyframes.
+   ══════════════════════════════════════════════════ */
+
+@keyframes sectionFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-section-fadeUp {
+  opacity: 0;
+  animation: sectionFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes sectionLineExpand {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+
+.animate-section-lineExpand {
+  transform-origin: center;
+  transform: scaleX(0);
+  opacity: 0;
+  animation: sectionLineExpand 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes sectionTitleShimmer {
+  0% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+  100% { background-position: 0% center; }
+}
+
+@keyframes sectionCardReveal {
+  from { opacity: 0; transform: translateY(60px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-section-cardReveal {
+  opacity: 0;
+  animation: sectionCardReveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes sectionScanDown {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(var(--scan-height, 400px)); opacity: 0; }
+}
+
+
+/* ══════════════════════════════════════════════════
+   Shared Section Surfaces & Effects
+   Common patterns for dark sections.
+   ══════════════════════════════════════════════════ */
+
+/* Section label (e.g., "What We Do", "Our Process") */
+.section-label {
+  color: var(--neon);
+  text-shadow: 0 0 20px rgba(var(--neon-rgb), 0.3);
+}
+
+/* Section title */
+.section-title {
+  color: var(--text-heading);
+}
+
+/* Gradient accent text in titles */
+.section-title-accent {
+  background: linear-gradient(90deg, var(--neon) 0%, var(--neon-light) 50%, var(--neon) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sectionTitleShimmer 4s ease-in-out infinite;
+}
+
+/* Section subtitle */
+.section-subtitle {
+  color: var(--text-muted);
+}
+
+/* Glowing divider line under titles */
+.section-header-line {
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--neon-rgb), 0.5) 50%, transparent 100%);
+  box-shadow: 0 0 12px rgba(var(--neon-rgb), 0.3);
+}
+
+/* Noise texture overlay */
+.section-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: var(--noise-texture);
+  background-size: 200px 200px;
+}
+
+/* Ambient glow orb base */
+.section-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+}
+
+/* Top ambient glow (used by most sections via ::before) */
+.section-top-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(var(--neon-rgb), 0.04) 0%, transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Dark section base */
+.dark-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tag / pill style used across services, projects */
+.neon-tag {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: rgba(var(--neon-rgb), 0.08);
+  border: 1px solid var(--border-neon-faint);
+  color: rgba(var(--neon-rgb), 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Glass card border base */
+.glass-border {
+  border: 1px solid var(--border-subtle);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
 }

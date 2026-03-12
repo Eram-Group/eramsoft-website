@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import SectionHeader from "@/components/ui/SectionHeader";
+import AmbientEffects from "@/components/ui/AmbientEffects";
 import "./how-we-work.css";
 
 const steps = [
@@ -77,31 +79,20 @@ export default function HowWeWork() {
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
   return (
-    <section id="how-we-work" className="hw-section relative py-20 md:py-28">
-      {/* Ambient glows */}
-      <div className="hw-glow hw-glow--1" aria-hidden="true" />
-      <div className="hw-glow hw-glow--2" aria-hidden="true" />
-      <div className="hw-noise" aria-hidden="true" />
+    <section id="how-we-work" className="hw-section dark-section section-top-glow relative py-20 md:py-28">
+      <AmbientEffects />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         {/* ── Section header ── */}
-        <div className="mb-16 text-center">
-          <p className="hw-label mb-4 text-xs font-bold tracking-[0.35em] uppercase hw-fadeUp [animation-delay:0.1s]">
-            Our Process
-          </p>
-          <h2 className="hw-title mb-5 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl hw-fadeUp [animation-delay:0.25s]">
-            How We{" "}
-            <span className="hw-title-accent">Work</span>
-          </h2>
-          <div className="hw-line mx-auto mb-6 h-px w-24 hw-lineExpand [animation-delay:0.45s]" />
-          <p className="hw-subtitle mx-auto max-w-lg text-base leading-relaxed md:text-lg hw-fadeUp [animation-delay:0.5s]">
-            A proven process that turns ideas into exceptional digital products,
-            every single time.
-          </p>
-        </div>
+        <SectionHeader
+          label="Our Process"
+          title="How We"
+          accentWord="Work"
+          subtitle="A proven process that turns ideas into exceptional digital products, every single time."
+        />
 
         {/* ── Steps timeline ── */}
-        <div className="hw-timeline hw-fadeUp [animation-delay:0.65s]">
+        <div className="hw-timeline animate-section-fadeUp [animation-delay:0.65s]">
           {/* Connecting line */}
           <div className="hw-timeline-line" aria-hidden="true" />
 

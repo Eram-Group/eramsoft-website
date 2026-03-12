@@ -3,6 +3,8 @@
 import "./clients.css";
 import { clients } from "@/data/clients";
 import { logos } from "@/components/icons/ClientLogos";
+import SectionHeader from "@/components/ui/SectionHeader";
+import AmbientEffects from "@/components/ui/AmbientEffects";
 
 const THRESHOLD = 8; // ≤ 8 clients → single row, > 8 → two-row marquee
 
@@ -35,43 +37,30 @@ export default function Clients() {
   const row2 = isSingle ? [] : clients.slice(Math.ceil(clients.length / 2));
 
   return (
-    <section id="clients" className="cl-section relative pt-10 pb-14 md:pt-14 md:pb-20">
-      {/* Ambient glows */}
-      <div className="cl-glow cl-glow--1" aria-hidden="true" />
-      <div className="cl-glow cl-glow--2" aria-hidden="true" />
-
-      {/* Noise texture */}
-      <div className="cl-noise" aria-hidden="true" />
+    <section id="clients" className="cl-section dark-section section-top-glow relative pt-10 pb-14 md:pt-14 md:pb-20">
+      <AmbientEffects />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         {/* ── Section header ── */}
-        <div className="mb-10 text-center">
-          <p className="cl-label mb-4 text-xs font-bold tracking-[0.35em] uppercase cl-fadeUp [animation-delay:0.1s]">
-            Trusted By
-          </p>
-          <h2 className="cl-title mb-5 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl cl-fadeUp [animation-delay:0.25s]">
-            Clients &{" "}
-            <span className="cl-title-accent">Partners</span>
-          </h2>
-          <div className="cl-line mx-auto mb-6 h-px w-24 cl-lineExpand [animation-delay:0.45s]" />
-          <p className="cl-subtitle mx-auto max-w-lg text-base leading-relaxed md:text-lg cl-fadeUp [animation-delay:0.5s]">
-            We partner with forward-thinking companies across industries
-            to deliver solutions that drive real impact.
-          </p>
-        </div>
+        <SectionHeader
+          label="Trusted By"
+          title="Clients &"
+          accentWord="Partners"
+          subtitle="We partner with forward-thinking companies across industries to deliver solutions that drive real impact."
+        />
       </div>
 
       {/* ── Logo rows ── */}
       {isSingle ? (
         /* Few clients → static centered row, no scroll */
-        <div className="cl-static cl-fadeUp [animation-delay:0.65s]">
+        <div className="cl-static animate-section-fadeUp [animation-delay:0.65s]">
           {clients.map((client) => (
             <LogoCard key={client.name} {...client} />
           ))}
         </div>
       ) : (
         /* Many clients → two-row marquee */
-        <div className="cl-marquee-wrap cl-fadeUp [animation-delay:0.65s]">
+        <div className="cl-marquee-wrap animate-section-fadeUp [animation-delay:0.65s]">
           <div className="cl-marquee cl-marquee--left">
             {[...row1, ...row1].map((client, i) => (
               <LogoCard key={`r1-${i}`} {...client} />
@@ -87,7 +76,7 @@ export default function Clients() {
 
       {/* ── Stats ── */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 mt-10">
-        <div className="cl-stats cl-fadeUp [animation-delay:0.85s]">
+        <div className="cl-stats animate-section-fadeUp [animation-delay:0.85s]">
           <div className="cl-stat">
             <div className="cl-stat-number">50<span>+</span></div>
             <div className="cl-stat-label">Clients Served</div>

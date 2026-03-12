@@ -8,7 +8,7 @@
 /* ── Section surface ── */
 
 .rp-section {
-  background: linear-gradient(180deg, #141c2a 0%, #182030 50%, #141c2a 100%);
+  background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-bg-alt) 50%, var(--dark-bg) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -22,7 +22,7 @@
   width: 600px;
   height: 200px;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(80, 170, 255, 0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(var(--neon-rgb), 0.04) 0%, transparent 70%);
   filter: blur(40px);
   z-index: 0;
   pointer-events: none;
@@ -43,7 +43,7 @@
   height: 600px;
   top: -15%;
   right: -10%;
-  background: radial-gradient(circle, rgba(80, 170, 255, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--neon-rgb), 0.06) 0%, transparent 70%);
 }
 
 .rp-glow--2 {
@@ -51,23 +51,23 @@
   height: 500px;
   bottom: -10%;
   left: -8%;
-  background: radial-gradient(circle, rgba(100, 200, 255, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--neon-light-rgb), 0.05) 0%, transparent 70%);
 }
 
 
 /* ── Section header ── */
 
 .rp-label {
-  color: #50aaff;
-  text-shadow: 0 0 20px rgba(80, 170, 255, 0.3);
+  color: var(--neon);
+  text-shadow: 0 0 20px rgba(var(--neon-rgb), 0.3);
 }
 
 .rp-title {
-  color: #e8edf4;
+  color: var(--text-heading);
 }
 
 .rp-title-accent {
-  background: linear-gradient(90deg, #50aaff 0%, #82d2ff 50%, #50aaff 100%);
+  background: linear-gradient(90deg, var(--neon) 0%, var(--neon-light) 50%, var(--neon) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -82,12 +82,12 @@
 }
 
 .rp-subtitle {
-  color: #7a8da4;
+  color: var(--text-muted);
 }
 
 .rp-line {
-  background: linear-gradient(90deg, transparent 0%, rgba(80, 170, 255, 0.5) 50%, transparent 100%);
-  box-shadow: 0 0 12px rgba(80, 170, 255, 0.3);
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--neon-rgb), 0.5) 50%, transparent 100%);
+  box-shadow: 0 0 12px rgba(var(--neon-rgb), 0.3);
 }
 
 
@@ -115,11 +115,11 @@
 
 .rp-featured:hover {
   transform: translateY(-6px);
-  border-color: rgba(80, 170, 255, 0.2);
+  border-color: rgba(var(--neon-rgb), 0.2);
   box-shadow:
     0 48px 100px rgba(0, 0, 0, 0.55),
-    0 0 80px rgba(80, 170, 255, 0.06),
-    0 0 0 1px rgba(80, 170, 255, 0.1) inset;
+    0 0 80px rgba(var(--neon-rgb), 0.06),
+    0 0 0 1px rgba(var(--neon-rgb), 0.1) inset;
 }
 
 @media (max-width: 768px) {
@@ -178,7 +178,7 @@
   left: 0;
   width: 1px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, rgba(80, 170, 255, 0.2), transparent);
+  background: linear-gradient(180deg, transparent, rgba(var(--neon-rgb), 0.2), transparent);
 }
 
 @media (max-width: 768px) {
@@ -188,7 +188,7 @@
   .rp-featured-body::before {
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(80, 170, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(var(--neon-rgb), 0.2), transparent);
   }
 }
 
@@ -196,7 +196,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: rgba(80, 170, 255, 0.6);
+  color: rgba(var(--neon-rgb), 0.6);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   margin-bottom: 16px;
 }
@@ -204,7 +204,7 @@
 .rp-featured-title {
   font-size: 2rem;
   font-weight: 800;
-  color: #e8edf4;
+  color: var(--text-heading);
   letter-spacing: -0.02em;
   line-height: 1.15;
   margin-bottom: 14px;
@@ -212,7 +212,7 @@
 }
 
 .rp-featured:hover .rp-featured-title {
-  color: #ffffff;
+  color: var(--text-bright);
 }
 
 .rp-featured-desc {
@@ -241,12 +241,12 @@
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: rgba(80, 170, 255, 0.7);
+  color: rgba(var(--neon-rgb), 0.7);
   transition: color 0.3s ease, gap 0.3s ease;
 }
 
 .rp-featured:hover .rp-featured-link {
-  color: rgba(80, 170, 255, 1);
+  color: rgba(var(--neon-rgb), 1);
   gap: 12px;
 }
 
@@ -285,11 +285,11 @@
 
 .rp-card:hover {
   transform: translateY(-8px) scale(1.01);
-  border-color: rgba(80, 170, 255, 0.2);
+  border-color: rgba(var(--neon-rgb), 0.2);
   box-shadow:
     0 40px 80px rgba(0, 0, 0, 0.5),
-    0 0 60px rgba(80, 170, 255, 0.08),
-    0 0 0 1px rgba(80, 170, 255, 0.1) inset;
+    0 0 60px rgba(var(--neon-rgb), 0.08),
+    0 0 0 1px rgba(var(--neon-rgb), 0.1) inset;
 }
 
 
@@ -344,9 +344,9 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #e8edf4;
-  background: rgba(80, 170, 255, 0.15);
-  border: 1px solid rgba(80, 170, 255, 0.12);
+  color: var(--text-heading);
+  background: rgba(var(--neon-rgb), 0.15);
+  border: 1px solid rgba(var(--neon-rgb), 0.12);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 5px 12px;
@@ -358,9 +358,9 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: rgba(80, 170, 255, 0.8);
+  color: rgba(var(--neon-rgb), 0.8);
   background: rgba(10, 15, 26, 0.7);
-  border: 1px solid rgba(80, 170, 255, 0.15);
+  border: 1px solid rgba(var(--neon-rgb), 0.15);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 5px 12px;
@@ -378,7 +378,7 @@
 .rp-card-title {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #e8edf4;
+  color: var(--text-heading);
   margin-bottom: 8px;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -386,7 +386,7 @@
 }
 
 .rp-card:hover .rp-card-title {
-  color: #ffffff;
+  color: var(--text-bright);
 }
 
 .rp-card-desc {
@@ -424,9 +424,9 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  background: rgba(80, 170, 255, 0.08);
-  border: 1px solid rgba(80, 170, 255, 0.12);
-  color: rgba(80, 170, 255, 0.7);
+  background: rgba(var(--neon-rgb), 0.08);
+  border: 1px solid rgba(var(--neon-rgb), 0.12);
+  color: rgba(var(--neon-rgb), 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
@@ -434,9 +434,9 @@
 
 .rp-card:hover .rp-card-tech-item,
 .rp-featured:hover .rp-card-tech-item {
-  background: rgba(80, 170, 255, 0.14);
-  border-color: rgba(80, 170, 255, 0.25);
-  color: rgba(80, 170, 255, 0.95);
+  background: rgba(var(--neon-rgb), 0.14);
+  border-color: rgba(var(--neon-rgb), 0.25);
+  color: rgba(var(--neon-rgb), 0.95);
 }
 
 .rp-card-link {
@@ -445,14 +445,14 @@
   gap: 5px;
   font-size: 12px;
   font-weight: 700;
-  color: rgba(80, 170, 255, 0.6);
+  color: rgba(var(--neon-rgb), 0.6);
   white-space: nowrap;
   flex-shrink: 0;
   transition: color 0.3s ease;
 }
 
 .rp-card:hover .rp-card-link {
-  color: rgba(80, 170, 255, 1);
+  color: rgba(var(--neon-rgb), 1);
 }
 
 
@@ -465,7 +465,7 @@
   border-radius: inherit;
   opacity: 0;
   transition: opacity 0.5s ease;
-  background: linear-gradient(135deg, rgba(80, 170, 255, 0.1) 0%, transparent 40%, transparent 60%, rgba(100, 200, 255, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(var(--neon-rgb), 0.1) 0%, transparent 40%, transparent 60%, rgba(var(--neon-light-rgb), 0.05) 100%);
   pointer-events: none;
 }
 
@@ -480,7 +480,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(80, 170, 255, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--neon-rgb), 0.4), transparent);
   z-index: 4;
   opacity: 0;
   transform: translateY(0);
@@ -514,9 +514,9 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #e8edf4;
-  background: rgba(80, 170, 255, 0.08);
-  border: 1px solid rgba(80, 170, 255, 0.2);
+  color: var(--text-heading);
+  background: rgba(var(--neon-rgb), 0.08);
+  border: 1px solid rgba(var(--neon-rgb), 0.2);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   cursor: pointer;
@@ -525,13 +525,13 @@
 }
 
 .rp-view-all:hover {
-  background: rgba(80, 170, 255, 0.15);
-  border-color: rgba(80, 170, 255, 0.4);
+  background: rgba(var(--neon-rgb), 0.15);
+  border-color: rgba(var(--neon-rgb), 0.4);
   box-shadow:
-    0 0 30px rgba(80, 170, 255, 0.1),
-    0 0 60px rgba(80, 170, 255, 0.05);
+    0 0 30px rgba(var(--neon-rgb), 0.1),
+    0 0 60px rgba(var(--neon-rgb), 0.05);
   transform: translateY(-2px);
-  color: #ffffff;
+  color: var(--text-bright);
 }
 
 .rp-view-all svg {

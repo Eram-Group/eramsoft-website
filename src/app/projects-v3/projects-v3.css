@@ -9,17 +9,17 @@
 .ap3-page {
   background: linear-gradient(
     160deg,
-    #111825 0%,
-    #151e2e 20%,
-    #1a2538 40%,
-    #1e2a3f 60%,
-    #192236 80%,
-    #141c2a 100%
+    var(--dark-bg-deep) 0%,
+    var(--dark-bg-alt) 20%,
+    var(--dark-surface) 40%,
+    var(--dark-surface-alt) 60%,
+    var(--dark-bg-alt) 80%,
+    var(--dark-bg) 100%
   );
   min-height: 100vh;
   position: relative;
   overflow: clip;
-  color: #e8edf4;
+  color: var(--text-heading);
   font-family: 'DM Sans', sans-serif;
 }
 
@@ -49,7 +49,7 @@
   height: 600px;
   bottom: 15%;
   right: -10%;
-  background: radial-gradient(circle, rgba(80, 170, 255, 0.035) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--neon-rgb), 0.035) 0%, transparent 70%);
 }
 
 .ap3-glow--3 {
@@ -57,7 +57,7 @@
   height: 500px;
   top: 50%;
   left: 30%;
-  background: radial-gradient(circle, rgba(80, 170, 255, 0.025) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--neon-rgb), 0.025) 0%, transparent 70%);
 }
 
 .ap3-noise {
@@ -76,8 +76,8 @@
   pointer-events: none;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(80, 170, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(80, 170, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(var(--neon-rgb), 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--neon-rgb), 0.025) 1px, transparent 1px);
   background-size: 80px 80px;
   mask-image: radial-gradient(ellipse 60% 50% at 50% 25%, black 0%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 25%, black 0%, transparent 100%);
@@ -93,30 +93,30 @@
 .ap3-orb--1 {
   width: 6px;
   height: 6px;
-  background: rgba(80, 170, 255, 0.45);
+  background: rgba(var(--neon-rgb), 0.45);
   top: 16%;
   right: 14%;
-  box-shadow: 0 0 24px 4px rgba(80, 170, 255, 0.2);
+  box-shadow: 0 0 24px 4px rgba(var(--neon-rgb), 0.2);
   animation: ap3-drift 9s ease-in-out infinite;
 }
 
 .ap3-orb--2 {
   width: 4px;
   height: 4px;
-  background: rgba(80, 170, 255, 0.4);
+  background: rgba(var(--neon-rgb), 0.4);
   top: 48%;
   left: 7%;
-  box-shadow: 0 0 20px 3px rgba(80, 170, 255, 0.15);
+  box-shadow: 0 0 20px 3px rgba(var(--neon-rgb), 0.15);
   animation: ap3-drift 12s ease-in-out infinite 3s;
 }
 
 .ap3-orb--3 {
   width: 5px;
   height: 5px;
-  background: rgba(80, 170, 255, 0.3);
+  background: rgba(var(--neon-rgb), 0.3);
   bottom: 22%;
   right: 20%;
-  box-shadow: 0 0 20px 3px rgba(80, 170, 255, 0.12);
+  box-shadow: 0 0 20px 3px rgba(var(--neon-rgb), 0.12);
   animation: ap3-drift 11s ease-in-out infinite 5s;
 }
 
@@ -166,7 +166,7 @@
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(80, 170, 255, 0.55);
+  color: rgba(var(--neon-rgb), 0.55);
   margin-bottom: 28px;
   position: relative;
   padding-left: 30px;
@@ -179,7 +179,7 @@
   top: 50%;
   width: 18px;
   height: 1px;
-  background: rgba(80, 170, 255, 0.4);
+  background: rgba(var(--neon-rgb), 0.4);
 }
 
 .ap3-heading {
@@ -207,7 +207,7 @@
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
-  background: linear-gradient(135deg, #50aaff 0%, #7ec8ff 30%, #a0d4ff 65%, #50aaff 100%);
+  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-light) 30%, var(--neon-light) 65%, var(--neon) 100%);
   background-size: 300% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -232,7 +232,7 @@
   font-size: clamp(3rem, 5vw, 4.8rem);
   font-weight: 700;
   letter-spacing: -0.05em;
-  color: rgba(80, 170, 255, 0.1);
+  color: rgba(var(--neon-rgb), 0.1);
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
@@ -240,7 +240,7 @@
 .ap3-count-sep {
   width: 1px;
   height: 48px;
-  background: linear-gradient(180deg, transparent, rgba(80, 170, 255, 0.2), transparent);
+  background: linear-gradient(180deg, transparent, rgba(var(--neon-rgb), 0.2), transparent);
 }
 
 .ap3-count-text {
@@ -255,7 +255,7 @@
 .ap3-header-rule {
   height: 1px;
   margin: 40px 0 32px;
-  background: linear-gradient(90deg, rgba(80, 170, 255, 0.35), rgba(80, 170, 255, 0.1) 40%, transparent 70%);
+  background: linear-gradient(90deg, rgba(var(--neon-rgb), 0.35), rgba(var(--neon-rgb), 0.1) 40%, transparent 70%);
   transform-origin: left;
   animation: ap3-rule-draw 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -302,15 +302,15 @@
 
 .ap3-filter-btn:hover {
   color: #7ba1c4;
-  border-color: rgba(80, 170, 255, 0.15);
-  background: rgba(80, 170, 255, 0.03);
+  border-color: rgba(var(--neon-rgb), 0.15);
+  background: rgba(var(--neon-rgb), 0.03);
 }
 
 .ap3-filter-btn--active {
-  color: #50aaff;
-  border-color: rgba(80, 170, 255, 0.3);
-  background: rgba(80, 170, 255, 0.07);
-  box-shadow: 0 0 24px rgba(80, 170, 255, 0.06), inset 0 0 12px rgba(80, 170, 255, 0.03);
+  color: var(--neon);
+  border-color: rgba(var(--neon-rgb), 0.3);
+  background: rgba(var(--neon-rgb), 0.07);
+  box-shadow: 0 0 24px rgba(var(--neon-rgb), 0.06), inset 0 0 12px rgba(var(--neon-rgb), 0.03);
 }
 
 
@@ -331,7 +331,7 @@
   text-decoration: none;
   color: inherit;
   position: relative;
-  border: 1px solid rgba(80, 170, 255, 0.08);
+  border: 1px solid rgba(var(--neon-rgb), 0.08);
   border-radius: 16px;
   overflow: hidden;
   background: rgba(20, 28, 42, 0.5);
@@ -343,10 +343,10 @@
 
 .ap3-row:hover {
   transform: translateY(-3px);
-  border-color: rgba(80, 170, 255, 0.18);
+  border-color: rgba(var(--neon-rgb), 0.18);
   box-shadow:
     0 24px 64px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(80, 170, 255, 0.06);
+    0 0 0 1px rgba(var(--neon-rgb), 0.06);
 }
 
 /* Flipped rows: image goes right, content goes left */
@@ -412,8 +412,8 @@
   background: linear-gradient(
     180deg,
     transparent 0%,
-    rgba(80, 170, 255, 0.15) 30%,
-    rgba(80, 170, 255, 0.15) 70%,
+    rgba(var(--neon-rgb), 0.15) 30%,
+    rgba(var(--neon-rgb), 0.15) 70%,
     transparent 100%
   );
   z-index: 2;
@@ -452,7 +452,7 @@
 }
 
 .ap3-row-cat {
-  color: rgba(80, 170, 255, 0.6);
+  color: rgba(var(--neon-rgb), 0.6);
 }
 
 .ap3-row-yr {
@@ -487,7 +487,7 @@
 }
 
 .ap3-row:hover .ap3-row-title {
-  color: #fff;
+  color: var(--text-bright);
 }
 
 
@@ -521,16 +521,16 @@
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  background: rgba(80, 170, 255, 0.05);
-  border: 1px solid rgba(80, 170, 255, 0.08);
-  color: rgba(80, 170, 255, 0.5);
+  background: rgba(var(--neon-rgb), 0.05);
+  border: 1px solid rgba(var(--neon-rgb), 0.08);
+  color: rgba(var(--neon-rgb), 0.5);
   transition: all 0.3s ease;
 }
 
 .ap3-row:hover .ap3-pill {
-  background: rgba(80, 170, 255, 0.1);
-  border-color: rgba(80, 170, 255, 0.2);
-  color: rgba(80, 170, 255, 0.85);
+  background: rgba(var(--neon-rgb), 0.1);
+  border-color: rgba(var(--neon-rgb), 0.2);
+  color: rgba(var(--neon-rgb), 0.85);
 }
 
 
@@ -544,12 +544,12 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(80, 170, 255, 0.35);
+  color: rgba(var(--neon-rgb), 0.35);
   transition: color 0.35s ease, gap 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .ap3-row:hover .ap3-row-cta {
-  color: #50aaff;
+  color: var(--neon);
   gap: 18px;
 }
 
@@ -578,17 +578,17 @@
   background: rgba(20, 28, 42, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  color: #50aaff;
+  color: var(--neon);
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 50px;
-  border: 1px solid rgba(80, 170, 255, 0.15);
+  border: 1px solid rgba(var(--neon-rgb), 0.15);
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(80, 170, 255, 0.05),
+    0 0 0 1px rgba(var(--neon-rgb), 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   animation: ap3-fab-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1s both;
@@ -608,13 +608,13 @@
 
 .ap3-fab:hover {
   background: rgba(20, 28, 42, 0.95);
-  color: #7ec8ff;
-  border-color: rgba(80, 170, 255, 0.35);
+  color: var(--neon-light);
+  border-color: rgba(var(--neon-rgb), 0.35);
   transform: translateY(-3px);
   box-shadow:
     0 16px 48px rgba(0, 0, 0, 0.5),
-    0 0 24px rgba(80, 170, 255, 0.12),
-    0 0 0 1px rgba(80, 170, 255, 0.1),
+    0 0 24px rgba(var(--neon-rgb), 0.12),
+    0 0 0 1px rgba(var(--neon-rgb), 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
