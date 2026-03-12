@@ -949,6 +949,168 @@
 
 
 /* ══════════════════════════════════════════════════
+   BRANCHES OPTION C — Vertical Panel Strips
+   ══════════════════════════════════════════════════ */
+
+.ct-panels {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.ct-panel {
+  position: relative;
+  flex: 1;
+  height: 480px;
+  overflow: hidden;
+  cursor: default;
+  transition: flex 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ct-panel:hover {
+  flex: 1.6;
+}
+
+/* Background image */
+
+.ct-panel-img {
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.6s ease;
+  z-index: 0;
+  filter: brightness(0.7) saturate(0.9);
+}
+
+.ct-panel:hover .ct-panel-img {
+  transform: scale(1.08);
+  filter: brightness(0.8) saturate(1.1);
+}
+
+/* Dark overlay — heavy gradient at bottom */
+
+.ct-panel-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 15, 26, 0.2) 0%,
+    rgba(10, 15, 26, 0.15) 40%,
+    rgba(10, 15, 26, 0.55) 65%,
+    rgba(10, 15, 26, 0.92) 100%
+  );
+  transition: background 0.5s ease;
+}
+
+.ct-panel:hover .ct-panel-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 15, 26, 0.1) 0%,
+    rgba(10, 15, 26, 0.1) 40%,
+    rgba(10, 15, 26, 0.5) 65%,
+    rgba(10, 15, 26, 0.9) 100%
+  );
+}
+
+/* Neon accent line at top */
+
+.ct-panel-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 3;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.ct-panel:hover .ct-panel-accent {
+  opacity: 0.7;
+}
+
+/* Content pinned to bottom */
+
+.ct-panel-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Label badge */
+
+.ct-panel-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--neon);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+}
+
+.ct-panel:hover .ct-panel-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* City */
+
+.ct-panel-city {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ct-panel:hover .ct-panel-city {
+  transform: translateY(-2px);
+}
+
+/* Address & phone — reveal on hover */
+
+.ct-panel-address,
+.ct-panel-phone {
+  font-size: 0.76rem;
+  color: rgba(220, 230, 240, 0.6);
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.ct-panel-address {
+  transition-delay: 0.15s;
+}
+
+.ct-panel-phone {
+  transition-delay: 0.22s;
+  color: rgba(var(--neon-rgb), 0.7);
+}
+
+.ct-panel:hover .ct-panel-address,
+.ct-panel:hover .ct-panel-phone {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ══════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════ */
 
@@ -998,6 +1160,29 @@
 
   .ct-b2-card {
     height: 320px;
+  }
+
+  .ct-panels {
+    flex-direction: column;
+    gap: 10px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .ct-panel {
+    height: 220px;
+    flex: none;
+  }
+
+  .ct-panel:hover {
+    flex: none;
+  }
+
+  .ct-panel-label,
+  .ct-panel-address,
+  .ct-panel-phone {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .ct-section-title {

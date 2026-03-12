@@ -393,7 +393,6 @@ export default function ContactPage() {
           <div className="ct-b2-grid">
             {branches.map((b, i) => (
               <div key={b.city} className="ct-b2-card" style={{ animationDelay: `${i * 0.15}s` }}>
-                {/* Full background image */}
                 <Image
                   src={b.image}
                   alt={`${b.city} office`}
@@ -403,7 +402,6 @@ export default function ContactPage() {
                 />
                 <div className="ct-b2-overlay" aria-hidden="true" />
 
-                {/* Content layered on top */}
                 <div className="ct-b2-content">
                   <div className="ct-b2-top">
                     <div className="ct-branch-badge ct-b2-badge">
@@ -437,6 +435,46 @@ export default function ContactPage() {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <div className="ct-thread" aria-hidden="true" />
+
+        {/* ═══════════════════════════════════════
+            BRANCHES Option C — Vertical Panel Strips
+            ═══════════════════════════════════════ */}
+        <section className="ct-branches ct-reveal">
+          <div className="ct-branches-head">
+            <p className="ct-tag">Option C</p>
+            <h2 className="ct-section-title">
+              Find Us <span className="ct-accent">Worldwide</span>
+            </h2>
+          </div>
+
+          <div className="ct-panels">
+            {branches.map((b, i) => (
+              <div key={b.city} className="ct-panel" style={{ animationDelay: `${i * 0.15}s` }}>
+                <Image
+                  src={b.image}
+                  alt={`${b.city} office`}
+                  fill
+                  className="ct-panel-img"
+                  sizes="(max-width:900px) 100vw, 33vw"
+                />
+                <div className="ct-panel-overlay" aria-hidden="true" />
+                <div className="ct-panel-accent" aria-hidden="true" />
+
+                <div className="ct-panel-content">
+                  <div className="ct-panel-label">
+                    <span className="ct-branch-dot" />
+                    {b.label}
+                  </div>
+                  <h3 className="ct-panel-city">{b.city}</h3>
+                  <p className="ct-panel-address">{b.address}</p>
+                  <p className="ct-panel-phone">{b.phone}</p>
                 </div>
               </div>
             ))}
