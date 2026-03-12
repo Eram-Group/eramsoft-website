@@ -87,7 +87,7 @@ export default function Hero2() {
             </Link>
 
             <Link
-              href="#services"
+              href="/projects"
               className="h2-cta-secondary rounded-full border-2 px-8 py-3.5 text-sm font-bold tracking-wide backdrop-blur-sm transition-all duration-300"
             >
               OUR WORK

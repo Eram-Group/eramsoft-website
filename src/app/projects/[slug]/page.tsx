@@ -1,8 +1,9 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Link from "next/link";
+import { useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { projects } from "@/data/projects";
 import { notFound } from "next/navigation";
 import "./project-detail.css";
@@ -260,10 +261,21 @@ export default function ProjectDetailPage() {
   if (projectIndex === -1) return notFound();
 
   const project = projects[projectIndex];
-  const prevProject = projects[(projectIndex - 1 + projects.length) % projects.length];
-  const nextProject = projects[(projectIndex + 1) % projects.length];
 
   const isMobileApp = project.category.toLowerCase().includes("mobile");
+
+  useEffect(() => {
+    const els = document.querySelectorAll(".pd-reveal");
+    const obs = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("pd-revealed");
+        }),
+      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <div className="pd-page">
@@ -565,111 +577,72 @@ export default function ProjectDetailPage() {
       )}
 
       {/* ══════════════════════════════════════
-          Contact CTA — Signal Beacon
+          Aurora CTA
          ══════════════════════════════════════ */}
-      <div className="pd-cta-section">
-        <div className="pd-cta-card pd-cardReveal">
-          {/* Animated rotating border */}
-          <div className="pd-cta-border-glow" aria-hidden="true" />
-
-          {/* Grid mesh backdrop */}
-          <div className="pd-cta-mesh" aria-hidden="true" />
-
-          {/* Signal pulse rings */}
-          <div className="pd-cta-rings" aria-hidden="true">
-            <div className="pd-cta-ring pd-cta-ring--1" />
-            <div className="pd-cta-ring pd-cta-ring--2" />
-            <div className="pd-cta-ring pd-cta-ring--3" />
-          </div>
-
-          {/* Central glow */}
-          <div className="pd-cta-glow" aria-hidden="true" />
-          <div className="pd-cta-glow pd-cta-glow--warm" aria-hidden="true" />
-
-          {/* Content */}
-          <div className="pd-cta-content">
-            <div className="pd-cta-beacon" aria-hidden="true">
-              <span className="pd-cta-beacon-dot" />
-            </div>
-
-            <p className="pd-cta-label">Have a similar idea?</p>
-            <h2 className="pd-cta-title">
-              Let&apos;s build something<br />
-              <span>great together</span>
-            </h2>
-            <p className="pd-cta-desc">
-              Whether you need a mobile app, web platform, or AI-powered solution — our team is ready to bring your vision to life.
-            </p>
-
-            <div className="pd-cta-actions">
-              <a href="mailto:hello@digitalbackbone.dev" className="pd-cta-btn pd-cta-btn--primary">
-                <span className="pd-cta-btn-shine" aria-hidden="true" />
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-                <span>Email Us</span>
-              </a>
-              <a href="https://wa.me/966500000000" target="_blank" rel="noopener noreferrer" className="pd-cta-btn pd-cta-btn--secondary">
-                <span className="pd-cta-btn-shine" aria-hidden="true" />
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                </svg>
-                <span>WhatsApp</span>
-              </a>
-            </div>
-          </div>
+      <section className="pd-aur pd-reveal">
+        {/* Aurora light bands */}
+        <div className="pd-aur-sky" aria-hidden="true">
+          <div className="pd-aur-band pd-aur-band--1" />
+          <div className="pd-aur-band pd-aur-band--2" />
+          <div className="pd-aur-band pd-aur-band--3" />
         </div>
-      </div>
 
-      {/* ══════════════════════════════════════
-          Next / Previous Navigation
-         ══════════════════════════════════════ */}
-      <div className="pd-nav">
-        <div className="pd-nav-divider" />
+        {/* Star field */}
+        <div className="pd-aur-stars" aria-hidden="true">
+          <span style={{ top: "12%", left: "8%", animationDelay: "0s" }} />
+          <span style={{ top: "20%", left: "85%", animationDelay: "1.2s" }} />
+          <span style={{ top: "35%", left: "22%", animationDelay: "0.6s" }} />
+          <span style={{ top: "18%", left: "55%", animationDelay: "2.1s" }} />
+          <span style={{ top: "45%", left: "72%", animationDelay: "0.3s" }} />
+          <span style={{ top: "8%", left: "40%", animationDelay: "1.8s" }} />
+          <span style={{ top: "55%", left: "12%", animationDelay: "0.9s" }} />
+          <span style={{ top: "30%", left: "92%", animationDelay: "1.5s" }} />
+          <span style={{ top: "50%", left: "48%", animationDelay: "2.4s" }} />
+          <span style={{ top: "15%", left: "68%", animationDelay: "0.4s" }} />
+        </div>
 
-        <div className="pd-nav-grid">
-          <Link href={`/projects/${prevProject.slug}`} className="pd-nav-card">
-            <div className="pd-nav-scanline" />
-            <img
-              src={prevProject.image}
-              alt={prevProject.title}
-              className="pd-nav-thumb"
-            />
-            <div>
-              <div className="pd-nav-direction">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="19" y1="12" x2="5" y2="12" />
-                  <polyline points="12 19 5 12 12 5" />
-                </svg>
-                Previous Project
-              </div>
-              <div className="pd-nav-name">{prevProject.title}</div>
-              <div className="pd-nav-category">{prevProject.category}</div>
-            </div>
-          </Link>
+        {/* Horizon glow */}
+        <div className="pd-aur-horizon" aria-hidden="true" />
 
-          <Link href={`/projects/${nextProject.slug}`} className="pd-nav-card pd-nav-card--next">
-            <div className="pd-nav-scanline" />
-            <img
-              src={nextProject.image}
-              alt={nextProject.title}
-              className="pd-nav-thumb"
-            />
-            <div>
-              <div className="pd-nav-direction">
-                Next Project
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        {/* Sweeping light beam */}
+        <div className="pd-aur-beam" aria-hidden="true" />
+
+        {/* Content */}
+        <div className="pd-aur-body">
+          <div className="pd-aur-badge">
+            <span className="pd-aur-badge-dot" />
+            Let&apos;s Talk
+          </div>
+
+          <h2 className="pd-aur-title">
+            Ready to Build Something
+            <br />
+            <span className="pd-aur-title-accent">Exceptional</span>?
+          </h2>
+
+          <p className="pd-aur-desc">
+            Let&apos;s discuss how we can bring your vision to life with
+            precision engineering and world-class design.
+          </p>
+
+          <div className="pd-aur-actions">
+            <Link href="/#contact" className="pd-aur-btn pd-aur-btn--primary">
+              <span className="pd-aur-btn-shimmer" aria-hidden="true" />
+              <span className="pd-aur-btn-text">
+                Get a Free Consultation
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
                 </svg>
-              </div>
-              <div className="pd-nav-name">{nextProject.title}</div>
-              <div className="pd-nav-category">{nextProject.category}</div>
-            </div>
-          </Link>
+              </span>
+            </Link>
+            <Link href="/#projects" className="pd-aur-btn pd-aur-btn--outline">
+              See Our Work
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 }
