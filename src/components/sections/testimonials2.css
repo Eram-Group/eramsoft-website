@@ -313,7 +313,7 @@
 .t2-avatar-circle {
   width: 100%;
   height: 100%;
-  border-radius: 22%;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -323,57 +323,69 @@
   position: relative;
   z-index: 2;
   transition: all 0.5s ease;
-  background: rgba(15, 20, 35, 0.85);
-  border: 1px solid var(--border-subtle);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .t2-person--active .t2-avatar-circle {
   font-size: 22px;
-  border-color: var(--border-neon-faint);
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.4),
     0 0 24px rgba(var(--neon-rgb), 0.08);
 }
 
-.t2-avatar-circle--green   { color: #1db954; }
-.t2-avatar-circle--indigo  { color: #818cf8; }
-.t2-avatar-circle--rose    { color: #fb7185; }
-.t2-avatar-circle--sky     { color: #38bdf8; }
-.t2-avatar-circle--emerald { color: #34d399; }
-.t2-avatar-circle--purple  { color: #c084fc; }
-.t2-avatar-circle--cyan    { color: #22d3ee; }
+.t2-avatar-circle--green   { background: linear-gradient(135deg, #1db954, #148a3c); }
+.t2-avatar-circle--indigo  { background: linear-gradient(135deg, #635bff, #4840c9); }
+.t2-avatar-circle--rose    { background: linear-gradient(135deg, #ff5a5f, #c9474b); }
+.t2-avatar-circle--sky     { background: linear-gradient(135deg, #38bdf8, #2a8fc2); }
+.t2-avatar-circle--emerald { background: linear-gradient(135deg, #34d399, #28a577); }
+.t2-avatar-circle--purple  { background: linear-gradient(135deg, #a855f7, #7e3ec1); }
+.t2-avatar-circle--cyan    { background: linear-gradient(135deg, #22d3ee, #1aa4ba); }
 
-.t2-person--active .t2-avatar-circle--green   { border-color: rgba(29, 185, 84, 0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(29, 185, 84, 0.1); }
-.t2-person--active .t2-avatar-circle--indigo  { border-color: rgba(129, 140, 248, 0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(129, 140, 248, 0.1); }
-.t2-person--active .t2-avatar-circle--rose    { border-color: rgba(251, 113, 133, 0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(251, 113, 133, 0.1); }
-.t2-person--active .t2-avatar-circle--sky     { border-color: rgba(56, 189, 248, 0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(56, 189, 248, 0.1); }
-.t2-person--active .t2-avatar-circle--emerald { border-color: rgba(52, 211, 153, 0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(52, 211, 153, 0.1); }
-.t2-person--active .t2-avatar-circle--purple  { border-color: rgba(192, 132, 252, 0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(192, 132, 252, 0.1); }
-.t2-person--active .t2-avatar-circle--cyan    { border-color: rgba(34, 211, 238, 0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(34, 211, 238, 0.1); }
-
-/* Subtle ring */
+/* Gradient ring */
 .t2-avatar-ring {
   position: absolute;
   inset: -4px;
-  border-radius: 26%;
+  border-radius: 50%;
   z-index: 1;
   opacity: 0;
-  border: 1px solid rgba(var(--neon-rgb), 0.15);
   transition: opacity 0.5s ease;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--t2-ring-angle, 0deg),
+    var(--neon),
+    var(--neon-light),
+    transparent 40%,
+    transparent 60%,
+    var(--neon-light),
+    var(--neon)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: t2-ringRotate 3s linear infinite;
 }
 
 .t2-person--active .t2-avatar-ring {
   opacity: 1;
 }
 
+@property --t2-ring-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes t2-ringRotate {
+  to { --t2-ring-angle: 360deg; }
+}
+
 /* Glow pulse */
 .t2-avatar-glow {
   position: absolute;
   inset: -12px;
-  border-radius: 30%;
+  border-radius: 50%;
   z-index: 0;
   opacity: 0;
   transition: opacity 0.5s ease;
