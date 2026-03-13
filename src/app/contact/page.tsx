@@ -441,9 +441,8 @@ export default function ContactPage() {
                   >
                     <span className="ct-faq-q">{f.q}</span>
                     <span className="ct-faq-icon">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="12" y1="5" x2="12" y2="19" className="ct-faq-icon-v" />
-                        <line x1="5" y1="12" x2="19" y2="12" />
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="6 9 12 15 18 9" />
                       </svg>
                     </span>
                   </button>
@@ -455,6 +454,60 @@ export default function ContactPage() {
             })}
           </div>
         </section>
+
+        <div className="ct-thread" aria-hidden="true" />
+
+        {/* ═══════════════════════════════════════
+            FAQ Option B — Split Panel
+            ═══════════════════════════════════════ */}
+        <section className="ct-faq ct-reveal">
+          <div className="ct-branches-head">
+            <p className="ct-tag">Option B</p>
+            <h2 className="ct-section-title">
+              Frequently Asked <span className="ct-accent">Questions</span>
+            </h2>
+          </div>
+
+          <div className="ct-faqb">
+            {/* Left — Question tabs */}
+            <div className="ct-faqb-tabs">
+              {faqs.map((f, i) => (
+                <button
+                  key={i}
+                  className={`ct-faqb-tab ${openFaq === i ? "ct-faqb-tab--active" : ""}`}
+                  onClick={() => setOpenFaq(i)}
+                >
+                  <span className="ct-faqb-num">0{i + 1}</span>
+                  <span className="ct-faqb-q">{f.q}</span>
+                  <svg className="ct-faqb-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </button>
+              ))}
+            </div>
+
+            {/* Right — Answer panel */}
+            <div className="ct-faqb-panel">
+              <div className="ct-faqb-panel-glow" aria-hidden="true" />
+              {openFaq !== null ? (
+                <>
+                  <span className="ct-faqb-panel-num">0{openFaq + 1}</span>
+                  <h3 className="ct-faqb-panel-q">{faqs[openFaq].q}</h3>
+                  <div className="ct-faqb-panel-divider" />
+                  <p className="ct-faqb-panel-a">{faqs[openFaq].a}</p>
+                </>
+              ) : (
+                <>
+                  <span className="ct-faqb-panel-num">01</span>
+                  <h3 className="ct-faqb-panel-q">{faqs[0].q}</h3>
+                  <div className="ct-faqb-panel-divider" />
+                  <p className="ct-faqb-panel-a">{faqs[0].a}</p>
+                </>
+              )}
+            </div>
+          </div>
+        </section>
+
       </div>
     </div>
   );
