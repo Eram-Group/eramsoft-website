@@ -675,63 +675,7 @@
   margin-bottom: 48px;
 }
 
-.ct-branches-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-/* ── Branch card ── */
-
-.ct-branch {
-  position: relative;
-  border-radius: 18px;
-  background: rgba(15, 20, 35, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.ct-branch:hover {
-  border-color: rgba(var(--neon-rgb), 0.2);
-  background: rgba(15, 20, 35, 0.7);
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3),
-              0 0 24px rgba(var(--neon-rgb), 0.05);
-}
-
-/* Image */
-
-.ct-branch-img-wrap {
-  position: relative;
-  width: 100%;
-  height: 180px;
-  overflow: hidden;
-}
-
-.ct-branch-img {
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.ct-branch:hover .ct-branch-img {
-  transform: scale(1.06);
-}
-
-.ct-branch-img-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(14, 21, 32, 0.1) 0%,
-    rgba(14, 21, 32, 0.6) 70%,
-    rgba(14, 21, 32, 0.85) 100%
-  );
-  z-index: 1;
-}
-
-/* Badge — positioned on the image */
+/* Badge */
 
 .ct-branch-badge {
   position: absolute;
@@ -766,55 +710,6 @@
 @keyframes ct-branchDotPulse {
   0%, 100% { opacity: 0.7; }
   50%      { opacity: 0.3; }
-}
-
-/* Body content */
-
-.ct-branch-body {
-  padding: 24px 24px 28px;
-}
-
-/* City name */
-
-.ct-branch-city {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--text-heading);
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-}
-
-/* Details rows */
-
-.ct-branch-details {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.ct-branch-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  color: rgba(180, 195, 215, 0.55);
-  transition: color 0.3s ease;
-}
-
-.ct-branch-row svg {
-  color: var(--neon);
-  opacity: 0.4;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.ct-branch:hover .ct-branch-row {
-  color: rgba(180, 195, 215, 0.75);
-}
-
-.ct-branch:hover .ct-branch-row svg {
-  opacity: 0.65;
 }
 
 
@@ -947,166 +842,154 @@
   opacity: 0.85;
 }
 
+/* Map link */
 
-/* ══════════════════════════════════════════════════
-   BRANCHES OPTION C — Vertical Panel Strips
-   ══════════════════════════════════════════════════ */
+a.ct-b2-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 
-.ct-panels {
+.ct-b2-map-link {
   display: flex;
-  gap: 6px;
-  width: 100%;
-  border-radius: 18px;
-  overflow: hidden;
-}
-
-.ct-panel {
-  position: relative;
-  flex: 1;
-  height: 480px;
-  overflow: hidden;
-  cursor: default;
-  transition: flex 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.ct-panel:hover {
-  flex: 1.6;
-}
-
-/* Background image */
-
-.ct-panel-img {
-  object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              filter 0.6s ease;
-  z-index: 0;
-  filter: brightness(0.7) saturate(0.9);
-}
-
-.ct-panel:hover .ct-panel-img {
-  transform: scale(1.08);
-  filter: brightness(0.8) saturate(1.1);
-}
-
-/* Dark overlay — heavy gradient at bottom */
-
-.ct-panel-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 15, 26, 0.2) 0%,
-    rgba(10, 15, 26, 0.15) 40%,
-    rgba(10, 15, 26, 0.55) 65%,
-    rgba(10, 15, 26, 0.92) 100%
-  );
-  transition: background 0.5s ease;
-}
-
-.ct-panel:hover .ct-panel-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 15, 26, 0.1) 0%,
-    rgba(10, 15, 26, 0.1) 40%,
-    rgba(10, 15, 26, 0.5) 65%,
-    rgba(10, 15, 26, 0.9) 100%
-  );
-}
-
-/* Neon accent line at top */
-
-.ct-panel-accent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  z-index: 3;
-  background: linear-gradient(90deg, transparent, var(--neon), transparent);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.ct-panel:hover .ct-panel-accent {
-  opacity: 0.7;
-}
-
-/* Content pinned to bottom */
-
-.ct-panel-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  padding: 28px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-/* Label badge */
-
-.ct-panel-label {
-  display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size: 0.55rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
   color: var(--neon);
   opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
 }
 
-.ct-panel:hover .ct-panel-label {
-  opacity: 1;
+.ct-b2-map-link svg {
+  flex-shrink: 0;
+}
+
+.ct-b2-card:hover .ct-b2-map-link {
+  opacity: 0.85;
   transform: translateY(0);
 }
 
-/* City */
 
-.ct-panel-city {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+/* ══════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════ */
+
+.ct-faq {
+  padding: 40px 0 0;
 }
 
-.ct-panel:hover .ct-panel-city {
-  transform: translateY(-2px);
+.ct-faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* Address & phone — reveal on hover */
+/* ── Item ── */
 
-.ct-panel-address,
-.ct-panel-phone {
-  font-size: 0.76rem;
-  color: rgba(220, 230, 240, 0.6);
-  line-height: 1.5;
+.ct-faq-item {
+  border-radius: 14px;
+  background: rgba(15, 20, 35, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.ct-faq-item:hover {
+  border-color: rgba(var(--neon-rgb), 0.12);
+}
+
+.ct-faq-item--open {
+  border-color: rgba(var(--neon-rgb), 0.2);
+  background: rgba(15, 20, 35, 0.65);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15),
+              0 0 16px rgba(var(--neon-rgb), 0.03);
+}
+
+/* ── Trigger button ── */
+
+.ct-faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.ct-faq-q {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  line-height: 1.45;
+  transition: color 0.3s ease;
+}
+
+.ct-faq-item--open .ct-faq-q {
+  color: var(--neon-light);
+}
+
+/* ── Plus / minus icon ── */
+
+.ct-faq-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(var(--neon-rgb), 0.06);
+  border: 1px solid rgba(var(--neon-rgb), 0.1);
+  color: var(--neon);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ct-faq-item--open .ct-faq-icon {
+  background: rgba(var(--neon-rgb), 0.12);
+  border-color: rgba(var(--neon-rgb), 0.25);
+  transform: rotate(45deg);
+}
+
+.ct-faq-icon-v {
+  transition: opacity 0.25s ease;
+}
+
+.ct-faq-item--open .ct-faq-icon-v {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.ct-panel-address {
-  transition-delay: 0.15s;
+/* ── Answer body ── */
+
+.ct-faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.35s ease;
+  opacity: 0;
 }
 
-.ct-panel-phone {
-  transition-delay: 0.22s;
-  color: rgba(var(--neon-rgb), 0.7);
-}
-
-.ct-panel:hover .ct-panel-address,
-.ct-panel:hover .ct-panel-phone {
+.ct-faq-item--open .ct-faq-body {
+  max-height: 300px;
   opacity: 1;
-  transform: translateY(0);
+}
+
+.ct-faq-a {
+  padding: 0 24px 22px;
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: rgba(180, 195, 215, 0.6);
 }
 
 
@@ -1146,12 +1029,6 @@
     height: 350px;
   }
 
-  .ct-branches-grid {
-    grid-template-columns: 1fr;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
   .ct-b2-grid {
     grid-template-columns: 1fr;
     max-width: 420px;
@@ -1162,31 +1039,16 @@
     height: 320px;
   }
 
-  .ct-panels {
-    flex-direction: column;
-    gap: 10px;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
-  .ct-panel {
-    height: 220px;
-    flex: none;
-  }
-
-  .ct-panel:hover {
-    flex: none;
-  }
-
-  .ct-panel-label,
-  .ct-panel-address,
-  .ct-panel-phone {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   .ct-section-title {
     font-size: 1.6rem;
+  }
+
+  .ct-faq-trigger {
+    padding: 16px 18px;
+  }
+
+  .ct-faq-a {
+    padding: 0 18px 18px;
   }
 }
 

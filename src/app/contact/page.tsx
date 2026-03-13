@@ -25,6 +25,7 @@ const branches = [
     phone: "+971 54 888 2484",
     hours: "Sun – Thu: 9 AM – 6 PM",
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
+    map: "https://www.google.com/maps/search/Business+Bay+Dubai+UAE",
   },
   {
     city: "Riyadh",
@@ -33,6 +34,7 @@ const branches = [
     phone: "+966 55 412 7890",
     hours: "Sun – Thu: 9 AM – 6 PM",
     image: "https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?w=800&q=80",
+    map: "https://www.google.com/maps/search/Al+Olaya+District+Riyadh+KSA",
   },
   {
     city: "Cairo",
@@ -41,6 +43,34 @@ const branches = [
     phone: "+20 10 2345 6789",
     hours: "Sun – Thu: 10 AM – 7 PM",
     image: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&q=80",
+    map: "https://www.google.com/maps/search/Smart+Village+6th+of+October+Cairo",
+  },
+];
+
+const faqs = [
+  {
+    q: "What services does Eram Soft offer?",
+    a: "We specialize in mobile app development, web development, UI/UX design, custom software solutions, and cloud services. Whether you need a full product build or support with a specific phase, we\u2019ve got you covered.",
+  },
+  {
+    q: "How long does a typical project take?",
+    a: "Timelines vary based on scope and complexity. A simple mobile app may take 6\u201310 weeks, while larger enterprise solutions can span several months. We\u2019ll provide a detailed timeline after our discovery session.",
+  },
+  {
+    q: "Do you work with startups or only enterprises?",
+    a: "We work with both. From early-stage startups looking to build their MVP to established enterprises needing scalable solutions \u2014 our team adapts to your stage and budget.",
+  },
+  {
+    q: "What is your development process?",
+    a: "We follow an agile methodology: discovery & planning, UI/UX design, iterative development sprints, QA testing, deployment, and ongoing support. You\u2019ll have full visibility at every stage.",
+  },
+  {
+    q: "Do you provide post-launch support?",
+    a: "Absolutely. We offer maintenance packages that include bug fixes, performance monitoring, feature updates, and security patches to keep your product running smoothly.",
+  },
+  {
+    q: "How can I request a quote?",
+    a: "Simply fill out the contact form above or email us at info@eramsoft.com with a brief description of your project. We\u2019ll get back to you within 24 hours with next steps.",
   },
 ];
 
@@ -57,6 +87,7 @@ export default function ContactPage() {
     message: "",
   });
   const [focused, setFocused] = useState<string | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const els = document.querySelectorAll(".ct-reveal");
@@ -313,6 +344,9 @@ export default function ContactPage() {
       <div className="ct-wrap">
         <div className="ct-thread" aria-hidden="true" />
 
+        {/* ═══════════════════════════════════════
+            BRANCHES — Full-bleed Image Cards
+            ═══════════════════════════════════════ */}
         <section className="ct-branches ct-reveal">
           <div className="ct-branches-head">
             <p className="ct-tag">Our Offices</p>
@@ -321,78 +355,9 @@ export default function ContactPage() {
             </h2>
           </div>
 
-          <div className="ct-branches-grid">
-            {branches.map((b, i) => (
-              <div key={b.city} className="ct-branch" style={{ animationDelay: `${i * 0.15}s` }}>
-                {/* City image */}
-                <div className="ct-branch-img-wrap">
-                  <Image
-                    src={b.image}
-                    alt={`${b.city} office`}
-                    fill
-                    className="ct-branch-img"
-                    sizes="(max-width:900px) 100vw, 33vw"
-                  />
-                  <div className="ct-branch-img-overlay" aria-hidden="true" />
-                  {/* Badge on top of image */}
-                  <div className="ct-branch-badge">
-                    <span className="ct-branch-dot" />
-                    {b.label}
-                  </div>
-                </div>
-
-                <div className="ct-branch-body">
-                <h3 className="ct-branch-city">{b.city}</h3>
-
-                <div className="ct-branch-details">
-                  {/* Address */}
-                  <div className="ct-branch-row">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                      <circle cx="12" cy="10" r="3" />
-                    </svg>
-                    <span>{b.address}</span>
-                  </div>
-
-                  {/* Phone */}
-                  <div className="ct-branch-row">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-                    </svg>
-                    <span>{b.phone}</span>
-                  </div>
-
-                  {/* Hours */}
-                  <div className="ct-branch-row">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    <span>{b.hours}</span>
-                  </div>
-                </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div className="ct-thread" aria-hidden="true" />
-
-        {/* ═══════════════════════════════════════
-            BRANCHES Option B — Full-bleed Image Cards
-            ═══════════════════════════════════════ */}
-        <section className="ct-branches ct-reveal">
-          <div className="ct-branches-head">
-            <p className="ct-tag">Option B</p>
-            <h2 className="ct-section-title">
-              Find Us <span className="ct-accent">Worldwide</span>
-            </h2>
-          </div>
-
           <div className="ct-b2-grid">
             {branches.map((b, i) => (
-              <div key={b.city} className="ct-b2-card" style={{ animationDelay: `${i * 0.15}s` }}>
+              <a key={b.city} href={b.map} target="_blank" rel="noopener noreferrer" className="ct-b2-card" style={{ animationDelay: `${i * 0.15}s` }}>
                 <Image
                   src={b.image}
                   alt={`${b.city} office`}
@@ -434,9 +399,19 @@ export default function ContactPage() {
                         <span>{b.hours}</span>
                       </div>
                     </div>
+
+                    {/* Map link indicator */}
+                    <div className="ct-b2-map-link">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                      <span>View on Google Maps</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </section>
@@ -444,40 +419,40 @@ export default function ContactPage() {
         <div className="ct-thread" aria-hidden="true" />
 
         {/* ═══════════════════════════════════════
-            BRANCHES Option C — Vertical Panel Strips
+            FAQ
             ═══════════════════════════════════════ */}
-        <section className="ct-branches ct-reveal">
+        <section className="ct-faq ct-reveal">
           <div className="ct-branches-head">
-            <p className="ct-tag">Option C</p>
+            <p className="ct-tag">FAQ</p>
             <h2 className="ct-section-title">
-              Find Us <span className="ct-accent">Worldwide</span>
+              Frequently Asked <span className="ct-accent">Questions</span>
             </h2>
           </div>
 
-          <div className="ct-panels">
-            {branches.map((b, i) => (
-              <div key={b.city} className="ct-panel" style={{ animationDelay: `${i * 0.15}s` }}>
-                <Image
-                  src={b.image}
-                  alt={`${b.city} office`}
-                  fill
-                  className="ct-panel-img"
-                  sizes="(max-width:900px) 100vw, 33vw"
-                />
-                <div className="ct-panel-overlay" aria-hidden="true" />
-                <div className="ct-panel-accent" aria-hidden="true" />
-
-                <div className="ct-panel-content">
-                  <div className="ct-panel-label">
-                    <span className="ct-branch-dot" />
-                    {b.label}
+          <div className="ct-faq-list">
+            {faqs.map((f, i) => {
+              const isOpen = openFaq === i;
+              return (
+                <div key={i} className={`ct-faq-item ${isOpen ? "ct-faq-item--open" : ""}`}>
+                  <button
+                    className="ct-faq-trigger"
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="ct-faq-q">{f.q}</span>
+                    <span className="ct-faq-icon">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19" className="ct-faq-icon-v" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    </span>
+                  </button>
+                  <div className="ct-faq-body">
+                    <p className="ct-faq-a">{f.a}</p>
                   </div>
-                  <h3 className="ct-panel-city">{b.city}</h3>
-                  <p className="ct-panel-address">{b.address}</p>
-                  <p className="ct-panel-phone">{b.phone}</p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       </div>
