@@ -37,7 +37,6 @@ export default function ProjectsV5Page() {
     return () => observer.disconnect();
   }, [filtered]);
 
-
   return (
     <div className="p5-page">
       {/* Ambient */}
@@ -81,16 +80,12 @@ export default function ProjectsV5Page() {
                 onClick={() => setActiveFilter(cat)}
               >
                 {cat}
-                {activeFilter === cat && <span className="p5-filter-bar" />}
               </button>
             ))}
           </div>
-          <span className="p5-controls-count">
-            Showing {filtered.length} of {projects.length}
-          </span>
         </nav>
 
-        {/* ═══ PROJECT ROWS — Alternating Layout ═══ */}
+        {/* ═══ PROJECT ROWS ═══ */}
         <div className="p5-rows">
           {filtered.map((project, i) => (
             <Link
@@ -99,6 +94,9 @@ export default function ProjectsV5Page() {
               className={`p5-row p5-reveal ${i % 2 === 1 ? "p5-row--flip" : ""}`}
               style={{ "--delay": `${0.05}s` } as React.CSSProperties}
             >
+              {/* Animated border glow */}
+              <span className="p5-row-border-glow" aria-hidden="true" />
+
               {/* Image side */}
               <div className="p5-row-img-wrap">
                 <Image
@@ -109,8 +107,8 @@ export default function ProjectsV5Page() {
                   className="p5-row-img"
                 />
                 <div className="p5-row-img-dim" />
+                <div className="p5-row-img-vignette" />
 
-                {/* Number overlay on image */}
                 <span className="p5-row-idx" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -121,10 +119,21 @@ export default function ProjectsV5Page() {
                 <div className="p5-row-top">
                   <span className="p5-chip">{project.category}</span>
                   <span className="p5-chip p5-chip--year">{project.year}</span>
+                  <span className="p5-row-status-pill">
+                    <span
+                      className={`p5-status-dot ${
+                        project.status === "Live"
+                          ? "p5-dot--live"
+                          : project.status === "Beta"
+                          ? "p5-dot--beta"
+                          : "p5-dot--dev"
+                      }`}
+                    />
+                    {project.status}
+                  </span>
                 </div>
 
                 <h2 className="p5-row-title">{project.title}</h2>
-                <p className="p5-row-tagline">{project.tagline}</p>
                 <p className="p5-row-desc">{project.description}</p>
 
                 <div className="p5-row-tech">
@@ -139,38 +148,26 @@ export default function ProjectsV5Page() {
                       <span className="p5-row-meta-label">Platform</span>
                       {project.platform}
                     </span>
+                    <span className="p5-row-meta-divider" />
                     <span className="p5-row-meta-item">
                       <span className="p5-row-meta-label">Duration</span>
                       {project.duration}
                     </span>
+                    <span className="p5-row-meta-divider" />
                     <span className="p5-row-meta-item">
-                      <span className="p5-row-meta-label">Status</span>
-                      <span className="p5-row-status">
-                        <span
-                          className={`p5-status-dot ${
-                            project.status === "Live"
-                              ? "p5-dot--live"
-                              : project.status === "Beta"
-                              ? "p5-dot--beta"
-                              : "p5-dot--dev"
-                          }`}
-                        />
-                        {project.status}
-                      </span>
+                      <span className="p5-row-meta-label">Team</span>
+                      {project.teamSize}
                     </span>
                   </div>
-
-                  <span className="p5-row-cta">
-                    View Case Study
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="3" y1="9" x2="15" y2="9" />
-                      <polyline points="11 5 15 9 11 13" />
-                    </svg>
-                  </span>
                 </div>
 
-                {/* Accent line */}
-                <span className="p5-row-accent" aria-hidden="true" />
+                <span className="p5-row-cta">
+                  View Case Study
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="3" y1="9" x2="15" y2="9" />
+                    <polyline points="11 5 15 9 11 13" />
+                  </svg>
+                </span>
               </div>
             </Link>
           ))}
@@ -178,16 +175,23 @@ export default function ProjectsV5Page() {
 
         {/* ── Bottom CTA ── */}
         <div className="p5-bottom p5-reveal">
-          <div className="p5-bottom-line" />
-          <p className="p5-bottom-text">Have a project in mind?</p>
-          <Link href="/contact" className="p5-bottom-btn">
-            <span>Start a Conversation</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="4" y1="16" x2="16" y2="4" />
-              <polyline points="8 4 16 4 16 12" />
-            </svg>
-          </Link>
-          <div className="p5-bottom-line" />
+          <span className="p5-bottom-glow" aria-hidden="true" />
+          <span className="p5-bottom-border" aria-hidden="true" />
+          <div className="p5-bottom-inner">
+            <span className="p5-bottom-tag">
+              <span className="p5-bottom-tag-dot" />
+              Available for work
+            </span>
+            <h3 className="p5-bottom-heading">Have a project in mind?</h3>
+            <p className="p5-bottom-sub">Let&apos;s craft something exceptional together.</p>
+            <Link href="/contact" className="p5-bottom-btn">
+              <span>Start a Conversation</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="15" x2="15" y2="3" />
+                <polyline points="7 3 15 3 15 11" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
