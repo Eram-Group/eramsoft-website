@@ -71,13 +71,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: ca-titleShimmer 4s ease-in-out infinite;
-}
-
-@keyframes ca-titleShimmer {
-  0%   { background-position: 0% center; }
-  50%  { background-position: 200% center; }
-  100% { background-position: 0% center; }
 }
 
 .ca-subtitle {
@@ -395,32 +388,32 @@
 /* ── Entrance animations ── */
 
 @keyframes ca-fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .ca-fadeUp {
   opacity: 0;
-  animation: ca-fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: ca-fadeUp 0.5s ease-out both;
 }
 
 @keyframes ca-rowIn {
-  from { opacity: 0; transform: translateX(var(--ca-dir, 30px)); }
+  from { opacity: 0; transform: translateX(var(--ca-dir, 16px)); }
   to   { opacity: 1; transform: translateX(0); }
 }
 
 .ca-rowIn {
   opacity: 0;
-  animation: ca-rowIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: ca-rowIn 0.5s ease-out both;
 }
 
-.ca-row--left.ca-rowIn  { --ca-dir: -30px; }
-.ca-row--right.ca-rowIn { --ca-dir: 30px; }
+.ca-row--left.ca-rowIn  { --ca-dir: -16px; }
+.ca-row--right.ca-rowIn { --ca-dir: 16px; }
 
 @media (max-width: 768px) {
   .ca-row--left.ca-rowIn,
   .ca-row--right.ca-rowIn {
-    --ca-dir: -20px;
+    --ca-dir: -12px;
   }
 }
 
@@ -433,7 +426,7 @@
   transform-origin: center;
   transform: scaleX(0);
   opacity: 0;
-  animation: ca-lineExpand 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: ca-lineExpand 0.8s ease-out both;
 }
 
 

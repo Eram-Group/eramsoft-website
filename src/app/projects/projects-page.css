@@ -97,7 +97,6 @@
   top: 16%;
   right: 14%;
   box-shadow: 0 0 24px 4px rgba(var(--neon-rgb), 0.2);
-  animation: ap-drift 9s ease-in-out infinite;
 }
 
 .ap-orb--2 {
@@ -107,7 +106,6 @@
   top: 48%;
   left: 7%;
   box-shadow: 0 0 20px 3px rgba(var(--neon-rgb), 0.15);
-  animation: ap-drift 12s ease-in-out infinite 3s;
 }
 
 .ap-orb--3 {
@@ -117,15 +115,8 @@
   bottom: 22%;
   right: 20%;
   box-shadow: 0 0 20px 3px rgba(var(--neon-rgb), 0.12);
-  animation: ap-drift 11s ease-in-out infinite 5s;
 }
 
-@keyframes ap-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
-  25%  { transform: translate(18px, -25px) scale(1.2); opacity: 0.7; }
-  50%  { transform: translate(-12px, -40px) scale(0.8); opacity: 1; }
-  75%  { transform: translate(22px, -18px) scale(1.1); opacity: 0.6; }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -215,14 +206,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: ap-gradient-flow 8s ease-in-out infinite;
 }
 
-@keyframes ap-gradient-flow {
-  0%   { background-position: 0% center; }
-  50%  { background-position: 300% center; }
-  100% { background-position: 0% center; }
-}
 
 
 /* ── Header project counter ── */
@@ -271,7 +256,7 @@
     transparent 70%
   );
   transform-origin: left;
-  animation: ap-rule-draw 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: ap-rule-draw 0.5s ease-out forwards;
 }
 
 @keyframes ap-rule-draw {
@@ -428,7 +413,6 @@
 }
 
 .ap-card:hover .ap-card-img {
-  transform: scale(1.05);
 }
 
 
@@ -770,10 +754,10 @@
 
 .ap-reveal {
   opacity: 0;
-  transform: translateY(44px);
+  transform: translateY(16px);
   transition:
-    opacity 0.85s ease,
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
 }
 
 .ap-revealed {
@@ -791,7 +775,7 @@
 }
 
 .ap-card.ap-revealed:hover {
-  transform: translateY(-6px);
+  transform: translateY(-3px);
 }
 
 

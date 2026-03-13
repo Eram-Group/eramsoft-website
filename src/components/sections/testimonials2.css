@@ -49,22 +49,16 @@
   height: 2px;
   border-radius: 50%;
   background: rgba(var(--neon-rgb), 0.25);
-  animation: t2-twinkle 5s ease-in-out infinite;
 }
 
-.t2-constellation span:nth-child(1) { top: 10%; left: 8%; animation-delay: 0s; }
-.t2-constellation span:nth-child(2) { top: 25%; left: 92%; animation-delay: 1.2s; }
-.t2-constellation span:nth-child(3) { top: 60%; left: 5%; animation-delay: 2.5s; }
-.t2-constellation span:nth-child(4) { top: 75%; left: 88%; animation-delay: 0.8s; }
-.t2-constellation span:nth-child(5) { top: 40%; left: 95%; animation-delay: 3.1s; }
-.t2-constellation span:nth-child(6) { top: 85%; left: 15%; animation-delay: 1.7s; }
-.t2-constellation span:nth-child(7) { top: 15%; left: 78%; animation-delay: 4s; }
-.t2-constellation span:nth-child(8) { top: 55%; left: 3%; animation-delay: 2.2s; }
-
-@keyframes t2-twinkle {
-  0%, 100% { opacity: 0.15; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.8); box-shadow: 0 0 8px rgba(var(--neon-rgb), 0.4); }
-}
+.t2-constellation span:nth-child(1) { top: 10%; left: 8%; }
+.t2-constellation span:nth-child(2) { top: 25%; left: 92%; }
+.t2-constellation span:nth-child(3) { top: 60%; left: 5%; }
+.t2-constellation span:nth-child(4) { top: 75%; left: 88%; }
+.t2-constellation span:nth-child(5) { top: 40%; left: 95%; }
+.t2-constellation span:nth-child(6) { top: 85%; left: 15%; }
+.t2-constellation span:nth-child(7) { top: 15%; left: 78%; }
+.t2-constellation span:nth-child(8) { top: 55%; left: 3%; }
 
 /* ══════════════════════════════════════
    Card Wrapper (arrows + card)
@@ -136,16 +130,8 @@
   right: 10%;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(var(--neon-rgb), 0.2), transparent);
-  animation: t2-scanline 8s ease-in-out infinite;
   pointer-events: none;
   opacity: 0;
-}
-
-@keyframes t2-scanline {
-  0% { top: 0%; opacity: 0; }
-  5% { opacity: 0.6; }
-  95% { opacity: 0.6; }
-  100% { top: 100%; opacity: 0; }
 }
 
 /* ══════════════════════════════════════
@@ -159,12 +145,6 @@
   color: var(--neon);
   opacity: 0.3;
   filter: drop-shadow(0 0 16px rgba(var(--neon-rgb), 0.4));
-  animation: t2-breathe 4s ease-in-out infinite;
-}
-
-@keyframes t2-breathe {
-  0%, 100% { opacity: 0.2; filter: drop-shadow(0 0 12px rgba(var(--neon-rgb), 0.3)); }
-  50% { opacity: 0.45; filter: drop-shadow(0 0 28px rgba(var(--neon-rgb), 0.6)); }
 }
 
 /* Quote text */
@@ -185,12 +165,7 @@
 }
 
 @keyframes t2-textIn {
-  from { opacity: 0; transform: translateY(14px); filter: blur(4px); }
-  to { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-@keyframes t2-slideUp {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -364,21 +339,10 @@
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: t2-ringRotate 3s linear infinite;
 }
 
 .t2-person--active .t2-avatar-ring {
   opacity: 1;
-}
-
-@property --t2-ring-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes t2-ringRotate {
-  to { --t2-ring-angle: 360deg; }
 }
 
 /* Glow pulse */

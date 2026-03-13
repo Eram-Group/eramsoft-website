@@ -121,11 +121,10 @@
 }
 
 .sv-card:hover {
-  transform: translateY(-8px) scale(1.015);
+  transform: translateY(-3px);
   border-color: rgba(var(--neon-rgb), 0.2);
   box-shadow:
     0 40px 80px rgba(0, 0, 0, 0.5),
-    0 0 60px rgba(var(--neon-rgb), 0.08),
     0 0 0 1px rgba(var(--neon-rgb), 0.1) inset;
 }
 
@@ -326,14 +325,7 @@
 
 .sv-card:hover .sv-scanline {
   opacity: 1;
-  animation: sv-scanDown 2s ease-in-out infinite;
-}
-
-@keyframes sv-scanDown {
-  0% { transform: translateY(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(500px); opacity: 0; }
+  animation: none;
 }
 
 
@@ -342,15 +334,15 @@
 @keyframes sv-cardReveal {
   from {
     opacity: 0;
-    transform: translateY(60px) scale(0.95);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
 .animate-section-cardReveal {
   opacity: 0;
-  animation: sv-cardReveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: sv-cardReveal 0.5s ease-out both;
 }

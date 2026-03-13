@@ -45,32 +45,6 @@
   z-index: 0;
 }
 
-/* Animated pulse traveling along the line */
-.hw-timeline-line::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  width: 80px;
-  height: 6px;
-  border-radius: 3px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(var(--neon-rgb), 0.5),
-    transparent
-  );
-  filter: blur(2px);
-  animation: hw-linePulse 4s ease-in-out infinite;
-}
-
-@keyframes hw-linePulse {
-  0% { left: -80px; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { left: calc(100% + 80px); opacity: 0; }
-}
-
 
 /* ── Individual step ── */
 
@@ -268,22 +242,6 @@
     right: auto;
     width: 2px;
     height: auto;
-  }
-
-  .hw-timeline-line::after {
-    top: 0;
-    left: -2px;
-    width: 6px;
-    height: 60px;
-    background: linear-gradient(180deg, transparent, rgba(var(--neon-rgb), 0.5), transparent);
-    animation: hw-linePulseV 4s ease-in-out infinite;
-  }
-
-  @keyframes hw-linePulseV {
-    0% { top: -60px; opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { top: calc(100% + 60px); opacity: 0; }
   }
 
   .hw-step {

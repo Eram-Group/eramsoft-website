@@ -97,7 +97,6 @@
   top: 16%;
   right: 14%;
   box-shadow: 0 0 24px 4px rgba(var(--neon-rgb), 0.2);
-  animation: ap3-drift 9s ease-in-out infinite;
 }
 
 .ap3-orb--2 {
@@ -107,7 +106,6 @@
   top: 48%;
   left: 7%;
   box-shadow: 0 0 20px 3px rgba(var(--neon-rgb), 0.15);
-  animation: ap3-drift 12s ease-in-out infinite 3s;
 }
 
 .ap3-orb--3 {
@@ -117,15 +115,8 @@
   bottom: 22%;
   right: 20%;
   box-shadow: 0 0 20px 3px rgba(var(--neon-rgb), 0.12);
-  animation: ap3-drift 11s ease-in-out infinite 5s;
 }
 
-@keyframes ap3-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
-  25%  { transform: translate(18px, -25px) scale(1.2); opacity: 0.7; }
-  50%  { transform: translate(-12px, -40px) scale(0.8); opacity: 1; }
-  75%  { transform: translate(22px, -18px) scale(1.1); opacity: 0.6; }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -212,13 +203,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: ap3-gradient-flow 8s ease-in-out infinite;
-}
-
-@keyframes ap3-gradient-flow {
-  0%   { background-position: 0% center; }
-  50%  { background-position: 300% center; }
-  100% { background-position: 0% center; }
 }
 
 .ap3-header-counter {
@@ -257,7 +241,7 @@
   margin: 40px 0 32px;
   background: linear-gradient(90deg, rgba(var(--neon-rgb), 0.35), rgba(var(--neon-rgb), 0.1) 40%, transparent 70%);
   transform-origin: left;
-  animation: ap3-rule-draw 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: ap3-rule-draw 0.5s ease-out forwards;
 }
 
 @keyframes ap3-rule-draw {
@@ -376,7 +360,6 @@
 }
 
 .ap3-row:hover .ap3-row-img {
-  transform: scale(1.04);
 }
 
 /* Subtle edge gradient blending into content side */
@@ -591,18 +574,18 @@
     0 0 0 1px rgba(var(--neon-rgb), 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  animation: ap3-fab-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1s both;
+  animation: ap3-fab-enter 0.5s ease-out 1s both;
 }
 
 /* Entrance */
 @keyframes ap3-fab-enter {
   from {
     opacity: 0;
-    transform: translateY(24px) scale(0.9);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -624,7 +607,6 @@
 }
 
 .ap3-fab:hover svg {
-  transform: scale(1.1);
 }
 
 
@@ -634,10 +616,10 @@
 
 .ap3-reveal {
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(16px);
   transition:
-    opacity 0.8s ease,
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
 }
 
 .ap3-revealed {

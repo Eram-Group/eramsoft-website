@@ -69,7 +69,6 @@
   left: -12%;
   background: radial-gradient(circle, rgba(56, 150, 235, 0.07) 0%, transparent 65%);
   filter: blur(180px);
-  animation: p5-orb-drift1 18s ease-in-out infinite alternate;
 }
 
 .p5-orb--2 {
@@ -79,7 +78,6 @@
   right: -8%;
   background: radial-gradient(circle, rgba(var(--neon-rgb), 0.045) 0%, transparent 65%);
   filter: blur(160px);
-  animation: p5-orb-drift2 22s ease-in-out infinite alternate;
 }
 
 .p5-orb--3 {
@@ -89,23 +87,8 @@
   left: 25%;
   background: radial-gradient(circle, rgba(var(--neon-rgb), 0.03) 0%, transparent 65%);
   filter: blur(140px);
-  animation: p5-orb-drift3 20s ease-in-out infinite alternate;
 }
 
-@keyframes p5-orb-drift1 {
-  0%   { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(40px, 30px) scale(1.08); }
-}
-
-@keyframes p5-orb-drift2 {
-  0%   { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-35px, -25px) scale(1.05); }
-}
-
-@keyframes p5-orb-drift3 {
-  0%   { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(25px, -20px) scale(1.1); }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -122,16 +105,16 @@
 
 .p5-reveal {
   opacity: 0;
-  transform: translateY(28px) scale(0.97);
+  transform: translateY(16px);
   transition:
-    opacity 0.75s ease,
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
   transition-delay: var(--delay, 0s);
 }
 
 .p5-reveal.p5-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 
@@ -190,12 +173,6 @@
   border-radius: 50%;
   background: var(--p5-accent);
   box-shadow: 0 0 12px rgba(var(--neon-rgb), 0.6), 0 0 24px rgba(var(--neon-rgb), 0.2);
-  animation: p5-pulse 2.5s ease-in-out infinite;
-}
-
-@keyframes p5-pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 12px rgba(var(--neon-rgb), 0.6), 0 0 24px rgba(var(--neon-rgb), 0.2); }
-  50%      { opacity: 0.4; box-shadow: 0 0 4px rgba(var(--neon-rgb), 0.2); }
 }
 
 .p5-head-title {
@@ -210,13 +187,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: p5-shimmer 6s ease-in-out infinite;
-}
-
-@keyframes p5-shimmer {
-  0%   { background-position: 0% center; }
-  50%  { background-position: 300% center; }
-  100% { background-position: 0% center; }
 }
 
 .p5-head-right {
@@ -339,7 +309,7 @@
 
 .p5-row:hover {
   border-color: rgba(var(--neon-rgb), 0.2);
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow:
     0 32px 80px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(var(--neon-rgb), 0.08),
@@ -381,15 +351,10 @@
   -webkit-mask-composite: xor;
   padding: 1px;
   transition: opacity 0.5s ease;
-  animation: p5-border-spin 6s linear infinite;
 }
 
 .p5-row:hover .p5-row-border-glow {
   opacity: 1;
-}
-
-@keyframes p5-border-spin {
-  to { transform: rotate(360deg); }
 }
 
 
@@ -407,7 +372,6 @@
 }
 
 .p5-row:hover .p5-row-img {
-  transform: scale(1.06);
   filter: brightness(1) saturate(1);
 }
 
@@ -552,24 +516,16 @@
 .p5-dot--live {
   background: #48c878;
   box-shadow: 0 0 10px rgba(72, 200, 120, 0.5), 0 0 20px rgba(72, 200, 120, 0.2);
-  animation: p5-status-blink 2s ease-in-out infinite;
 }
 
 .p5-dot--beta {
   background: #f0c75e;
   box-shadow: 0 0 10px rgba(240, 199, 94, 0.45), 0 0 20px rgba(240, 199, 94, 0.15);
-  animation: p5-status-blink 2.5s ease-in-out infinite;
 }
 
 .p5-dot--dev {
   background: var(--p5-accent);
   box-shadow: 0 0 10px rgba(var(--neon-rgb), 0.45), 0 0 20px rgba(var(--neon-rgb), 0.15);
-  animation: p5-status-blink 3s ease-in-out infinite;
-}
-
-@keyframes p5-status-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.45; }
 }
 
 
@@ -763,7 +719,6 @@
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   padding: 1px;
-  animation: p5-border-spin 8s linear infinite;
 }
 
 .p5-bottom:hover .p5-bottom-border {
@@ -825,7 +780,6 @@
   border-radius: 50%;
   background: #48c878;
   box-shadow: 0 0 10px rgba(72, 200, 120, 0.5);
-  animation: p5-status-blink 2s ease-in-out infinite;
 }
 
 .p5-bottom-heading {
@@ -937,12 +891,6 @@
   z-index: -1;
   background: conic-gradient(from 0deg, transparent 0%, rgba(var(--neon-rgb), 0.25) 25%, transparent 50%, rgba(var(--neon-rgb), 0.15) 75%, transparent 100%);
   opacity: 0;
-  animation: p5-fab-breathe 4s ease-in-out infinite;
-}
-
-@keyframes p5-fab-breathe {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 0.6; }
 }
 
 .p5-fab:hover .p5-fab-glow {

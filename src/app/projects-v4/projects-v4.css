@@ -118,12 +118,12 @@
   color: var(--ap4-accent);
   margin-bottom: 20px;
   opacity: 0;
-  animation: ap4-label-enter 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  animation: ap4-label-enter 0.5s ease-out 0.2s forwards;
 }
 
 @keyframes ap4-label-enter {
-  from { opacity: 0; transform: translateY(12px); letter-spacing: 0.6em; }
-  to   { opacity: 1; transform: translateY(0); letter-spacing: 0.3em; }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .ap4-label-pulse {
@@ -132,12 +132,6 @@
   border-radius: 50%;
   background: var(--ap4-accent);
   box-shadow: 0 0 12px var(--ap4-accent-mid);
-  animation: ap4-pulse 2.5s ease-in-out infinite;
-}
-
-@keyframes ap4-pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 12px var(--ap4-accent-mid); }
-  50% { opacity: 0.4; box-shadow: 0 0 4px var(--ap4-accent-soft); }
 }
 
 .ap4-hero {
@@ -158,15 +152,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: ap4-shimmer 6s ease-in-out infinite;
   position: relative;
   z-index: 1;
-}
-
-@keyframes ap4-shimmer {
-  0%   { background-position: 0% center; }
-  50%  { background-position: 300% center; }
-  100% { background-position: 0% center; }
 }
 
 .ap4-hero-outline {
@@ -317,7 +304,6 @@
 }
 
 .ap4-card:hover .ap4-card-bg {
-  transform: scale(1.06);
 }
 
 
@@ -557,15 +543,15 @@
 
 .ap4-reveal {
   opacity: 0;
-  transform: translateY(32px) scale(0.97);
+  transform: translateY(16px);
   transition:
-    opacity 0.75s ease,
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
 }
 
 .ap4-revealed {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 
@@ -614,12 +600,6 @@
   z-index: -1;
   background: conic-gradient(from 0deg, transparent 0%, rgba(var(--neon-rgb), 0.2) 25%, transparent 50%, rgba(var(--neon-rgb), 0.12) 75%, transparent 100%);
   opacity: 0;
-  animation: ap4-contact-breathe 4s ease-in-out infinite;
-}
-
-@keyframes ap4-contact-breathe {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 0.6; }
 }
 
 .ap4-contact:hover .ap4-contact-glow {

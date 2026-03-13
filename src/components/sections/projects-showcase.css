@@ -81,13 +81,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: ps-shimmer 4s ease-in-out infinite;
-}
-
-@keyframes ps-shimmer {
-  0% { background-position: 0% center; }
-  50% { background-position: 200% center; }
-  100% { background-position: 0% center; }
 }
 
 
@@ -121,7 +114,7 @@
 }
 
 .ps-row:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   border-color: rgba(var(--neon-rgb), 0.15);
   box-shadow:
     0 32px 80px rgba(0, 0, 0, 0.45),
@@ -491,7 +484,7 @@
 @keyframes ps-fadeUp {
   from {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -501,5 +494,5 @@
 
 .ps-fadeUp {
   opacity: 0;
-  animation: ps-fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: ps-fadeUp 0.5s ease-out both;
 }

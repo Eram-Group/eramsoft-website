@@ -55,13 +55,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: sc-shimmer 4s ease-in-out infinite;
-}
-
-@keyframes sc-shimmer {
-  0% { background-position: 0% center; }
-  50% { background-position: 200% center; }
-  100% { background-position: 0% center; }
 }
 
 
@@ -247,13 +240,13 @@
 /* ── Animations ── */
 
 @keyframes sc-fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .sc-fadeUp {
   opacity: 0;
-  animation: sc-fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: sc-fadeUp 0.5s ease-out both;
 }
 
 

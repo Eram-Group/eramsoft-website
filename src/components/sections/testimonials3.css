@@ -148,7 +148,7 @@
   justify-content: center;
   gap: 6px;
   margin-top: 16px;
-  animation: t3-hint-pulse 2s ease-in-out infinite;
+  opacity: 0.8;
 }
 
 .t3-scroll-hint-text {
@@ -165,14 +165,9 @@
   animation: t3-hint-arrow 2s ease-in-out infinite;
 }
 
-@keyframes t3-hint-pulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-
 @keyframes t3-hint-arrow {
   0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(4px); }
+  50% { transform: translateX(2px); }
 }
 
 @media (max-width: 768px) {
@@ -238,7 +233,7 @@
 
 .t3-card:hover {
   border-color: rgba(var(--neon-rgb), 0.2);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow:
     0 28px 70px rgba(0, 0, 0, 0.45),
     0 0 0 1px rgba(255, 255, 255, 0.06) inset,

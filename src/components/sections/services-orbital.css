@@ -196,14 +196,6 @@
 
 .sf-card--active .sf-scanline {
   opacity: 1;
-  animation: sf-scanDown 2.5s ease-in-out infinite;
-}
-
-@keyframes sf-scanDown {
-  0% { transform: translateY(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(400px); opacity: 0; }
 }
 
 

@@ -63,13 +63,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: sl-titleShimmer 4s ease-in-out infinite;
-}
-
-@keyframes sl-titleShimmer {
-  0% { background-position: 0% center; }
-  50% { background-position: 200% center; }
-  100% { background-position: 0% center; }
 }
 
 .sl-subtitle {
@@ -334,7 +327,7 @@
 @keyframes sl-fadeUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -344,7 +337,7 @@
 
 .sl-fadeUp {
   opacity: 0;
-  animation: sl-fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: sl-fadeUp 0.5s ease-out both;
 }
 
 @keyframes sl-lineExpand {
@@ -362,7 +355,7 @@
   transform-origin: center;
   transform: scaleX(0);
   opacity: 0;
-  animation: sl-lineExpand 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: sl-lineExpand 0.8s ease-out both;
 }
 
 
