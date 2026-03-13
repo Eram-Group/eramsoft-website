@@ -3,6 +3,7 @@ import ServicesOrbital from "@/components/sections/ServicesOrbital";
 import Clients from "@/components/sections/Clients";
 import ProjectsGallery from "@/components/sections/ProjectsGallery";
 import HowWeWork from "@/components/sections/HowWeWork";
+import Testimonials2 from "@/components/sections/Testimonials2";
 import Offices from "@/components/sections/Offices";
 
 
@@ -55,6 +56,8 @@ export default function Home() {
       <ProjectsGallery />
       <div className="section-divider" aria-hidden="true" />
       <Clients />
+      <div className="section-divider" aria-hidden="true" />
+      <Testimonials2 />
       <div className="section-divider" aria-hidden="true" />
       <Offices />
     </main>
