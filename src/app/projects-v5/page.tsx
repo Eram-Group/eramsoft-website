@@ -57,50 +57,18 @@ export default function ProjectsV5Page() {
 
       <div className="p5-container">
         {/* ── Header ── */}
-        <header className="p5-header">
-          {/* Top line */}
-          <div className="p5-head-topline p5-reveal">
-            <span className="p5-head-line" />
-            <span className="p5-head-badge">
-              <span className="p5-head-badge-dot" />
-              Our Work
+        <header className="p5-header p5-reveal">
+          <div className="p5-head-left">
+            <span className="p5-head-label">
+              <span className="p5-head-dot" />
+              Portfolio
             </span>
-            <span className="p5-head-line" />
+            <h1 className="p5-head-title">Works</h1>
           </div>
-
-          {/* Title */}
-          <h1 className="p5-head-title p5-reveal">
-            <span className="p5-head-word">Projects</span>
-          </h1>
-
-          {/* Stats bar */}
-          <div className="p5-head-stats p5-reveal">
-            <div className="p5-head-stat">
-              <span className="p5-head-stat-num">
-                {String(projects.length).padStart(2, "0")}
-              </span>
-              <span className="p5-head-stat-label">Delivered</span>
-            </div>
-            <span className="p5-head-stat-sep" />
-            <div className="p5-head-stat">
-              <span className="p5-head-stat-num">
-                {new Set(projects.map((p) => p.category)).size}
-              </span>
-              <span className="p5-head-stat-label">Categories</span>
-            </div>
-            <span className="p5-head-stat-sep" />
-            <div className="p5-head-stat">
-              <span className="p5-head-stat-num">
-                {new Set(projects.map((p) => p.client.location.split(",").pop()?.trim())).size}
-              </span>
-              <span className="p5-head-stat-label">Countries</span>
-            </div>
+          <div className="p5-head-right">
+            <span className="p5-head-count">{String(filtered.length).padStart(2, "0")}</span>
+            <span className="p5-head-count-label">Projects</span>
           </div>
-
-          {/* Subtitle */}
-          <p className="p5-head-sub p5-reveal">
-            Strategy, design & engineering — tailored for impact.
-          </p>
         </header>
 
         {/* ── Filters ── */}
