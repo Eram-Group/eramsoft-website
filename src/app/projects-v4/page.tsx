@@ -37,14 +37,7 @@ export default function ProjectsV4Page() {
     return () => observer.disconnect();
   }, [filtered]);
 
-  const getCardVariant = (i: number): string => {
-    const p = i % 5;
-    if (p === 0) return "ap4-card--lg";
-    if (p === 3) return "ap4-card--wide";
-    return "";
-  };
-
-  /* ── 3D tilt + spotlight tracking ── */
+  /* 3D tilt */
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       const card = e.currentTarget;
@@ -53,10 +46,8 @@ export default function ProjectsV4Page() {
       const y = e.clientY - rect.top;
       const cx = rect.width / 2;
       const cy = rect.height / 2;
-
-      const ry = ((x - cx) / cx) * 6;
-      const rx = ((cy - y) / cy) * 6;
-
+      const ry = ((x - cx) / cx) * 5;
+      const rx = ((cy - y) / cy) * 5;
       card.style.setProperty("--rx", `${rx}deg`);
       card.style.setProperty("--ry", `${ry}deg`);
       card.style.setProperty("--mx", `${x}px`);
@@ -76,49 +67,35 @@ export default function ProjectsV4Page() {
 
   return (
     <div className="ap4-page">
-      {/* ── Ambient layers ── */}
+      {/* ── Ambient ── */}
       <div className="ap4-grain" aria-hidden="true" />
       <div className="ap4-glow ap4-glow--1" aria-hidden="true" />
       <div className="ap4-glow ap4-glow--2" aria-hidden="true" />
       <div className="ap4-glow ap4-glow--3" aria-hidden="true" />
 
-      {/* ── Floating contact button ── */}
+      {/* ── Floating contact ── */}
       <Link href="/contact" className="ap4-contact">
         <span className="ap4-contact-glow" aria-hidden="true" />
-        <svg
-          className="ap4-contact-icon"
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
+        <svg className="ap4-contact-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M16 12.5c0 .5-.2 1-.6 1.4-.4.4-.9.6-1.4.6H5l-3 3V4c0-.5.2-1 .6-1.4C3 2.2 3.5 2 4 2h10c.5 0 1 .2 1.4.6.4.4.6.9.6 1.4v8.5z" />
         </svg>
         <span className="ap4-contact-label">Let&apos;s Talk</span>
       </Link>
 
       <div className="ap4-container">
-        {/* ── Header — Centered Stage ── */}
+        {/* ── Header ── */}
         <header className="ap4-header ap4-reveal">
-          <span className="ap4-header-label">Selected</span>
+          <span className="ap4-header-label">
+            <span className="ap4-label-pulse" />
+            Portfolio
+          </span>
 
           <h1 className="ap4-hero">
             <span className="ap4-hero-text">Works</span>
-            <span className="ap4-hero-outline" aria-hidden="true">
-              Works
-            </span>
+            <span className="ap4-hero-outline" aria-hidden="true">Works</span>
           </h1>
 
           <div className="ap4-header-bar">
-            <span className="ap4-bar-tag">
-              <span className="ap4-tag-pulse" />
-              Portfolio
-            </span>
-            <span className="ap4-bar-rule" />
             <span className="ap4-bar-count">
               {String(filtered.length).padStart(2, "0")} Projects
             </span>
@@ -134,9 +111,7 @@ export default function ProjectsV4Page() {
           {categories.map((cat) => (
             <button
               key={cat}
-              className={`ap4-tab${
-                activeFilter === cat ? " ap4-tab--on" : ""
-              }`}
+              className={`ap4-tab${activeFilter === cat ? " ap4-tab--on" : ""}`}
               onClick={() => setActiveFilter(cat)}
             >
               {cat}
@@ -144,23 +119,20 @@ export default function ProjectsV4Page() {
           ))}
         </nav>
 
-        {/* ── Bento mosaic grid ── */}
-        <div className="ap4-bento">
+        {/* ── Uniform 3-column grid ── */}
+        <div className="ap4-grid">
           {filtered.map((project, i) => (
             <Link
               href={`/projects/${project.slug}`}
               key={project.slug}
-              className={`ap4-card ${getCardVariant(i)} ap4-reveal`}
+              className="ap4-card ap4-reveal"
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >
-              {/* Animated spinning gradient border */}
-              <span className="ap4-card-glow-border" aria-hidden="true" />
+              {/* Accent edge */}
+              <span className="ap4-card-edge" aria-hidden="true" />
 
-              {/* Mouse-following spotlight */}
-              <span className="ap4-card-spotlight" aria-hidden="true" />
-
-              {/* Full-bleed background image */}
+              {/* Background image */}
               <div
                 className="ap4-card-bg"
                 style={{ backgroundImage: `url(${project.image})` }}
@@ -169,15 +141,12 @@ export default function ProjectsV4Page() {
               {/* Gradient overlay */}
               <div className="ap4-card-dim" />
 
-              {/* Hover accent edge */}
-              <span className="ap4-card-edge" aria-hidden="true" />
-
-              {/* Large floating index number */}
+              {/* Index */}
               <span className="ap4-card-idx">
                 {String(i + 1).padStart(2, "0")}
               </span>
 
-              {/* Top badges */}
+              {/* Chips */}
               <div className="ap4-card-chips">
                 <span className="ap4-chip">{project.category}</span>
                 <span className="ap4-chip ap4-chip--yr">{project.year}</span>
@@ -193,31 +162,18 @@ export default function ProjectsV4Page() {
 
                 <h2 className="ap4-card-name">{project.title}</h2>
 
-                {/* ── Hover-reveal section ── */}
                 <div className="ap4-card-reveal">
                   <p className="ap4-card-desc">{project.description}</p>
 
                   <div className="ap4-card-stack">
                     {project.tech.slice(0, 4).map((t) => (
-                      <span key={t} className="ap4-tech">
-                        {t}
-                      </span>
+                      <span key={t} className="ap4-tech">{t}</span>
                     ))}
                   </div>
 
                   <span className="ap4-card-go">
                     Explore
-                    <svg
-                      className="ap4-go-arrow"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
+                    <svg className="ap4-go-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="3" y1="9" x2="15" y2="9" />
                       <polyline points="11 5 15 9 11 13" />
                     </svg>
