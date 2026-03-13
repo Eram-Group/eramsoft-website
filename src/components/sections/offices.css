@@ -1,0 +1,217 @@
+/* ══════════════════════════════════════════════════
+   Offices — Home page section
+   All classes prefixed of-.
+   ══════════════════════════════════════════════════ */
+
+.of-section {
+  overflow: hidden;
+}
+
+/* ── Grid ── */
+
+.of-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── Card ── */
+
+.of-card {
+  position: relative;
+  height: 380px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.of-card:hover {
+  border-color: rgba(var(--neon-rgb), 0.25);
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(var(--neon-rgb), 0.06);
+}
+
+/* Background image */
+
+.of-card-bg {
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+.of-card:hover .of-card-bg {
+  transform: scale(1.08);
+}
+
+/* Dark overlay */
+
+.of-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 15, 26, 0.15) 0%,
+    rgba(10, 15, 26, 0.3) 30%,
+    rgba(10, 15, 26, 0.7) 60%,
+    rgba(10, 15, 26, 0.92) 100%
+  );
+  transition: background 0.4s ease;
+}
+
+.of-card:hover .of-card-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 15, 26, 0.2) 0%,
+    rgba(10, 15, 26, 0.35) 30%,
+    rgba(10, 15, 26, 0.75) 60%,
+    rgba(10, 15, 26, 0.95) 100%
+  );
+}
+
+/* Content */
+
+.of-card-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 22px;
+}
+
+.of-card-top {
+  display: flex;
+}
+
+/* Badge */
+
+.of-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(10, 15, 26, 0.7);
+  border: 1px solid rgba(var(--neon-rgb), 0.2);
+  backdrop-filter: blur(8px);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--neon);
+  width: fit-content;
+}
+
+.of-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--neon);
+  opacity: 0.7;
+  box-shadow: 0 0 8px rgba(var(--neon-rgb), 0.5);
+  animation: of-dotPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes of-dotPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Bottom info */
+
+.of-card-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.of-city {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.of-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.of-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.76rem;
+  color: rgba(220, 230, 240, 0.65);
+  transition: color 0.3s ease;
+}
+
+.of-row svg {
+  color: var(--neon-light);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.of-card:hover .of-row {
+  color: rgba(220, 230, 240, 0.85);
+}
+
+.of-card:hover .of-row svg {
+  opacity: 0.85;
+}
+
+/* Map link */
+
+.of-map-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--neon);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.35s ease 0.1s,
+    transform 0.35s ease 0.1s;
+}
+
+.of-map-link svg {
+  flex-shrink: 0;
+}
+
+.of-card:hover .of-map-link {
+  opacity: 0.85;
+  transform: translateY(0);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 900px) {
+  .of-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .of-card {
+    height: 340px;
+  }
+}
