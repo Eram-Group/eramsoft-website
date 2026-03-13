@@ -76,7 +76,7 @@ export default function Hero2() {
 
           <div className="flex items-center gap-4 h2-btnIn [animation-delay:1s]">
             <Link
-              href="#contact"
+              href="/contact"
               className="h2-cta-primary inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#50aaff] to-[#3b8de8] px-8 py-3.5 text-sm font-bold tracking-wide text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

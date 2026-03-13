@@ -429,7 +429,7 @@ export default function AboutPage() {
             </p>
 
             <div className="ab-aur-actions">
-              <Link href="/#contact" className="ab-aur-btn ab-aur-btn--primary">
+              <Link href="/contact" className="ab-aur-btn ab-aur-btn--primary">
                 <span className="ab-aur-btn-shimmer" aria-hidden="true" />
                 <span className="ab-aur-btn-text">
                   Get a Free Consultation
