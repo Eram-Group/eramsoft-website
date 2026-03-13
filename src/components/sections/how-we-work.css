@@ -174,17 +174,6 @@
   font-size: 0.78rem;
   line-height: 1.7;
   color: rgba(122, 141, 164, 0.7);
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.4s ease 0.1s;
-}
-
-.hw-step:hover .hw-step-desc,
-.hw-step--active .hw-step-desc {
-  max-height: 120px;
-  opacity: 1;
 }
 
 
@@ -271,10 +260,7 @@
     flex: 1;
   }
 
-  /* Descriptions always visible on mobile */
   .hw-step-desc {
-    max-height: 120px;
-    opacity: 1;
     color: rgba(122, 141, 164, 0.75);
   }
 
