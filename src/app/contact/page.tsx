@@ -94,7 +94,20 @@ export default function ContactPage() {
     const obs = new IntersectionObserver(
       (entries) =>
         entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add("ct-revealed");
+          if (e.isIntersecting) {
+            e.target.classList.add("ct-revealed");
+            // Animate children with stagger
+            const cards = e.target.querySelectorAll(".ct-b2-card");
+            cards.forEach((card, i) => {
+              (card as HTMLElement).style.animationDelay = `${i * 0.18}s`;
+              card.classList.add("ct-card-anim");
+            });
+            const faqItems = e.target.querySelectorAll(".ct-faq-item, .ct-faqb-tab");
+            faqItems.forEach((item, i) => {
+              (item as HTMLElement).style.animationDelay = `${i * 0.1}s`;
+              item.classList.add("ct-faq-anim");
+            });
+          }
         }),
       { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
     );
@@ -131,7 +144,7 @@ export default function ContactPage() {
         <div className="ct-hero-mesh" aria-hidden="true" />
 
         {/* Pulsing neon rings (behind left text) */}
-        <div className="ct-hero-rings" aria-hidden="true">
+        <div className="ct-hero-rings ct-rings-anim" aria-hidden="true">
           <div className="ct-ring ct-ring--1" />
           <div className="ct-ring ct-ring--2" />
           <div className="ct-ring ct-ring--3" />
@@ -153,7 +166,7 @@ export default function ContactPage() {
               let&apos;s start a conversation.
             </p>
 
-            <div className="ct-hero-divider ct-rise" style={{ animationDelay: "0.8s" }} aria-hidden="true" />
+            <div className="ct-hero-divider ct-rise ct-divider-anim" style={{ animationDelay: "0.8s" }} aria-hidden="true" />
 
             <div className="ct-hero-email ct-rise" style={{ animationDelay: "0.9s" }}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -171,16 +184,17 @@ export default function ContactPage() {
           </div>
 
           {/* ── Right — Contact Form ── */}
-          <div className="ct-hero-right ct-rise" style={{ animationDelay: "0.5s" }}>
+          <div className="ct-hero-right ct-form-enter">
             <form className="ct-form" onSubmit={handleSubmit} noValidate>
               <div className="ct-form-glow" aria-hidden="true" />
 
-              <h2 className="ct-form-title">Send a Message</h2>
+              <h2 className="ct-form-title ct-rise" style={{ animationDelay: "0.8s" }}>Send a Message</h2>
 
               <div className="ct-form-grid">
                 {/* Full Name */}
                 <div
-                  className={`ct-field ${focused === "name" ? "ct-field--focused" : ""} ${form.name ? "ct-field--filled" : ""}`}
+                  className={`ct-field ct-field-anim ${focused === "name" ? "ct-field--focused" : ""} ${form.name ? "ct-field--filled" : ""}`}
+                  style={{ animationDelay: "1s" }}
                 >
                   <label className="ct-field-label" htmlFor="ct-name">
                     Full Name
@@ -207,7 +221,8 @@ export default function ContactPage() {
 
                 {/* Email */}
                 <div
-                  className={`ct-field ${focused === "email" ? "ct-field--focused" : ""} ${form.email ? "ct-field--filled" : ""}`}
+                  className={`ct-field ct-field-anim ${focused === "email" ? "ct-field--focused" : ""} ${form.email ? "ct-field--filled" : ""}`}
+                  style={{ animationDelay: "1.1s" }}
                 >
                   <label className="ct-field-label" htmlFor="ct-email">
                     Email Address
@@ -234,7 +249,8 @@ export default function ContactPage() {
 
                 {/* Phone */}
                 <div
-                  className={`ct-field ${focused === "phone" ? "ct-field--focused" : ""} ${form.phone ? "ct-field--filled" : ""}`}
+                  className={`ct-field ct-field-anim ${focused === "phone" ? "ct-field--focused" : ""} ${form.phone ? "ct-field--filled" : ""}`}
+                  style={{ animationDelay: "1.2s" }}
                 >
                   <label className="ct-field-label" htmlFor="ct-phone">
                     Phone <span className="ct-optional">(Optional)</span>
@@ -259,7 +275,8 @@ export default function ContactPage() {
 
                 {/* Service */}
                 <div
-                  className={`ct-field ${focused === "service" ? "ct-field--focused" : ""} ${form.service ? "ct-field--filled" : ""}`}
+                  className={`ct-field ct-field-anim ${focused === "service" ? "ct-field--focused" : ""} ${form.service ? "ct-field--filled" : ""}`}
+                  style={{ animationDelay: "1.3s" }}
                 >
                   <label className="ct-field-label" htmlFor="ct-service">
                     Service
@@ -297,7 +314,8 @@ export default function ContactPage() {
 
                 {/* Message — full width */}
                 <div
-                  className={`ct-field ct-field--full ${focused === "message" ? "ct-field--focused" : ""} ${form.message ? "ct-field--filled" : ""}`}
+                  className={`ct-field ct-field--full ct-field-anim ${focused === "message" ? "ct-field--focused" : ""} ${form.message ? "ct-field--filled" : ""}`}
+                  style={{ animationDelay: "1.4s" }}
                 >
                   <label className="ct-field-label" htmlFor="ct-message">
                     Your Message
@@ -323,7 +341,7 @@ export default function ContactPage() {
               </div>
 
               {/* Submit */}
-              <button type="submit" className="ct-submit">
+              <button type="submit" className="ct-submit ct-submit-anim" style={{ animationDelay: "1.55s" }}>
                 <span className="ct-submit-shimmer" aria-hidden="true" />
                 <span className="ct-submit-text">
                   Send Message
@@ -342,15 +360,15 @@ export default function ContactPage() {
           BRANCHES — Our Offices
           ═══════════════════════════════════════ */}
       <div className="ct-wrap">
-        <div className="ct-thread" aria-hidden="true" />
+        <div className="ct-thread ct-thread-anim ct-reveal" aria-hidden="true" />
 
         {/* ═══════════════════════════════════════
             BRANCHES — Full-bleed Image Cards
             ═══════════════════════════════════════ */}
         <section className="ct-branches ct-reveal">
           <div className="ct-branches-head">
-            <p className="ct-tag">Our Offices</p>
-            <h2 className="ct-section-title">
+            <p className="ct-tag ct-head-anim">Our Offices</p>
+            <h2 className="ct-section-title ct-head-anim" style={{ animationDelay: "0.15s" }}>
               Find Us <span className="ct-accent">Worldwide</span>
             </h2>
           </div>
@@ -416,15 +434,15 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <div className="ct-thread" aria-hidden="true" />
+        <div className="ct-thread ct-thread-anim ct-reveal" aria-hidden="true" />
 
         {/* ═══════════════════════════════════════
             FAQ
             ═══════════════════════════════════════ */}
         <section className="ct-faq ct-reveal">
           <div className="ct-branches-head">
-            <p className="ct-tag">FAQ</p>
-            <h2 className="ct-section-title">
+            <p className="ct-tag ct-head-anim">FAQ</p>
+            <h2 className="ct-section-title ct-head-anim" style={{ animationDelay: "0.15s" }}>
               Frequently Asked <span className="ct-accent">Questions</span>
             </h2>
           </div>
@@ -455,15 +473,15 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <div className="ct-thread" aria-hidden="true" />
+        <div className="ct-thread ct-thread-anim ct-reveal" aria-hidden="true" />
 
         {/* ═══════════════════════════════════════
             FAQ Option B — Split Panel
             ═══════════════════════════════════════ */}
         <section className="ct-faq ct-reveal">
           <div className="ct-branches-head">
-            <p className="ct-tag">Option B</p>
-            <h2 className="ct-section-title">
+            <p className="ct-tag ct-head-anim">Option B</p>
+            <h2 className="ct-section-title ct-head-anim" style={{ animationDelay: "0.15s" }}>
               Frequently Asked <span className="ct-accent">Questions</span>
             </h2>
           </div>
@@ -487,7 +505,7 @@ export default function ContactPage() {
             </div>
 
             {/* Right — Answer panel */}
-            <div className="ct-faqb-panel">
+            <div className="ct-faqb-panel ct-card-anim" style={{ animationDelay: "0.3s" }}>
               <div className="ct-faqb-panel-glow" aria-hidden="true" />
               {openFaq !== null ? (
                 <>
