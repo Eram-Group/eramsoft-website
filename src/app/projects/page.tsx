@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { projects } from "@/data/projects";
 import "./projects-v5.css";
-import "./projects-page.css";
 import "./projects-hero.css";
 
 export default function ProjectsPage() {
