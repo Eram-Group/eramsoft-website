@@ -262,7 +262,7 @@ export default function ProjectDetailPage() {
 
   const project = projects[projectIndex];
 
-  const isMobileApp = project.category.toLowerCase().includes("mobile");
+  const isMobileApp = !project.category.toLowerCase().includes("platform");
 
   useEffect(() => {
     const els = document.querySelectorAll(".pd-reveal");
@@ -300,10 +300,7 @@ export default function ProjectDetailPage() {
         <div className="pd-hero-scanline" aria-hidden="true" />
 
         <div className="pd-hero-content">
-          <div className="pd-hero-badges">
-            <span className="pd-badge">{project.category}</span>
-            <span className="pd-badge pd-badge--year">{project.year}</span>
-          </div>
+          {/* Badges removed */}
           <h1 className="pd-hero-title">
             {project.title}
           </h1>
@@ -439,6 +436,18 @@ export default function ProjectDetailPage() {
                   ))}
                 </div>
               </div>
+
+              <div className="pd-client-item">
+                <div className="pd-client-label">Tech Stack</div>
+                <div className="pd-client-tech">
+                  {project.tech.map((t) => (
+                    <span key={t} className="pd-tech-tag">
+                      <img src={getTechLogo(t)} alt="" className="pd-tech-tag-logo" />
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -454,45 +463,18 @@ export default function ProjectDetailPage() {
         </h2>
         <div className="pd-divider" />
 
-        <div className="pd-cap-editorial">
+        <div className="pd-kc-stack">
           {project.features.map((feature, i) => (
-            <div
-              key={feature.title}
-              className="pd-cap-strip"
-              style={{
-                '--orbit-speed': `${18 + i * 4}s`,
-                '--orbit-dir': i % 2 === 0 ? 'normal' : 'reverse',
-              } as React.CSSProperties}
-            >
-              {/* Scan-line sweep on hover */}
-              <div className="pd-cap-sweep" aria-hidden="true" />
-
-              {/* Giant ghost number */}
-              <div className="pd-cap-giant" aria-hidden="true">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-
-              {/* Left accent bar */}
-              <div className="pd-cap-bar" aria-hidden="true" />
-
-              {/* Icon orb with orbit ring */}
-              <div className="pd-cap-orb">
-                <div className="pd-cap-orbit" />
-                <FeatureIcon name={feature.icon} />
-              </div>
-
-              {/* Content */}
-              <div className="pd-cap-text">
-                <h3 className="pd-cap-title">{feature.title}</h3>
-                <p className="pd-cap-desc">{feature.description}</p>
-              </div>
-
-              {/* Hover arrow indicator */}
-              <div className="pd-cap-arrow" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
+            <div key={feature.title} className="pd-kc-item">
+              <span className="pd-kc-no">{String(i + 1).padStart(2, "0")}</span>
+              <div className="pd-kc-main">
+                <div className="pd-kc-headline">
+                  <div className="pd-kc-ic">
+                    <FeatureIcon name={feature.icon} />
+                  </div>
+                  <h3 className="pd-kc-name">{feature.title}</h3>
+                </div>
+                <p className="pd-kc-text">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -530,45 +512,19 @@ export default function ProjectDetailPage() {
       </div>
 
       {/* ══════════════════════════════════════
-          Tech Stack
-         ══════════════════════════════════════ */}
-      <div className="pd-section">
-        <p className="pd-section-label">Technology</p>
-        <h2 className="pd-section-title">
-          Tech <span>Stack</span>
-        </h2>
-        <div className="pd-divider" />
-
-        <div className="pd-tech-grid">
-          {project.tech.map((t) => (
-            <div
-              key={t}
-              className="pd-tech-card"
-            >
-              <img
-                src={getTechLogo(t)}
-                alt={t}
-                className="pd-tech-logo"
-              />
-              <div className="pd-tech-info">
-                <span className="pd-tech-name">{t}</span>
-                <span className="pd-tech-role">{getTechRole(t)}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ══════════════════════════════════════
           Testimonial
          ══════════════════════════════════════ */}
       {project.testimonial && (
-        <div className="pd-testimonial">
-          <div className="pd-testimonial-card">
-            <div className="pd-testimonial-quote-mark">&ldquo;</div>
-            <p className="pd-testimonial-text">{project.testimonial.quote}</p>
-            <div className="pd-testimonial-author">{project.testimonial.author}</div>
-            <div className="pd-testimonial-role">{project.testimonial.role}</div>
+        <div className="pd-tst">
+          <div className="pd-tst-glyph" aria-hidden="true">&ldquo;</div>
+          <blockquote className="pd-tst-quote">
+            {project.testimonial.quote}
+          </blockquote>
+          <div className="pd-tst-rule" aria-hidden="true" />
+          <div className="pd-tst-attribution">
+            <span className="pd-tst-name">{project.testimonial.author}</span>
+            <span className="pd-tst-sep" aria-hidden="true" />
+            <span className="pd-tst-role">{project.testimonial.role}</span>
           </div>
         </div>
       )}
