@@ -70,7 +70,7 @@ export default function Testimonials3() {
           />
         </div>
 
-        <div className="t3-grid-wrap animate-section-fadeUp [animation-delay:0.5s]">
+        <div className="t3-grid-wrap">
           {/* Left arrow */}
           <button
             className={`t3-arrow t3-arrow--left ${canScrollLeft ? "t3-arrow--visible" : ""}`}
@@ -97,7 +97,7 @@ export default function Testimonials3() {
             {testimonials.map((t) => (
               <div
                 key={t.name}
-                className="t3-card animate-section-fadeUp"
+                className="t3-card"
               >
                 <div className="t3-card-header">
                   <div className={`t3-avatar t3-avatar--${t.color}`}>

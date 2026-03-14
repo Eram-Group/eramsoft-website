@@ -92,7 +92,7 @@ export default function HowWeWork() {
         />
 
         {/* ── Steps timeline ── */}
-        <div className="hw-timeline animate-section-fadeUp [animation-delay:0.65s]">
+        <div className="hw-timeline">
           {/* Connecting line */}
           <div className="hw-timeline-line" aria-hidden="true" />
 
@@ -106,7 +106,6 @@ export default function HowWeWork() {
               }`}
               onMouseEnter={() => setActiveStep(i)}
               onMouseLeave={() => setActiveStep(null)}
-              style={{ animationDelay: `${0.7 + i * 0.12}s` }}
             >
               {/* Step node (circle on the timeline) */}
               <div className="hw-step-node">

@@ -53,14 +53,14 @@ export default function Clients() {
       {/* ── Logo rows ── */}
       {isSingle ? (
         /* Few clients → static centered row, no scroll */
-        <div className="cl-static animate-section-fadeUp [animation-delay:0.65s]">
+        <div className="cl-static">
           {clients.map((client) => (
             <LogoCard key={client.name} {...client} />
           ))}
         </div>
       ) : (
         /* Many clients → two-row marquee */
-        <div className="cl-marquee-wrap animate-section-fadeUp [animation-delay:0.65s]">
+        <div className="cl-marquee-wrap">
           <div className="cl-marquee cl-marquee--left">
             {[...row1, ...row1].map((client, i) => (
               <LogoCard key={`r1-${i}`} {...client} />
@@ -76,7 +76,7 @@ export default function Clients() {
 
       {/* ── Stats ── */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16 mt-10">
-        <div className="cl-stats animate-section-fadeUp [animation-delay:0.85s]">
+        <div className="cl-stats">
           <div className="cl-stat">
             <div className="cl-stat-number">50<span>+</span></div>
             <div className="cl-stat-label">Clients Served</div>

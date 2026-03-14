@@ -53,10 +53,10 @@ export default function ServicesCards() {
         {/* ── Header ── */}
         <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 mb-16">
           <div>
-            <p className="sc-label mb-4 text-xs font-bold tracking-[0.35em] uppercase sc-fadeUp [animation-delay:0.1s]">
+            <p className="sc-label mb-4 text-xs font-bold tracking-[0.35em] uppercase">
               What We Do
             </p>
-            <h2 className="sc-title text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl sc-fadeUp [animation-delay:0.25s]">
+            <h2 className="sc-title text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
               Our <span className="sc-title-accent">Services</span>
             </h2>
           </div>
@@ -67,8 +67,7 @@ export default function ServicesCards() {
           {services.map((service, i) => (
             <div
               key={service.number}
-              className={`sc-slide sc-fadeUp ${i === active ? "sc-slide--active" : ""}`}
-              style={{ animationDelay: `${0.5 + i * 0.1}s` }}
+              className={`sc-slide ${i === active ? "sc-slide--active" : ""}`}
             >
               {/* Image */}
               <div className="sc-slide-img-wrap">
@@ -94,7 +93,7 @@ export default function ServicesCards() {
         </div>
 
         {/* ── Dots ── */}
-        <div className="sc-dots sc-fadeUp [animation-delay:0.8s]">
+        <div className="sc-dots">
           {services.map((_, i) => (
             <button
               key={i}

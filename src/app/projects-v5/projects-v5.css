@@ -104,12 +104,8 @@
 }
 
 .p5-reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 0.5s ease-out,
-    transform 0.5s ease-out;
-  transition-delay: var(--delay, 0s);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .p5-reveal.p5-visible {
@@ -895,7 +891,6 @@
 
 .p5-fab:hover .p5-fab-glow {
   opacity: 0.8;
-  animation: none;
 }
 
 .p5-fab-label {
@@ -1100,33 +1095,3 @@
    Reduced Motion
    ══════════════════════════════════════════════════ */
 
-@media (prefers-reduced-motion: reduce) {
-  .p5-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .p5-head-title,
-  .p5-head-dot,
-  .p5-fab-glow,
-  .p5-orb--1,
-  .p5-orb--2,
-  .p5-orb--3,
-  .p5-dot--live,
-  .p5-dot--beta,
-  .p5-dot--dev,
-  .p5-row-border-glow,
-  .p5-bottom-border,
-  .p5-bottom-tag-dot {
-    animation: none;
-  }
-
-  .p5-row:hover {
-    transform: none;
-  }
-
-  .p5-row:hover .p5-row-img {
-    transform: none;
-  }
-}

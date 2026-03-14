@@ -24,8 +24,7 @@ export default function Services() {
           {services.map((service, i) => (
             <div
               key={service.number}
-              className={`sv-card sv-card--${i + 1} animate-section-cardReveal`}
-              style={{ animationDelay: `${0.6 + i * 0.15}s` }}
+              className={`sv-card sv-card--${i + 1}`}
             >
               {/* Background image */}
               <div

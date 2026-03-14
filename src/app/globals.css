@@ -103,58 +103,8 @@ body {
 }
 
 
-/* ══════════════════════════════════════════════════
-   Minimal Animation System
-   Clean, professional, performant.
-   ══════════════════════════════════════════════════ */
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fadeInUp {
-  animation: fadeInUp 0.5s ease-out both;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@keyframes lineExpand {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
-.animate-videoPerspective {
-  opacity: 0;
-  animation: fadeInUp 0.6s ease-out 0.2s both;
-}
-
-.animate-overlayReveal {
-  opacity: 0;
-  animation: fadeIn 0.8s ease-out both;
-}
-
-.animate-contentReveal {
-  opacity: 0;
-  animation: fadeInUp 0.5s ease-out both;
-}
-
 .animate-goldShimmer {
   background-size: 200% auto;
-}
-
-.animate-lineDraw {
-  transform-origin: center;
-  opacity: 0;
-  animation: lineExpand 0.8s ease-out both;
 }
 
 .animate-breatheGlow {
@@ -286,27 +236,6 @@ body {
 
 
 /* ══════════════════════════════════════════════════
-   Shared Section Animations
-   ══════════════════════════════════════════════════ */
-
-.animate-section-fadeUp {
-  opacity: 0;
-  animation: fadeInUp 0.5s ease-out both;
-}
-
-.animate-section-lineExpand {
-  transform-origin: center;
-  opacity: 0;
-  animation: lineExpand 0.8s ease-out both;
-}
-
-.animate-section-cardReveal {
-  opacity: 0;
-  animation: fadeInUp 0.5s ease-out both;
-}
-
-
-/* ══════════════════════════════════════════════════
    Shared Section Surfaces & Effects
    ══════════════════════════════════════════════════ */
 
@@ -391,16 +320,3 @@ body {
 }
 
 
-/* ══════════════════════════════════════════════════
-   Reduced Motion
-   ══════════════════════════════════════════════════ */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}

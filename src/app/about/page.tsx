@@ -113,19 +113,6 @@ function StatItem({ stat }: { stat: (typeof stats)[0] }) {
    ══════════════════════════════════════════════ */
 
 export default function AboutPage() {
-  useEffect(() => {
-    const els = document.querySelectorAll(".ab-reveal");
-    const obs = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add("ab-revealed");
-        }),
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
-    );
-    els.forEach((el) => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
-
   return (
     <div className="ab-page">
       {/* ── Ambient layers ── */}
@@ -145,12 +132,12 @@ export default function AboutPage() {
 
         {/* Floating particles */}
         <div className="ab-hero-particles" aria-hidden="true">
-          <span style={{ top: "15%", left: "10%", animationDelay: "0s" }} />
-          <span style={{ top: "25%", left: "80%", animationDelay: "1.4s" }} />
-          <span style={{ top: "60%", left: "5%", animationDelay: "2.8s" }} />
-          <span style={{ top: "40%", left: "90%", animationDelay: "0.7s" }} />
-          <span style={{ top: "70%", left: "70%", animationDelay: "3.5s" }} />
-          <span style={{ top: "10%", left: "50%", animationDelay: "2.1s" }} />
+          <span style={{ top: "15%", left: "10%" }} />
+          <span style={{ top: "25%", left: "80%" }} />
+          <span style={{ top: "60%", left: "5%" }} />
+          <span style={{ top: "40%", left: "90%" }} />
+          <span style={{ top: "70%", left: "70%" }} />
+          <span style={{ top: "10%", left: "50%" }} />
         </div>
 
         {/* Horizontal accent line */}
@@ -159,38 +146,38 @@ export default function AboutPage() {
         <div className="ab-hero-inner ab-hero-inner--split">
           {/* Left — Text content */}
           <div className="ab-hero-text">
-            <div className="ab-hero-tag-wrap ab-rise" style={{ animationDelay: "0.2s" }}>
+            <div className="ab-hero-tag-wrap">
               <span className="ab-hero-tag-line" aria-hidden="true" />
               <p className="ab-tag">About Eram Soft</p>
             </div>
             <h1 className="ab-hero-h1">
-              <span className="ab-hero-line ab-hero-line--lead" style={{ animationDelay: "0.3s" }}>
+              <span className="ab-hero-line ab-hero-line--lead">
                 We Build the
               </span>
-              <span className="ab-hero-line ab-hero-line--hero" style={{ animationDelay: "0.5s" }}>
+              <span className="ab-hero-line ab-hero-line--hero">
                 <span className="ab-accent">Digital Backbone</span>
               </span>
-              <span className="ab-hero-line ab-hero-line--lead" style={{ animationDelay: "0.7s" }}>
+              <span className="ab-hero-line ab-hero-line--lead">
                 of Ambitious Businesses
               </span>
             </h1>
-            <p className="ab-hero-sub ab-rise" style={{ animationDelay: "0.9s" }}>
+            <p className="ab-hero-sub">
               Since 2019, turning complex challenges into elegant digital
               solutions &mdash; from mobile apps and web platforms to cloud
               infrastructure and AI-powered tools.
             </p>
 
-            <div className="ab-hero-divider ab-rise" style={{ animationDelay: "1s" }} aria-hidden="true">
+            <div className="ab-hero-divider" aria-hidden="true">
               <span className="ab-hero-divider-glow" />
             </div>
 
-            <p className="ab-hero-how ab-rise" style={{ animationDelay: "1.1s" }}>
+            <p className="ab-hero-how">
               &ldquo;Every project gets a{" "}
               <span className="ab-accent">dedicated team</span>, a clear
               roadmap, and full transparency &mdash; no surprises, no
               shortcuts.&rdquo;
             </p>
-            <p className="ab-prose ab-rise" style={{ animationDelay: "1.2s" }}>
+            <p className="ab-prose">
               We&apos;re a team of engineers, designers, and strategists who
               treat every project as our own. Our process is built on honest
               timelines, weekly demos, and iterative feedback &mdash;
@@ -199,7 +186,7 @@ export default function AboutPage() {
           </div>
 
           {/* Right — Visual */}
-          <div className="ab-hero-visual ab-rise" style={{ animationDelay: "0.6s" }}>
+          <div className="ab-hero-visual">
             <div className="ab-hero-frame-wrap">
               {/* Animated border glow */}
               <div className="ab-hero-frame-glow" aria-hidden="true" />
@@ -244,7 +231,7 @@ export default function AboutPage() {
         </div>
 
         {/* Stats bar — premium glass */}
-        <div className="ab-hero-stats-bar ab-rise" style={{ animationDelay: "1.4s" }}>
+        <div className="ab-hero-stats-bar">
           <div className="ab-hero-stats-shine" aria-hidden="true" />
           {stats.map((s) => (
             <StatItem key={s.label} stat={s} />
@@ -260,7 +247,7 @@ export default function AboutPage() {
         {/* ═══════════════════════════════════════
             PILLARS — Vision & Mission
             ═══════════════════════════════════════ */}
-        <section className="ab-pil ab-reveal">
+        <section className="ab-pil">
           {/* Vision */}
           <div className="ab-pil-card ab-pil-card--v">
             <div className="ab-pil-ring" aria-hidden="true">
@@ -344,7 +331,7 @@ export default function AboutPage() {
         {/* ═══════════════════════════════════════
             PRINCIPLES — Core Values
             ═══════════════════════════════════════ */}
-        <section className="ab-pr ab-reveal">
+        <section className="ab-pr">
           <div className="ab-pr-head">
             <p className="ab-tag">What Drives Us</p>
             <h2 className="ab-section-title">
@@ -382,7 +369,7 @@ export default function AboutPage() {
         {/* ═══════════════════════════════════════
             AURORA — CTA
             ═══════════════════════════════════════ */}
-        <section className="ab-aur ab-reveal">
+        <section className="ab-aur">
           {/* Aurora light bands */}
           <div className="ab-aur-sky" aria-hidden="true">
             <div className="ab-aur-band ab-aur-band--1" />
@@ -392,16 +379,16 @@ export default function AboutPage() {
 
           {/* Star field */}
           <div className="ab-aur-stars" aria-hidden="true">
-            <span style={{ top: "12%", left: "8%", animationDelay: "0s" }} />
-            <span style={{ top: "20%", left: "85%", animationDelay: "1.2s" }} />
-            <span style={{ top: "35%", left: "22%", animationDelay: "0.6s" }} />
-            <span style={{ top: "18%", left: "55%", animationDelay: "2.1s" }} />
-            <span style={{ top: "45%", left: "72%", animationDelay: "0.3s" }} />
-            <span style={{ top: "8%", left: "40%", animationDelay: "1.8s" }} />
-            <span style={{ top: "55%", left: "12%", animationDelay: "0.9s" }} />
-            <span style={{ top: "30%", left: "92%", animationDelay: "1.5s" }} />
-            <span style={{ top: "50%", left: "48%", animationDelay: "2.4s" }} />
-            <span style={{ top: "15%", left: "68%", animationDelay: "0.4s" }} />
+            <span style={{ top: "12%", left: "8%" }} />
+            <span style={{ top: "20%", left: "85%" }} />
+            <span style={{ top: "35%", left: "22%" }} />
+            <span style={{ top: "18%", left: "55%" }} />
+            <span style={{ top: "45%", left: "72%" }} />
+            <span style={{ top: "8%", left: "40%" }} />
+            <span style={{ top: "55%", left: "12%" }} />
+            <span style={{ top: "30%", left: "92%" }} />
+            <span style={{ top: "50%", left: "48%" }} />
+            <span style={{ top: "15%", left: "68%" }} />
           </div>
 
           {/* Horizon glow */}

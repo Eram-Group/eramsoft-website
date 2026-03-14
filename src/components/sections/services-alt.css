@@ -263,28 +263,16 @@
 }
 
 
-/* ── Entrance animations ── */
-
-@keyframes sa-fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* ── Entrance (animations removed) ── */
 
 .sa-fadeUp {
-  opacity: 0;
-  animation: sa-fadeUp 0.5s ease-out both;
-}
-
-@keyframes sa-lineExpand {
-  from { transform: scaleX(0); opacity: 0; }
-  to { transform: scaleX(1); opacity: 1; }
+  opacity: 1;
 }
 
 .sa-lineExpand {
   transform-origin: center;
-  transform: scaleX(0);
-  opacity: 0;
-  animation: sa-lineExpand 0.8s ease-out both;
+  transform: scaleX(1);
+  opacity: 1;
 }
 
 

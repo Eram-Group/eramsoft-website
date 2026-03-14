@@ -157,22 +157,10 @@
 }
 
 
-/* ── Staggered slide-up animation for content ── */
-
-@keyframes pg-slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* ── Staggered slide-up (animations removed) ── */
 
 .pg-anim-slideUp {
-  opacity: 0;
-  animation: pg-slideUp 0.4s ease-out both;
+  opacity: 1;
 }
 
 
@@ -197,13 +185,7 @@
 }
 
 .pg-panel-progress-bar--animate {
-  width: 0% !important;
-  animation: pg-progressFill 5s linear forwards;
-}
-
-@keyframes pg-progressFill {
-  from { width: 0%; }
-  to { width: 100%; }
+  width: 100% !important;
 }
 
 

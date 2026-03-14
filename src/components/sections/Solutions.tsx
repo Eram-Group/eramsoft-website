@@ -19,22 +19,22 @@ export default function Solutions() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         {/* ── Section header ── */}
         <div className="mb-20 text-center">
-          <p className="sl-label mb-4 text-xs font-bold tracking-[0.35em] uppercase sl-fadeUp [animation-delay:0.1s]">
+          <p className="sl-label mb-4 text-xs font-bold tracking-[0.35em] uppercase">
             What We Build
           </p>
-          <h2 className="sl-title mb-5 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl sl-fadeUp [animation-delay:0.25s]">
+          <h2 className="sl-title mb-5 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
             Our{" "}
             <span className="sl-title-accent">Solutions</span>
           </h2>
-          <div className="sl-line mx-auto mb-6 h-px w-24 sl-lineExpand [animation-delay:0.45s]" />
-          <p className="sl-subtitle mx-auto max-w-lg text-base leading-relaxed md:text-lg sl-fadeUp [animation-delay:0.5s]">
+          <div className="sl-line mx-auto mb-6 h-px w-24" />
+          <p className="sl-subtitle mx-auto max-w-lg text-base leading-relaxed md:text-lg">
             Industry-focused products engineered to solve real problems,
             from startups to enterprise scale.
           </p>
         </div>
 
         {/* ── Accordion + Preview ── */}
-        <div className="sl-showcase sl-fadeUp [animation-delay:0.65s]">
+        <div className="sl-showcase">
           {/* Left: Image preview */}
           <div className="sl-preview">
             {solutions.map((solution, i) => (

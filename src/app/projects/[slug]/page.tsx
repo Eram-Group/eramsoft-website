@@ -300,14 +300,14 @@ export default function ProjectDetailPage() {
         <div className="pd-hero-scanline" aria-hidden="true" />
 
         <div className="pd-hero-content">
-          <div className="pd-hero-badges pd-fadeUp" style={{ animationDelay: "0.3s" }}>
+          <div className="pd-hero-badges">
             <span className="pd-badge">{project.category}</span>
             <span className="pd-badge pd-badge--year">{project.year}</span>
           </div>
-          <h1 className="pd-hero-title pd-fadeUp" style={{ animationDelay: "0.45s" }}>
+          <h1 className="pd-hero-title">
             {project.title}
           </h1>
-          <p className="pd-hero-tagline pd-fadeUp" style={{ animationDelay: "0.6s" }}>
+          <p className="pd-hero-tagline">
             {project.tagline}
           </p>
         </div>
@@ -318,11 +318,11 @@ export default function ProjectDetailPage() {
          ══════════════════════════════════════ */}
       <div className="pd-stats">
         <div className={`pd-stats-grid ${(project.appStoreUrl || project.googlePlayUrl || project.websiteUrl) ? "pd-stats-grid--with-downloads" : ""}`}>
-          <div className="pd-stat pd-cardReveal" style={{ animationDelay: "0.7s" }}>
+          <div className="pd-stat">
             <div className="pd-stat-label">Platform</div>
             <div className="pd-stat-value">{project.platform}</div>
           </div>
-          <div className="pd-stat pd-cardReveal" style={{ animationDelay: "0.8s" }}>
+          <div className="pd-stat">
             <div className="pd-stat-label">Status</div>
             <div className="pd-stat-value pd-stat-value--live">
               {project.status === "Live" && <span className="pd-live-dot" />}
@@ -330,7 +330,7 @@ export default function ProjectDetailPage() {
             </div>
           </div>
           {project.appStoreUrl && (
-              <a href={project.appStoreUrl} target="_blank" rel="noopener noreferrer" className="pd-download pd-cardReveal" style={{ animationDelay: "0.9s" }}>
+              <a href={project.appStoreUrl} target="_blank" rel="noopener noreferrer" className="pd-download">
                 <div className="pd-download-icon pd-download-icon--apple">
                   <svg width="20" height="20" viewBox="0 0 814 1000" fill="#ffffff">
                     <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76.5 0-103.7 40.8-165.9 40.8s-105.6-57.8-155.5-127.4c-58.8-82-106.7-209.5-106.7-330.5 0-194.2 126.2-297.5 250.3-297.5 65.9 0 120.9 43.3 162.2 43.3 39.5 0 101.1-46 176.3-46 28.5 0 130.9 2.6 198.3 99.2zm-234-181.5c31.1-36.9 53.1-88.1 53.1-139.3 0-7.1-.6-14.3-1.9-20.1-50.6 1.9-110.8 33.7-147.1 75.8-28.5 32.4-55.1 83.6-55.1 135.5 0 7.8.6 15.7 1.3 18.2 2.6.6 6.4 1.3 10.2 1.3 45.4 0 103.5-30.4 139.5-71.4z"/>
@@ -347,7 +347,7 @@ export default function ProjectDetailPage() {
               </a>
           )}
           {project.googlePlayUrl && (
-              <a href={project.googlePlayUrl} target="_blank" rel="noopener noreferrer" className="pd-download pd-cardReveal" style={{ animationDelay: "1s" }}>
+              <a href={project.googlePlayUrl} target="_blank" rel="noopener noreferrer" className="pd-download">
                 <div className="pd-download-icon pd-download-icon--google">
                   <svg width="18" height="20" viewBox="0 0 18 20">
                     <path d="M0.55 0.19C0.21 0.54 0 1.09 0 1.79v16.42c0 0.7 0.21 1.25 0.55 1.6L0.65 19.9 9.8 10.75v-0.1v-0.1L0.65 1.4 0.55 0.19z" fill="#4CAF50"/>
@@ -367,7 +367,7 @@ export default function ProjectDetailPage() {
               </a>
           )}
           {project.websiteUrl && (
-              <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" className="pd-download pd-cardReveal" style={{ animationDelay: "0.9s" }}>
+              <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer" className="pd-download">
                 <div className="pd-download-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10" />
@@ -392,27 +392,27 @@ export default function ProjectDetailPage() {
           Overview
          ══════════════════════════════════════ */}
       <div className="pd-section">
-        <p className="pd-section-label pd-fadeUp" style={{ animationDelay: "0.9s" }}>
+        <p className="pd-section-label">
           Overview
         </p>
-        <h2 className="pd-section-title pd-fadeUp" style={{ animationDelay: "1s" }}>
+        <h2 className="pd-section-title">
           Project <span>Deep Dive</span>
         </h2>
-        <div className="pd-divider pd-lineExpand" style={{ animationDelay: "1.1s" }} />
+        <div className="pd-divider" />
 
         <div className="pd-overview-grid">
           <div>
-            <div className="pd-overview-block pd-fadeUp" style={{ animationDelay: "1.15s" }}>
+            <div className="pd-overview-block">
               <div className="pd-overview-heading">The Challenge</div>
               <p className="pd-overview-text">{project.challenge}</p>
             </div>
-            <div className="pd-overview-block pd-fadeUp" style={{ animationDelay: "1.25s" }}>
+            <div className="pd-overview-block">
               <div className="pd-overview-heading">The Solution</div>
               <p className="pd-overview-text">{project.solution}</p>
             </div>
           </div>
 
-          <div className="pd-cardReveal" style={{ animationDelay: "1.3s" }}>
+          <div>
             <div className="pd-client-card">
               <div className="pd-client-card-title">Client Details</div>
 
@@ -452,15 +452,14 @@ export default function ProjectDetailPage() {
         <h2 className="pd-section-title">
           Key <span>Capabilities</span>
         </h2>
-        <div className="pd-divider pd-lineExpand" />
+        <div className="pd-divider" />
 
         <div className="pd-cap-editorial">
           {project.features.map((feature, i) => (
             <div
               key={feature.title}
-              className="pd-cap-strip pd-cardReveal"
+              className="pd-cap-strip"
               style={{
-                animationDelay: `${0.15 + i * 0.1}s`,
                 '--orbit-speed': `${18 + i * 4}s`,
                 '--orbit-dir': i % 2 === 0 ? 'normal' : 'reverse',
               } as React.CSSProperties}
@@ -508,15 +507,14 @@ export default function ProjectDetailPage() {
         <h2 className="pd-section-title">
           App <span>Screenshots</span>
         </h2>
-        <div className="pd-divider pd-lineExpand" />
+        <div className="pd-divider" />
 
         <div className="pd-gallery-wrap">
           <div className="pd-gallery-track">
             {project.gallery.map((img, i) => (
               <div
                 key={i}
-                className="pd-gallery-item pd-cardReveal"
-                style={{ animationDelay: `${0.1 + i * 0.1}s` }}
+                className="pd-gallery-item"
               >
                 <div className="pd-device-frame">
                   <img
@@ -539,14 +537,13 @@ export default function ProjectDetailPage() {
         <h2 className="pd-section-title">
           Tech <span>Stack</span>
         </h2>
-        <div className="pd-divider pd-lineExpand" />
+        <div className="pd-divider" />
 
         <div className="pd-tech-grid">
-          {project.tech.map((t, i) => (
+          {project.tech.map((t) => (
             <div
               key={t}
-              className="pd-tech-card pd-cardReveal"
-              style={{ animationDelay: `${0.1 + i * 0.08}s` }}
+              className="pd-tech-card"
             >
               <img
                 src={getTechLogo(t)}
@@ -567,7 +564,7 @@ export default function ProjectDetailPage() {
          ══════════════════════════════════════ */}
       {project.testimonial && (
         <div className="pd-testimonial">
-          <div className="pd-testimonial-card pd-cardReveal">
+          <div className="pd-testimonial-card">
             <div className="pd-testimonial-quote-mark">&ldquo;</div>
             <p className="pd-testimonial-text">{project.testimonial.quote}</p>
             <div className="pd-testimonial-author">{project.testimonial.author}</div>
@@ -589,16 +586,16 @@ export default function ProjectDetailPage() {
 
         {/* Star field */}
         <div className="pd-aur-stars" aria-hidden="true">
-          <span style={{ top: "12%", left: "8%", animationDelay: "0s" }} />
-          <span style={{ top: "20%", left: "85%", animationDelay: "1.2s" }} />
-          <span style={{ top: "35%", left: "22%", animationDelay: "0.6s" }} />
-          <span style={{ top: "18%", left: "55%", animationDelay: "2.1s" }} />
-          <span style={{ top: "45%", left: "72%", animationDelay: "0.3s" }} />
-          <span style={{ top: "8%", left: "40%", animationDelay: "1.8s" }} />
-          <span style={{ top: "55%", left: "12%", animationDelay: "0.9s" }} />
-          <span style={{ top: "30%", left: "92%", animationDelay: "1.5s" }} />
-          <span style={{ top: "50%", left: "48%", animationDelay: "2.4s" }} />
-          <span style={{ top: "15%", left: "68%", animationDelay: "0.4s" }} />
+          <span style={{ top: "12%", left: "8%" }} />
+          <span style={{ top: "20%", left: "85%" }} />
+          <span style={{ top: "35%", left: "22%" }} />
+          <span style={{ top: "18%", left: "55%" }} />
+          <span style={{ top: "45%", left: "72%" }} />
+          <span style={{ top: "8%", left: "40%" }} />
+          <span style={{ top: "55%", left: "12%" }} />
+          <span style={{ top: "30%", left: "92%" }} />
+          <span style={{ top: "50%", left: "48%" }} />
+          <span style={{ top: "15%", left: "68%" }} />
         </div>
 
         {/* Horizon glow */}

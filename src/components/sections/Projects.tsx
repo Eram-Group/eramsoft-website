@@ -30,17 +30,17 @@ export default function Projects() {
         <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
           <div className="mb-16 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="pj-label mb-4 text-xs font-bold tracking-[0.35em] uppercase pj-fadeUp [animation-delay:0.1s]">
+              <p className="pj-label mb-4 text-xs font-bold tracking-[0.35em] uppercase">
                 Our Work
               </p>
-              <h2 className="pj-title text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl pj-fadeUp [animation-delay:0.25s]">
+              <h2 className="pj-title text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
                 Featured{" "}
                 <span className="pj-title-accent">Projects</span>
               </h2>
             </div>
 
             {/* Scroll controls */}
-            <div className="flex gap-3 pj-fadeUp [animation-delay:0.4s]">
+            <div className="flex gap-3">
               <button
                 onClick={() => scroll("left")}
                 className="pj-nav-btn"
@@ -71,8 +71,7 @@ export default function Projects() {
             {projects.map((project, i) => (
               <div
                 key={project.title}
-                className="pj-card pj-fadeUp"
-                style={{ animationDelay: `${0.5 + i * 0.12}s` }}
+                className="pj-card"
               >
                 {/* Image */}
                 <div className="pj-card-image">

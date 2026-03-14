@@ -22,24 +22,24 @@ export default function RecentProjects() {
         {/* ── Section header ── */}
         <div className="mb-16 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="rp-label mb-4 text-xs font-bold tracking-[0.35em] uppercase rp-fadeUp [animation-delay:0.1s]">
+            <p className="rp-label mb-4 text-xs font-bold tracking-[0.35em] uppercase">
               Our Work
             </p>
-            <h2 className="rp-title text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl rp-fadeUp [animation-delay:0.25s]">
+            <h2 className="rp-title text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
               Recent{" "}
               <span className="rp-title-accent">Projects</span>
             </h2>
-            <p className="rp-subtitle mt-4 max-w-md text-base leading-relaxed rp-fadeUp [animation-delay:0.35s]">
+            <p className="rp-subtitle mt-4 max-w-md text-base leading-relaxed">
               A look at our latest engineering work across industries.
             </p>
           </div>
         </div>
 
         {/* ── Divider line ── */}
-        <div className="rp-line mx-auto mb-14 h-px w-full max-w-md rp-lineExpand [animation-delay:0.45s]" />
+        <div className="rp-line mx-auto mb-14 h-px w-full max-w-md" />
 
         {/* ── Featured project — full-width horizontal card ── */}
-        <Link href={`/projects/${featured.slug}`} className="rp-featured rp-cardReveal [animation-delay:0.5s]" style={{ textDecoration: "none" }}>
+        <Link href={`/projects/${featured.slug}`} className="rp-featured" style={{ textDecoration: "none" }}>
           <div className="rp-scanline" />
           <div className="rp-card-glow" />
 
@@ -77,8 +77,8 @@ export default function RecentProjects() {
             <Link
               href={`/projects/${project.slug}`}
               key={project.title}
-              className="rp-card rp-cardReveal"
-              style={{ animationDelay: `${0.7 + i * 0.15}s`, textDecoration: "none" }}
+              className="rp-card"
+              style={{ textDecoration: "none" }}
             >
               <div className="rp-scanline" />
               <div className="rp-card-glow" />
@@ -121,7 +121,7 @@ export default function RecentProjects() {
         </div>
 
         {/* ── View All button ── */}
-        <div className="mt-16 flex justify-center rp-fadeUp [animation-delay:1s]">
+        <div className="mt-16 flex justify-center">
           <Link href="/projects" className="rp-view-all">
             <span>View All Projects</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

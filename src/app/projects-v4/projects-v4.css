@@ -117,13 +117,6 @@
   text-transform: uppercase;
   color: var(--ap4-accent);
   margin-bottom: 20px;
-  opacity: 0;
-  animation: ap4-label-enter 0.5s ease-out 0.2s forwards;
-}
-
-@keyframes ap4-label-enter {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 .ap4-label-pulse {
@@ -542,11 +535,8 @@
    ══════════════════════════════════════════════════ */
 
 .ap4-reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 0.5s ease-out,
-    transform 0.5s ease-out;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .ap4-revealed {
@@ -604,7 +594,6 @@
 
 .ap4-contact:hover .ap4-contact-glow {
   opacity: 0.8;
-  animation: none;
 }
 
 .ap4-contact-icon {
@@ -753,20 +742,3 @@
    Reduced Motion
    ══════════════════════════════════════════════════ */
 
-@media (prefers-reduced-motion: reduce) {
-  .ap4-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .ap4-hero-text,
-  .ap4-label-pulse,
-  .ap4-contact-glow {
-    animation: none;
-  }
-
-  .ap4-card:hover .ap4-card-bg {
-    transform: none;
-  }
-}

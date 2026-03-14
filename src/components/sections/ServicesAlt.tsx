@@ -17,22 +17,22 @@ export default function ServicesAlt() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         {/* ── Section header ── */}
         <div className="mb-20 text-center">
-          <p className="sa-label mb-4 text-xs font-bold tracking-[0.35em] uppercase sa-fadeUp [animation-delay:0.1s]">
+          <p className="sa-label mb-4 text-xs font-bold tracking-[0.35em] uppercase">
             What We Do
           </p>
-          <h2 className="sa-title mb-5 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl sa-fadeUp [animation-delay:0.25s]">
+          <h2 className="sa-title mb-5 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
             Our{" "}
             <span className="sa-title-accent">Services</span>
           </h2>
-          <div className="sa-line mx-auto mb-6 h-px w-24 sa-lineExpand [animation-delay:0.45s]" />
-          <p className="sa-subtitle mx-auto max-w-lg text-base leading-relaxed md:text-lg sa-fadeUp [animation-delay:0.5s]">
+          <div className="sa-line mx-auto mb-6 h-px w-24" />
+          <p className="sa-subtitle mx-auto max-w-lg text-base leading-relaxed md:text-lg">
             End-to-end digital solutions crafted with precision,
             from concept to deployment and beyond.
           </p>
         </div>
 
         {/* ── Expanding panels ── */}
-        <div className="sa-panels sa-fadeUp [animation-delay:0.65s]">
+        <div className="sa-panels">
           {services.map((service, i) => (
             <div
               key={service.number}

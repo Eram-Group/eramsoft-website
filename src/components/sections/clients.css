@@ -56,11 +56,9 @@
 }
 
 .cl-marquee--left {
-  animation: cl-scrollLeft 30s linear infinite;
 }
 
 .cl-marquee--right {
-  animation: cl-scrollRight 35s linear infinite;
 }
 
 .cl-marquee--inset {
@@ -68,19 +66,6 @@
   padding-right: 120px;
 }
 
-.cl-marquee:hover {
-  animation-play-state: paused;
-}
-
-@keyframes cl-scrollLeft {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@keyframes cl-scrollRight {
-  from { transform: translateX(-50%); }
-  to   { transform: translateX(0); }
-}
 
 
 /* ── Logo card — redesigned ── */

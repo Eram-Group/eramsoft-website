@@ -241,12 +241,6 @@
   margin: 40px 0 32px;
   background: linear-gradient(90deg, rgba(var(--neon-rgb), 0.35), rgba(var(--neon-rgb), 0.1) 40%, transparent 70%);
   transform-origin: left;
-  animation: ap3-rule-draw 0.5s ease-out forwards;
-}
-
-@keyframes ap3-rule-draw {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
 }
 
 .ap3-subtitle {
@@ -574,19 +568,6 @@
     0 0 0 1px rgba(var(--neon-rgb), 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  animation: ap3-fab-enter 0.5s ease-out 1s both;
-}
-
-/* Entrance */
-@keyframes ap3-fab-enter {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .ap3-fab:hover {
@@ -615,11 +596,8 @@
    ══════════════════════════════════════════════════ */
 
 .ap3-reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 0.5s ease-out,
-    transform 0.5s ease-out;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .ap3-revealed {
@@ -827,21 +805,3 @@
   }
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .ap3-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .ap3-row:hover {
-    transform: none;
-  }
-
-  .ap3-orb,
-  .ap3-heading-bold,
-  .ap3-header-rule {
-    animation: none;
-  }
-}

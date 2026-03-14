@@ -66,7 +66,7 @@ export default function ServicesOrbital() {
 
         {/* 3D Fan Stage */}
         <div
-          className="sf-stage animate-section-fadeUp [animation-delay:0.65s]"
+          className="sf-stage"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -115,7 +115,7 @@ export default function ServicesOrbital() {
         </div>
 
         {/* Navigation */}
-        <div className="sf-nav animate-section-fadeUp [animation-delay:0.8s]">
+        <div className="sf-nav">
           <button className="sf-nav-btn" onClick={prev} aria-label="Previous service">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6" />

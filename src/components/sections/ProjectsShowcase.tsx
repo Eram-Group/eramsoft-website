@@ -18,10 +18,10 @@ export default function ProjectsShowcase() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         {/* ── Section header ── */}
         <div className="mb-20 text-center">
-          <p className="ps-label mb-4 text-xs font-bold tracking-[0.35em] uppercase ps-fadeUp [animation-delay:0.1s]">
+          <p className="ps-label mb-4 text-xs font-bold tracking-[0.35em] uppercase">
             Case Studies
           </p>
-          <h2 className="ps-heading text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl ps-fadeUp [animation-delay:0.25s]">
+          <h2 className="ps-heading text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
             Project{" "}
             <span className="ps-heading-accent">Spotlight</span>
           </h2>
@@ -33,8 +33,8 @@ export default function ProjectsShowcase() {
             <Link
               href={`/projects/${project.slug}`}
               key={project.title}
-              className={`ps-row ps-row--${i % 2 === 0 ? "normal" : "reverse"} ps-fadeUp`}
-              style={{ animationDelay: `${0.35 + i * 0.12}s`, textDecoration: "none" }}
+              className={`ps-row ps-row--${i % 2 === 0 ? "normal" : "reverse"}`}
+              style={{ textDecoration: "none" }}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
             >
@@ -89,7 +89,7 @@ export default function ProjectsShowcase() {
         </div>
 
         {/* ── View All ── */}
-        <div className="mt-20 flex justify-center ps-fadeUp [animation-delay:1.2s]">
+        <div className="mt-20 flex justify-center">
           <Link href="/projects" className="ps-view-all">
             <span>Browse Full Portfolio</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

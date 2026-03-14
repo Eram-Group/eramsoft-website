@@ -757,12 +757,6 @@
 }
 
 .pd-cap-strip:hover .pd-cap-sweep {
-  animation: pd-sweepScan 0.7s ease-out forwards;
-}
-
-@keyframes pd-sweepScan {
-  0% { left: -100%; opacity: 1; }
-  100% { left: 100%; opacity: 0; }
 }
 
 
@@ -1558,13 +1552,9 @@
   position: absolute;
   width: 200%;
   height: 220px;
-  opacity: 0;
+  opacity: 1;
   filter: blur(60px);
   border-radius: 50%;
-}
-
-.pd-revealed .pd-aur-band {
-  animation: pd-aurBandIn 0.5s ease-out forwards;
 }
 
 .pd-aur-band--1 {
@@ -1578,7 +1568,6 @@
     rgba(60, 140, 255, 0.08) 65%,
     transparent 100%
   );
-  animation-delay: 0s, 0s;
 }
 
 .pd-aur-band--2 {
@@ -1592,7 +1581,6 @@
     rgba(var(--neon-light-rgb), 0.1) 70%,
     transparent 100%
   );
-  animation-delay: 0.4s, 2s;
   height: 180px;
 }
 
@@ -1607,14 +1595,8 @@
     rgba(130, 210, 255, 0.08) 80%,
     transparent 100%
   );
-  animation-delay: 0.8s, 4s;
   height: 260px;
   filter: blur(80px);
-}
-
-@keyframes pd-aurBandIn {
-  from { opacity: 0; transform: translateX(-10%); }
-  to   { opacity: 1; transform: translateX(0); }
 }
 
 
@@ -1683,16 +1665,6 @@
   text-align: center;
   max-width: 620px;
   padding: 36px 56px;
-  opacity: 0;
-  transform: translateY(16px);
-}
-
-.pd-revealed .pd-aur-body {
-  animation: pd-aurCardIn 0.5s ease-out 0.4s forwards;
-}
-
-@keyframes pd-aurCardIn {
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Badge ── */
@@ -1711,12 +1683,6 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 28px;
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-.pd-revealed .pd-aur-badge {
-  animation: pd-aurFadeUp 0.5s ease-out 0.8s forwards;
 }
 
 .pd-aur-badge-dot {
@@ -1735,12 +1701,6 @@
   line-height: 1.15;
   margin-bottom: 20px;
   letter-spacing: -0.02em;
-  opacity: 0;
-  transform: translateY(16px);
-}
-
-.pd-revealed .pd-aur-title {
-  animation: pd-aurFadeUp 0.5s ease-out 1s forwards;
 }
 
 .pd-aur-title-accent {
@@ -1777,16 +1737,6 @@
   max-width: 440px;
   margin: 0 auto 40px;
   line-height: 1.75;
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-.pd-revealed .pd-aur-desc {
-  animation: pd-aurFadeUp 0.5s ease-out 1.2s forwards;
-}
-
-@keyframes pd-aurFadeUp {
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Action buttons ── */
@@ -1796,12 +1746,6 @@
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-.pd-revealed .pd-aur-actions {
-  animation: pd-aurFadeUp 0.5s ease-out 1.4s forwards;
 }
 
 .pd-aur-btn {
@@ -1859,11 +1803,6 @@
 }
 
 .pd-aur-btn--primary:hover .pd-aur-btn-shimmer {
-  animation: pd-aurBtnShimmer 0.8s ease-out;
-}
-
-@keyframes pd-aurBtnShimmer {
-  to { left: 100%; }
 }
 
 .pd-aur-btn-text {
@@ -1888,48 +1827,6 @@
 }
 
 
-/* ══════════════════════════════════════════════════
-   Entrance Animations
-   ══════════════════════════════════════════════════ */
-
-@keyframes pd-fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.pd-fadeUp {
-  opacity: 0;
-  animation: pd-fadeUp 0.5s ease-out both;
-}
-
-@keyframes pd-cardReveal {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.pd-cardReveal {
-  opacity: 0;
-  animation: pd-cardReveal 0.5s ease-out both;
-}
-
-@keyframes pd-lineExpand {
-  from { transform: scaleX(0); opacity: 0; }
-  to { transform: scaleX(1); opacity: 1; }
-}
-
 .pd-lineExpand {
   transform-origin: left;
-  transform: scaleX(0);
-  opacity: 0;
-  animation: pd-lineExpand 0.5s ease-out both;
-}
-
-@keyframes pd-countUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.pd-countUp {
-  opacity: 0;
-  animation: pd-countUp 0.5s ease-out both;
 }

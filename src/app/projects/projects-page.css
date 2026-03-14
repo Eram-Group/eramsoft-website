@@ -256,12 +256,6 @@
     transparent 70%
   );
   transform-origin: left;
-  animation: ap-rule-draw 0.5s ease-out forwards;
-}
-
-@keyframes ap-rule-draw {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
 }
 
 .ap-subtitle {
@@ -753,11 +747,8 @@
    ══════════════════════════════════════════════════ */
 
 .ap-reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition:
-    opacity 0.5s ease-out,
-    transform 0.5s ease-out;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .ap-revealed {

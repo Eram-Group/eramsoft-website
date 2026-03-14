@@ -54,7 +54,7 @@ export default function Offices() {
           subtitle="With offices across the Middle East and North Africa, we're always close to where you need us."
         />
 
-        <div className="of-grid animate-section-fadeUp [animation-delay:0.65s]">
+        <div className="of-grid">
           {branches.map((b) => (
             <a
               key={b.city}

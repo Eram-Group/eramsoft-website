@@ -68,7 +68,6 @@ export default function Testimonials2() {
         </div>
 
         <div
-          className="animate-section-fadeUp [animation-delay:0.65s]"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -85,11 +84,11 @@ export default function Testimonials2() {
                 <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
               </svg>
 
-              <p className="t2-text t2-text-enter" key={`text-${active}`}>
+              <p className="t2-text" key={`text-${active}`}>
                 {current.comment}
               </p>
 
-              <div className="t2-card-stars t2-text-enter" key={`stars-${active}`}>
+              <div className="t2-card-stars" key={`stars-${active}`}>
                 <MiniStars rating={current.rating} />
               </div>
             </div>
@@ -102,7 +101,7 @@ export default function Testimonials2() {
           </div>
 
           {/* ── Avatar row ── */}
-          <div className="t2-avatars-wrap animate-section-fadeUp [animation-delay:0.85s]">
+          <div className="t2-avatars-wrap">
             <div className="t2-avatars">
               {testimonials.map((t, i) => (
                 <button

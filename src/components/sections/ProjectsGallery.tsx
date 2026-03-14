@@ -73,15 +73,15 @@ export default function ProjectsGallery() {
         {/* ── Header ── */}
         <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="pg-label section-label mb-4 text-xs font-bold tracking-[0.35em] uppercase animate-section-fadeUp [animation-delay:0.1s]">
+            <p className="pg-label section-label mb-4 text-xs font-bold tracking-[0.35em] uppercase">
               Portfolio
             </p>
-            <h2 className="pg-heading section-title text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl animate-section-fadeUp [animation-delay:0.2s]">
+            <h2 className="pg-heading section-title text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
               Recent{" "}
               <span className="pg-heading-accent section-title-accent">Works</span>
             </h2>
           </div>
-          <Link href="/projects" className="pg-browse animate-section-fadeUp [animation-delay:0.3s]">
+          <Link href="/projects" className="pg-browse">
             <span>All Projects</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="7" y1="17" x2="17" y2="7" />
@@ -92,7 +92,7 @@ export default function ProjectsGallery() {
 
         {/* ── Showcase ── */}
         <div
-          className="pg-showcase animate-section-fadeUp [animation-delay:0.4s]"
+          className="pg-showcase"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -113,16 +113,16 @@ export default function ProjectsGallery() {
 
             {/* Info overlay on image */}
             <div className="pg-panel-info" key={`info-${active}`}>
-              <span className="pg-panel-cat pg-anim-slideUp" style={{ animationDelay: "0.05s" }}>
+              <span className="pg-panel-cat">
                 {current.category}
               </span>
-              <h3 className="pg-panel-title pg-anim-slideUp" style={{ animationDelay: "0.12s" }}>
+              <h3 className="pg-panel-title">
                 {current.title}
               </h3>
-              <p className="pg-panel-desc pg-anim-slideUp" style={{ animationDelay: "0.2s" }}>
+              <p className="pg-panel-desc">
                 {current.description}
               </p>
-              <div className="pg-panel-tags pg-anim-slideUp" style={{ animationDelay: "0.28s" }}>
+              <div className="pg-panel-tags">
                 {current.tech.map((t) => (
                   <span key={t} className="neon-tag">{t}</span>
                 ))}

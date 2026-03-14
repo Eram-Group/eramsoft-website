@@ -183,34 +183,14 @@
    ANIMATIONS
    ══════════════════════════════════════════════════ */
 
-@keyframes ab-riseUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
 .ab-rise {
-  opacity: 0;
-  animation: ab-riseUp 0.5s ease-out both;
-}
-
-@keyframes ab-lineReveal {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ── Scroll Reveal ── */
 
 .ab-reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .ab-revealed {
@@ -392,8 +372,6 @@
   font-weight: 800;
   letter-spacing: -0.035em;
   color: var(--text-heading);
-  opacity: 0;
-  animation: ab-lineReveal 0.5s ease-out both;
 }
 
 .ab-hero-line--lead {
@@ -505,12 +483,6 @@
   object-fit: cover;
   object-position: center 35%;
   filter: brightness(0.45) contrast(1.15) saturate(0.85);
-  animation: ab-heroImgIn 0.5s ease-out 0.6s both;
-}
-
-@keyframes ab-heroImgIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 .ab-hero-overlay {
@@ -549,17 +521,10 @@
 .ab-hero-corner {
   position: absolute;
   z-index: 5;
-  opacity: 0;
-  animation: ab-cornerIn 0.5s ease-out 1.2s forwards;
 }
 
 .ab-hero-corner--tl { top: -4px; left: -4px; }
 .ab-hero-corner--br { bottom: -4px; right: -4px; }
-
-@keyframes ab-cornerIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
 
 /* ── Retention badge — premium glass ── */
 
@@ -986,14 +951,6 @@
 
 /* ── Staggered entrance ── */
 
-.ab-revealed .ab-pil-card {
-  animation: ab-circleIn 0.5s ease-out both;
-}
-
-.ab-revealed .ab-pil-card:nth-child(3) {
-  animation-delay: 0.25s;
-}
-
 
 /* ══════════════════════════════════════════════════
    VM CARDS — Vision & Mission glass cards
@@ -1149,14 +1106,6 @@
 }
 
 /* ── Staggered entrance ── */
-
-.ab-revealed .ab-vm-card {
-  animation: ab-circleIn 0.5s ease-out both;
-}
-
-.ab-revealed .ab-vm-card:nth-child(2) {
-  animation-delay: 0.15s;
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -1357,34 +1306,6 @@
   flex-shrink: 0;
 }
 
-/* ── Staggered entrance ── */
-
-.ab-revealed .ab-vm2-panel--vision {
-  animation: ab-vm2SlideRight 0.5s ease-out both;
-}
-
-.ab-revealed .ab-vm2-panel--mission {
-  animation: ab-vm2SlideLeft 0.5s ease-out 0.15s both;
-}
-
-.ab-revealed .ab-vm2-timeline {
-  animation: ab-vm2TimelineIn 0.5s ease-out 0.05s both;
-}
-
-@keyframes ab-vm2SlideRight {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes ab-vm2SlideLeft {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes ab-vm2TimelineIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -1568,30 +1489,6 @@
   max-width: 200px;
 }
 
-/* ── Staggered entrance ── */
-
-.ab-revealed .ab-pr-item {
-  animation: ab-circleIn 0.5s ease-out both;
-}
-
-.ab-revealed .ab-pr-item:nth-child(2) { animation-delay: 0.1s; }
-.ab-revealed .ab-pr-item:nth-child(3) { animation-delay: 0.2s; }
-.ab-revealed .ab-pr-item:nth-child(4) { animation-delay: 0.3s; }
-.ab-revealed .ab-pr-item:nth-child(5) { animation-delay: 0.4s; }
-
-.ab-revealed .ab-pr-rail {
-  animation: ab-railDraw 1s ease 0.3s both;
-}
-
-@keyframes ab-circleIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes ab-railDraw {
-  from { clip-path: inset(0 50% 0 50%); }
-  to   { clip-path: inset(0 0 0 0); }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -1635,24 +1532,12 @@
   padding-left: 8px;
   padding-bottom: 8px;
   margin-right: 38px;
-  opacity: 0;
-  transform: translateY(30px);
+
 }
 
 .ab-info-card:last-child {
   margin-right: 0;
 }
-
-.ab-revealed .ab-info-card {
-  animation: ab-infoCardIn 0.5s ease-out both;
-}
-
-.ab-revealed .ab-info-card:nth-child(2) { animation-delay: 0.1s; }
-.ab-revealed .ab-info-card:nth-child(3) { animation-delay: 0.2s; }
-.ab-revealed .ab-info-card:nth-child(4) { animation-delay: 0.3s; }
-.ab-revealed .ab-info-card:nth-child(5) { animation-delay: 0.4s; }
-.ab-revealed .ab-info-card:nth-child(6) { animation-delay: 0.5s; }
-
 /* ── Colored frame — full rounded rectangle outline, offset behind card ── */
 .ab-info-card-frame {
   position: absolute;
@@ -1826,27 +1711,6 @@
   color: rgba(90, 95, 110, 0.75);
 }
 
-/* ── Animations ── */
-
-.ab-revealed .ab-info-connector {
-  animation: ab-infoConnectorDraw 0.5s ease-out 0.15s both;
-}
-
-@keyframes ab-infoCardIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes ab-infoConnectorDraw {
-  from { clip-path: inset(0 50% 0 50%); }
-  to   { clip-path: inset(0 0 0 0); }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -1878,9 +1742,6 @@
   z-index: 5;
 }
 
-.ab-revealed .ab-zigzag-connector-line {
-  animation: ab-zigzagLineDraw 0.5s ease-out 0.15s both;
-}
 
 /* ── Cards track ── */
 .ab-zigzag-track {
@@ -1900,8 +1761,7 @@
   padding-left: 8px;
   padding-bottom: 8px;
   margin-right: 38px;
-  opacity: 0;
-  transform: translateY(30px);
+
 }
 
 .ab-zigzag-card:last-child {
@@ -1909,15 +1769,6 @@
 }
 
 /* Staggered card entrance */
-.ab-revealed .ab-zigzag-card {
-  animation: ab-zigzagCardIn 0.5s ease-out both;
-}
-
-.ab-revealed .ab-zigzag-card:nth-child(2) { animation-delay: 0.1s; }
-.ab-revealed .ab-zigzag-card:nth-child(3) { animation-delay: 0.2s; }
-.ab-revealed .ab-zigzag-card:nth-child(4) { animation-delay: 0.3s; }
-.ab-revealed .ab-zigzag-card:nth-child(5) { animation-delay: 0.4s; }
-
 /* ── Colored frame — left + bottom L-shape ── */
 .ab-zigzag-card-frame {
   position: absolute;
@@ -2135,22 +1986,6 @@
   color: rgba(90, 95, 110, 0.75);
 }
 
-/* ── Animations ── */
-@keyframes ab-zigzagCardIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes ab-zigzagLineDraw {
-  from { clip-path: inset(0 50% 0 50%); }
-  to   { clip-path: inset(0 0 0 0); }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -2394,51 +2229,8 @@
   flex-shrink: 0;
 }
 
-/* ── Staggered entrance ── */
-
-.ab-revealed .ab-sh-col--before {
-  animation: ab-shSlideRight 0.5s ease-out both;
-}
-
-.ab-revealed .ab-sh-col--after {
-  animation: ab-shSlideLeft 0.5s ease-out 0.12s both;
-}
-
-.ab-revealed .ab-sh-divider {
-  animation: ab-shFadeIn 0.5s ease-out 0.06s both;
-}
-
-@keyframes ab-shSlideRight {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes ab-shSlideLeft {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes ab-shFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
 
 /* ── Staggered list items ── */
-
-.ab-revealed .ab-sh-item {
-  animation: ab-shItemIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.ab-revealed .ab-sh-item:nth-child(1) { animation-delay: 0.15s; }
-.ab-revealed .ab-sh-item:nth-child(2) { animation-delay: 0.22s; }
-.ab-revealed .ab-sh-item:nth-child(3) { animation-delay: 0.29s; }
-.ab-revealed .ab-sh-item:nth-child(4) { animation-delay: 0.36s; }
-.ab-revealed .ab-sh-item:nth-child(5) { animation-delay: 0.43s; }
-
-@keyframes ab-shItemIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -2479,14 +2271,11 @@
   position: absolute;
   width: 200%;
   height: 220px;
-  opacity: 0;
+  opacity: 1;
   filter: blur(60px);
   border-radius: 50%;
 }
 
-.ab-revealed .ab-aur-band {
-  animation: ab-aurBandIn 0.5s ease-out forwards;
-}
 
 .ab-aur-band--1 {
   top: -60px;
@@ -2499,7 +2288,6 @@
     rgba(60, 140, 255, 0.08) 65%,
     transparent 100%
   );
-  animation-delay: 0s;
 }
 
 .ab-aur-band--2 {
@@ -2513,7 +2301,6 @@
     rgba(var(--neon-light-rgb), 0.1) 70%,
     transparent 100%
   );
-  animation-delay: 0.4s;
   height: 180px;
 }
 
@@ -2528,14 +2315,8 @@
     rgba(130, 210, 255, 0.08) 80%,
     transparent 100%
   );
-  animation-delay: 0.8s;
   height: 260px;
   filter: blur(80px);
-}
-
-@keyframes ab-aurBandIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Star field ── */
@@ -2593,9 +2374,6 @@
   opacity: 0;
 }
 
-.ab-revealed .ab-aur-beam {
-  opacity: 0;
-}
 
 /* ── Floating glass card ── */
 
@@ -2618,13 +2396,8 @@
     0 0 0 1px rgba(255, 255, 255, 0.02),
     0 24px 80px rgba(0, 0, 0, 0.4),
     0 0 120px rgba(var(--neon-rgb), 0.04);
-  opacity: 0;
-  transform: translateY(16px);
 }
 
-.ab-revealed .ab-aur-card {
-  animation: ab-aurCardIn 0.5s ease-out 0.4s forwards;
-}
 
 /* Single-card body — no inner card, content floats directly */
 .ab-aur-body {
@@ -2633,16 +2406,6 @@
   text-align: center;
   max-width: 620px;
   padding: 36px 56px;
-  opacity: 0;
-  transform: translateY(16px);
-}
-
-.ab-revealed .ab-aur-body {
-  animation: ab-aurCardIn 0.5s ease-out 0.4s forwards;
-}
-
-@keyframes ab-aurCardIn {
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Card top edge shine */
@@ -2673,7 +2436,7 @@
 }
 
 .ab-revealed .ab-aur-card-edge {
-  opacity: 0;
+  opacity: 0.6;
 }
 
 /* ── Badge ── */
@@ -2692,13 +2455,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 28px;
-  opacity: 0;
-  transform: translateY(12px);
 }
 
-.ab-revealed .ab-aur-badge {
-  animation: ab-aurFadeUp 0.5s ease-out 0.8s forwards;
-}
 
 .ab-aur-badge-dot {
   width: 6px;
@@ -2717,13 +2475,8 @@
   line-height: 1.15;
   margin-bottom: 20px;
   letter-spacing: -0.02em;
-  opacity: 0;
-  transform: translateY(16px);
 }
 
-.ab-revealed .ab-aur-title {
-  animation: ab-aurFadeUp 0.5s ease-out 1s forwards;
-}
 
 .ab-aur-title-accent {
   background: linear-gradient(
@@ -2759,16 +2512,6 @@
   max-width: 440px;
   margin: 0 auto 40px;
   line-height: 1.75;
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-.ab-revealed .ab-aur-desc {
-  animation: ab-aurFadeUp 0.5s ease-out 1.2s forwards;
-}
-
-@keyframes ab-aurFadeUp {
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Action buttons ── */
@@ -2778,13 +2521,8 @@
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
-  opacity: 0;
-  transform: translateY(12px);
 }
 
-.ab-revealed .ab-aur-actions {
-  animation: ab-aurFadeUp 0.5s ease-out 1.4s forwards;
-}
 
 .ab-aur-btn {
   display: inline-flex;
@@ -2841,12 +2579,8 @@
 }
 
 .ab-aur-btn--primary:hover .ab-aur-btn-shimmer {
-  animation: ab-aurBtnShimmer 0.8s ease-out;
 }
 
-@keyframes ab-aurBtnShimmer {
-  to { left: 100%; }
-}
 
 .ab-aur-btn-text {
   position: relative;
@@ -3092,24 +2826,6 @@
   opacity: 0.5;
 }
 
-/* ── VM3 entrance ── */
-
-.ab-revealed .ab-vm3-wing--v {
-  animation: ab-vm2SlideRight 0.5s ease-out both;
-}
-
-.ab-revealed .ab-vm3-wing--m {
-  animation: ab-vm2SlideLeft 0.5s ease-out 0.15s both;
-}
-
-.ab-revealed .ab-vm3-orbital {
-  animation: ab-vm3OrbitalIn 0.5s ease-out 0.1s both;
-}
-
-@keyframes ab-vm3OrbitalIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -3209,16 +2925,7 @@
   opacity: 0;
 }
 
-.ab-revealed .ab-vm4-scan::before {
-  animation: ab-vm4Scan 0.5s ease-out 0.3s both;
-}
 
-@keyframes ab-vm4Scan {
-  0%   { top: -2px; opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 0.6; }
-  100% { top: 100%; opacity: 0; }
-}
 
 /* ── Pulsing edges ── */
 
@@ -3357,34 +3064,6 @@
 .ab-vm4-gap-particles span:nth-child(4) { top: 65%; }
 .ab-vm4-gap-particles span:nth-child(5) { top: 80%; }
 
-/* ── VM4 entrance ── */
-
-.ab-revealed .ab-vm4-monolith--v {
-  animation: ab-vm4RiseLeft 0.5s ease-out both;
-}
-
-.ab-revealed .ab-vm4-monolith--m {
-  animation: ab-vm4RiseRight 0.5s ease-out 0.15s both;
-}
-
-.ab-revealed .ab-vm4-gap {
-  animation: ab-vm4GapIn 0.5s ease-out 0.3s both;
-}
-
-@keyframes ab-vm4RiseLeft {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes ab-vm4RiseRight {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes ab-vm4GapIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -3593,25 +3272,14 @@
 
 .ab-vm5-strand--1 {
   stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
+  stroke-dashoffset: 0;
 }
 
 .ab-vm5-strand--2 {
   stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
+  stroke-dashoffset: 0;
 }
 
-.ab-revealed .ab-vm5-strand--1 {
-  animation: ab-vm5StrandDraw 2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-}
-
-.ab-revealed .ab-vm5-strand--2 {
-  animation: ab-vm5StrandDraw 2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
-}
-
-@keyframes ab-vm5StrandDraw {
-  to { stroke-dashoffset: 0; }
-}
 
 /* Helix node dots */
 .ab-vm5-helix-dot--1 { opacity: 0.5; }
@@ -3619,34 +3287,6 @@
 .ab-vm5-helix-dot--3 { opacity: 0.5; }
 .ab-vm5-helix-dot--4 { opacity: 0.5; }
 
-/* ── VM5 entrance ── */
-
-.ab-revealed .ab-vm5-prism--v {
-  animation: ab-vm5PrismLeft 0.5s ease-out both;
-}
-
-.ab-revealed .ab-vm5-prism--m {
-  animation: ab-vm5PrismRight 0.5s ease-out 0.15s both;
-}
-
-.ab-revealed .ab-vm5-helix {
-  animation: ab-vm5HelixIn 0.5s ease-out 0.1s both;
-}
-
-@keyframes ab-vm5PrismLeft {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes ab-vm5PrismRight {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes ab-vm5HelixIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
 
 /* ══════════════════════════════════════════════════
@@ -3723,24 +3363,8 @@
 
 /* Scroll-reveal: rings expand from center */
 .ab-cta1-ring {
-  transform: scale(0);
-  opacity: 0;
-}
-
-.ab-revealed .ab-cta1-ring {
-  animation: ab-cta1RingExpand 0.5s ease-out forwards;
-}
-
-.ab-revealed .ab-cta1-ring--1 { animation-delay: 0.1s; }
-.ab-revealed .ab-cta1-ring--2 { animation-delay: 0.18s; }
-.ab-revealed .ab-cta1-ring--3 { animation-delay: 0.26s; }
-.ab-revealed .ab-cta1-ring--4 { animation-delay: 0.34s; }
-.ab-revealed .ab-cta1-ring--5 { animation-delay: 0.42s; }
-.ab-revealed .ab-cta1-ring--6 { animation-delay: 0.5s; }
-
-@keyframes ab-cta1RingExpand {
-  from { transform: scale(0); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
+  transform: scale(1);
+  opacity: 1;
 }
 
 /* ── Radial light rays ── */
@@ -3752,16 +3376,9 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  opacity: 0;
+  opacity: 1;
 }
 
-.ab-revealed .ab-cta1-rays {
-  animation: ab-cta1RaysIn 0.5s ease-out 0.6s forwards;
-}
-
-@keyframes ab-cta1RaysIn {
-  to { opacity: 1; }
-}
 
 .ab-cta1-rays span {
   position: absolute;
@@ -3807,17 +3424,9 @@
   text-align: center;
   max-width: 480px;
   padding: 32px 28px;
-  opacity: 0;
-  transform: translateY(24px);
+
 }
 
-.ab-revealed .ab-cta1-content {
-  animation: ab-cta1ContentIn 0.5s ease-out 0.5s forwards;
-}
-
-@keyframes ab-cta1ContentIn {
-  to { opacity: 1; transform: translateY(0); }
-}
 
 /* ── Badge ── */
 
@@ -4001,63 +3610,22 @@
   stroke: rgba(var(--neon-rgb), 0.08);
   stroke-width: 1;
   stroke-dasharray: 800;
-  stroke-dashoffset: 800;
-}
-
-.ab-revealed .ab-cta2-line {
-  animation: ab-cta2Draw 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.ab-revealed .ab-cta2-line--h1 { animation-delay: 0.1s; }
-.ab-revealed .ab-cta2-line--h2 { animation-delay: 0.2s; }
-.ab-revealed .ab-cta2-line--h3 { animation-delay: 0.3s; }
-.ab-revealed .ab-cta2-line--h4 { animation-delay: 0.15s; }
-.ab-revealed .ab-cta2-line--h5 { animation-delay: 0.35s; }
-.ab-revealed .ab-cta2-line--h6 { animation-delay: 0.25s; }
-.ab-revealed .ab-cta2-line--v1 { animation-delay: 0.4s; }
-.ab-revealed .ab-cta2-line--v2 { animation-delay: 0.45s; }
-.ab-revealed .ab-cta2-line--v3 { animation-delay: 0.5s; }
-.ab-revealed .ab-cta2-line--v4 { animation-delay: 0.55s; }
-.ab-revealed .ab-cta2-line--v5 { animation-delay: 0.6s; }
-.ab-revealed .ab-cta2-line--v6 { animation-delay: 0.65s; }
-.ab-revealed .ab-cta2-line--c1 { animation-delay: 0.7s; }
-.ab-revealed .ab-cta2-line--c2 { animation-delay: 0.72s; }
-.ab-revealed .ab-cta2-line--c3 { animation-delay: 0.74s; }
-.ab-revealed .ab-cta2-line--c4 { animation-delay: 0.76s; }
-
-@keyframes ab-cta2Draw {
-  to { stroke-dashoffset: 0; }
+  stroke-dashoffset: 0;
 }
 
 /* ── Glowing nodes ── */
 
 .ab-cta2-node {
   fill: var(--neon);
-  opacity: 0;
+  opacity: 1;
   filter: drop-shadow(0 0 4px rgba(var(--neon-rgb), 0.6));
-}
-
-.ab-revealed .ab-cta2-node {
-  animation: ab-cta2NodeIn 0.4s ease-out forwards;
-}
-
-.ab-revealed .ab-cta2-node:nth-child(7)  { animation-delay: 0.5s; }
-.ab-revealed .ab-cta2-node:nth-child(8)  { animation-delay: 0.55s; }
-.ab-revealed .ab-cta2-node:nth-child(9)  { animation-delay: 0.6s; }
-.ab-revealed .ab-cta2-node:nth-child(10) { animation-delay: 0.65s; }
-.ab-revealed .ab-cta2-node--sm:nth-child(11) { animation-delay: 0.7s; }
-.ab-revealed .ab-cta2-node--sm:nth-child(12) { animation-delay: 0.75s; }
-
-@keyframes ab-cta2NodeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
 }
 
 /* ── Data stream particles ── */
 
 .ab-cta2-particle {
   fill: var(--neon-light);
-  opacity: 0;
+  opacity: 1;
 }
 
 .ab-revealed .ab-cta2-particle {
@@ -4129,16 +3697,9 @@
   stroke-width: 1.5;
   fill: rgba(8, 14, 26, 0.6);
   stroke-dasharray: 2400;
-  stroke-dashoffset: 2400;
+  stroke-dashoffset: 0;
 }
 
-.ab-revealed .ab-cta2-chamfer {
-  animation: ab-cta2ChamferDraw 2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-}
-
-@keyframes ab-cta2ChamferDraw {
-  to { stroke-dashoffset: 0; }
-}
 
 /* ── Panel content ── */
 
@@ -4147,17 +3708,9 @@
   z-index: 1;
   text-align: center;
   padding: 56px 48px;
-  opacity: 0;
-  transform: translateY(20px);
+
 }
 
-.ab-revealed .ab-cta2-panel-content {
-  animation: ab-cta2ContentIn 0.5s ease-out 0.7s forwards;
-}
-
-@keyframes ab-cta2ContentIn {
-  to { opacity: 1; transform: translateY(0); }
-}
 
 /* ── Badge ── */
 
@@ -4552,7 +4105,6 @@
   .ab-zigzag-play {
     display: none;
   }
-
 }
 
 
@@ -4801,12 +4353,6 @@
     width: 160px;
     height: 160px;
   }
-
-  .ab-revealed .ab-vm2-panel--vision,
-  .ab-revealed .ab-vm2-panel--mission {
-    animation-name: ab-circleIn;
-  }
-
   /* ── Principles ── */
   .ab-pr-track {
     display: grid;
@@ -4946,12 +4492,6 @@
     padding: 28px 24px;
     border-radius: 18px;
   }
-
-  .ab-revealed .ab-sh-col--before,
-  .ab-revealed .ab-sh-col--after {
-    animation-name: ab-shItemIn;
-  }
-
   /* ── CTA1 Gravitational (Mobile) ── */
   .ab-cta1 {
     min-height: 440px;
@@ -5137,12 +4677,6 @@
   .ab-vm4-layer--2 {
     display: none;
   }
-
-  .ab-revealed .ab-vm4-monolith--v,
-  .ab-revealed .ab-vm4-monolith--m {
-    animation-name: ab-circleIn;
-  }
-
   /* ── VM5 Prism (Mobile) ── */
   .ab-vm5-layout {
     grid-template-columns: 1fr;
@@ -5177,10 +4711,4 @@
   .ab-vm5-prism--m:hover .ab-vm5-prism-glass {
     transform: none;
   }
-
-  .ab-revealed .ab-vm5-prism--v,
-  .ab-revealed .ab-vm5-prism--m {
-    animation-name: ab-circleIn;
-  }
-
 }

@@ -15,15 +15,15 @@ export default function ClientsAlt() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         {/* ── Section header ── */}
         <div className="mb-16 text-center">
-          <p className="ca-label mb-4 text-xs font-bold tracking-[0.35em] uppercase ca-fadeUp [animation-delay:0.1s]">
+          <p className="ca-label mb-4 text-xs font-bold tracking-[0.35em] uppercase">
             Trusted Worldwide
           </p>
-          <h2 className="ca-title mb-5 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl ca-fadeUp [animation-delay:0.25s]">
+          <h2 className="ca-title mb-5 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
             Companies We&rsquo;ve{" "}
             <span className="ca-title-accent">Worked With</span>
           </h2>
-          <div className="ca-line mx-auto mb-6 h-px w-24 ca-lineExpand [animation-delay:0.45s]" />
-          <p className="ca-subtitle mx-auto max-w-lg text-base leading-relaxed md:text-lg ca-fadeUp [animation-delay:0.5s]">
+          <div className="ca-line mx-auto mb-6 h-px w-24" />
+          <p className="ca-subtitle mx-auto max-w-lg text-base leading-relaxed md:text-lg">
             We&rsquo;ve partnered with startups and enterprises to build
             reliable digital products that scale.
           </p>
@@ -36,8 +36,7 @@ export default function ClientsAlt() {
             return (
               <div
                 key={client.name}
-                className={`ca-row ca-row--${side} ca-rowIn`}
-                style={{ animationDelay: `${0.6 + i * 0.07}s` }}
+                className={`ca-row ca-row--${side}`}
               >
                 <span className="ca-node" />
                 <span className="ca-branch" />
@@ -55,7 +54,7 @@ export default function ClientsAlt() {
         </div>
 
         {/* ── Trust indicators ── */}
-        <div className="mt-20 ca-fadeUp [animation-delay:1.8s]">
+        <div className="mt-20">
           <div className="ca-trust">
             <div className="ca-trust-item">
               <span className="ca-trust-number">50<span>+</span></span>
