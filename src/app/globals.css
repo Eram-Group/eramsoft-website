@@ -90,6 +90,7 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
+  overscroll-behavior: none;
 }
 
 html::-webkit-scrollbar {
@@ -97,7 +98,7 @@ html::-webkit-scrollbar {
 }
 
 body {
-  background: var(--background);
+  background: var(--dark-bg);
   color: var(--foreground);
   font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
 }
