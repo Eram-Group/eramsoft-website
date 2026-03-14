@@ -1,10 +1,33 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AmbientEffects from "@/components/ui/AmbientEffects";
 import { testimonials } from "@/data/testimonials";
 import "./testimonials3.css";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const staggerCards = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+  },
+};
+
+const cardItem = {
+  hidden: { opacity: 0, y: 16, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -62,15 +85,29 @@ export default function Testimonials3() {
       <AmbientEffects />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-        <div className="t3-header">
+        <motion.div
+          className="t3-header"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <SectionHeader
             label="Testimonials"
             title="What Our"
             accentWord="Clients Say"
           />
-        </div>
+        </motion.div>
 
-        <div className="t3-grid-wrap">
+        <motion.div
+          className="t3-grid-wrap"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+        >
           {/* Left arrow */}
           <button
             className={`t3-arrow t3-arrow--left ${canScrollLeft ? "t3-arrow--visible" : ""}`}
@@ -93,11 +130,19 @@ export default function Testimonials3() {
             </svg>
           </button>
 
-          <div className="t3-grid" ref={gridRef}>
+          <motion.div
+            className="t3-grid"
+            ref={gridRef}
+            variants={staggerCards}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+          >
             {testimonials.map((t) => (
-              <div
+              <motion.div
                 key={t.name}
                 className="t3-card"
+                variants={cardItem}
               >
                 <div className="t3-card-header">
                   <div className={`t3-avatar t3-avatar--${t.color}`}>
@@ -114,9 +159,9 @@ export default function Testimonials3() {
                 <div className="t3-quote">
                   <p className="t3-quote-text">{t.comment}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Scroll hint */}
           <div className="t3-scroll-hint">
@@ -125,7 +170,7 @@ export default function Testimonials3() {
               <polyline points="9 6 15 12 9 18" />
             </svg>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

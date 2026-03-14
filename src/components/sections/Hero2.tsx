@@ -58,23 +58,23 @@ export default function Hero2() {
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-8 pt-28 pb-8 lg:px-16">
         {/* Left — Text content */}
         <div className="relative z-10 w-full max-w-xl">
-          <p className="h2-subtitle mb-5 text-sm font-semibold tracking-[0.3em] uppercase">
+          <p className="h2-subtitle mb-5 text-sm font-semibold tracking-[0.3em] uppercase h2-subtitleIn [animation-delay:0.1s]">
             Engineering Excellence
           </p>
 
-          <h1 className="h2-heading mb-6 text-5xl font-bold leading-[1.08] md:text-6xl lg:text-[4.5rem]">
+          <h1 className="h2-heading mb-6 text-5xl font-bold leading-[1.08] md:text-6xl lg:text-[4.5rem] h2-clipReveal [animation-delay:0.2s]">
             We build<br />
             <span className="h2-shimmer">scalable</span>{" "}
             software.
           </h1>
 
-          <p className="h2-body mb-10 max-w-md text-base leading-relaxed md:text-lg">
+          <p className="h2-body mb-10 max-w-md text-base leading-relaxed md:text-lg h2-fadeUp [animation-delay:0.35s]">
             Custom web apps, mobile platforms, and cloud
             infrastructure — architected for performance
             and built to grow with your business.
           </p>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 h2-btnIn [animation-delay:0.45s]">
             <Link
               href="/contact"
               className="h2-cta-primary inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#50aaff] to-[#3b8de8] px-8 py-3.5 text-sm font-bold tracking-wide text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5"
@@ -100,7 +100,7 @@ export default function Hero2() {
           <div className="h2-showcase">
 
             {/* ── Browser window — Web App ── */}
-            <div className="h2-browser">
+            <div className="h2-browser h2-fadeUp [animation-delay:0.25s]">
               <div className="h2-browser-bar">
                 <div className="h2-browser-dots">
                   <span className="h2-bdot h2-bdot--r" />
@@ -174,7 +174,7 @@ export default function Hero2() {
             </div>
 
             {/* ── Mobile Phone ── */}
-            <div className="h2-phone">
+            <div className="h2-phone h2-fadeUp [animation-delay:0.35s]">
               <div className="h2-phone-notch" />
               <div className="h2-phone-screen">
                 <div className="h2-phone-status">
@@ -216,7 +216,7 @@ export default function Hero2() {
             </div>
 
             {/* ── Terminal ── */}
-            <div className="h2-terminal">
+            <div className="h2-terminal h2-fadeUp [animation-delay:0.45s]">
               <div className="h2-term-bar">
                 <span className="h2-term-dot" />
                 <span className="h2-term-title">Terminal</span>
@@ -245,7 +245,7 @@ export default function Hero2() {
             </div>
 
             {/* ── Tech badge ── */}
-            <div className="h2-tech-badge">
+            <div className="h2-tech-badge h2-fadeUp [animation-delay:0.55s]">
               <span className="h2-tech-dot" />
               <span className="h2-tech-text">Next.js &middot; React &middot; Node</span>
             </div>

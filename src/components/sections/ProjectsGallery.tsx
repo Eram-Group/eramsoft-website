@@ -11,7 +11,6 @@ const featuredProjects = projects;
 
 export default function ProjectsGallery() {
   const [active, setActive] = useState(0);
-  const [direction, setDirection] = useState<"next" | "prev">("next");
   const [paused, setPaused] = useState(false);
   const current = featuredProjects[active] ?? featuredProjects[0];
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -21,10 +20,9 @@ export default function ProjectsGallery() {
 
   const goTo = useCallback(
     (index: number) => {
-      setDirection(index > active ? "next" : "prev");
       setActive(index);
     },
-    [active],
+    [],
   );
 
   // Track section visibility
@@ -59,7 +57,6 @@ export default function ProjectsGallery() {
   useEffect(() => {
     if (paused || !isVisible) return;
     const timer = setInterval(() => {
-      setDirection("next");
       setActive((prev) => (prev + 1) % FEATURED_COUNT);
     }, 5000);
     return () => clearInterval(timer);

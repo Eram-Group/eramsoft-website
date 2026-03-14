@@ -1,12 +1,28 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import "./services-orbital.css";
 import { services } from "@/data/services";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AmbientEffects from "@/components/ui/AmbientEffects";
 
 const AUTOPLAY_INTERVAL = 3000;
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1 },
+};
+
+const fadeInNav = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function ServicesOrbital() {
   const [active, setActive] = useState(2);
@@ -57,16 +73,29 @@ export default function ServicesOrbital() {
       <AmbientEffects />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-        <SectionHeader
-          label="What We Do"
-          title="Our"
-          accentWord="Services"
-          subtitle="End-to-end digital solutions crafted with precision, from concept to deployment and beyond."
-        />
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <SectionHeader
+            label="What We Do"
+            title="Our"
+            accentWord="Services"
+            subtitle="End-to-end digital solutions crafted with precision, from concept to deployment and beyond."
+          />
+        </motion.div>
 
         {/* 3D Fan Stage */}
-        <div
+        <motion.div
           className="sf-stage"
+          variants={scaleIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -112,10 +141,17 @@ export default function ServicesOrbital() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
         {/* Navigation */}
-        <div className="sf-nav">
+        <motion.div
+          className="sf-nav"
+          variants={fadeInNav}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+        >
           <button className="sf-nav-btn" onClick={prev} aria-label="Previous service">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6" />
@@ -138,7 +174,7 @@ export default function ServicesOrbital() {
               <polyline points="9 18 15 12 9 6" />
             </svg>
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
