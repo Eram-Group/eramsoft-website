@@ -49,6 +49,7 @@
   height: 2px;
   border-radius: 50%;
   background: rgba(var(--neon-rgb), 0.25);
+  opacity: 0.4;
 }
 
 .t2-constellation span:nth-child(1) { top: 10%; left: 8%; }
@@ -158,6 +159,7 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
+
 }
 
 .t2-text-enter {

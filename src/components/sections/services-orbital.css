@@ -195,7 +195,7 @@
 }
 
 .sf-card--active .sf-scanline {
-  opacity: 1;
+  opacity: 0;
 }
 
 

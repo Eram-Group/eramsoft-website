@@ -118,6 +118,7 @@
   background: var(--neon);
   opacity: 0.7;
   box-shadow: 0 0 8px rgba(var(--neon-rgb), 0.5);
+
 }
 
 /* Bottom info */
@@ -190,6 +191,7 @@
   opacity: 0.85;
   transform: translateY(0);
 }
+
 
 /* ── Responsive ── */
 

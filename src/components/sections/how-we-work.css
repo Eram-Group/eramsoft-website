@@ -46,6 +46,7 @@
 }
 
 
+
 /* ── Individual step ── */
 
 .hw-step {
@@ -174,6 +175,15 @@
   font-size: 0.78rem;
   line-height: 1.7;
   color: rgba(122, 141, 164, 0.7);
+  opacity: 0.6;
+  transform: translateY(4px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hw-step:hover .hw-step-desc,
+.hw-step--active .hw-step-desc {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 

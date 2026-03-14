@@ -47,12 +47,14 @@ export default function Offices() {
       <AmbientEffects />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-        <SectionHeader
-          label="Our Offices"
-          title="Find Us"
-          accentWord="Worldwide"
-          subtitle="With offices across the Middle East and North Africa, we're always close to where you need us."
-        />
+        <div>
+          <SectionHeader
+            label="Our Offices"
+            title="Find Us"
+            accentWord="Worldwide"
+            subtitle="With offices across the Middle East and North Africa, we're always close to where you need us."
+          />
+        </div>
 
         <div className="of-grid">
           {branches.map((b) => (

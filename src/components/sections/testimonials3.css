@@ -234,6 +234,7 @@
     0 0 50px rgba(var(--neon-rgb), 0.06);
 }
 
+
 /* Top shine */
 .t3-card::before {
   content: '';
@@ -367,4 +368,3 @@
   color: rgba(230, 238, 255, 0.9);
 }
 
-/* ── Stagger entrance (animations removed) ── */

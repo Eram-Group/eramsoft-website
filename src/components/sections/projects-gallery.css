@@ -157,11 +157,12 @@
 }
 
 
-/* ── Staggered slide-up (animations removed) ── */
+/* ── Staggered slide-up ── */
 
 .pg-anim-slideUp {
   opacity: 1;
 }
+
 
 
 /* ── Progress bar with auto-fill animation ── */
@@ -199,8 +200,8 @@
   transform: translateY(-50%);
   z-index: 5;
   display: flex;
-  justify-content: space-between;
-  padding: 0 16px;
+  justify-content: flex-end;
+  padding: 0 20px;
   pointer-events: none;
 }
 

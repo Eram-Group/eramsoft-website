@@ -1,0 +1,322 @@
+/* ══════════════════════════════════════════════════
+   Floating Contact Button (FAB) — Premium
+   ══════════════════════════════════════════════════ */
+
+.fc-container {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+/* ── Trigger Button ── */
+
+.fc-trigger {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--neon-rgb), 0.25);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--neon-rgb), 0.18) 0%,
+    rgba(var(--neon-rgb), 0.08) 100%
+  );
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  color: var(--neon-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.25),
+    0 8px 40px rgba(var(--neon-rgb), 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  outline: none;
+}
+
+/* Outer pulse ring */
+.fc-trigger::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(var(--neon-rgb), 0.2);
+  animation: fc-pulse 3s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  pointer-events: none;
+}
+
+/* Inner shimmer highlight */
+.fc-trigger::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 8px;
+  width: 20px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.fc-trigger:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--neon-rgb), 0.28) 0%,
+    rgba(var(--neon-rgb), 0.14) 100%
+  );
+  border-color: rgba(var(--neon-rgb), 0.4);
+  box-shadow:
+    0 6px 24px rgba(0, 0, 0, 0.3),
+    0 12px 56px rgba(var(--neon-rgb), 0.2),
+    0 0 60px rgba(var(--neon-rgb), 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  transform: scale(1.08);
+}
+
+.fc-trigger:hover::before {
+  animation: none;
+  opacity: 0;
+}
+
+.fc-trigger:active {
+  transform: scale(0.96);
+  transition-duration: 0.1s;
+}
+
+.fc-trigger:focus-visible {
+  outline: 2px solid var(--neon);
+  outline-offset: 4px;
+}
+
+/* Hide pulse when menu is open */
+.fc-trigger--open::before {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes fc-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+
+/* ── Menu Panel ── */
+
+.fc-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px;
+  border-radius: 18px;
+  background: linear-gradient(
+    160deg,
+    rgba(20, 28, 42, 0.95) 0%,
+    rgba(14, 21, 32, 0.97) 100%
+  );
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.5),
+    0 16px 40px rgba(0, 0, 0, 0.25),
+    0 0 80px rgba(var(--neon-rgb), 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  min-width: 210px;
+  overflow: hidden;
+}
+
+/* Subtle top-edge highlight on menu */
+.fc-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--neon-rgb), 0.2) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Menu Options ── */
+
+.fc-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  position: relative;
+}
+
+.fc-option:hover {
+  background: rgba(var(--neon-rgb), 0.06);
+  color: #fff;
+}
+
+.fc-option-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--neon-rgb), 0.08) 0%,
+    rgba(var(--neon-rgb), 0.03) 100%
+  );
+  border: 1px solid rgba(var(--neon-rgb), 0.1);
+  color: rgba(var(--neon-rgb), 0.65);
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fc-option:hover .fc-option-icon {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--neon-rgb), 0.16) 0%,
+    rgba(var(--neon-rgb), 0.08) 100%
+  );
+  border-color: rgba(var(--neon-rgb), 0.3);
+  color: var(--neon-light);
+  box-shadow: 0 0 20px rgba(var(--neon-rgb), 0.1);
+}
+
+.fc-option-label {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.fc-option-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: inherit;
+}
+
+.fc-option-subtitle {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  transition: color 0.3s ease;
+}
+
+.fc-option:hover .fc-option-subtitle {
+  color: var(--text-muted);
+}
+
+/* ── Divider ── */
+
+.fc-divider {
+  height: 1px;
+  margin: 2px 12px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+}
+
+/* ── WhatsApp Green Accent ── */
+
+.fc-option--whatsapp:hover {
+  background: rgba(37, 211, 102, 0.06);
+  color: #fff;
+}
+
+.fc-option--whatsapp:hover .fc-option-icon {
+  background: linear-gradient(
+    135deg,
+    rgba(37, 211, 102, 0.16) 0%,
+    rgba(37, 211, 102, 0.06) 100%
+  );
+  border-color: rgba(37, 211, 102, 0.3);
+  color: #25d366;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.1);
+}
+
+/* ── Email Accent ── */
+
+.fc-option--email:hover .fc-option-icon {
+  color: var(--neon-light);
+  box-shadow: 0 0 20px rgba(var(--neon-rgb), 0.1);
+}
+
+/* ── Contact Accent ── */
+
+.fc-option--contact:hover .fc-option-icon {
+  color: var(--neon-light);
+  box-shadow: 0 0 20px rgba(var(--neon-rgb), 0.1);
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 640px) {
+  .fc-container {
+    bottom: 18px;
+    right: 18px;
+  }
+
+  .fc-trigger {
+    width: 54px;
+    height: 54px;
+  }
+
+  .fc-menu {
+    min-width: 190px;
+  }
+
+  .fc-option {
+    padding: 10px 14px;
+  }
+
+  .fc-option-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .fc-option-title {
+    font-size: 0.8rem;
+  }
+
+  .fc-option-subtitle {
+    font-size: 0.65rem;
+  }
+}

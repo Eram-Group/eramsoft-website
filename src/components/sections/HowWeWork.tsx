@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AmbientEffects from "@/components/ui/AmbientEffects";
 import "./how-we-work.css";
@@ -76,28 +75,6 @@ const steps = [
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const staggerTimeline = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-  },
-};
-
-const stepVariant = {
-  hidden: { opacity: 0, x: -20, y: 10 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
 export default function HowWeWork() {
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
@@ -106,39 +83,26 @@ export default function HowWeWork() {
       <AmbientEffects />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div>
           <SectionHeader
             label="Our Process"
             title="How We"
             accentWord="Work"
             subtitle="A proven process that turns ideas into exceptional digital products, every single time."
           />
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="hw-timeline"
-          variants={staggerTimeline}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-        >
+        <div className="hw-timeline">
           <div className="hw-timeline-line" aria-hidden="true" />
 
           {steps.map((step, i) => (
-            <motion.div
+            <div
               key={step.number}
               className={`hw-step ${
                 activeStep === i ? "hw-step--active" : ""
               } ${
                 activeStep !== null && activeStep !== i ? "hw-step--dim" : ""
               }`}
-              variants={stepVariant}
               onMouseEnter={() => setActiveStep(i)}
               onMouseLeave={() => setActiveStep(null)}
             >
@@ -152,9 +116,9 @@ export default function HowWeWork() {
                 <h3 className="hw-step-title">{step.title}</h3>
                 <p className="hw-step-desc">{step.description}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

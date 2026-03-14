@@ -1,38 +1,10 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AmbientEffects from "@/components/ui/AmbientEffects";
 import { testimonials } from "@/data/testimonials";
 import "./testimonials2.css";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.96 },
-  visible: { opacity: 1, scale: 1 },
-};
-
-const staggerAvatars = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.06, delayChildren: 0.15 },
-  },
-};
-
-const avatarItem = {
-  hidden: { opacity: 0, y: 12, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
 
 function MiniStars({ rating }: { rating: number }) {
   return (
@@ -87,27 +59,15 @@ export default function Testimonials2() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-        <motion.div
-          className="t2-header"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div className="t2-header">
           <SectionHeader
             label="Testimonials"
             title="What Our"
             accentWord="Clients Say"
           />
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={scaleIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+        <div
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
@@ -141,21 +101,14 @@ export default function Testimonials2() {
           </div>
 
           {/* ── Avatar row ── */}
-          <motion.div
-            className="t2-avatars-wrap"
-            variants={staggerAvatars}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-40px" }}
-          >
+          <div className="t2-avatars-wrap">
             <div className="t2-avatars">
               {testimonials.map((t, i) => (
-                <motion.button
+                <button
                   key={t.name}
                   className={`t2-person ${i === active ? "t2-person--active" : ""}`}
                   onClick={() => goTo(i)}
                   aria-label={`View testimonial from ${t.name}`}
-                  variants={avatarItem}
                 >
                   <div className="t2-avatar-outer">
                     <div className="t2-avatar-glow" />
@@ -166,11 +119,11 @@ export default function Testimonials2() {
                   </div>
                   <div className="t2-person-name">{t.name}</div>
                   <div className="t2-person-role">{t.role}</div>
-                </motion.button>
+                </button>
               ))}
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

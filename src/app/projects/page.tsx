@@ -46,15 +46,6 @@ export default function ProjectsPage() {
       <div className="p5-orb p5-orb--2" aria-hidden="true" />
       <div className="p5-orb p5-orb--3" aria-hidden="true" />
 
-      {/* Floating contact */}
-      <Link href="/contact" className="p5-fab">
-        <span className="p5-fab-glow" aria-hidden="true" />
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M16 12.5c0 .5-.2 1-.6 1.4-.4.4-.9.6-1.4.6H5l-3 3V4c0-.5.2-1 .6-1.4C3 2.2 3.5 2 4 2h10c.5 0 1 .2 1.4.6.4.4.6.9.6 1.4v8.5z" />
-        </svg>
-        <span className="p5-fab-label">Let&apos;s Talk</span>
-      </Link>
-
       <div className="p5-container">
         {/* ── Hero Header ── */}
         <section className="ph-hero p5-reveal">
