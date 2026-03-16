@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   title: "EramSoft",
   description: "Hardware, software, technical expertise and engineering support",
   icons: {
-    icon: "/logo.svg",
-    shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
 };
 
