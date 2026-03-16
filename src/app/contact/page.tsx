@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { OfficesGrid } from "@/components/sections/Offices";
+import { useReveal } from "@/hooks/useReveal";
+import FaqAccordion from "@/components/ui/FaqAccordion";
 import "./contact.css";
 
 /* ══════════════════════════════════════════════
@@ -49,35 +51,7 @@ const faqs = [
    ══════════════════════════════════════════════ */
 
 export default function ContactPage() {
-  const pageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = pageRef.current;
-    if (!el) return;
-
-    const targets = el.querySelectorAll<HTMLElement>("[data-reveal]");
-    if (!targets.length) return;
-
-    const obs = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            obs.unobserve(entry.target);
-          }
-        }
-      },
-      { threshold: 0.15 }
-    );
-
-    // Wait one frame so the browser paints opacity:0 first,
-    // otherwise above-the-fold elements skip the transition.
-    requestAnimationFrame(() => {
-      targets.forEach((t) => obs.observe(t));
-    });
-
-    return () => obs.disconnect();
-  }, []);
+  const pageRef = useReveal();
 
   const [form, setForm] = useState({
     name: "",
@@ -87,7 +61,6 @@ export default function ContactPage() {
     message: "",
   });
   const [focused, setFocused] = useState<string | null>(null);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
 
   const handleChange = (
@@ -375,30 +348,7 @@ export default function ContactPage() {
             </h2>
           </div>
 
-          <div className="ct-faq-list">
-            {faqs.map((f, i) => {
-              const isOpen = openFaq === i;
-              return (
-                <div key={i} className={`ct-faq-item ${isOpen ? "ct-faq-item--open" : ""}`}>
-                  <button
-                    className="ct-faq-trigger"
-                    onClick={() => setOpenFaq(isOpen ? null : i)}
-                    aria-expanded={isOpen}
-                  >
-                    <span className="ct-faq-q">{f.q}</span>
-                    <span className="ct-faq-icon">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
-                    </span>
-                  </button>
-                  <div className="ct-faq-body">
-                    <p className="ct-faq-a">{f.a}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <FaqAccordion items={faqs} classPrefix="ct-faq" />
         </section>
 
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AmbientEffects from "@/components/ui/AmbientEffects";
+import FaqAccordion from "@/components/ui/FaqAccordion";
 import "./faqs.css";
 
 const faqs = [
@@ -33,8 +33,6 @@ const faqs = [
 ];
 
 export default function Faqs() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
   return (
     <section className="faq-section dark-section section-top-glow relative py-20 md:py-28">
       <AmbientEffects />
@@ -47,42 +45,7 @@ export default function Faqs() {
           subtitle="Everything you need to know about working with us."
         />
 
-        <div className="faq-list">
-          {faqs.map((f, i) => {
-            const isOpen = openFaq === i;
-            return (
-              <div
-                key={i}
-                className={`faq-item ${isOpen ? "faq-item--open" : ""}`}
-              >
-                <button
-                  className="faq-trigger"
-                  onClick={() => setOpenFaq(isOpen ? null : i)}
-                  aria-expanded={isOpen}
-                >
-                  <span className="faq-q">{f.q}</span>
-                  <span className="faq-icon">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </span>
-                </button>
-                <div className="faq-body">
-                  <p className="faq-a">{f.a}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <FaqAccordion items={faqs} classPrefix="faq" />
       </div>
     </section>
   );

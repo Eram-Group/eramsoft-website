@@ -3,25 +3,9 @@
 import { useState, useEffect, useCallback } from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AmbientEffects from "@/components/ui/AmbientEffects";
+import StarRating from "@/components/ui/StarRating";
 import { testimonials } from "@/data/testimonials";
 import "./testimonials2.css";
-
-function MiniStars({ rating }: { rating: number }) {
-  return (
-    <div className="t2-person-stars">
-      {[1, 2, 3, 4, 5].map((s) => (
-        <svg
-          key={s}
-          className={`t2-person-star ${s > rating ? "t2-person-star--empty" : ""}`}
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
 
 export default function Testimonials2() {
   const [active, setActive] = useState(0);
@@ -89,7 +73,7 @@ export default function Testimonials2() {
               </p>
 
               <div className="t2-card-stars" key={`stars-${active}`}>
-                <MiniStars rating={current.rating} />
+                <StarRating rating={current.rating} className="t2-person-stars" starClassName="t2-person-star" emptyClassName="t2-person-star--empty" />
               </div>
             </div>
 

@@ -15,7 +15,6 @@ function LogoCard({
 }: {
   name: string;
   type: string;
-  icon: string;
   color: string;
 }) {
   return (
