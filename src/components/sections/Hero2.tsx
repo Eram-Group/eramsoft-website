@@ -1,9 +1,26 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import "./hero2.css";
 import Link from "next/link";
 
+const words = ["scalable", "reliable", "innovative", "powerful", "modern"];
+
 export default function Hero2() {
+  const [index, setIndex] = useState(0);
+  const [fade, setFade] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(true);
+      setTimeout(() => {
+        setIndex((i) => (i + 1) % words.length);
+        setFade(false);
+      }, 500);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="h2-surface relative flex min-h-screen flex-col overflow-hidden">
       {/* ── Grain texture ── */}
@@ -64,7 +81,9 @@ export default function Hero2() {
 
           <h1 className="h2-heading mb-6 text-5xl font-bold leading-[1.08] md:text-6xl lg:text-[4.5rem] h2-clipReveal [animation-delay:0.2s]">
             We build<br />
-            <span className="h2-shimmer">scalable</span>{" "}
+            <span className={`h2-shimmer h2-word ${fade ? "h2-word--out" : ""}`}>
+              {words[index]}
+            </span>{" "}
             software.
           </h1>
 

@@ -710,6 +710,21 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: h2-shimmerMove 6s linear infinite;
+  display: inline-block;
+}
+
+/* ── Word rotation ── */
+
+.h2-word {
+  display: inline-block;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.h2-word--out {
+  opacity: 0;
+  transform: translateY(12px);
 }
 
 @keyframes h2-btnIn {
