@@ -705,162 +705,248 @@
 
 
 /* ══════════════════════════════════════════════════
-   Key Capabilities — Signal Strips
+   Key Capabilities — Bento Card Grid
    ══════════════════════════════════════════════════ */
 
-
-/* ══════════════════════════════════════════════════
-   Key Capabilities
-   ══════════════════════════════════════════════════ */
-
-.pd-kc-stack {
+.pd-kc-grid {
   margin-top: 48px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 
-/* ── Each item ── */
+/* ── Card ── */
 
-.pd-kc-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 28px 24px;
-  border-left: 2px solid rgba(var(--neon-rgb), 0.06);
+.pd-kc-card {
   position: relative;
-  transition: border-color 0.4s ease, background 0.4s ease;
+  border-radius: 14px;
+  background:
+    linear-gradient(
+      168deg,
+      rgba(var(--neon-rgb), 0.03) 0%,
+      rgba(255, 255, 255, 0.01) 50%,
+      rgba(var(--neon-rgb), 0.015) 100%
+    );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  padding: 22px 20px 20px;
+  transition:
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: default;
 }
 
-.pd-kc-item:hover {
-  border-color: var(--neon);
-  background: linear-gradient(90deg, rgba(var(--neon-rgb), 0.02) 0%, transparent 60%);
-}
-
-
-/* ── Number ── */
-
-.pd-kc-no {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 1;
-  color: rgba(var(--neon-rgb), 0.06);
-  min-width: 44px;
-  flex-shrink: 0;
-  padding-top: 2px;
-  transition: color 0.4s ease;
-  user-select: none;
-}
-
-.pd-kc-item:hover .pd-kc-no {
-  color: rgba(var(--neon-rgb), 0.18);
+.pd-kc-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 24px 60px -12px rgba(0, 0, 0, 0.35),
+    0 0 40px -8px rgba(var(--neon-rgb), 0.08);
 }
 
 
-/* ── Main content ── */
+/* ── Card ambient glow (behind content) ── */
 
-.pd-kc-main {
-  flex: 1;
-  min-width: 0;
+.pd-kc-card-glow {
+  position: absolute;
+  top: -40%;
+  left: -20%;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--neon-rgb), 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.pd-kc-card:hover .pd-kc-card-glow {
+  opacity: 1;
 }
 
 
-/* ── Headline row: icon + title ── */
+/* ── Animated border (pseudo gradient border) ── */
 
-.pd-kc-headline {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 8px;
+.pd-kc-card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    160deg,
+    rgba(var(--neon-rgb), 0.12) 0%,
+    rgba(var(--neon-rgb), 0.03) 40%,
+    rgba(255, 255, 255, 0.03) 60%,
+    rgba(var(--neon-rgb), 0.08) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: background 0.5s ease;
 }
 
-.pd-kc-ic {
-  width: 36px;
-  height: 36px;
+.pd-kc-card:hover .pd-kc-card-border {
+  background: linear-gradient(
+    160deg,
+    rgba(var(--neon-rgb), 0.45) 0%,
+    rgba(var(--neon-rgb), 0.08) 40%,
+    rgba(255, 255, 255, 0.06) 60%,
+    rgba(var(--neon-rgb), 0.3) 100%
+  );
+}
+
+
+/* ── Inner content wrapper ── */
+
+.pd-kc-card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ── Icon ── */
+
+.pd-kc-icon-wrap {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 14px;
+}
+
+.pd-kc-icon-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 16px;
+  border: 1.5px solid rgba(var(--neon-rgb), 0.08);
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pd-kc-card:hover .pd-kc-icon-ring {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(var(--neon-rgb), 0.2);
+}
+
+.pd-kc-icon-box {
+  width: 38px;
+  height: 38px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(var(--neon-rgb), 0.04);
-  border: 1px solid rgba(var(--neon-rgb), 0.06);
-  color: rgba(var(--neon-rgb), 0.35);
-  flex-shrink: 0;
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  background: rgba(var(--neon-rgb), 0.05);
+  border: 1px solid rgba(var(--neon-rgb), 0.08);
+  color: rgba(var(--neon-rgb), 0.45);
+  transition:
+    color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.pd-kc-item:hover .pd-kc-ic {
+.pd-kc-card:hover .pd-kc-icon-box {
   color: var(--neon);
-  background: rgba(var(--neon-rgb), 0.07);
-  border-color: rgba(var(--neon-rgb), 0.16);
-  box-shadow: 0 0 16px rgba(var(--neon-rgb), 0.06);
+  background: rgba(var(--neon-rgb), 0.1);
+  border-color: rgba(var(--neon-rgb), 0.25);
+  box-shadow: 0 0 24px rgba(var(--neon-rgb), 0.12);
 }
 
-.pd-kc-name {
-  font-size: 1.05rem;
+
+/* ── Title ── */
+
+.pd-kc-title {
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-heading);
-  letter-spacing: -0.015em;
-  transition: color 0.3s ease;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  transition: color 0.35s ease;
 }
 
-.pd-kc-item:hover .pd-kc-name {
+.pd-kc-card:hover .pd-kc-title {
   color: var(--text-bright);
 }
 
 
 /* ── Description ── */
 
-.pd-kc-text {
-  font-size: 0.83rem;
-  line-height: 1.75;
-  color: rgba(122, 141, 164, 0.38);
-  max-width: 560px;
-  padding-left: 50px;
+.pd-kc-desc {
+  font-size: 0.76rem;
+  line-height: 1.6;
+  color: rgba(122, 141, 164, 0.42);
+  max-width: 380px;
   transition: color 0.4s ease;
 }
 
-.pd-kc-item:hover .pd-kc-text {
+.pd-kc-card:hover .pd-kc-desc {
   color: var(--text-muted);
 }
 
 
-/* ── Responsive: Mobile ── */
+/* ── Responsive: Tablet (2 cols) ── */
+
+@media (min-width: 640px) {
+  .pd-kc-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+
+/* ── Responsive: Mobile tweaks ── */
 
 @media (max-width: 639px) {
-  .pd-kc-stack {
-    margin-top: 32px;
+  .pd-kc-grid {
+    margin-top: 28px;
+    gap: 10px;
   }
 
-  .pd-kc-item {
-    gap: 14px;
-    padding: 22px 16px;
+  .pd-kc-card {
+    padding: 18px 16px 16px;
+    border-radius: 12px;
   }
 
-  .pd-kc-no {
-    font-size: 1.5rem;
-    min-width: 32px;
+  .pd-kc-card-border {
+    border-radius: 12px;
   }
 
-  .pd-kc-ic {
+  .pd-kc-icon-wrap {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+  }
+
+  .pd-kc-icon-box {
     width: 32px;
     height: 32px;
     border-radius: 8px;
   }
 
-  .pd-kc-headline {
-    gap: 10px;
+  .pd-kc-icon-ring {
+    border-radius: 10px;
   }
 
-  .pd-kc-name {
-    font-size: 0.95rem;
+  .pd-kc-title {
+    font-size: 0.85rem;
   }
 
-  .pd-kc-text {
-    font-size: 0.78rem;
-    padding-left: 42px;
+  .pd-kc-desc {
+    font-size: 0.72rem;
   }
 }
 
@@ -868,33 +954,44 @@
 /* ── Responsive: Desktop ── */
 
 @media (min-width: 1024px) {
-  .pd-kc-item {
-    gap: 28px;
-    padding: 34px 32px;
-  }
-
-  .pd-kc-no {
-    font-size: 2.4rem;
-    min-width: 52px;
-  }
-
-  .pd-kc-ic {
-    width: 40px;
-    height: 40px;
-  }
-
-  .pd-kc-headline {
+  .pd-kc-grid {
     gap: 16px;
-    margin-bottom: 10px;
+    margin-top: 40px;
   }
 
-  .pd-kc-name {
-    font-size: 1.15rem;
+  .pd-kc-card {
+    padding: 26px 24px 24px;
+    border-radius: 16px;
   }
 
-  .pd-kc-text {
-    padding-left: 56px;
-    max-width: 620px;
+  .pd-kc-card-border {
+    border-radius: 16px;
+  }
+
+  .pd-kc-icon-wrap {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 16px;
+  }
+
+  .pd-kc-icon-box {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .pd-kc-icon-ring {
+    border-radius: 14px;
+  }
+
+  .pd-kc-title {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .pd-kc-desc {
+    font-size: 0.8rem;
+    max-width: 420px;
   }
 }
 
@@ -967,7 +1064,7 @@
 
 @media (min-width: 1024px) {
   .pd-gallery-track {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1005,8 +1102,9 @@
 
 .pd-gallery-img {
   width: 100%;
-  aspect-ratio: 9 / 18;
+  aspect-ratio: 9 / 16;
   object-fit: cover;
+  object-position: top;
   border-radius: 8px;
   display: block;
 }

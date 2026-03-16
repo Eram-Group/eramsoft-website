@@ -463,19 +463,21 @@ export default function ProjectDetailPage() {
         </h2>
         <div className="pd-divider" />
 
-        <div className="pd-kc-stack">
+        <div className="pd-kc-grid">
           {project.features.map((feature, i) => (
-            <div key={feature.title} className="pd-kc-item">
-              <span className="pd-kc-no">{String(i + 1).padStart(2, "0")}</span>
-              <div className="pd-kc-main">
-                <div className="pd-kc-headline">
-                  <div className="pd-kc-ic">
+            <div key={feature.title} className="pd-kc-card">
+              <div className="pd-kc-card-glow" />
+              <div className="pd-kc-card-inner">
+                <div className="pd-kc-icon-wrap">
+                  <div className="pd-kc-icon-ring" />
+                  <div className="pd-kc-icon-box">
                     <FeatureIcon name={feature.icon} />
                   </div>
-                  <h3 className="pd-kc-name">{feature.title}</h3>
                 </div>
-                <p className="pd-kc-text">{feature.description}</p>
+                <h3 className="pd-kc-title">{feature.title}</h3>
+                <p className="pd-kc-desc">{feature.description}</p>
               </div>
+              <div className="pd-kc-card-border" />
             </div>
           ))}
         </div>
@@ -493,7 +495,7 @@ export default function ProjectDetailPage() {
 
         <div className="pd-gallery-wrap">
           <div className="pd-gallery-track">
-            {project.gallery.map((img, i) => (
+            {project.gallery.slice(0, 3).map((img, i) => (
               <div
                 key={i}
                 className="pd-gallery-item"
@@ -579,7 +581,7 @@ export default function ProjectDetailPage() {
           </p>
 
           <div className="pd-aur-actions">
-            <Link href="/#contact" className="pd-aur-btn pd-aur-btn--primary">
+            <Link href="/contact" className="pd-aur-btn pd-aur-btn--primary">
               <span className="pd-aur-btn-shimmer" aria-hidden="true" />
               <span className="pd-aur-btn-text">
                 Get a Free Consultation

@@ -35,8 +35,9 @@ export default function Navbar() {
       className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
         scrolled
           ? "bg-[#141c2a] shadow-lg shadow-black/20"
-          : "bg-transparent"
+          : "bg-gradient-to-b from-black/60 to-transparent"
       }`}
+      style={{ textShadow: scrolled ? 'none' : '0 1px 4px rgba(0,0,0,0.6)' }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
         {/* Logo */}
