@@ -9,6 +9,8 @@ import "./projects-hero.css";
 
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const PAGE_SIZE = 6;
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const categories = useMemo(() => {
     const cats = [...new Set(projects.map((p) => p.category))];
@@ -18,6 +20,13 @@ export default function ProjectsPage() {
   const filtered = useMemo(() => {
     if (activeFilter === "All") return projects;
     return projects.filter((p) => p.category === activeFilter);
+  }, [activeFilter]);
+
+  const visible = filtered.slice(0, visibleCount);
+  const hasMore = visibleCount < filtered.length;
+
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
   }, [activeFilter]);
 
   /* Scroll reveal */
@@ -67,6 +76,8 @@ export default function ProjectsPage() {
               </p>
             </div>
 
+
+
           </div>
 
           <div className="ph-rule" />
@@ -88,7 +99,7 @@ export default function ProjectsPage() {
 
         {/* ═══ PROJECT ROWS ═══ */}
         <div className="p5-rows">
-          {filtered.map((project, i) => (
+          {visible.map((project, i) => (
             <Link
               href={`/projects/${project.slug}`}
               key={project.slug}
@@ -163,6 +174,18 @@ export default function ProjectsPage() {
             </Link>
           ))}
         </div>
+
+        {hasMore && (
+          <button
+            className="p5-load-more"
+            onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+          >
+            Load More
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="4 7 9 12 14 7" />
+            </svg>
+          </button>
+        )}
 
         {/* ── Bottom CTA ── */}
         <div className="p5-bottom p5-reveal">

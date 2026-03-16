@@ -100,7 +100,7 @@
   z-index: 1;
   max-width: 1340px;
   margin: 0 auto;
-  padding: 100px 56px 140px;
+  padding: 64px 56px 140px;
 }
 
 .p5-reveal {
@@ -679,6 +679,89 @@
 
 .p5-row:hover .p5-row-cta svg {
   transform: translateX(4px);
+}
+
+
+/* ══════════════════════════════════════════════════
+   Load More Button
+   ══════════════════════════════════════════════════ */
+
+.p5-load-more {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 56px auto 0;
+  padding: 16px 48px;
+  border: 1px solid rgba(var(--neon-rgb), 0.25);
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(15, 22, 38, 0.7) 0%,
+    rgba(20, 30, 50, 0.8) 50%,
+    rgba(15, 22, 38, 0.7) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: var(--p5-bright);
+  font-family: var(--p5-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
+}
+
+.p5-load-more::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 15px;
+  pointer-events: none;
+  opacity: 0;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0%,
+    rgba(var(--neon-rgb), 0.25) 10%,
+    transparent 20%,
+    transparent 50%,
+    rgba(var(--neon-rgb), 0.15) 60%,
+    transparent 70%,
+    transparent 100%
+  );
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  padding: 1px;
+  transition: opacity 0.5s ease;
+}
+
+.p5-load-more:hover {
+  border-color: rgba(var(--neon-rgb), 0.35);
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(var(--neon-rgb), 0.08),
+    0 0 0 1px rgba(var(--neon-rgb), 0.06);
+}
+
+.p5-load-more:hover::before {
+  opacity: 1;
+}
+
+.p5-load-more svg {
+  stroke: var(--neon);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.p5-load-more:hover svg {
+  transform: translateY(3px);
 }
 
 

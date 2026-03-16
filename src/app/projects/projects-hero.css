@@ -5,8 +5,8 @@
 
 .ph-hero {
   position: relative;
-  margin-bottom: 56px;
-  padding: 0 0 0;
+  margin-bottom: 28px;
+  padding: 20px 0 0;
 }
 
 /* Subtle radial glow behind the hero */
@@ -61,7 +61,7 @@
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: rgba(var(--neon-rgb), 0.6);
-  margin-bottom: 20px;
+  margin-bottom: 2px;
 }
 
 .ph-label-line {
@@ -113,8 +113,9 @@
   font-size: 0.95rem;
   line-height: 1.7;
   color: #4a6080;
-  max-width: 480px;
+  max-width: none;
   margin: 0;
+  white-space: nowrap;
 }
 
 
@@ -163,7 +164,7 @@
   position: relative;
   z-index: 1;
   height: 1px;
-  margin: 32px 0 28px;
+  margin: 18px 0 14px;
   background: linear-gradient(
     90deg,
     rgba(var(--neon-rgb), 0.3) 0%,
