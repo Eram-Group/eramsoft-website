@@ -2284,23 +2284,329 @@
    sweeping beam, floating glass card
    ══════════════════════════════════════════════════ */
 
+/* ══════════════════════════════════════════════════
+   PORTFOLIO DOWNLOAD CARD
+   ══════════════════════════════════════════════════ */
+
+.ab-pf {
+  margin-top: 12px;
+}
+
+.ab-pf-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 48px;
+  padding: 56px 60px;
+  border-radius: 20px;
+  background: rgba(14, 20, 32, 0.6);
+  backdrop-filter: blur(32px) saturate(1.3);
+  -webkit-backdrop-filter: blur(32px) saturate(1.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 0 48px rgba(var(--neon-rgb), 0.03);
+  overflow: hidden;
+}
+
+/* ── Hero-style mesh gradient ── */
+.ab-pf-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(var(--neon-rgb), 0.09) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 75%, rgba(60, 140, 255, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(var(--neon-rgb), 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Grid pattern ── */
+.ab-pf-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--neon-rgb), 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--neon-rgb), 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at 60% 40%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 60% 40%, black 20%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Floating particles ── */
+.ab-pf-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ab-pf-particles span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(var(--neon-rgb), 0.35);
+  box-shadow: 0 0 8px rgba(var(--neon-rgb), 0.2);
+  opacity: 0.5;
+}
+
+/* ── Horizontal accent line ── */
+.ab-pf-accent-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(var(--neon-rgb), 0.08) 20%,
+    rgba(var(--neon-rgb), 0.15) 50%,
+    rgba(var(--neon-rgb), 0.08) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Text & Preview — above background ── */
+.ab-pf-text,
+.ab-pf-preview {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Tag ── */
+.ab-pf-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--neon);
+  margin-bottom: 16px;
+}
+
+/* ── Title ── */
+.ab-pf-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-heading);
+  margin-bottom: 18px;
+}
+
+.ab-pf-accent {
+  background: linear-gradient(
+    135deg,
+    var(--neon) 0%,
+    var(--neon-light) 50%,
+    var(--neon) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Description ── */
+.ab-pf-desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(160, 180, 200, 0.75);
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+
+/* ── Download button ── */
+.ab-pf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(var(--neon-rgb), 0.08);
+  border: 1px solid rgba(var(--neon-rgb), 0.3);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.ab-pf-btn:hover {
+  background: rgba(var(--neon-rgb), 0.16);
+  border-color: rgba(var(--neon-rgb), 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(var(--neon-rgb), 0.15);
+}
+
+/* ── Meta text ── */
+.ab-pf-meta {
+  margin-top: 14px;
+  font-size: 0.72rem;
+  color: rgba(140, 160, 180, 0.45);
+  letter-spacing: 0.02em;
+}
+
+/* ── PDF Preview Card ── */
+.ab-pf-preview {
+  flex-shrink: 0;
+}
+
+.ab-pf-pdf {
+  width: 200px;
+  padding: 32px 24px 28px;
+  border-radius: 16px;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+.ab-pf-pdf-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(var(--neon-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon);
+  margin-bottom: 8px;
+}
+
+.ab-pf-pdf-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.ab-pf-pdf-sub {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(160, 180, 200, 0.5);
+  margin-bottom: 12px;
+}
+
+.ab-pf-pdf-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ab-pf-pdf-lines span {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ab-pf-pdf-lines span:nth-child(1) { width: 85%; }
+.ab-pf-pdf-lines span:nth-child(2) { width: 100%; }
+.ab-pf-pdf-lines span:nth-child(3) { width: 70%; }
+.ab-pf-pdf-lines span:nth-child(4) { width: 90%; }
+.ab-pf-pdf-lines span:nth-child(5) { width: 60%; }
+
+/* ── Legal links inside card ── */
+.ab-pf-legal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.ab-pf-legal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: rgba(160, 180, 200, 0.5);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.ab-pf-legal-link:hover {
+  color: var(--neon-light);
+}
+
+.ab-pf-legal-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(160, 180, 200, 0.25);
+}
+
+/* ══════════════════════════════════════════════════ */
+
 .ab-aur {
   position: relative;
   padding: 0;
   margin-top: 12px;
   border-radius: 22px;
   overflow: hidden;
-  min-height: 280px;
+  min-height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    180deg,
-    #080c14 0%,
-    #0a1020 30%,
-    #0d1428 60%,
-    #0f1830 100%
-  );
+  background: #060a12;
+}
+
+/* ── Mockup background collage ── */
+
+.ab-aur-mockups {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ab-aur-mockup {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  opacity: 0.18;
+  filter: grayscale(0.3) brightness(0.7);
+  transition: opacity 0.6s ease;
+}
+
+.ab-aur:hover .ab-aur-mockup {
+  opacity: 0.25;
+}
+
+/* Dark overlay for readability */
+.ab-aur-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(
+      ellipse 70% 80% at 50% 50%,
+      rgba(6, 10, 18, 0.88) 0%,
+      rgba(6, 10, 18, 0.65) 50%,
+      rgba(6, 10, 18, 0.5) 100%
+    );
+  pointer-events: none;
 }
 
 /* ── Aurora sky bands ── */
@@ -2310,6 +2616,7 @@
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  z-index: 1;
 }
 
 .ab-aur-band {
@@ -4708,10 +5015,45 @@
   }
 
   /* ── Aurora CTA ── */
+  /* ── Portfolio Download Card ── */
+  .ab-pf-inner {
+    grid-template-columns: 1fr;
+    padding: 36px 24px;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .ab-pf-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ab-pf-btn {
+    justify-content: center;
+  }
+
+  .ab-pf-preview {
+    display: flex;
+    justify-content: center;
+  }
+
+  .ab-pf-pdf {
+    width: 170px;
+  }
+
   .ab-aur {
     min-height: 240px;
     border-radius: 16px;
     margin-top: 8px;
+  }
+
+  .ab-aur-mockups {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ab-aur-mockup--4,
+  .ab-aur-mockup--5 {
+    display: none;
   }
 
   .ab-aur-card {

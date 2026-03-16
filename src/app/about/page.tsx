@@ -424,117 +424,88 @@ export default function AboutPage() {
         <div className="ab-thread" aria-hidden="true" />
 
         {/* ═══════════════════════════════════════
-            AURORA — CTA + Portfolio Download
+            PORTFOLIO DOWNLOAD — Company Portfolio Card
             ═══════════════════════════════════════ */}
-        <section className="ab-aur">
-          {/* Aurora light bands */}
-          <div className="ab-aur-sky" aria-hidden="true">
-            <div className="ab-aur-band ab-aur-band--1" />
-            <div className="ab-aur-band ab-aur-band--2" />
-            <div className="ab-aur-band ab-aur-band--3" />
-          </div>
-
-          {/* Star field */}
-          <div className="ab-aur-stars" aria-hidden="true">
-            <span style={{ top: "12%", left: "8%" }} />
-            <span style={{ top: "20%", left: "85%" }} />
-            <span style={{ top: "35%", left: "22%" }} />
-            <span style={{ top: "18%", left: "55%" }} />
-            <span style={{ top: "45%", left: "72%" }} />
-            <span style={{ top: "8%", left: "40%" }} />
-            <span style={{ top: "55%", left: "12%" }} />
-            <span style={{ top: "30%", left: "92%" }} />
-            <span style={{ top: "50%", left: "48%" }} />
-            <span style={{ top: "15%", left: "68%" }} />
-          </div>
-
-          {/* Horizon glow */}
-          <div className="ab-aur-horizon" aria-hidden="true" />
-
-          {/* Sweeping light beam */}
-          <div className="ab-aur-beam" aria-hidden="true" />
-
-          {/* Content */}
-          <div className="ab-aur-body" data-reveal="scale">
-            <div className="ab-aur-badge">
-              <span className="ab-aur-badge-dot" />
-              Let&apos;s Talk
+        <section className="ab-pf" data-reveal="up">
+          <div className="ab-pf-inner">
+            {/* Hero-style background effects */}
+            <div className="ab-pf-mesh" aria-hidden="true" />
+            <div className="ab-pf-grid" aria-hidden="true" />
+            <div className="ab-pf-particles" aria-hidden="true">
+              <span style={{ top: "20%", left: "8%" }} />
+              <span style={{ top: "70%", left: "85%" }} />
+              <span style={{ top: "35%", left: "60%" }} />
+              <span style={{ top: "80%", left: "15%" }} />
+              <span style={{ top: "15%", left: "45%" }} />
             </div>
+            <div className="ab-pf-accent-line" aria-hidden="true" />
 
-            <h2 className="ab-aur-title">
-              Let&apos;s Turn Your Vision
-              <br />
-              Into <span className="ab-aur-title-accent">Reality</span>
-            </h2>
+            {/* Left — Text content */}
+            <div className="ab-pf-text">
+              <p className="ab-pf-tag">Company Portfolio</p>
 
-            <p className="ab-aur-desc">
-              Get in touch to start your next project, or download
-              our portfolio to see what we&apos;ve built.
-            </p>
+              <h2 className="ab-pf-title">
+                Explore Our <span className="ab-pf-accent">Work &amp; Expertise</span>
+              </h2>
 
-            <div className="ab-aur-actions">
-              <Link href="/contact" className="ab-aur-btn ab-aur-btn--primary">
-                <span className="ab-aur-btn-shimmer" aria-hidden="true" />
-                <span className="ab-aur-btn-text">
-                  Start Your Project
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </span>
-              </Link>
-              <a href="/Eram-Soft-Portfolio.pdf" download className="ab-aur-btn ab-aur-btn--download">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <p className="ab-pf-desc">
+                Download our company portfolio to discover our projects,
+                capabilities, technology stack, and the impact we&apos;ve
+                delivered for clients across industries.
+              </p>
+
+              <a href="/Eram-Soft-Portfolio.pdf" download className="ab-pf-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" y1="15" x2="12" y2="3" />
                 </svg>
-                Download Portfolio
+                <span>Download Portfolio</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
               </a>
+
+              {/* Legal links */}
+              <div className="ab-pf-legal">
+                <Link href="/terms" className="ab-pf-legal-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                  </svg>
+                  Terms &amp; Conditions
+                </Link>
+                <span className="ab-pf-legal-dot" aria-hidden="true" />
+                <Link href="/privacy" className="ab-pf-legal-link">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  Privacy Policy
+                </Link>
+              </div>
+            </div>
+
+            {/* Right — PDF preview card */}
+            <div className="ab-pf-preview">
+              <div className="ab-pf-pdf">
+                <div className="ab-pf-pdf-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                  </svg>
+                </div>
+                <span className="ab-pf-pdf-name">Eram Soft</span>
+                <span className="ab-pf-pdf-sub">COMPANY PORTFOLIO</span>
+                <div className="ab-pf-pdf-lines" aria-hidden="true">
+                  <span /><span /><span /><span /><span />
+                </div>
+              </div>
             </div>
           </div>
         </section>
-
-        {/* ═══════════════════════════════════════
-            LEGAL — Terms & Privacy
-            ═══════════════════════════════════════ */}
-        <div className="ab-legal" data-reveal="up">
-          <Link href="/terms" className="ab-legal-card">
-            <div className="ab-legal-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-                <polyline points="10 9 9 9 8 9" />
-              </svg>
-            </div>
-            <div className="ab-legal-text">
-              <span className="ab-legal-title">Terms &amp; Conditions</span>
-              <span className="ab-legal-sub">Read our terms of service</span>
-            </div>
-            <svg className="ab-legal-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
-
-          <Link href="/privacy" className="ab-legal-card">
-            <div className="ab-legal-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-            </div>
-            <div className="ab-legal-text">
-              <span className="ab-legal-title">Privacy Policy</span>
-              <span className="ab-legal-sub">How we handle your data</span>
-            </div>
-            <svg className="ab-legal-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
-        </div>
       </div>
     </div>
   );
