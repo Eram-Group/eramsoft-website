@@ -90,7 +90,10 @@ function useReveal() {
       { threshold: 0.15 }
     );
 
-    targets.forEach((t) => obs.observe(t));
+    requestAnimationFrame(() => {
+      targets.forEach((t) => obs.observe(t));
+    });
+
     return () => obs.disconnect();
   }, []);
 

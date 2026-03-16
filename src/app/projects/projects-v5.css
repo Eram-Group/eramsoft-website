@@ -637,31 +637,48 @@
 }
 
 
-/* ── CTA link ── */
+/* ── CTA button ── */
 .p5-row-cta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--p5-accent);
+  color: var(--dark-bg-deep);
   white-space: nowrap;
-  margin-top: 4px;
-  transition: gap 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 100px;
+  background: linear-gradient(135deg, var(--neon) 0%, var(--neon-light) 100%);
+  box-shadow:
+    0 4px 20px rgba(var(--neon-rgb), 0.25),
+    0 0 0 1px rgba(var(--neon-rgb), 0.1);
+  transition:
+    gap 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
 }
 
 .p5-row:hover .p5-row-cta {
-  gap: 16px;
+  gap: 14px;
+  box-shadow:
+    0 8px 36px rgba(var(--neon-rgb), 0.35),
+    0 0 60px rgba(var(--neon-rgb), 0.12),
+    0 0 0 1px rgba(var(--neon-rgb), 0.15);
+  transform: translateY(-1px);
 }
 
 .p5-row-cta svg {
+  stroke: var(--dark-bg-deep);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .p5-row:hover .p5-row-cta svg {
-  transform: translateX(6px);
+  transform: translateX(4px);
 }
 
 
@@ -1069,6 +1086,8 @@
   .p5-row-meta { flex-wrap: wrap; }
   .p5-row-meta-item { padding: 0 12px; }
   .p5-row-meta-divider { height: 20px; }
+
+  .p5-row-cta { padding: 10px 22px; font-size: 10px; }
 
   .p5-orb { display: none; }
 

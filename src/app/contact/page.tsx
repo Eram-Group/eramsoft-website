@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import "./contact.css";
 
@@ -79,6 +79,36 @@ const faqs = [
    ══════════════════════════════════════════════ */
 
 export default function ContactPage() {
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = pageRef.current;
+    if (!el) return;
+
+    const targets = el.querySelectorAll<HTMLElement>("[data-reveal]");
+    if (!targets.length) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    // Wait one frame so the browser paints opacity:0 first,
+    // otherwise above-the-fold elements skip the transition.
+    requestAnimationFrame(() => {
+      targets.forEach((t) => obs.observe(t));
+    });
+
+    return () => obs.disconnect();
+  }, []);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -103,7 +133,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="ct-page">
+    <div ref={pageRef} className="ct-page">
       {/* ── Ambient layers ── */}
       <div className="ct-glow ct-glow--a" aria-hidden="true" />
       <div className="ct-glow ct-glow--b" aria-hidden="true" />
@@ -127,7 +157,7 @@ export default function ContactPage() {
 
         <div className="ct-hero-row">
           {/* ── Left — Hero Text ── */}
-          <div className="ct-hero-left">
+          <div className="ct-hero-left" data-reveal="up">
             <p className="ct-tag">
               Contact Us
             </p>
@@ -159,7 +189,7 @@ export default function ContactPage() {
           </div>
 
           {/* ── Right — Contact Form ── */}
-          <div className="ct-hero-right">
+          <div className="ct-hero-right" data-reveal="up">
             <form className="ct-form" onSubmit={handleSubmit} noValidate>
               <div className="ct-form-glow" aria-hidden="true" />
 
