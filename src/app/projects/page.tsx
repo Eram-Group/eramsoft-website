@@ -189,7 +189,50 @@ export default function ProjectsPage() {
 
         {/* ── Bottom CTA ── */}
         <div className="p5-bottom p5-reveal">
-          <span className="p5-bottom-glow" aria-hidden="true" />
+          {/* Project images mosaic background */}
+          <div className="p5-bottom-mosaic" aria-hidden="true">
+            <div className="p5-bottom-mosaic-track">
+              {[...projects, ...projects].map((p, i) => (
+                <div key={`${p.slug}-${i}`} className="p5-bottom-mosaic-item">
+                  <Image
+                    src={p.image}
+                    alt=""
+                    fill
+                    sizes="200px"
+                    className="p5-bottom-mosaic-img"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="p5-bottom-mosaic-track p5-bottom-mosaic-track--reverse">
+              {[...projects.slice().reverse(), ...projects.slice().reverse()].map((p, i) => (
+                <div key={`${p.slug}-rev-${i}`} className="p5-bottom-mosaic-item">
+                  <Image
+                    src={p.image}
+                    alt=""
+                    fill
+                    sizes="200px"
+                    className="p5-bottom-mosaic-img"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="p5-bottom-mosaic-track">
+              {[...projects.slice(2), ...projects, ...projects.slice(0, 2)].map((p, i) => (
+                <div key={`${p.slug}-alt-${i}`} className="p5-bottom-mosaic-item">
+                  <Image
+                    src={p.image}
+                    alt=""
+                    fill
+                    sizes="200px"
+                    className="p5-bottom-mosaic-img"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="p5-bottom-mosaic-overlay" aria-hidden="true" />
+
           <span className="p5-bottom-border" aria-hidden="true" />
           <div className="p5-bottom-inner">
             <span className="p5-bottom-tag">

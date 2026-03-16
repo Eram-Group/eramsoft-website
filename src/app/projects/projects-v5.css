@@ -774,16 +774,9 @@
   position: relative;
   border-radius: 24px;
   overflow: hidden;
-  padding: 36px 48px;
+  padding: 64px 48px;
   text-align: center;
-  background: linear-gradient(
-    145deg,
-    rgba(15, 22, 38, 0.7) 0%,
-    rgba(20, 30, 50, 0.8) 50%,
-    rgba(15, 22, 38, 0.7) 100%
-  );
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(8, 12, 24, 0.6);
   border: 1px solid rgba(var(--neon-rgb), 0.08);
   transition: border-color 0.5s ease;
 }
@@ -792,13 +785,77 @@
   border-color: rgba(var(--neon-rgb), 0.16);
 }
 
+/* ── Project images mosaic background ── */
+.p5-bottom-mosaic {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.p5-bottom-mosaic-track {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  animation: p5-mosaic-scroll 45s linear infinite;
+  width: max-content;
+}
+
+.p5-bottom-mosaic-track--reverse {
+  animation: p5-mosaic-scroll-reverse 50s linear infinite;
+}
+
+@keyframes p5-mosaic-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes p5-mosaic-scroll-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.p5-bottom-mosaic-item {
+  position: relative;
+  flex-shrink: 0;
+  width: 180px;
+  height: 110px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.p5-bottom-mosaic-img {
+  object-fit: cover;
+  filter: brightness(0.5) saturate(0.4);
+}
+
+/* Dark overlay on top of mosaic */
+.p5-bottom-mosaic-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, rgba(8, 12, 24, 0.55) 0%, rgba(8, 12, 24, 0.85) 70%),
+    linear-gradient(180deg, rgba(8, 12, 24, 0.3) 0%, rgba(8, 12, 24, 0.15) 40%, rgba(8, 12, 24, 0.3) 100%);
+}
+
+.p5-bottom:hover .p5-bottom-mosaic-img {
+  filter: brightness(0.6) saturate(0.5);
+}
+
 /* Animated border glow */
 .p5-bottom-border {
   position: absolute;
   inset: -1px;
   border-radius: 25px;
   pointer-events: none;
-  z-index: 0;
+  z-index: 3;
   opacity: 0.4;
   background: conic-gradient(
     from 0deg at 50% 50%,
@@ -821,32 +878,9 @@
   opacity: 0.8;
 }
 
-/* Ambient glow behind card */
-.p5-bottom-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60%;
-  height: 120%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(var(--neon-rgb), 0.06) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(60px);
-  transition: opacity 0.5s ease;
-}
-
-.p5-bottom:hover .p5-bottom-glow {
-  opacity: 1.4;
-}
-
 .p5-bottom-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1182,9 +1216,23 @@
   }
 
   .p5-bottom {
-    padding: 40px 24px;
+    padding: 48px 20px;
     margin-top: 48px;
     border-radius: 18px;
+  }
+
+  .p5-bottom-mosaic-item {
+    width: 130px;
+    height: 80px;
+    border-radius: 8px;
+  }
+
+  .p5-bottom-mosaic-track {
+    gap: 6px;
+  }
+
+  .p5-bottom-mosaic {
+    gap: 6px;
   }
 
   .p5-bottom-heading { font-size: 1.3rem; }

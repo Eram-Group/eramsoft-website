@@ -104,19 +104,31 @@
 /* ── Portfolio download ── */
 
 .ft-download {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.82rem;
-  color: rgba(122, 141, 164, 0.65);
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 320px;
+  padding: 16px 24px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(var(--neon-rgb), 0.12) 0%, rgba(var(--neon-light-rgb), 0.08) 100%);
+  border: 1px solid rgba(var(--neon-rgb), 0.2);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--neon);
   text-decoration: none;
-  transition: color 0.3s ease, transform 0.3s ease;
-  line-height: 1.4;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, gap 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ft-download:hover {
+  background: linear-gradient(135deg, rgba(var(--neon-rgb), 0.2) 0%, rgba(var(--neon-light-rgb), 0.14) 100%);
+  border-color: rgba(var(--neon-rgb), 0.4);
   color: var(--neon-light);
-  transform: translateX(4px);
+  gap: 14px;
+  box-shadow: 0 4px 20px rgba(var(--neon-rgb), 0.15);
 }
 
 
