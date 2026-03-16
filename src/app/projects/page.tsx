@@ -159,16 +159,6 @@ export default function ProjectsPage() {
                       <span className="p5-row-meta-label">Platform</span>
                       {project.platform}
                     </span>
-                    <span className="p5-row-meta-divider" />
-                    <span className="p5-row-meta-item">
-                      <span className="p5-row-meta-label">Duration</span>
-                      {project.duration}
-                    </span>
-                    <span className="p5-row-meta-divider" />
-                    <span className="p5-row-meta-item">
-                      <span className="p5-row-meta-label">Team</span>
-                      {project.teamSize}
-                    </span>
                   </div>
                 </div>
 

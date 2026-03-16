@@ -1,0 +1,117 @@
+/* ══════════════════════════════════════════════════
+   FAQs Section
+   ══════════════════════════════════════════════════ */
+
+.faq-section {
+  background: linear-gradient(
+    180deg,
+    var(--dark-bg) 0%,
+    var(--dark-bg-alt) 50%,
+    var(--dark-bg) 100%
+  );
+}
+
+/* ── List ── */
+
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Item ── */
+
+.faq-item {
+  border-radius: 14px;
+  background: rgba(15, 20, 35, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: border-color 0.35s ease, background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(var(--neon-rgb), 0.12);
+}
+
+.faq-item--open {
+  border-color: rgba(var(--neon-rgb), 0.2);
+  background: rgba(15, 20, 35, 0.65);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15),
+    0 0 16px rgba(var(--neon-rgb), 0.03);
+}
+
+/* ── Trigger button ── */
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.faq-q {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  line-height: 1.45;
+  transition: color 0.3s ease;
+}
+
+.faq-item--open .faq-q {
+  color: var(--neon-light);
+}
+
+/* ── Chevron icon ── */
+
+.faq-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(var(--neon-rgb), 0.06);
+  border: 1px solid rgba(var(--neon-rgb), 0.1);
+  color: var(--neon);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-item--open .faq-icon {
+  background: rgba(var(--neon-rgb), 0.12);
+  border-color: rgba(var(--neon-rgb), 0.25);
+  transform: rotate(180deg);
+}
+
+/* ── Answer body ── */
+
+.faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease;
+  opacity: 0;
+}
+
+.faq-item--open .faq-body {
+  max-height: 300px;
+  opacity: 1;
+}
+
+.faq-a {
+  padding: 0 24px 22px;
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: rgba(180, 195, 215, 0.6);
+}

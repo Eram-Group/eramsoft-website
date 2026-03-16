@@ -136,9 +136,9 @@
 
 .pd-hero {
   position: relative;
-  height: 50vh;
-  min-height: 360px;
-  max-height: 520px;
+  height: 60vh;
+  min-height: 420px;
+  max-height: 620px;
   overflow: hidden;
   display: flex;
   align-items: flex-end;

@@ -98,11 +98,10 @@ export default function HowWeWork() {
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className={`hw-step ${
+              className={`hw-step hw-step-animate ${
                 activeStep === i ? "hw-step--active" : ""
-              } ${
-                activeStep !== null && activeStep !== i ? "hw-step--dim" : ""
               }`}
+              style={{ animationDelay: `${i * 0.15}s` }}
               onMouseEnter={() => setActiveStep(i)}
               onMouseLeave={() => setActiveStep(null)}
             >

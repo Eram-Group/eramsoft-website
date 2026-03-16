@@ -92,9 +92,8 @@
   box-shadow:
     0 40px 100px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.03) inset;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   transition: border-color 0.5s ease, box-shadow 0.5s ease;
+  will-change: border-color;
 }
 
 .t2-glass-card:hover {
@@ -145,7 +144,6 @@
   margin-bottom: 16px;
   color: var(--neon);
   opacity: 0.3;
-  filter: drop-shadow(0 0 16px rgba(var(--neon-rgb), 0.4));
 }
 
 /* Quote text */
@@ -181,9 +179,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid var(--border-soft-dark);
-  background: rgba(var(--neon-rgb), 0.04);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(20, 30, 48, 0.9);
   color: var(--text-muted);
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -247,7 +243,8 @@
   border: none;
   background: none;
   padding: 0;
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .t2-person:not(.t2-person--active) {
@@ -269,7 +266,8 @@
 
 .t2-avatar-outer {
   position: relative;
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .t2-person .t2-avatar-outer {
@@ -294,7 +292,7 @@
   font-size: 16px;
   position: relative;
   z-index: 2;
-  transition: all 0.5s ease;
+  transition: font-size 0.5s ease, box-shadow 0.5s ease;
   color: #fff;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
@@ -379,13 +377,12 @@
   width: 16px;
   height: 16px;
   color: #f59e0b;
-  filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.4));
 }
 
 .t2-person-star--empty {
   color: var(--text-dim);
   opacity: 0.3;
-  filter: none !important;
+  filter: none;
 }
 
 /* ── Name ── */

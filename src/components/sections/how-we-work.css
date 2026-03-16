@@ -61,8 +61,37 @@
   transition: opacity 0.4s ease;
 }
 
-.hw-step--dim {
-  opacity: 0.3;
+/* ── Entrance animation ── */
+
+@keyframes hw-fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hw-lineGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.hw-step-animate {
+  opacity: 0;
+  animation: hw-fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hw-timeline-line {
+  transform-origin: left center;
+  animation: hw-lineGrow 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  transform: scaleX(0);
 }
 
 
@@ -274,7 +303,4 @@
     color: rgba(122, 141, 164, 0.75);
   }
 
-  .hw-step--dim {
-    opacity: 1;
-  }
 }
