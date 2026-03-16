@@ -80,7 +80,7 @@ export default function Hero2() {
           </p>
 
           <h1 className="h2-heading mb-6 text-5xl font-bold leading-[1.08] md:text-6xl lg:text-[4.5rem] h2-clipReveal [animation-delay:0.2s]">
-            We build<br />
+            EramSoft build<br />
             <span className={`h2-shimmer h2-word ${fade ? "h2-word--out" : ""}`}>
               {words[index]}
             </span>{" "}

@@ -619,6 +619,38 @@
   margin-top: 2px;
 }
 
+/* ── Hero legal text buttons ── */
+
+.ab-hero-legal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.ab-hero-legal-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(180, 195, 215, 0.4);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.3s ease;
+}
+
+.ab-hero-legal-link:hover {
+  color: var(--neon);
+}
+
+.ab-hero-legal-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(180, 195, 215, 0.2);
+  flex-shrink: 0;
+}
+
+
 /* ── Stats bar — premium glass ── */
 
 .ab-hero-stats-bar {
@@ -2641,6 +2673,86 @@
     0 4px 24px rgba(var(--neon-rgb), 0.15),
     0 0 0 1px rgba(255, 255, 255, 0.04) inset;
   transform: translateY(-2px);
+}
+
+
+/* ── Legal section — card links ── */
+
+.ab-legal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 700px;
+  margin: 32px auto 0;
+  padding: 0 24px 48px;
+}
+
+@media (max-width: 560px) {
+  .ab-legal-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ab-legal-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ab-legal-card:hover {
+  background: rgba(var(--neon-rgb), 0.06);
+  border-color: rgba(var(--neon-rgb), 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.ab-legal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(var(--neon-rgb), 0.08);
+  color: var(--neon);
+  flex-shrink: 0;
+}
+
+.ab-legal-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ab-legal-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-heading);
+  letter-spacing: -0.01em;
+}
+
+.ab-legal-sub {
+  font-size: 12px;
+  color: rgba(180, 195, 215, 0.45);
+}
+
+.ab-legal-arrow {
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.ab-legal-card:hover .ab-legal-arrow {
+  color: var(--neon);
+  transform: translateX(4px);
 }
 
 

@@ -124,6 +124,13 @@ export default function ProjectsGallery() {
                   <span key={t} className="neon-tag">{t}</span>
                 ))}
               </div>
+              <span className="pg-view-details">
+                View Project Details
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </span>
             </div>
 
             {/* Progress bar */}
@@ -139,18 +146,6 @@ export default function ProjectsGallery() {
               />
             </div>
 
-            {/* Nav arrow */}
-            <div className="pg-panel-nav">
-              <button
-                className="pg-panel-arrow"
-                aria-label="Next"
-                onClick={(e) => { e.preventDefault(); goTo((active + 1) % FEATURED_COUNT); }}
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="9 6 15 12 9 18" />
-                </svg>
-              </button>
-            </div>
           </Link>
 
           {/* ── Selector tabs ── */}
