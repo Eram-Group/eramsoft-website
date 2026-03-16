@@ -68,6 +68,35 @@ const values = [
    HOOKS & COMPONENTS
    ══════════════════════════════════════════════ */
 
+function useReveal() {
+  const root = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+
+    const targets = el.querySelectorAll<HTMLElement>("[data-reveal]");
+    if (!targets.length) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    targets.forEach((t) => obs.observe(t));
+    return () => obs.disconnect();
+  }, []);
+
+  return root;
+}
+
 function useCounter(end: number, duration = 2000) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -113,8 +142,10 @@ function StatItem({ stat }: { stat: (typeof stats)[0] }) {
    ══════════════════════════════════════════════ */
 
 export default function AboutPage() {
+  const pageRef = useReveal();
+
   return (
-    <div className="ab-page">
+    <div ref={pageRef} className="ab-page">
       {/* ── Ambient layers ── */}
       <div className="ab-glow ab-glow--a" aria-hidden="true" />
       <div className="ab-glow ab-glow--b" aria-hidden="true" />
@@ -145,7 +176,7 @@ export default function AboutPage() {
 
         <div className="ab-hero-inner ab-hero-inner--split">
           {/* Left — Text content */}
-          <div className="ab-hero-text">
+          <div className="ab-hero-text" data-reveal="left">
             <div className="ab-hero-tag-wrap">
               <span className="ab-hero-tag-line" aria-hidden="true" />
               <p className="ab-tag">About Eram Soft</p>
@@ -186,7 +217,7 @@ export default function AboutPage() {
           </div>
 
           {/* Right — Visual */}
-          <div className="ab-hero-visual">
+          <div className="ab-hero-visual" data-reveal="right">
             <div className="ab-hero-frame-wrap">
               {/* Animated border glow */}
               <div className="ab-hero-frame-glow" aria-hidden="true" />
@@ -231,7 +262,7 @@ export default function AboutPage() {
         </div>
 
         {/* Stats bar — premium glass */}
-        <div className="ab-hero-stats-bar">
+        <div className="ab-hero-stats-bar" data-reveal="up">
           <div className="ab-hero-stats-shine" aria-hidden="true" />
           {stats.map((s) => (
             <StatItem key={s.label} stat={s} />
@@ -249,7 +280,7 @@ export default function AboutPage() {
             ═══════════════════════════════════════ */}
         <section className="ab-pil">
           {/* Vision */}
-          <div className="ab-pil-card ab-pil-card--v">
+          <div className="ab-pil-card ab-pil-card--v" data-reveal="left">
             <div className="ab-pil-ring" aria-hidden="true">
               <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="100" cy="100" r="96" stroke="rgba(80,170,255,0.08)" strokeWidth="1" />
@@ -284,14 +315,14 @@ export default function AboutPage() {
           </div>
 
           {/* Center divider */}
-          <div className="ab-pil-mid" aria-hidden="true">
+          <div className="ab-pil-mid" data-reveal="scale" aria-hidden="true">
             <div className="ab-pil-mid-line" />
             <div className="ab-pil-mid-dot" />
             <div className="ab-pil-mid-line" />
           </div>
 
           {/* Mission */}
-          <div className="ab-pil-card ab-pil-card--m">
+          <div className="ab-pil-card ab-pil-card--m" data-reveal="right">
             <div className="ab-pil-ring" aria-hidden="true">
               <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="100" cy="100" r="96" stroke="rgba(80,170,255,0.08)" strokeWidth="1" />
@@ -332,7 +363,7 @@ export default function AboutPage() {
             PRINCIPLES — Core Values
             ═══════════════════════════════════════ */}
         <section className="ab-pr">
-          <div className="ab-pr-head">
+          <div className="ab-pr-head" data-reveal="up">
             <p className="ab-tag">What Drives Us</p>
             <h2 className="ab-section-title">
               Our Core <span className="ab-accent">Values</span>
@@ -348,8 +379,8 @@ export default function AboutPage() {
 
           <div className="ab-pr-track">
             <div className="ab-pr-rail" aria-hidden="true" />
-            {values.map((v) => (
-              <div key={v.title} className="ab-pr-item">
+            {values.map((v, i) => (
+              <div key={v.title} className="ab-pr-item" data-reveal="up" style={{ "--delay": `${i * 0.12}s` } as React.CSSProperties}>
                 <div className="ab-pr-circle">
                   <div className="ab-pr-icon">{v.icon}</div>
                 </div>
@@ -398,7 +429,7 @@ export default function AboutPage() {
           <div className="ab-aur-beam" aria-hidden="true" />
 
           {/* Content — directly in section, no inner card */}
-          <div className="ab-aur-body">
+          <div className="ab-aur-body" data-reveal="scale">
             <div className="ab-aur-badge">
               <span className="ab-aur-badge-dot" />
               Let&apos;s Talk
