@@ -449,36 +449,6 @@ export default function ProjectDetailPage() {
       </div>
 
       {/* ══════════════════════════════════════
-          Key Features
-         ══════════════════════════════════════ */}
-      <div className="pd-section">
-        <p className="pd-section-label">Features</p>
-        <h2 className="pd-section-title">
-          Key <span>Capabilities</span>
-        </h2>
-        <div className="pd-divider" />
-
-        <div className="pd-kc-grid">
-          {project.features.map((feature, i) => (
-            <div key={feature.title} className="pd-kc-card">
-              <div className="pd-kc-card-glow" />
-              <div className="pd-kc-card-inner">
-                <div className="pd-kc-icon-wrap">
-                  <div className="pd-kc-icon-ring" />
-                  <div className="pd-kc-icon-box">
-                    <FeatureIcon name={feature.icon} />
-                  </div>
-                </div>
-                <h3 className="pd-kc-title">{feature.title}</h3>
-                <p className="pd-kc-desc">{feature.description}</p>
-              </div>
-              <div className="pd-kc-card-border" />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ══════════════════════════════════════
           Gallery
          ══════════════════════════════════════ */}
       <div className="pd-section">
@@ -505,6 +475,36 @@ export default function ProjectDetailPage() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════
+          Key Features
+         ══════════════════════════════════════ */}
+      <div className="pd-section">
+        <p className="pd-section-label">Features</p>
+        <h2 className="pd-section-title">
+          Key <span>Capabilities</span>
+        </h2>
+        <div className="pd-divider" />
+
+        <div className="pd-kc-grid">
+          {project.features.map((feature, i) => (
+            <div key={feature.title} className="pd-kc-card">
+              <div className="pd-kc-card-glow" />
+              <div className="pd-kc-card-inner">
+                <div className="pd-kc-icon-wrap">
+                  <div className="pd-kc-icon-ring" />
+                  <div className="pd-kc-icon-box">
+                    <FeatureIcon name={feature.icon} />
+                  </div>
+                </div>
+                <h3 className="pd-kc-title">{feature.title}</h3>
+                <p className="pd-kc-desc">{feature.description}</p>
+              </div>
+              <div className="pd-kc-card-border" />
+            </div>
+          ))}
         </div>
       </div>
 
