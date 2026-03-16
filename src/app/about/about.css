@@ -2245,6 +2245,7 @@
 /* ── Staggered list items ── */
 
 
+
 /* ══════════════════════════════════════════════════
    AURORA — Cinematic CTA
    Flowing aurora borealis bands, star field,
@@ -2622,6 +2623,23 @@
   border-color: rgba(255, 255, 255, 0.25);
   color: #fff;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.ab-aur-btn--download {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(var(--neon-rgb), 0.25);
+  color: var(--neon-light);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ab-aur-btn--download:hover {
+  background: rgba(var(--neon-rgb), 0.12);
+  border-color: rgba(var(--neon-rgb), 0.45);
+  color: #fff;
+  box-shadow:
+    0 4px 24px rgba(var(--neon-rgb), 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
   transform: translateY(-2px);
 }
 
@@ -4127,6 +4145,7 @@
   .ab-zigzag-play {
     display: none;
   }
+
 }
 
 

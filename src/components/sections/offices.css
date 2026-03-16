@@ -193,6 +193,18 @@
 }
 
 
+/* ── Embedded variant (used inside About & Contact pages) ── */
+
+.of-embedded {
+  padding: 40px 0 0;
+}
+
+.of-embedded-head {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+
 /* ── Responsive ── */
 
 @media (max-width: 900px) {

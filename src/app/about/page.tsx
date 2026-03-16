@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { OfficesGrid } from "@/components/sections/Offices";
 import "./about.css";
 
 /* ══════════════════════════════════════════════
@@ -401,7 +402,22 @@ export default function AboutPage() {
         <div className="ab-thread" aria-hidden="true" />
 
         {/* ═══════════════════════════════════════
-            AURORA — CTA
+            OFFICES — Find Us Worldwide
+            ═══════════════════════════════════════ */}
+        <section className="of-embedded" data-reveal="up">
+          <div className="of-embedded-head">
+            <p className="ab-tag">Our Offices</p>
+            <h2 className="ab-section-title">
+              Find Us <span className="ab-accent">Worldwide</span>
+            </h2>
+          </div>
+          <OfficesGrid />
+        </section>
+
+        <div className="ab-thread" aria-hidden="true" />
+
+        {/* ═══════════════════════════════════════
+            AURORA — CTA + Portfolio Download
             ═══════════════════════════════════════ */}
         <section className="ab-aur">
           {/* Aurora light bands */}
@@ -431,7 +447,7 @@ export default function AboutPage() {
           {/* Sweeping light beam */}
           <div className="ab-aur-beam" aria-hidden="true" />
 
-          {/* Content — directly in section, no inner card */}
+          {/* Content */}
           <div className="ab-aur-body" data-reveal="scale">
             <div className="ab-aur-badge">
               <span className="ab-aur-badge-dot" />
@@ -439,30 +455,35 @@ export default function AboutPage() {
             </div>
 
             <h2 className="ab-aur-title">
-              Ready to Build Something
+              Let&apos;s Turn Your Vision
               <br />
-              <span className="ab-aur-title-accent">Exceptional</span>?
+              Into <span className="ab-aur-title-accent">Reality</span>
             </h2>
 
             <p className="ab-aur-desc">
-              Let&apos;s discuss how we can bring your vision to life with
-              precision engineering and world-class design.
+              Get in touch to start your next project, or download
+              our portfolio to see what we&apos;ve built.
             </p>
 
             <div className="ab-aur-actions">
               <Link href="/contact" className="ab-aur-btn ab-aur-btn--primary">
                 <span className="ab-aur-btn-shimmer" aria-hidden="true" />
                 <span className="ab-aur-btn-text">
-                  Get a Free Consultation
+                  Start Your Project
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
                   </svg>
                 </span>
               </Link>
-              <Link href="/projects" className="ab-aur-btn ab-aur-btn--outline">
-                See Our Work
-              </Link>
+              <a href="/Eram-Soft-Portfolio.pdf" download className="ab-aur-btn ab-aur-btn--download">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download Portfolio
+              </a>
             </div>
           </div>
         </section>

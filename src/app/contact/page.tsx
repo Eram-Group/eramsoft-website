@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { OfficesGrid } from "@/components/sections/Offices";
 import "./contact.css";
 
 /* ══════════════════════════════════════════════
@@ -15,36 +15,6 @@ const services = [
   "Custom Software",
   "Cloud Solutions",
   "Other",
-];
-
-const branches = [
-  {
-    city: "Dubai",
-    label: "UAE — Head Office",
-    address: "Business Bay, Dubai, UAE",
-    phone: "+971 54 888 2484",
-    hours: "Sun – Thu: 9 AM – 6 PM",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
-    map: "https://www.google.com/maps/search/Business+Bay+Dubai+UAE",
-  },
-  {
-    city: "Riyadh",
-    label: "Saudi Arabia",
-    address: "Al Olaya District, Riyadh, KSA",
-    phone: "+966 55 412 7890",
-    hours: "Sun – Thu: 9 AM – 6 PM",
-    image: "https://images.unsplash.com/photo-1586724237569-f3d0c1dee8c6?w=800&q=80",
-    map: "https://www.google.com/maps/search/Al+Olaya+District+Riyadh+KSA",
-  },
-  {
-    city: "Cairo",
-    label: "Egypt",
-    address: "Smart Village, 6th of October, Cairo",
-    phone: "+20 10 2345 6789",
-    hours: "Sun – Thu: 10 AM – 7 PM",
-    image: "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800&q=80",
-    map: "https://www.google.com/maps/search/Smart+Village+6th+of+October+Cairo",
-  },
 ];
 
 const faqs = [
@@ -171,14 +141,30 @@ export default function ContactPage() {
               let&apos;s start a conversation.
             </p>
 
-            <div className="ct-hero-divider" aria-hidden="true" />
+            <div className="ct-hero-divider" aria-hidden="true">
+              <span className="ct-hero-divider-dot" />
+            </div>
 
-            <div className="ct-hero-email">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              <span>info@eramsoft.com</span>
+            <div className="ct-hero-icons">
+              <a href="mailto:info@eramsoft.com" className="ct-icon-btn" aria-label="Email us">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <span className="ct-icon-label">Email</span>
+              </a>
+              <a href="tel:+971548882484" className="ct-icon-btn" aria-label="Call us">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                </svg>
+                <span className="ct-icon-label">Phone</span>
+              </a>
+              <a href="https://wa.me/971548882484" target="_blank" rel="noopener noreferrer" className="ct-icon-btn ct-icon-btn--wa" aria-label="WhatsApp">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span className="ct-icon-label">WhatsApp</span>
+              </a>
             </div>
 
             <p className="ct-hero-note">
@@ -189,8 +175,9 @@ export default function ContactPage() {
           </div>
 
           {/* ── Right — Contact Form ── */}
-          <div className="ct-hero-right" data-reveal="up">
+          <div className="ct-hero-right" data-reveal="up" style={{ "--delay": "0.15s" } as React.CSSProperties}>
             <form className="ct-form" onSubmit={handleSubmit} noValidate>
+              <div className="ct-form-accent" aria-hidden="true" />
               <div className="ct-form-glow" aria-hidden="true" />
 
               <h2 className="ct-form-title">Send a Message</h2>
@@ -365,73 +352,14 @@ export default function ContactPage() {
         {/* ═══════════════════════════════════════
             BRANCHES — Full-bleed Image Cards
             ═══════════════════════════════════════ */}
-        <section className="ct-branches">
-          <div className="ct-branches-head">
+        <section className="of-embedded">
+          <div className="of-embedded-head">
             <p className="ct-tag">Our Offices</p>
             <h2 className="ct-section-title">
               Find Us <span className="ct-accent">Worldwide</span>
             </h2>
           </div>
-
-          <div className="ct-b2-grid">
-            {branches.map((b, i) => (
-              <a key={b.city} href={b.map} target="_blank" rel="noopener noreferrer" className="ct-b2-card">
-                <Image
-                  src={b.image}
-                  alt={`${b.city} office`}
-                  fill
-                  className="ct-b2-bg"
-                  sizes="(max-width:900px) 100vw, 33vw"
-                />
-                <div className="ct-b2-overlay" aria-hidden="true" />
-
-                <div className="ct-b2-content">
-                  <div className="ct-b2-top">
-                    <div className="ct-branch-badge ct-b2-badge">
-                      <span className="ct-branch-dot" />
-                      {b.label}
-                    </div>
-                  </div>
-
-                  <div className="ct-b2-bottom">
-                    <h3 className="ct-b2-city">{b.city}</h3>
-                    <div className="ct-b2-info">
-                      <div className="ct-b2-row">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                          <circle cx="12" cy="10" r="3" />
-                        </svg>
-                        <span>{b.address}</span>
-                      </div>
-                      <div className="ct-b2-row">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-                        </svg>
-                        <span>{b.phone}</span>
-                      </div>
-                      <div className="ct-b2-row">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10" />
-                          <polyline points="12 6 12 12 16 14" />
-                        </svg>
-                        <span>{b.hours}</span>
-                      </div>
-                    </div>
-
-                    {/* Map link indicator */}
-                    <div className="ct-b2-map-link">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                      </svg>
-                      <span>View on Google Maps</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
+          <OfficesGrid />
         </section>
 
         <div className="ct-thread" aria-hidden="true" />

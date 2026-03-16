@@ -67,16 +67,6 @@ export default function ProjectsPage() {
               </p>
             </div>
 
-            <div className="ph-hero-right">
-              <div className="ph-stat">
-                <span className="ph-stat-num">{String(projects.length).padStart(2, "0")}</span>
-                <span className="ph-stat-label">Projects Delivered</span>
-              </div>
-              <div className="ph-stat">
-                <span className="ph-stat-num">{String(categories.length - 1).padStart(2, "0")}</span>
-                <span className="ph-stat-label">Industries Served</span>
-              </div>
-            </div>
           </div>
 
           <div className="ph-rule" />

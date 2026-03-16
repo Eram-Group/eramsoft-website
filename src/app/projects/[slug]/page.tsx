@@ -424,11 +424,6 @@ export default function ProjectDetailPage() {
               </div>
 
               <div className="pd-client-item">
-                <div className="pd-client-label">Location</div>
-                <div className="pd-client-value">{project.client.location}</div>
-              </div>
-
-              <div className="pd-client-item">
                 <div className="pd-client-label">Services</div>
                 <div className="pd-client-services">
                   {project.client.services.map((s) => (

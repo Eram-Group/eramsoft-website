@@ -101,6 +101,25 @@
 }
 
 
+/* ── Portfolio download ── */
+
+.ft-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: rgba(122, 141, 164, 0.65);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  line-height: 1.4;
+}
+
+.ft-download:hover {
+  color: var(--neon-light);
+  transform: translateX(4px);
+}
+
+
 /* ── Link columns grid ── */
 
 .ft-links-grid {
