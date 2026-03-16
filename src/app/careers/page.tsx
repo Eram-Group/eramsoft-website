@@ -228,7 +228,7 @@ function useReveal() {
 
 export default function CareersPage() {
   const pageRef = useReveal();
-  const [expandedJob, setExpandedJob] = useState<string | null>(null);
+  const [expandedJob, setExpandedJob] = useState<string | null>(positions[0]?.title ?? null);
 
   return (
     <div ref={pageRef} className="ca-page">
@@ -344,16 +344,14 @@ export default function CareersPage() {
                           </div>
                         </div>
                         <div className="ca-job-right">
-                          {!isOpen && (
-                            <a
-                              href={`mailto:careers@eramsoft.com?subject=Application: ${job.title}`}
-                              className="ca-job-apply"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <span className="ca-job-apply-shimmer" aria-hidden="true" />
-                              Apply Now
-                            </a>
-                          )}
+                          <a
+                            href={`mailto:careers@eramsoft.com?subject=Application: ${job.title}`}
+                            className="ca-job-apply"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <span className="ca-job-apply-shimmer" aria-hidden="true" />
+                            Apply Now
+                          </a>
                           <span className={`ca-job-chevron ${isOpen ? "ca-job-chevron--open" : ""}`}>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <polyline points="6 9 12 15 18 9" />
@@ -385,14 +383,6 @@ export default function CareersPage() {
                             </div>
                           </div>
 
-                          <a href={`mailto:careers@eramsoft.com?subject=Application: ${job.title}`} className="ca-job-apply">
-                            <span className="ca-job-apply-shimmer" aria-hidden="true" />
-                            Apply Now
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <line x1="5" y1="12" x2="19" y2="12" />
-                              <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                          </a>
                         </div>
                       </div>
                     </div>

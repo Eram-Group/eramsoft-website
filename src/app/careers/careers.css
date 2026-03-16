@@ -1102,21 +1102,15 @@
   text-decoration: none;
   overflow: hidden;
   white-space: nowrap;
-  transition: transform 0.25s, box-shadow 0.25s;
   box-shadow: 0 2px 12px rgba(var(--neon-rgb), 0.2);
 }
 
 .ca-job-apply:hover {
-  transform: translateY(-1px);
   box-shadow: 0 4px 20px rgba(var(--neon-rgb), 0.35);
 }
 
 .ca-job-apply-shimmer {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(110deg, transparent 25%, rgba(255,255,255,0.12) 50%, transparent 75%);
-  background-size: 250% 100%;
-  animation: ca-shimmer 3s ease-in-out infinite;
+  display: none;
 }
 
 @media (max-width: 640px) {
