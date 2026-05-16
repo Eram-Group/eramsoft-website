@@ -29,8 +29,9 @@ export async function generateMetadata({
 
   if (!project) return {};
 
-  const ogImage = project.image
-    ? urlFor(project.image).width(1200).height(630).url()
+  const ogSource = project.heroImage ?? project.image;
+  const ogImage = ogSource
+    ? urlFor(ogSource).width(1200).height(630).url()
     : undefined;
 
   return {

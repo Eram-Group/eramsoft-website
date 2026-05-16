@@ -79,7 +79,9 @@ export default function ProjectDetailClient({
   project: SanityProject;
   allProjects: SanityProjectListItem[];
 }) {
-  const isMobileApp = !project.category.toLowerCase().includes("platform");
+  const isMobileApp = project.galleryType
+    ? project.galleryType === "mobile"
+    : !project.category.toLowerCase().includes("platform");
 
   useEffect(() => {
     const els = document.querySelectorAll(".pd-reveal");
@@ -94,7 +96,8 @@ export default function ProjectDetailClient({
     return () => obs.disconnect();
   }, []);
 
-  const heroImageUrl = project.image ? urlFor(project.image).width(1400).url() : "/placeholder.jpg";
+  const heroSource = project.heroImage ?? project.image;
+  const heroImageUrl = heroSource ? urlFor(heroSource).width(1400).url() : "/placeholder.jpg";
 
   return (
     <div className="pd-page">
