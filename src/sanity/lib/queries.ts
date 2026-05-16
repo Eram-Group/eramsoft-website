@@ -13,34 +13,11 @@ export const servicesQuery = groq`
 `;
 
 // ── Projects ──
+// Sort by priority bucket (Featured → High → Normal → Low), then newest first
+// within each bucket. `_priorityOrder` is a projected numeric rank used only
+// for ordering — clients never read it.
 export const projectsListQuery = groq`
-  *[_type == "project"] | order(_createdAt desc) {
-    title,
-    "slug": slug.current,
-    category,
-    description,
-    tech,
-    image,
-    year,
-    tagline,
-    platform,
-    duration,
-    teamSize,
-    status
-  }
-`;
-
-// ── Projects (lightweight — for MosaicCTA) ──
-export const projectsMosaicQuery = groq`
-  *[_type == "project"] | order(_createdAt desc) {
-    title,
-    "slug": slug.current,
-    image
-  }
-`;
-
-export const projectBySlugQuery = groq`
-  *[_type == "project" && slug.current == $slug][0] {
+  *[_type == "project"] {
     title,
     "slug": slug.current,
     category,
@@ -53,11 +30,55 @@ export const projectBySlugQuery = groq`
     duration,
     teamSize,
     status,
+    priority,
+    "_priorityOrder": select(
+      priority == "featured" => 0,
+      priority == "high" => 1,
+      priority == "normal" => 2,
+      priority == "low" => 3,
+      2
+    )
+  } | order(_priorityOrder asc, _createdAt desc)
+`;
+
+// ── Projects (lightweight — for MosaicCTA) ──
+export const projectsMosaicQuery = groq`
+  *[_type == "project"] {
+    title,
+    "slug": slug.current,
+    image,
+    "_priorityOrder": select(
+      priority == "featured" => 0,
+      priority == "high" => 1,
+      priority == "normal" => 2,
+      priority == "low" => 3,
+      2
+    )
+  } | order(_priorityOrder asc, _createdAt desc)
+`;
+
+export const projectBySlugQuery = groq`
+  *[_type == "project" && slug.current == $slug][0] {
+    title,
+    "slug": slug.current,
+    category,
+    description,
+    tech,
+    image,
+    heroImage,
+    year,
+    tagline,
+    platform,
+    duration,
+    teamSize,
+    status,
+    priority,
     challenge,
     solution,
     client,
     features,
     gallery,
+    galleryType,
     testimonial
   }
 `;

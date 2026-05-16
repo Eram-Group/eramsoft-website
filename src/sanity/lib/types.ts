@@ -35,6 +35,8 @@ export interface SanityClientInfo {
   services: string[];
 }
 
+export type SanityProjectPriority = "featured" | "high" | "normal" | "low";
+
 export interface SanityProjectListItem {
   title: string;
   slug: string;
@@ -48,14 +50,19 @@ export interface SanityProjectListItem {
   duration: string;
   teamSize: string;
   status: string;
+  priority: SanityProjectPriority;
 }
 
+export type SanityProjectGalleryType = "mobile" | "desktop";
+
 export interface SanityProject extends SanityProjectListItem {
+  heroImage?: SanityImage;
   challenge: string;
   solution: string;
   client: SanityClientInfo;
   features: SanityProjectFeature[];
   gallery: SanityImage[];
+  galleryType?: SanityProjectGalleryType;
   testimonial?: SanityProjectTestimonial;
 }
 

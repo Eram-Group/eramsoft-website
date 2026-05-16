@@ -15,6 +15,23 @@ export default defineType({
       validation: (r) => r.required(),
     }),
     defineField({ name: "category", title: "Category", type: "string" }),
+    defineField({
+      name: "priority",
+      title: "Priority",
+      description: "Controls display order on the homepage and /projects listing. Featured projects appear first.",
+      type: "string",
+      options: {
+        list: [
+          { title: "Featured", value: "featured" },
+          { title: "High", value: "high" },
+          { title: "Normal", value: "normal" },
+          { title: "Low", value: "low" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "normal",
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "description", title: "Description", type: "text", rows: 3 }),
     defineField({
       name: "tech",
@@ -26,7 +43,20 @@ export default defineType({
           items && items.some((i) => !i || !i.trim()) ? "Tech entries cannot be empty" : true
         ),
     }),
-    defineField({ name: "image", title: "Hero Image", type: "image", options: { hotspot: true } }),
+    defineField({
+      name: "image",
+      title: "Card Image",
+      description: "Shown on the /projects listing card.",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: "heroImage",
+      title: "Hero Image",
+      description: "Full-bleed hero on the project detail page. Falls back to Card Image if empty.",
+      type: "image",
+      options: { hotspot: true },
+    }),
     defineField({ name: "year", title: "Year", type: "string" }),
     defineField({ name: "tagline", title: "Tagline", type: "string" }),
     defineField({ name: "platform", title: "Platform", type: "string" }),
@@ -37,6 +67,21 @@ export default defineType({
     defineField({ name: "solution", title: "Solution", type: "text", rows: 5 }),
     defineField({ name: "client", title: "Client Info", type: "clientInfo" }),
     defineField({ name: "features", title: "Features", type: "array", of: [{ type: "projectFeature" }] }),
+    defineField({
+      name: "galleryType",
+      title: "Gallery Layout",
+      description: "How the screenshots in the Gallery section are framed: phone-shaped for mobile apps, wide for desktop/web apps.",
+      type: "string",
+      options: {
+        list: [
+          { title: "Mobile", value: "mobile" },
+          { title: "Desktop", value: "desktop" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "mobile",
+      validation: (r) => r.required(),
+    }),
     defineField({ name: "gallery", title: "Gallery", type: "array", of: [{ type: "image", options: { hotspot: true } }] }),
     defineField({ name: "testimonial", title: "Testimonial", type: "projectTestimonial" }),
   ],
