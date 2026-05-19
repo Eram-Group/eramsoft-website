@@ -55,8 +55,11 @@ export interface SanityProjectListItem {
 
 export type SanityProjectGalleryType = "mobile" | "desktop";
 
+export type SanityProjectType = "mobile" | "website";
+
 export interface SanityProject extends SanityProjectListItem {
   heroImage?: SanityImage;
+  projectType?: SanityProjectType;
   websiteUrl?: string;
   appStoreUrl?: string;
   playStoreUrl?: string;

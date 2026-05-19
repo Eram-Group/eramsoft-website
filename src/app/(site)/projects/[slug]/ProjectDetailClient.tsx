@@ -83,7 +83,11 @@ export default function ProjectDetailClient({
     ? project.galleryType === "mobile"
     : !project.category.toLowerCase().includes("platform");
 
-  const hasDownloads = isMobileApp
+  const isMobileProject = project.projectType
+    ? project.projectType === "mobile"
+    : isMobileApp;
+
+  const hasDownloads = isMobileProject
     ? Boolean(project.appStoreUrl || project.playStoreUrl)
     : Boolean(project.websiteUrl);
 
@@ -154,7 +158,7 @@ export default function ProjectDetailClient({
             </div>
           </div>
 
-          {isMobileApp && project.appStoreUrl && (
+          {isMobileProject && project.appStoreUrl && (
             <a
               href={project.appStoreUrl}
               target="_blank"
@@ -175,7 +179,7 @@ export default function ProjectDetailClient({
             </a>
           )}
 
-          {isMobileApp && project.playStoreUrl && (
+          {isMobileProject && project.playStoreUrl && (
             <a
               href={project.playStoreUrl}
               target="_blank"
@@ -199,7 +203,7 @@ export default function ProjectDetailClient({
             </a>
           )}
 
-          {!isMobileApp && project.websiteUrl && (
+          {!isMobileProject && project.websiteUrl && (
             <a
               href={project.websiteUrl}
               target="_blank"

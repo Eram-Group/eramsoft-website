@@ -73,6 +73,7 @@ export const projectBySlugQuery = groq`
     teamSize,
     status,
     priority,
+    projectType,
     websiteUrl,
     appStoreUrl,
     playStoreUrl,
