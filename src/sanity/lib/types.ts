@@ -57,6 +57,9 @@ export type SanityProjectGalleryType = "mobile" | "desktop";
 
 export interface SanityProject extends SanityProjectListItem {
   heroImage?: SanityImage;
+  websiteUrl?: string;
+  appStoreUrl?: string;
+  playStoreUrl?: string;
   challenge: string;
   solution: string;
   client: SanityClientInfo;
