@@ -83,14 +83,14 @@
 }
 
 .ph-title-thin {
-  font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
   font-weight: 300;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.92);
 }
 
 .ph-title-bold {
-  font-size: clamp(3.4rem, 7vw, 5.8rem);
+  font-size: clamp(2.3rem, 7vw, 5.8rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   background: linear-gradient(
@@ -140,7 +140,7 @@
 }
 
 .ph-stat-num {
-  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  font-size: clamp(1.8rem, 4vw, 3.6rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -327,15 +327,17 @@
   }
 
   .ph-title-thin {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .ph-title-bold {
-    font-size: 3rem;
+    font-size: 2.6rem;
   }
 
   .ph-desc {
     font-size: 0.88rem;
+    line-height: 1.6;
+    white-space: normal;
   }
 
   .ph-rule {
@@ -345,7 +347,7 @@
   .ph-filters {
     flex-wrap: nowrap;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
     scrollbar-width: none;
     gap: 8px;
   }
@@ -356,11 +358,33 @@
 
   .ph-filter {
     flex-shrink: 0;
-    padding: 8px 16px;
-    font-size: 11px;
+    padding: 9px 16px;
+    font-size: 12px;
   }
 
   .ph-stat-num {
-    font-size: 2rem;
+    font-size: 1.85rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .ph-title-thin {
+    font-size: 1.75rem;
+  }
+
+  .ph-title-bold {
+    font-size: 2.2rem;
+  }
+
+  .ph-desc {
+    font-size: 0.82rem;
+  }
+
+  .ph-stat-num {
+    font-size: 1.65rem;
+  }
+
+  .ph-stat-label {
+    font-size: 9px;
   }
 }

@@ -33,7 +33,7 @@ export default function Hero2({ data }: { data?: HeroData }) {
   }, [words.length]);
 
   return (
-    <section className="h2-surface relative flex min-h-screen flex-col overflow-hidden">
+    <section className="h2-surface relative flex min-h-screen min-h-dvh flex-col overflow-hidden">
       {/* ── Grain texture ── */}
       <div className="h2-grain" aria-hidden="true" />
 

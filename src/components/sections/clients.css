@@ -36,17 +36,6 @@
 }
 
 
-/* ── Static row (few clients) ── */
-
-.cl-static {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 0 24px;
-}
-
-
 /* ── Single marquee row ── */
 
 .cl-marquee {
@@ -202,6 +191,22 @@
   height: 20px;
 }
 
+/* Uploaded-logo variant: neutral frame, contained image. */
+.cl-logo-icon--image {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 4px;
+  --card-accent: rgba(255, 255, 255, 0.18);
+  --card-accent-soft: rgba(255, 255, 255, 0.04);
+}
+
+.cl-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: inherit;
+}
+
 /* Color variants */
 .cl-logo-icon--blue     { background: linear-gradient(135deg, #3b82f6, #2563eb); }
 .cl-logo-icon--cyan     { background: linear-gradient(135deg, #06b6d4, #0891b2); }
@@ -283,7 +288,7 @@
 }
 
 .cl-stat-number {
-  font-size: 2.25rem;
+  font-size: clamp(1.6rem, 5vw, 2.25rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   background: linear-gradient(180deg, var(--text-heading) 0%, var(--text-muted) 100%);
@@ -338,7 +343,12 @@
   }
 
   .cl-stat-number {
-    font-size: 1.75rem;
+    font-size: 1.7rem;
+  }
+
+  .cl-stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
   }
 }
 
@@ -360,5 +370,40 @@
       black 85%,
       transparent 100%
     );
+  }
+
+}
+
+@media (max-width: 420px) {
+  .cl-logo {
+    padding: 10px 14px 10px 10px;
+    gap: 8px;
+  }
+
+  .cl-logo-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+  }
+
+  .cl-logo-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .cl-logo-name {
+    font-size: 0.72rem;
+  }
+
+  .cl-stats {
+    gap: 20px;
+  }
+
+  .cl-stat-number {
+    font-size: 1.45rem;
+  }
+
+  .cl-stat-label {
+    font-size: 0.58rem;
   }
 }

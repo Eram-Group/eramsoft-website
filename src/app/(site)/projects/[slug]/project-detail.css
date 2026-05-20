@@ -17,6 +17,7 @@
     var(--dark-bg) 100%
   );
   min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   overflow-x: hidden;
   padding-bottom: 1px;
@@ -30,6 +31,17 @@
   border-radius: 50%;
   pointer-events: none;
   filter: blur(15px);
+  /* Promote to GPU layer so the heavy blur is composited, not repainted on scroll */
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Mobile: drop the giant blurred orbs entirely. 800px elements with filter:blur(15px)
+   are the main source of scroll jank on phones. They're decorative — hiding is fine. */
+@media (max-width: 768px) {
+  .pd-glow {
+    display: none;
+  }
 }
 
 .pd-glow--1 {
@@ -137,7 +149,11 @@
 
 .pd-hero {
   position: relative;
+  /* svh = small viewport height — does NOT change when the mobile address bar collapses,
+     so the hero (and total document height) stays stable while scrolling. Fixes the
+     "scrollbar grows/shrinks, scrolling feels flaky" jitter on iOS/Android. */
   height: 60vh;
+  height: 60svh;
   min-height: 420px;
   max-height: 620px;
   overflow: hidden;
@@ -229,7 +245,7 @@
 }
 
 .pd-hero-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 8vw, 3rem);
   font-weight: 900;
   color: var(--text-bright);
   letter-spacing: -0.03em;
@@ -541,7 +557,7 @@
 }
 
 .pd-section-title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 6vw, 2rem);
   font-weight: 800;
   color: var(--text-heading);
   letter-spacing: -0.02em;
@@ -1008,7 +1024,8 @@
   grid-auto-columns: 280px;
   overflow-x: auto;
   overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
+  /* `pan-y` lets vertical drags pass to the page even when the gesture starts here. */
+  touch-action: pan-y;
   scroll-snap-type: x mandatory;
   padding-bottom: 12px;
   scrollbar-width: thin;
@@ -1120,6 +1137,28 @@
 @media (min-width: 1024px) {
   .pd-gallery-track {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Web projects: stack screenshots vertically (one per row) */
+.pd-gallery-track--web {
+  grid-template-columns: 1fr;
+  max-width: 960px;
+  margin: 0 auto;
+  gap: 28px;
+}
+
+@media (min-width: 768px) {
+  .pd-gallery-track--web {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pd-gallery-track--web {
+    grid-template-columns: 1fr;
+    gap: 36px;
   }
 }
 
@@ -1380,7 +1419,7 @@
 }
 
 .pd-result-metric {
-  font-size: 3rem;
+  font-size: clamp(2rem, 8vw, 3rem);
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -1564,6 +1603,18 @@
   flex-shrink: 0;
   animation: pd-mosaic-scroll 90s linear infinite;
   width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Mobile: pause the infinite mosaic — running it forever keeps the compositor busy
+   on every scroll frame, which makes the page feel sticky/stuck. */
+@media (max-width: 768px) {
+  .pd-bottom-mosaic-track,
+  .pd-bottom-mosaic-track--reverse {
+    animation: none;
+    transform: translateX(0);
+  }
 }
 
 .pd-bottom-mosaic-track--reverse {
@@ -1707,4 +1758,74 @@
 
 .pd-lineExpand {
   transform-origin: left;
+}
+
+
+/* ══════════════════════════════════════════════════
+   Mobile fine-tuning (≤ 480px)
+   ══════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .pd-hero-content {
+    padding: 28px 18px;
+  }
+
+  .pd-hero-tagline {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .pd-result-card {
+    padding: 28px 18px;
+  }
+
+  .pd-result-label {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .pd-hero-content {
+    padding: 24px 14px;
+  }
+
+  .pd-hero-title {
+    font-size: 1.7rem;
+  }
+
+  .pd-hero-tagline {
+    font-size: 0.88rem;
+  }
+
+  .pd-section-title {
+    font-size: 1.3rem;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════
+   Mobile scroll performance
+   ──────────────────────────────────────────────────
+   backdrop-filter re-samples the underlying pixels every frame, so on phones it
+   stalls scroll-induced repaints and makes the page feel stuck. Strip it on mobile
+   and replace with a slightly more opaque background so the glass effect still
+   reads as a card, just without the live blur.
+   ══════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .pd-topbar,
+  .pd-badge,
+  .pd-stat,
+  .pd-download,
+  .pd-kc-card,
+  .pd-client-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .pd-topbar { background: rgba(10, 15, 26, 0.92); }
+  .pd-stat { background: rgba(20, 28, 42, 0.85); }
+  .pd-download { background: rgba(20, 28, 42, 0.88); }
+  .pd-kc-card { background: rgba(20, 28, 42, 0.82); }
+  .pd-client-card { background: rgba(20, 28, 42, 0.85); }
 }

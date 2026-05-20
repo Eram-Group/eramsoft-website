@@ -57,6 +57,7 @@
     var(--dark-bg) 100%
   );
   min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   overflow: hidden;
   color: var(--text-heading);
@@ -275,7 +276,7 @@
 }
 
 .ca-hero-line--hero {
-  font-size: clamp(2.2rem, 4.5vw, 4rem);
+  font-size: clamp(1.85rem, 5.5vw, 4rem);
   line-height: 1.05;
   letter-spacing: -0.04em;
   padding: 4px 0;
@@ -645,10 +646,37 @@
 
 @media (max-width: 480px) {
   .ca-hero-inner {
-    padding: 120px 20px 0;
+    padding: 100px 16px 0;
   }
   .ca-hero-stats-bar {
     gap: 12px 20px;
+    padding: 12px 8px;
+  }
+  .ca-hero-sub {
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  .ca-banner {
+    height: 240px;
+  }
+  .ca-banner-title {
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+  }
+  .ca-banner-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+  }
+  .ca-wrap {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .ca-hero-line--hero {
+    font-size: 1.7rem;
+  }
+  .ca-hero-inner {
+    padding: 88px 14px 0;
   }
 }
 

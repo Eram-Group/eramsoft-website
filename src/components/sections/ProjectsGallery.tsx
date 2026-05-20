@@ -30,12 +30,52 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const swiped = useRef(false);
+
   const goTo = useCallback(
     (index: number) => {
       setActive(index);
     },
     [],
   );
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    swiped.current = false;
+    setPaused(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current == null || touchStartY.current == null) {
+      setPaused(false);
+      return;
+    }
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+    const dx = endX - touchStartX.current;
+    const dy = endY - touchStartY.current;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      swiped.current = true;
+      if (dx < 0) {
+        setActive((prev) => (prev + 1) % featuredProjects.length);
+      } else {
+        setActive((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+    setPaused(false);
+  };
+
+  const handlePanelClick = (e: React.MouseEvent) => {
+    if (swiped.current) {
+      e.preventDefault();
+      swiped.current = false;
+    }
+  };
 
   // Track section visibility
   useEffect(() => {
@@ -108,7 +148,14 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
           onMouseLeave={() => setPaused(false)}
         >
           {/* ── Large image panel ── */}
-          <Link href={`/projects/${current.slug}`} className="pg-panel" style={{ textDecoration: "none" }}>
+          <Link
+            href={`/projects/${current.slug}`}
+            className="pg-panel"
+            style={{ textDecoration: "none" }}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onClick={handlePanelClick}
+          >
             {featuredProjects.map((p, i) => (
               <div
                 key={`slide-${p.slug}-${i}`}
@@ -159,6 +206,21 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
 
 
           </Link>
+
+          {/* ── Mobile carousel dots ── */}
+          <div className="pg-dots" role="tablist" aria-label="Featured projects">
+            {featuredProjects.map((p, i) => (
+              <button
+                key={`dot-${p.slug}-${i}`}
+                type="button"
+                role="tab"
+                aria-selected={i === active}
+                aria-label={`Show project ${i + 1}: ${p.title}`}
+                className={`pg-dot ${i === active ? "pg-dot--active" : ""}`}
+                onClick={() => goTo(i)}
+              />
+            ))}
+          </div>
 
           {/* ── Selector tabs ── */}
           <div className="pg-tabs-wrapper">

@@ -294,7 +294,7 @@ export default function ProjectDetailClient({
         <div className="pd-divider" />
 
         <div className="pd-gallery-wrap">
-          <div className="pd-gallery-track">
+          <div className={`pd-gallery-track ${!isMobileApp ? "pd-gallery-track--web" : ""}`}>
             {(project.gallery ?? []).slice(0, 3).map((img, i) => (
               <div
                 key={i}

@@ -229,4 +229,44 @@
   .of-card {
     height: 320px;
   }
+
+  .of-card-content {
+    padding: 18px 18px;
+  }
+
+  .of-city {
+    font-size: 1.55rem;
+  }
+
+  .of-row {
+    font-size: 0.72rem;
+    gap: 7px;
+  }
+
+  .of-badge {
+    font-size: 0.55rem;
+    padding: 4px 10px;
+  }
+
+  .of-embedded-head {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 420px) {
+  .of-card {
+    height: 280px;
+  }
+
+  .of-card-content {
+    padding: 16px 16px;
+  }
+
+  .of-city {
+    font-size: 1.35rem;
+  }
+
+  .of-row {
+    font-size: 0.68rem;
+  }
 }

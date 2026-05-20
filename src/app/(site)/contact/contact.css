@@ -40,6 +40,7 @@
     var(--dark-bg) 100%
   );
   min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   overflow: hidden;
   color: var(--text-heading);
@@ -162,6 +163,7 @@
   position: relative;
   overflow: hidden;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1018,7 +1020,74 @@
   }
 
   .ct-hero-h1 {
-    font-size: clamp(1.8rem, 7vw, 2.4rem);
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+  }
+
+  .ct-hero-sub {
+    font-size: 0.84rem;
+    line-height: 1.7;
+  }
+
+  .ct-hero-row {
+    padding-top: 110px;
+    gap: 36px;
+  }
+
+  .ct-form-title {
+    font-size: 1.15rem;
+  }
+
+  .ct-faq-trigger {
+    padding: 14px 14px;
+  }
+
+  .ct-faq-q {
+    font-size: 0.86rem;
+  }
+
+  .ct-faq-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .ct-faq-a {
+    padding: 0 14px 16px;
+    font-size: 0.8rem;
+  }
+
+  .ct-faqb-tab {
+    padding: 14px 14px;
+  }
+
+  .ct-faqb-panel {
+    padding: 22px 18px;
+  }
+
+  .ct-faqb-panel-q {
+    font-size: 1rem;
+  }
+
+  .ct-faqb-panel-a {
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .ct-form {
+    padding: 24px 16px 28px;
+  }
+
+  .ct-hero-row {
+    padding-top: 96px;
+  }
+
+  .ct-hero-rings {
+    width: 280px;
+    height: 280px;
+  }
+
+  .ct-section-title {
+    font-size: 1.35rem;
   }
 }
 

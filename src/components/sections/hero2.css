@@ -796,4 +796,29 @@
   .h2-glow--blue { width: 220px; height: 220px; }
   .h2-glow--white { width: 300px; height: 220px; top: 35%; }
   .h2-streak { display: none; }
+
+  .h2-top-fade { height: 5rem; }
+
+  .h2-subtitle {
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+  }
+}
+
+@media (max-width: 420px) {
+  .h2-top-fade { height: 4rem; }
+  .h2-heading {
+    font-size: 1.85rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1rem !important;
+  }
+  .h2-body {
+    font-size: 0.88rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+  .h2-subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    margin-bottom: 0.875rem !important;
+  }
 }
