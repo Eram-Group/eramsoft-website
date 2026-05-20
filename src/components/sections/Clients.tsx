@@ -1,15 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import "./clients.css";
 import { logos } from "@/components/icons/ClientLogos";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AmbientEffects from "@/components/ui/AmbientEffects";
+import { urlFor } from "@/sanity/lib/image";
+import type { SanityImage } from "@/sanity/lib/types";
 
 interface ClientItem {
   name: string;
   icon: string;
   color: string;
   type: string;
+  logo?: SanityImage;
 }
 
 const THRESHOLD = 8; // ≤ 8 clients → single row, > 8 → two-row marquee
@@ -18,15 +22,28 @@ function LogoCard({
   name,
   type,
   color,
+  logo,
 }: {
   name: string;
   type: string;
   color: string;
+  logo?: SanityImage;
 }) {
+  const hasLogo = Boolean(logo?.asset);
   return (
     <div className="cl-logo">
-      <div className={`cl-logo-icon cl-logo-icon--${color}`}>
-        {logos[name] ?? name[0]}
+      <div className={`cl-logo-icon ${hasLogo ? "cl-logo-icon--image" : `cl-logo-icon--${color}`}`}>
+        {hasLogo ? (
+          <Image
+            src={urlFor(logo!).url()}
+            alt={`${name} logo`}
+            width={80}
+            height={80}
+            className="cl-logo-img"
+          />
+        ) : (
+          logos[name] ?? name[0]
+        )}
       </div>
       <div>
         <div className="cl-logo-name">{name}</div>
@@ -59,21 +76,23 @@ export default function Clients({ clients }: { clients: ClientItem[] }) {
       {/* ── Logo rows ── */}
       <div>
         {isSingle ? (
-          <div className="cl-static">
-            {clients.map((client, i) => (
-              <LogoCard key={`cl-${client.name}-${i}`} {...client} />
-            ))}
+          <div className="cl-marquee-wrap">
+            <div className="cl-marquee cl-marquee--left">
+              {[...clients, ...clients, ...clients, ...clients].map((client, i) => (
+                <LogoCard key={`s-${i}`} name={client.name} type={client.type} color={client.color} logo={client.logo} />
+              ))}
+            </div>
           </div>
         ) : (
           <div className="cl-marquee-wrap">
             <div className="cl-marquee cl-marquee--left">
               {[...row1, ...row1].map((client, i) => (
-                <LogoCard key={`r1-${i}`} {...client} />
+                <LogoCard key={`r1-${i}`} name={client.name} type={client.type} color={client.color} logo={client.logo} />
               ))}
             </div>
             <div className="cl-marquee cl-marquee--right cl-marquee--inset">
               {[...row2, ...row2].map((client, i) => (
-                <LogoCard key={`r2-${i}`} {...client} />
+                <LogoCard key={`r2-${i}`} name={client.name} type={client.type} color={client.color} logo={client.logo} />
               ))}
             </div>
           </div>

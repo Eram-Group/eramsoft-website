@@ -40,10 +40,10 @@ export default function Navbar() {
       }`}
       style={{ textShadow: scrolled ? 'none' : '0 1px 4px rgba(0,0,0,0.6)' }}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-12">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 md:px-6 md:py-4 lg:px-12">
         {/* Logo */}
-        <Link href="/">
-          <Image src="/logo.svg" alt="Logo" width={147} height={42} priority className="brightness-0 invert opacity-80" />
+        <Link href="/" aria-label="Home">
+          <Image src="/logo.svg" alt="Logo" width={147} height={42} priority className="h-7 w-auto brightness-0 invert opacity-80 md:h-[42px]" />
         </Link>
 
         {/* Desktop Nav */}
@@ -74,19 +74,19 @@ export default function Navbar() {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="flex flex-col gap-1.5 md:hidden"
+          className="flex flex-col gap-1 p-1 md:hidden"
           aria-label="Toggle menu"
         >
-          <span className={`h-0.5 w-6 transition-transform bg-white/70 ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
-          <span className={`h-0.5 w-6 transition-opacity bg-white/70 ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`h-0.5 w-6 transition-transform bg-white/70 ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+          <span className={`h-0.5 w-5 transition-transform bg-white/70 ${mobileOpen ? "translate-y-1.5 rotate-45" : ""}`} />
+          <span className={`h-0.5 w-5 transition-opacity bg-white/70 ${mobileOpen ? "opacity-0" : ""}`} />
+          <span className={`h-0.5 w-5 transition-transform bg-white/70 ${mobileOpen ? "-translate-y-1.5 -rotate-45" : ""}`} />
         </button>
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="border-t border-foreground/10 bg-navy/95 backdrop-blur-md md:hidden">
-          <div className="flex flex-col gap-4 px-6 py-6">
+          <div className="flex flex-col gap-3 px-4 py-4">
             {navLinks.map((link) => (
               <Link
                 key={link.label}

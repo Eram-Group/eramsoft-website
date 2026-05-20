@@ -198,6 +198,49 @@
   position: relative;
   width: 520px;
   height: 460px;
+  transform-origin: center top;
+}
+
+/* Responsive scaling — keep the same composed mockup, just shrink to fit
+   Mobile (text on top, image below) — set wrapper to collapse the scaled box. */
+.h2-showcase-wrap {
+  min-height: 0;
+}
+
+@media (max-width: 1024px) {
+  .h2-showcase {
+    transform: scale(0.78);
+  }
+  .h2-showcase-wrap {
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .h2-showcase {
+    transform: scale(0.66);
+  }
+  .h2-showcase-wrap {
+    height: 304px;
+  }
+}
+
+@media (max-width: 480px) {
+  .h2-showcase {
+    transform: scale(0.56);
+  }
+  .h2-showcase-wrap {
+    height: 258px;
+  }
+}
+
+@media (max-width: 380px) {
+  .h2-showcase {
+    transform: scale(0.48);
+  }
+  .h2-showcase-wrap {
+    height: 220px;
+  }
 }
 
 /* ── Browser ── */
@@ -796,4 +839,29 @@
   .h2-glow--blue { width: 220px; height: 220px; }
   .h2-glow--white { width: 300px; height: 220px; top: 35%; }
   .h2-streak { display: none; }
+
+  .h2-top-fade { height: 5rem; }
+
+  .h2-subtitle {
+    font-size: 0.72rem;
+    letter-spacing: 0.24em;
+  }
+}
+
+@media (max-width: 420px) {
+  .h2-top-fade { height: 4rem; }
+  .h2-heading {
+    font-size: 1.85rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1rem !important;
+  }
+  .h2-body {
+    font-size: 0.88rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+  .h2-subtitle {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    margin-bottom: 0.875rem !important;
+  }
 }

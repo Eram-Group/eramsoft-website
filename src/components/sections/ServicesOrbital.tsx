@@ -115,7 +115,7 @@ export default function ServicesOrbital({ services }: { services: ServiceItem[] 
                   onClick={() => setActive(i)}
                 >
                   <div className="sf-card-bg">
-                    {service.image && (
+                    {service.image?.asset && (
                       <Image
                         src={urlFor(service.image).width(600).url()}
                         alt={service.title}

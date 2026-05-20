@@ -19,6 +19,7 @@
     var(--dark-bg) 100%
   );
   min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   overflow: hidden;
   color: var(--text-heading);
@@ -1660,23 +1661,86 @@
     justify-content: center;
   }
 
+  /* Hide the PDF/company-profile preview card on mobile */
   .ab-pf-preview {
-    display: flex;
-    justify-content: center;
+    display: none;
+  }
+}
+
+/* ── Very small phones (≤ 420px) ── */
+@media (max-width: 420px) {
+  .ab-hero-inner {
+    padding: 88px 14px 0;
   }
 
-  .ab-pf-pdf {
-    width: 170px;
+  .ab-hero-line--hero {
+    font-size: 1.8rem;
+    letter-spacing: -0.03em;
   }
 
+  .ab-hero-line--lead {
+    font-size: 0.82rem;
+  }
 
+  .ab-hero-sub {
+    font-size: 0.78rem;
+    line-height: 1.7;
+  }
 
+  .ab-hero-how {
+    font-size: 0.88rem;
+  }
 
+  .ab-hero-stats-bar {
+    margin: 24px 8px 24px;
+    padding: 12px 6px;
+  }
 
+  .ab-stat-value {
+    font-size: 1.3rem;
+  }
 
+  .ab-stat-label {
+    font-size: 0.5rem;
+  }
 
+  .ab-section-title {
+    font-size: 1.4rem;
+  }
 
+  .ab-pil-title {
+    font-size: 1.05rem;
+  }
 
+  .ab-pil-desc {
+    font-size: 0.74rem;
+  }
 
+  .ab-pil-ring {
+    width: 78px;
+    height: 78px;
+  }
 
+  .ab-pr-circle {
+    width: 72px;
+    height: 72px;
+  }
+
+  .ab-pr-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ab-pr-title {
+    font-size: 0.78rem;
+  }
+
+  .ab-pr-desc {
+    font-size: 0.66rem;
+  }
+
+  .ab-pf-inner {
+    padding: 28px 18px;
+    gap: 24px;
+  }
 }

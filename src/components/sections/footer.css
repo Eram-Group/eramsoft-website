@@ -242,11 +242,25 @@
 
   .ft-brand-desc {
     max-width: none;
+    font-size: 0.82rem;
   }
 
   .ft-links-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 32px 24px;
+    gap: 28px 20px;
+  }
+
+  .ft-links-heading {
+    font-size: 0.74rem;
+  }
+
+  .ft-link {
+    font-size: 0.78rem;
+  }
+
+  .ft-download {
+    font-size: 13px;
+    padding: 14px 20px;
   }
 
   .ft-bottom {
@@ -254,5 +268,31 @@
     gap: 8px;
     text-align: center;
     padding: 20px 0;
+    font-size: 0.74rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .ft-top {
+    gap: 32px;
+  }
+
+  .ft-brand-desc {
+    font-size: 0.78rem;
+    line-height: 1.65;
+  }
+
+  .ft-links-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+  }
+
+  .ft-link {
+    font-size: 0.74rem;
+  }
+
+  .ft-social-link {
+    width: 32px;
+    height: 32px;
   }
 }

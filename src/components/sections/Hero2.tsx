@@ -33,7 +33,7 @@ export default function Hero2({ data }: { data?: HeroData }) {
   }, [words.length]);
 
   return (
-    <section className="h2-surface relative flex min-h-screen flex-col overflow-hidden">
+    <section className="h2-surface relative flex flex-col overflow-hidden lg:min-h-screen lg:min-h-dvh">
       {/* ── Grain texture ── */}
       <div className="h2-grain" aria-hidden="true" />
 
@@ -83,7 +83,7 @@ export default function Hero2({ data }: { data?: HeroData }) {
       <div className="h2-top-fade" />
 
       {/* ── Main content area — split layout ── */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 items-center px-5 pt-24 pb-8 sm:px-8 sm:pt-28 lg:px-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-start px-5 pt-24 pb-12 sm:px-8 sm:pt-28 lg:flex-1 lg:items-center lg:px-16 lg:pb-8">
         {/* Left — Text content */}
         <div className="relative z-10 w-full max-w-xl">
           <p className="h2-subtitle mb-5 text-sm font-semibold tracking-[0.3em] uppercase h2-subtitleIn [animation-delay:0.1s]">
@@ -104,7 +104,7 @@ export default function Hero2({ data }: { data?: HeroData }) {
 
           <div className="flex flex-wrap items-center gap-3 sm:gap-4 h2-btnIn [animation-delay:0.45s]">
             <Link
-              href={data?.ctaPrimaryLink ?? "/contact"}
+              href="/contact"
               className="h2-cta-primary inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-[#50aaff] to-[#3b8de8] px-6 py-3 sm:px-8 sm:py-3.5 text-sm font-bold tracking-wide text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

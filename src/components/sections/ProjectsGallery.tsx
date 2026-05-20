@@ -30,12 +30,52 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
   const sectionRef = useRef<HTMLElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const swiped = useRef(false);
+
   const goTo = useCallback(
     (index: number) => {
       setActive(index);
     },
     [],
   );
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    swiped.current = false;
+    setPaused(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current == null || touchStartY.current == null) {
+      setPaused(false);
+      return;
+    }
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+    const dx = endX - touchStartX.current;
+    const dy = endY - touchStartY.current;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      swiped.current = true;
+      if (dx < 0) {
+        setActive((prev) => (prev + 1) % featuredProjects.length);
+      } else {
+        setActive((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+    setPaused(false);
+  };
+
+  const handlePanelClick = (e: React.MouseEvent) => {
+    if (swiped.current) {
+      e.preventDefault();
+      swiped.current = false;
+    }
+  };
 
   // Track section visibility
   useEffect(() => {
@@ -82,7 +122,7 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         {/* ── Header ── */}
-        <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="mb-6 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between md:gap-6">
           <div>
             <p className="pg-label section-label mb-4 text-xs font-bold tracking-[0.35em] uppercase">
               Portfolio
@@ -108,7 +148,14 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
           onMouseLeave={() => setPaused(false)}
         >
           {/* ── Large image panel ── */}
-          <Link href={`/projects/${current.slug}`} className="pg-panel" style={{ textDecoration: "none" }}>
+          <Link
+            href={`/projects/${current.slug}`}
+            className="pg-panel"
+            style={{ textDecoration: "none" }}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onClick={handlePanelClick}
+          >
             {featuredProjects.map((p, i) => (
               <div
                 key={`slide-${p.slug}-${i}`}
@@ -158,6 +205,30 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
             </span>
 
 
+          </Link>
+
+          {/* ── Mobile carousel dots ── */}
+          <div className="pg-dots" role="tablist" aria-label="Featured projects">
+            {featuredProjects.map((p, i) => (
+              <button
+                key={`dot-${p.slug}-${i}`}
+                type="button"
+                role="tab"
+                aria-selected={i === active}
+                aria-label={`Show project ${i + 1}: ${p.title}`}
+                className={`pg-dot ${i === active ? "pg-dot--active" : ""}`}
+                onClick={() => goTo(i)}
+              />
+            ))}
+          </div>
+
+          {/* ── Mobile big CTA — All Projects ── */}
+          <Link href="/projects" className="pg-mobile-all-cta">
+            <span>All Projects</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
           </Link>
 
           {/* ── Selector tabs ── */}

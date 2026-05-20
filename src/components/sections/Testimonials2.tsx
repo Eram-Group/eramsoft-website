@@ -22,6 +22,8 @@ export default function Testimonials2({ testimonials }: { testimonials: Testimon
   const [paused, setPaused] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
+  const avatarsWrapRef = useRef<HTMLDivElement | null>(null);
+  const personRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const next = useCallback(() => {
     if (len === 0) return;
@@ -54,6 +56,19 @@ export default function Testimonials2({ testimonials }: { testimonials: Testimon
     const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
   }, [paused, isVisible, next, len]);
+
+  // Keep the active avatar visible when the row overflows on mobile.
+  useEffect(() => {
+    const wrap = avatarsWrapRef.current;
+    const btn = personRefs.current[active];
+    if (!wrap || !btn) return;
+    const wrapRect = wrap.getBoundingClientRect();
+    const btnRect = btn.getBoundingClientRect();
+    const targetLeft = btn.offsetLeft - wrap.clientWidth / 2 + btn.clientWidth / 2;
+    if (btnRect.left < wrapRect.left || btnRect.right > wrapRect.right) {
+      wrap.scrollTo({ left: targetLeft, behavior: "smooth" });
+    }
+  }, [active]);
 
   const current = testimonials?.[active];
   if (!current) return null;
@@ -114,11 +129,12 @@ export default function Testimonials2({ testimonials }: { testimonials: Testimon
           </div>
 
           {/* ── Avatar row ── */}
-          <div className="t2-avatars-wrap">
+          <div className="t2-avatars-wrap" ref={avatarsWrapRef}>
             <div className="t2-avatars">
               {testimonials.map((t, i) => (
                 <button
                   key={`t2-${t.name}-${i}`}
+                  ref={(el) => { personRefs.current[i] = el; }}
                   className={`t2-person ${i === active ? "t2-person--active" : ""}`}
                   onClick={() => goTo(i)}
                   aria-label={`View testimonial from ${t.name}`}

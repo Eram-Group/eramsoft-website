@@ -89,7 +89,8 @@
 html {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
-  overscroll-behavior: none;
+  /* `none` broke iOS rubber-band; `contain` keeps the chain-stop without freezing the page. */
+  overscroll-behavior-y: contain;
 }
 
 /* Only apply smooth scroll for in-page anchor navigation, not route changes */

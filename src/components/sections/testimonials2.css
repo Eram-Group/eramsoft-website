@@ -236,6 +236,29 @@
 @media (max-width: 900px) { .t2-avatars { gap: 24px; } }
 @media (max-width: 640px) { .t2-avatars { gap: 14px; } }
 
+/* ── Mobile: horizontal scroll so avatars never get cut off ── */
+@media (max-width: 768px) {
+  .t2-avatars-wrap {
+    overflow-x: auto;
+    /* Vertical padding leaves room for the active avatar's scale-up and glow,
+       which would otherwise get clipped by overflow-x's implied y-clip. */
+    padding: 18px 0 8px;
+    touch-action: pan-y;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+  }
+  .t2-avatars-wrap::-webkit-scrollbar { display: none; }
+  .t2-avatars {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    width: max-content;
+    padding: 0 20px;
+    margin: 0 auto;
+  }
+  .t2-person { flex-shrink: 0; }
+}
+
 /* ── Person button ── */
 
 .t2-person {
