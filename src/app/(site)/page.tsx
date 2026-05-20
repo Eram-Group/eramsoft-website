@@ -102,11 +102,11 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Hero2 data={hero} />
+      <ProjectsGallery projects={projects} />
+      <div className="section-divider" aria-hidden="true" />
       <ServicesOrbital services={services} />
       <div className="section-divider" aria-hidden="true" />
       <HowWeWork steps={steps} />
-      <div className="section-divider" aria-hidden="true" />
-      <ProjectsGallery projects={projects} />
       <div className="section-divider" aria-hidden="true" />
       <Clients clients={clients} />
       <div className="section-divider" aria-hidden="true" />

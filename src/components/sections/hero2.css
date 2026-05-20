@@ -198,6 +198,49 @@
   position: relative;
   width: 520px;
   height: 460px;
+  transform-origin: center top;
+}
+
+/* Responsive scaling — keep the same composed mockup, just shrink to fit
+   Mobile (text on top, image below) — set wrapper to collapse the scaled box. */
+.h2-showcase-wrap {
+  min-height: 0;
+}
+
+@media (max-width: 1024px) {
+  .h2-showcase {
+    transform: scale(0.78);
+  }
+  .h2-showcase-wrap {
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .h2-showcase {
+    transform: scale(0.66);
+  }
+  .h2-showcase-wrap {
+    height: 304px;
+  }
+}
+
+@media (max-width: 480px) {
+  .h2-showcase {
+    transform: scale(0.56);
+  }
+  .h2-showcase-wrap {
+    height: 258px;
+  }
+}
+
+@media (max-width: 380px) {
+  .h2-showcase {
+    transform: scale(0.48);
+  }
+  .h2-showcase-wrap {
+    height: 220px;
+  }
 }
 
 /* ── Browser ── */

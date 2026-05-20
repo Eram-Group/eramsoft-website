@@ -122,7 +122,7 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         {/* ── Header ── */}
-        <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="mb-6 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between md:gap-6">
           <div>
             <p className="pg-label section-label mb-4 text-xs font-bold tracking-[0.35em] uppercase">
               Portfolio
@@ -221,6 +221,15 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
               />
             ))}
           </div>
+
+          {/* ── Mobile big CTA — All Projects ── */}
+          <Link href="/projects" className="pg-mobile-all-cta">
+            <span>All Projects</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </Link>
 
           {/* ── Selector tabs ── */}
           <div className="pg-tabs-wrapper">

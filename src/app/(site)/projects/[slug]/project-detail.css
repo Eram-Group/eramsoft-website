@@ -1123,7 +1123,7 @@
 
 .pd-gallery-track {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 20px;
   padding-bottom: 16px;
 }
@@ -1137,6 +1137,19 @@
 @media (min-width: 1024px) {
   .pd-gallery-track {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile: single-column stack, center portrait shots so they don't dominate */
+@media (max-width: 767px) {
+  .pd-gallery-track .pd-gallery-item {
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  .pd-gallery-track--web .pd-gallery-item {
+    max-width: none;
   }
 }
 
