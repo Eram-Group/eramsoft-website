@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "env:switch": "./scripts/switch-env.sh",
+    "env:dev": "cp .env.dev .env.local && echo 'Switched to DEV (exk3777z)'",
+    "env:prod": "cp .env.prod .env.local && echo 'Switched to PROD (x1l7ag57)'"
   },
   "dependencies": {
     "@sanity/client": "^7.20.0",

@@ -44,3 +44,6 @@ next-env.d.ts
 
 
 /scripts/seed
+
+# local Sanity dataset backups (large, contain data — keep local)
+/backups
