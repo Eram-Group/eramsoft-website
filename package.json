@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "seed": "tsx scripts/seed/index.ts"
+    "lint": "eslint"
   },
   "dependencies": {
     "@sanity/client": "^7.20.0",
