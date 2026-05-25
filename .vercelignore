@@ -1,0 +1,10 @@
+# Local Sanity dataset backups — large, must never be uploaded to a deploy
+backups
+
+# Local env files (Vercel injects its own env vars at build time)
+.env
+.env.*
+
+# VCS / deps (deps are installed on Vercel)
+.git
+node_modules
