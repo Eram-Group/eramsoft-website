@@ -5,16 +5,25 @@ import Image from "next/image";
 import Link from "next/link";
 import SocialLinks from "@/components/ui/SocialLinks";
 import { usePathname } from "next/navigation";
+import type { SanityNavigation } from "@/sanity/lib/types";
 
-const navLinks = [
-  { label: "HOME", href: "/" },
-  { label: "PROJECTS", href: "/projects" },
-  { label: "ABOUT US", href: "/about" },
-  { label: "CAREERS", href: "/careers" },
-  { label: "CONTACT US", href: "/contact" },
+// Hrefs, order, and item count are fixed here; labels can be overridden from
+// the `navigation` singleton in Sanity. The defaults below are the fallback
+// when a label is empty or the singleton hasn't been created yet.
+const NAV_ITEMS: { key: keyof SanityNavigation; defaultLabel: string; href: string }[] = [
+  { key: "homeLabel", defaultLabel: "HOME", href: "/" },
+  { key: "projectsLabel", defaultLabel: "PROJECTS", href: "/projects" },
+  { key: "aboutLabel", defaultLabel: "ABOUT US", href: "/about" },
+  { key: "careersLabel", defaultLabel: "CAREERS", href: "/careers" },
+  { key: "contactLabel", defaultLabel: "CONTACT US", href: "/contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ navigation }: { navigation?: SanityNavigation | null }) {
+  const navLinks = NAV_ITEMS.map(({ key, defaultLabel, href }) => ({
+    label: navigation?.[key]?.trim() || defaultLabel,
+    href,
+  }));
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -53,7 +62,7 @@ export default function Navbar() {
               key={link.label}
               href={link.href}
               prefetch={true}
-              className={`relative text-[13px] font-medium tracking-widest transition-colors hover:text-[#50aaff] ${
+              className={`relative text-[13px] font-medium uppercase tracking-widest transition-colors hover:text-[#50aaff] ${
                 isActive(link.href)
                   ? "text-[#50aaff] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-[#50aaff] after:rounded-full"
                   : "text-white/50"
@@ -93,7 +102,7 @@ export default function Navbar() {
                 href={link.href}
                 prefetch={true}
                 onClick={() => setMobileOpen(false)}
-                className={`relative text-[13px] font-medium tracking-widest transition-colors hover:text-[#50aaff] ${
+                className={`relative text-[13px] font-medium uppercase tracking-widest transition-colors hover:text-[#50aaff] ${
                   isActive(link.href)
                     ? "text-[#50aaff]"
                     : "text-white/50"

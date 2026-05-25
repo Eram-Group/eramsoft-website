@@ -79,7 +79,7 @@ export interface SanityClient {
   color: string;
   type: string;
   logo?: SanityImage;
-  orderRank: number;
+  orderRank: string;
 }
 
 // ── Testimonials ──
@@ -91,7 +91,7 @@ export interface SanityTestimonial {
   comment: string;
   avatar: string;
   color: string;
-  orderRank: number;
+  orderRank: string;
 }
 
 // ── Offices ──
@@ -103,7 +103,7 @@ export interface SanityOffice {
   hours: string;
   image: SanityImage;
   mapLink: string;
-  orderRank: number;
+  orderRank: string;
 }
 
 // ── FAQs ──
@@ -111,7 +111,7 @@ export interface SanityFaqItem {
   question: string;
   answer: string;
   context: "homepage" | "contact" | "both";
-  orderRank: number;
+  orderRank: string;
 }
 
 // ── How We Work ──
@@ -120,7 +120,7 @@ export interface SanityHowWeWorkStep {
   title: string;
   description: string;
   iconKey: string;
-  orderRank: number;
+  orderRank: string;
 }
 
 // ── Hero Section ──
@@ -237,4 +237,21 @@ export interface SanitySiteSettings {
   socialLinks: SanitySocialLink[];
   contactEmail: string;
   contactPhone: string;
+}
+
+// ── Navigation ──
+export interface SanityNavigation {
+  homeLabel: string;
+  projectsLabel: string;
+  aboutLabel: string;
+  careersLabel: string;
+  contactLabel: string;
+}
+
+// ── Services Section ──
+export interface SanityServicesSection {
+  label: string;
+  title: string;
+  accentWord: string;
+  subtitle: string;
 }

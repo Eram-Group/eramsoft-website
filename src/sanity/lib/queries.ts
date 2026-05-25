@@ -1,5 +1,26 @@
 import { groq } from "next-sanity";
 
+// ── Navigation (singleton) ──
+export const navigationQuery = groq`
+  *[_type == "navigation"][0] {
+    homeLabel,
+    projectsLabel,
+    aboutLabel,
+    careersLabel,
+    contactLabel
+  }
+`;
+
+// ── Services Section header (singleton) ──
+export const servicesSectionQuery = groq`
+  *[_type == "servicesSection"][0] {
+    label,
+    title,
+    accentWord,
+    subtitle
+  }
+`;
+
 // ── Services ──
 export const servicesQuery = groq`
   *[_type == "service"] | order(orderRank asc) {

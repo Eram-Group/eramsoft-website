@@ -24,6 +24,8 @@ import footerConfig from "./documents/footerConfig";
 import legalPage from "./documents/legalPage";
 import siteSettings from "./documents/siteSettings";
 import contactMessage from "./documents/contactMessage";
+import navigation from "./documents/navigation";
+import servicesSection from "./documents/servicesSection";
 
 export const schemaTypes = [
   // Objects
@@ -51,4 +53,6 @@ export const schemaTypes = [
   legalPage,
   siteSettings,
   contactMessage,
+  navigation,
+  servicesSection,
 ];

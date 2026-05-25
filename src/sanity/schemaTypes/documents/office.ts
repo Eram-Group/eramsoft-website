@@ -1,10 +1,11 @@
 import { defineType, defineField } from "sanity";
-import { uniqueOrderRank } from "../validation/uniqueOrderRank";
+import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
 
 export default defineType({
   name: "office",
   title: "Office",
   type: "document",
+  orderings: [orderRankOrdering],
   fields: [
     defineField({ name: "city", title: "City", type: "string", validation: (r) => r.required() }),
     defineField({ name: "label", title: "Label", type: "string", description: 'e.g. "UAE — Head Office"' }),
@@ -13,12 +14,7 @@ export default defineType({
     defineField({ name: "hours", title: "Hours", type: "string" }),
     defineField({ name: "image", title: "Image", type: "image", options: { hotspot: true } }),
     defineField({ name: "mapLink", title: "Google Maps Link", type: "url" }),
-    defineField({
-      name: "orderRank",
-      title: "Order",
-      type: "number",
-      validation: (r) => r.required().custom(uniqueOrderRank),
-    }),
+    orderRankField({ type: "office" }),
   ],
   preview: {
     select: { title: "city", subtitle: "label", media: "image" },
