@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import {
   Compass, Map, Bell, BarChart3, Globe, Shield, Truck, Tag,
@@ -90,6 +90,35 @@ export default function ProjectDetailClient({
   const hasDownloads = isMobileProject
     ? Boolean(project.appStoreUrl || project.playStoreUrl)
     : Boolean(project.websiteUrl);
+
+  // ── Screenshot lightbox ──
+  const galleryImages = (project.gallery ?? []).slice(0, 3);
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const showPrev = useCallback(
+    () => setLightbox((i) => (i === null ? i : (i - 1 + galleryImages.length) % galleryImages.length)),
+    [galleryImages.length]
+  );
+  const showNext = useCallback(
+    () => setLightbox((i) => (i === null ? i : (i + 1) % galleryImages.length)),
+    [galleryImages.length]
+  );
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") showPrev();
+      else if (e.key === "ArrowRight") showNext();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightbox, closeLightbox, showPrev, showNext]);
 
   useEffect(() => {
     const els = document.querySelectorAll(".pd-reveal");
@@ -295,10 +324,13 @@ export default function ProjectDetailClient({
 
         <div className="pd-gallery-wrap">
           <div className={`pd-gallery-track ${!isMobileApp ? "pd-gallery-track--web" : ""}`}>
-            {(project.gallery ?? []).slice(0, 3).map((img, i) => (
-              <div
+            {galleryImages.map((img, i) => (
+              <button
                 key={i}
+                type="button"
                 className="pd-gallery-item"
+                onClick={() => setLightbox(i)}
+                aria-label={`View ${project.title} screenshot ${i + 1}`}
               >
                 <div className="pd-device-frame">
                   <Image
@@ -309,7 +341,8 @@ export default function ProjectDetailClient({
                     className={`pd-gallery-img ${!isMobileApp ? "pd-gallery-img--web" : ""}`}
                   />
                 </div>
-              </div>
+                <span className="pd-gallery-zoom" aria-hidden="true">⤢</span>
+              </button>
             ))}
           </div>
         </div>
@@ -363,6 +396,58 @@ export default function ProjectDetailClient({
       <div className="pd-reveal">
         <MosaicCTA projects={allProjects} prefix="pd" />
       </div>
+
+      {/* Screenshot lightbox */}
+      {lightbox !== null && galleryImages[lightbox] && (
+        <div
+          className="pd-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${project.title} screenshot ${lightbox + 1}`}
+          onClick={closeLightbox}
+        >
+          <button className="pd-lightbox-close" onClick={closeLightbox} aria-label="Close preview">
+            ✕
+          </button>
+
+          {galleryImages.length > 1 && (
+            <button
+              className="pd-lightbox-nav pd-lightbox-nav--prev"
+              onClick={(e) => {
+                e.stopPropagation();
+                showPrev();
+              }}
+              aria-label="Previous screenshot"
+            >
+              ‹
+            </button>
+          )}
+
+          <div className="pd-lightbox-stage" onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={urlFor(galleryImages[lightbox]).width(1800).url()}
+              alt={`${project.title} screenshot ${lightbox + 1}`}
+              fill
+              sizes="92vw"
+              className="pd-lightbox-img"
+              priority
+            />
+          </div>
+
+          {galleryImages.length > 1 && (
+            <button
+              className="pd-lightbox-nav pd-lightbox-nav--next"
+              onClick={(e) => {
+                e.stopPropagation();
+                showNext();
+              }}
+              aria-label="Next screenshot"
+            >
+              ›
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }

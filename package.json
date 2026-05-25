@@ -15,7 +15,9 @@
     "@sanity/client": "^7.20.0",
     "@sanity/icons": "^3.7.4",
     "@sanity/image-url": "^2.0.3",
+    "@sanity/orderable-document-list": "^1.5.1",
     "@sanity/vision": "^5.17.1",
+    "@sentry/nextjs": "^10.47.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.36.0",
     "lucide-react": "^1.0.1",
@@ -23,8 +25,7 @@
     "next-sanity": "^12.2.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "sanity": "^5.19.0",
-    "@sentry/nextjs": "^10.47.0"
+    "sanity": "^5.19.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

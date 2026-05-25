@@ -1,10 +1,11 @@
 import { defineType, defineField } from "sanity";
-import { uniqueOrderRank } from "../validation/uniqueOrderRank";
+import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
 
 export default defineType({
   name: "howWeWorkStep",
   title: "How We Work Step",
   type: "document",
+  orderings: [orderRankOrdering],
   fields: [
     defineField({ name: "number", title: "Step Number", type: "string" }),
     defineField({ name: "title", title: "Title", type: "string", validation: (r) => r.required() }),
@@ -15,12 +16,7 @@ export default defineType({
       type: "string",
       description: 'Maps to SVG icon in code (e.g. "discovery", "design", "development", "testing", "launch")',
     }),
-    defineField({
-      name: "orderRank",
-      title: "Order",
-      type: "number",
-      validation: (r) => r.required().custom(uniqueOrderRank),
-    }),
+    orderRankField({ type: "howWeWorkStep" }),
   ],
   preview: {
     select: { title: "title", subtitle: "number" },

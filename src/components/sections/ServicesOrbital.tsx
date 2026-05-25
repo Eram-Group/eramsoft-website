@@ -6,7 +6,7 @@ import "./services-orbital.css";
 import SectionHeader from "@/components/ui/SectionHeader";
 import AmbientEffects from "@/components/ui/AmbientEffects";
 import { urlFor } from "@/sanity/lib/image";
-import type { SanityImage } from "@/sanity/lib/types";
+import type { SanityImage, SanityServicesSection } from "@/sanity/lib/types";
 
 interface ServiceItem {
   number: string;
@@ -18,7 +18,22 @@ interface ServiceItem {
 
 const AUTOPLAY_INTERVAL = 3000;
 
-export default function ServicesOrbital({ services }: { services: ServiceItem[] }) {
+// Fallbacks used when the `servicesSection` singleton is empty or missing.
+const HEADER_DEFAULTS = {
+  label: "What We Do",
+  title: "Our",
+  accentWord: "Services",
+  subtitle:
+    "End-to-end digital solutions crafted with precision, from concept to deployment and beyond.",
+};
+
+export default function ServicesOrbital({
+  services,
+  header,
+}: {
+  services: ServiceItem[];
+  header?: SanityServicesSection | null;
+}) {
   const len = services?.length || 0;
   const [active, setActive] = useState(Math.min(2, Math.max(0, len - 1)));
   const [paused, setPaused] = useState(false);
@@ -85,10 +100,10 @@ export default function ServicesOrbital({ services }: { services: ServiceItem[] 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
         <div>
           <SectionHeader
-            label="What We Do"
-            title="Our"
-            accentWord="Services"
-            subtitle="End-to-end digital solutions crafted with precision, from concept to deployment and beyond."
+            label={header?.label?.trim() || HEADER_DEFAULTS.label}
+            title={header?.title?.trim() || HEADER_DEFAULTS.title}
+            accentWord={header?.accentWord?.trim() || HEADER_DEFAULTS.accentWord}
+            subtitle={header?.subtitle?.trim() || HEADER_DEFAULTS.subtitle}
           />
         </div>
 

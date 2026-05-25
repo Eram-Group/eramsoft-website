@@ -41,6 +41,15 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
     [],
   );
 
+  const goPrev = useCallback(
+    () => setActive((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length),
+    [featuredProjects.length],
+  );
+  const goNext = useCallback(
+    () => setActive((prev) => (prev + 1) % featuredProjects.length),
+    [featuredProjects.length],
+  );
+
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
@@ -178,6 +187,54 @@ export default function ProjectsGallery({ projects }: { projects: ProjectItem[] 
               </div>
             ))}
             <div className="pg-panel-overlay" />
+
+            {/* Mobile swipe arrows — visible affordance + tap to navigate */}
+            {featuredProjects.length > 1 && (
+              <>
+                <span
+                  className="pg-panel-arrow pg-panel-arrow--prev"
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Previous project"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    goPrev();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      goPrev();
+                    }
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
+                </span>
+                <span
+                  className="pg-panel-arrow pg-panel-arrow--next"
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Next project"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    goNext();
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      goNext();
+                    }
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </span>
+              </>
+            )}
 
             {/* Info overlay on image */}
             <div className="pg-panel-info" key={`info-${active}`}>

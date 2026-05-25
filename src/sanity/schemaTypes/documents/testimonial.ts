@@ -1,10 +1,11 @@
 import { defineType, defineField } from "sanity";
-import { uniqueOrderRank } from "../validation/uniqueOrderRank";
+import { orderRankField, orderRankOrdering } from "@sanity/orderable-document-list";
 
 export default defineType({
   name: "testimonial",
   title: "Testimonial",
   type: "document",
+  orderings: [orderRankOrdering],
   fields: [
     defineField({ name: "name", title: "Name", type: "string", validation: (r) => r.required() }),
     defineField({ name: "role", title: "Role", type: "string" }),
@@ -13,12 +14,7 @@ export default defineType({
     defineField({ name: "comment", title: "Comment", type: "text", rows: 4 }),
     defineField({ name: "avatar", title: "Avatar Initials", type: "string", description: 'e.g. "SM"' }),
     defineField({ name: "color", title: "Color", type: "string" }),
-    defineField({
-      name: "orderRank",
-      title: "Order",
-      type: "number",
-      validation: (r) => r.required().custom(uniqueOrderRank),
-    }),
+    orderRankField({ type: "testimonial" }),
   ],
   preview: {
     select: { title: "name", subtitle: "company" },

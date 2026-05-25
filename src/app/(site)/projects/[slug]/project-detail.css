@@ -19,7 +19,10 @@
   min-height: 100vh;
   min-height: 100dvh;
   position: relative;
-  overflow-x: hidden;
+  /* `clip` (not `hidden`) clips the wide glow orbs WITHOUT making .pd-page a
+     scroll container. `overflow-x: hidden` forces overflow-y to compute to
+     `auto`, which gave the page its own nested vertical scrollbar. */
+  overflow-x: clip;
   padding-bottom: 1px;
 }
 
@@ -1153,7 +1156,7 @@
   }
 }
 
-/* Web projects: stack screenshots vertically (one per row) */
+/* Web projects: single column on mobile (current UI), 3-up on web/desktop */
 .pd-gallery-track--web {
   grid-template-columns: 1fr;
   max-width: 960px;
@@ -1163,15 +1166,16 @@
 
 @media (min-width: 768px) {
   .pd-gallery-track--web {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: none;
+    gap: 24px;
   }
 }
 
 @media (min-width: 1024px) {
   .pd-gallery-track--web {
-    grid-template-columns: 1fr;
-    gap: 36px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
   }
 }
 
@@ -1182,11 +1186,131 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(20, 28, 42, 0.5);
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  /* rendered as a <button> — reset native button styling */
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: zoom-in;
 }
 
 .pd-gallery-item:hover {
   border-color: rgba(var(--neon-rgb), 0.2);
   box-shadow: 0 0 40px rgba(var(--neon-rgb), 0.06);
+}
+
+/* Zoom affordance shown on hover/focus */
+.pd-gallery-zoom {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text-heading);
+  background: rgba(10, 14, 26, 0.6);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.pd-gallery-item:hover .pd-gallery-zoom,
+.pd-gallery-item:focus-visible .pd-gallery-zoom {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Screenshot lightbox ── */
+.pd-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(6, 9, 16, 0.92);
+  backdrop-filter: blur(6px);
+  animation: pd-lightbox-in 0.2s ease;
+}
+
+@keyframes pd-lightbox-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.pd-lightbox-stage {
+  position: relative;
+  width: min(92vw, 1400px);
+  height: 86vh;
+}
+
+.pd-lightbox-img {
+  object-fit: contain;
+}
+
+.pd-lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(20, 28, 42, 0.7);
+  color: var(--text-heading);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.pd-lightbox-close:hover {
+  background: rgba(var(--neon-rgb), 0.18);
+  border-color: rgba(var(--neon-rgb), 0.4);
+}
+
+.pd-lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(20, 28, 42, 0.7);
+  color: var(--text-heading);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.pd-lightbox-nav:hover {
+  background: rgba(var(--neon-rgb), 0.18);
+  border-color: rgba(var(--neon-rgb), 0.4);
+}
+
+.pd-lightbox-nav--prev { left: 16px; }
+.pd-lightbox-nav--next { right: 16px; }
+
+@media (max-width: 767px) {
+  .pd-lightbox-stage { width: 94vw; height: 70vh; }
+  .pd-lightbox-nav { width: 40px; height: 40px; font-size: 1.4rem; }
+  .pd-lightbox-nav--prev { left: 8px; }
+  .pd-lightbox-nav--next { right: 8px; }
 }
 
 .pd-device-frame {

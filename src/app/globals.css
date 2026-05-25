@@ -127,7 +127,10 @@ body {
 .page-canvas {
   background: var(--dark-bg);
   position: relative;
-  overflow-x: hidden;
+  /* `clip` clips horizontal overflow without creating a scroll container —
+     `overflow-x: hidden` would force overflow-y to `auto` and add a nested
+     vertical scrollbar. */
+  overflow-x: clip;
 }
 
 .st-bridge {

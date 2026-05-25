@@ -29,6 +29,7 @@ import Faqs from "@/components/sections/Faqs";
 import { sanityFetch } from "@/sanity/lib/fetch";
 import {
   servicesQuery,
+  servicesSectionQuery,
   projectsListQuery,
   clientsQuery,
   testimonialsQuery,
@@ -39,6 +40,7 @@ import {
 } from "@/sanity/lib/queries";
 import type {
   SanityService,
+  SanityServicesSection,
   SanityProjectListItem,
   SanityClient as SanityClientType,
   SanityTestimonial,
@@ -49,9 +51,10 @@ import type {
 } from "@/sanity/lib/types";
 
 export default async function Home() {
-  const [services, projects, clients, testimonials, offices, faqs, hero, steps] =
+  const [services, servicesSection, projects, clients, testimonials, offices, faqs, hero, steps] =
     await Promise.all([
       sanityFetch<SanityService[]>({ query: servicesQuery, tags: ["service"] }),
+      sanityFetch<SanityServicesSection | null>({ query: servicesSectionQuery, tags: ["servicesSection"] }),
       sanityFetch<SanityProjectListItem[]>({ query: projectsListQuery, tags: ["project"] }),
       sanityFetch<SanityClientType[]>({ query: clientsQuery, tags: ["client"] }),
       sanityFetch<SanityTestimonial[]>({ query: testimonialsQuery, tags: ["testimonial"] }),
@@ -104,7 +107,7 @@ export default async function Home() {
       <Hero2 data={hero} />
       <ProjectsGallery projects={projects} />
       <div className="section-divider" aria-hidden="true" />
-      <ServicesOrbital services={services} />
+      <ServicesOrbital services={services} header={servicesSection} />
       <div className="section-divider" aria-hidden="true" />
       <HowWeWork steps={steps} />
       <div className="section-divider" aria-hidden="true" />
